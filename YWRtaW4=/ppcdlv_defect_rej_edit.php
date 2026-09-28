@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -219,7 +219,7 @@ $id_reason = $_POST['id_reason'];
 } 
  ?>
  
-  <div class="modal fade" id="myNoteSlocDlv<?php echo $row2["id_defect"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteSlocDlv<?php echo html_esc($row2["id_defect"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -247,7 +247,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
     <tr>
     <td width="191">Defectives Reject Desc. <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="defect_desc" name="defect_desc" value="<?php  echo $row_was["defect_desc"]; ?>" class="form-control" required><div class="invalid-feedback"><?php echo  $message_rejdesc; ?></div></td>
+    <td width="971"><input type="text" id="defect_desc" name="defect_desc" value="<?php  echo html_esc($row_was["defect_desc"]); ?>" class="form-control" required><div class="invalid-feedback"><?php echo  $message_rejdesc; ?></div></td>
     </tr>
   <tr>
     <td>Status Defectives <font color="#FF0000">*</font></td>
@@ -273,7 +273,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
      <tr>
     <td width="191">Reason <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_reason" name="id_reason" value="<?php  echo $row_was["id_reason"]; ?>" class="form-control" required><div class="invalid-feedback"><?php echo  $message_reason; ?></div></td>
+    <td width="971"><input type="text" id="id_reason" name="id_reason" value="<?php  echo html_esc($row_was["id_reason"]); ?>" class="form-control" required><div class="invalid-feedback"><?php echo  $message_reason; ?></div></td>
     </tr>
      <tr>
     <td>Production Process<font color="#FF0000">*</font></td>
@@ -289,7 +289,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["id_proc"]; ?>" <?php if($row27["id_proc"] == $row_was["id_proc"]) { ?> selected="selected"<?php } ?>> <?php echo stripslashes($row27["id_proc"]); ?> - <?php echo $row27["proc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["id_proc"]); ?>" <?php if($row27["id_proc"] == $row_was["id_proc"]) { ?> selected="selected"<?php } ?>> <?php echo stripslashes($row27["id_proc"]); ?> - <?php echo html_esc($row27["proc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -317,7 +317,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 	?>  
           
           
-          <option value="<?php echo $row48["id_type"]; ?>" <?php if($row48["id_type"] == $row_was["id_type"]) echo "selected"; ?>> <?php echo stripslashes($row48["id_type"]),' - ',stripslashes($row48["type_desc"]); ?></option>
+          <option value="<?php echo html_esc($row48["id_type"]); ?>" <?php if($row48["id_type"] == $row_was["id_type"]) echo "selected"; ?>> <?php echo stripslashes($row48["id_type"]),' - ',stripslashes($row48["type_desc"]); ?></option>
   <?php   }  ?>
   
           </select>
@@ -342,7 +342,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 				   
 	?>  
           
-          <option value="<?php echo $rowD["id_defect"]; ?>" <?php if($rowD["id_defect"] == $row_was["id_defect"]) echo "selected"; ?>> <?php echo stripslashes($rowD["id_defect"]),' - ',stripslashes($rowD["defect_desc"]); ?></option>
+          <option value="<?php echo html_esc($rowD["id_defect"]); ?>" <?php if($rowD["id_defect"] == $row_was["id_defect"]) echo "selected"; ?>> <?php echo stripslashes($rowD["id_defect"]),' - ',stripslashes($rowD["defect_desc"]); ?></option>
   <?php   }  ?>
   
           </select>
@@ -361,8 +361,8 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-           <!--  <input type="hidden" id="id_type" name="id_type"  class="form-control" value="<?php echo $row2["id_type"];  ?>" > -->
-              <input type="hidden" id="id_defect" name="id_defect"  class="form-control" value="<?php echo $row2["id_defect"];  ?>" >  
+           <!--  <input type="hidden" id="id_type" name="id_type"  class="form-control" value="<?php echo html_esc($row2["id_type"]);  ?>" > -->
+              <input type="hidden" id="id_defect" name="id_defect"  class="form-control" value="<?php echo html_esc($row2["id_defect"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

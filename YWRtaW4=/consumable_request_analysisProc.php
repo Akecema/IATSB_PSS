@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -214,7 +214,7 @@ th {
 			  ?>
               
            <!-- <form action="" method="get" name="frmSearch" id="frmSearch">-->
-             <form action="consumable_request_analysisProc.php?factory=<?php echo $factory; ?>&&status=<?php echo $status; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&material_no=<?php echo $material_no; ?>" method="get" name="frmSearch" id="frmSearch">
+             <form action="consumable_request_analysisProc.php?factory=<?php echo html_esc($factory); ?>&&status=<?php echo html_esc($status); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&material_no=<?php echo html_esc($material_no); ?>" method="get" name="frmSearch" id="frmSearch">
             <table class="table table-bordered">
             <tr>
             <th>Request Date From : <font color="#FF0000">*</font></th>
@@ -224,12 +224,12 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
              
 		     </td>
               <th>Request Date To : <font color="#FF0000">*</font></th>
               <td>
-			   <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>">
+			   <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>">
 			  </td>
             </tr>
               <tr>
@@ -245,7 +245,7 @@ th {
 				  
 				  
 				  ?>
-                <option value="<?php echo $row3["factory_desc2"]; ?>" <?php if($row3["factory_desc2"] == $_GET["factory"]) echo "selected"; ?>> <?php echo $row3["factory_desc"]; ?></option>
+                <option value="<?php echo html_esc($row3["factory_desc2"]); ?>" <?php if($row3["factory_desc2"] == $_GET["factory"]) echo "selected"; ?>> <?php echo html_esc($row3["factory_desc"]); ?></option>
                 <?php
                   }
 				?>
@@ -269,7 +269,7 @@ th {
                    while($row9 = mysqli_fetch_array($result9)) 
 			      {
 				   ?>
-                  <option value="<?php echo $row9["material_no"]; ?>" <?php if($row9["material_no"] == $_GET["material_no"]) echo "selected"; ?>> <?php echo $row9["material_no"].' -  '.$row9["mat_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row9["material_no"]); ?>" <?php if($row9["material_no"] == $_GET["material_no"]) echo "selected"; ?>> <?php echo html_esc($row9["material_no"]).' -  '.html_esc($row9["mat_desc"]); ?></option>
                   <?php
                   }
 				?>
@@ -285,7 +285,7 @@ th {
         </form>
  
          
-                <form name="frmSearch5" method="post" action="consumable_request_analysisProc.php?factory=<?php echo $factory; ?>&&status=<?php echo $status; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&material_no=<?php echo $material_no; ?>">
+                <form name="frmSearch5" method="post" action="consumable_request_analysisProc.php?factory=<?php echo html_esc($factory); ?>&&status=<?php echo html_esc($status); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&material_no=<?php echo html_esc($material_no); ?>">
                 <table width="350" align="right">
                 <tr>
                 <th><div align="right">
@@ -541,16 +541,16 @@ echo $since_start->s.' seconds<br>';
 ?>         
           
     <tr class="item">
-    <td><div align="center"><?php echo $row_cons["factory"]; ?></div></td> 
-    <td><div align="center"><?php echo $row_cons["id_work"]; ?></div></td>
-    <td>&nbsp;<?php echo $row_cons["temp_mrin"]; ?></td>
-    <td>&nbsp;<?php echo $row_cons["material_no"]; ?></td>
-    <td><div align="center"><?php echo $row_cons["con_uom"]; ?></div></td>
-    <td><div align="right"><?php echo $row_cons["con_qty"]; ?></div>   </td>
-    <td><div align="right"><?php echo $row5["rquantity"]; ?></div></td>
+    <td><div align="center"><?php echo html_esc($row_cons["factory"]); ?></div></td> 
+    <td><div align="center"><?php echo html_esc($row_cons["id_work"]); ?></div></td>
+    <td>&nbsp;<?php echo html_esc($row_cons["temp_mrin"]); ?></td>
+    <td>&nbsp;<?php echo html_esc($row_cons["material_no"]); ?></td>
+    <td><div align="center"><?php echo html_esc($row_cons["con_uom"]); ?></div></td>
+    <td><div align="right"><?php echo html_esc($row_cons["con_qty"]); ?></div>   </td>
+    <td><div align="right"><?php echo html_esc($row5["rquantity"]); ?></div></td>
     <td><div align="right"><?php if($variance_qty2 < 0 ) { echo "<font color='red'>";  echo $variance_qty2;  echo "</font>"; }else{ echo $variance_qty2; } ?></div>
-    <td><?php echo $row_cons["R"]; ?></td>
-    <td><?php echo $row_cons["time_require"]; ?></td>
+    <td><?php echo html_esc($row_cons["R"]); ?></td>
+    <td><?php echo html_esc($row_cons["time_require"]); ?></td>
     <td>
 	<?php
 	//-------------------------------------------------------------------------------------
@@ -604,7 +604,7 @@ if($prev_page)
 {   
  
     echo "<div class='pagin'>";
-	echo " <a href='consumable_request_analysisProc.php?Page=$prev_page&txtKeyword=$strKeyword&factory=$factory&&status=$status&&date1=$dateF&&date2=$dateT&&material_no=$material_no' class='pagin'><< Back</a> ";
+	echo " <a href='consumable_request_analysisProc.php?Page=$prev_page&txtKeyword=$strKeyword&factory=".html_esc($factory)."&&status=".html_esc($status)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&material_no=".html_esc($material_no)."' class='pagin'><< Back</a> ";
 	echo "</div>";
 }
 
@@ -614,7 +614,7 @@ for($i=1; $i<=$num_pages; $i++){
 	    if($i < 5)
         {
 	    echo "<div class='pagin'>";
-		echo "<a href='consumable_request_analysisProc.php?Page=$i&txtKeyword=$strKeyword&factory=$factory&&status=$status&&date1=$dateF&&date2=$dateT&&material_no=$material_no' class='pagin'> $i </a> ";
+		echo "<a href='consumable_request_analysisProc.php?Page=$i&txtKeyword=$strKeyword&factory=".html_esc($factory)."&&status=".html_esc($status)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&material_no=".html_esc($material_no)."' class='pagin'> $i </a> ";
 		echo "</div>";
 		} //end num page
 	}
@@ -628,7 +628,7 @@ for($i=1; $i<=$num_pages; $i++){
 if($page!=$num_pages)
 {
 	echo "<div class='pagin'>"; 
-	echo " <a href ='consumable_request_analysisProc.php?Page=$next_page&txtKeyword=$strKeyword&factory=$factory&&status=$status&&date1=$dateF&&date2=$dateT&&material_no=$material_no' class='pagin'>Next>></a> ";
+	echo " <a href ='consumable_request_analysisProc.php?Page=$next_page&txtKeyword=$strKeyword&factory=".html_esc($factory)."&&status=".html_esc($status)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&material_no=".html_esc($material_no)."' class='pagin'>Next>></a> ";
 	echo "</div>";
 }
 

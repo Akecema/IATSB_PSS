@@ -84,7 +84,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <html lang="en">
   <head>
     <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -303,7 +303,7 @@ chk[i].checked = false ;
 				  
         
               ?>
-                      <option value="<?php echo $data_ath_vend["vendor_id"]; ?>" > <?php echo stripslashes($data_ath_vend["vendor_id"]); ?> - <?php echo $row27["vendor_name"]; ?></option>
+                      <option value="<?php echo html_esc($data_ath_vend["vendor_id"]); ?>" > <?php echo stripslashes($data_ath_vend["vendor_id"]); ?> - <?php echo html_esc($row27["vendor_name"]); ?></option>
                       <?php
            }  ?>
                     </select><div class="form-control-feedback" ><?php echo $message_vcode; ?></div>
@@ -325,7 +325,7 @@ chk[i].checked = false ;
 		
         
               ?>
-                      <option value="<?php echo $data_mth["month_int"]; ?>" <?php if($data_mth["month_int"] ==  $curr_month){ echo "selected";  } ?> > <?php echo stripslashes($data_mth["month_descp"]); ?></option>
+                      <option value="<?php echo html_esc($data_mth["month_int"]); ?>" <?php if($data_mth["month_int"] ==  $curr_month){ echo "selected";  } ?> > <?php echo stripslashes($data_mth["month_descp"]); ?></option>
                       <?php
            }  ?>
                     </select><div class="form-control-feedback" ><?php echo $message_mth; ?></div>

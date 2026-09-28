@@ -30,8 +30,8 @@ $url = "con_detail_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -197,7 +197,7 @@ if (isset($message))
                 <div class="form-group row">
                   <label class="control-label col-md-3">Material No. :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                 <input name="material_no" type="text" id="material_no" size="20" maxlength="8" value="<?php if(isset($_POST['material_no'])) echo $_POST['material_no']; ?>" class="form-control" placeholder="Enter Material No."/>    
+                 <input name="material_no" type="text" id="material_no" size="20" maxlength="8" value="<?php if(isset($_POST['material_no'])) echo html_esc($_POST['material_no']); ?>" class="form-control" placeholder="Enter Material No."/>    
                     <div class="form-control-feedback" ><?php echo $message_mat; ?></div>
                     </div>
                    
@@ -205,21 +205,21 @@ if (isset($message))
                  <div class="form-group row">
                   <label class="control-label col-md-3">Material Description : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="mat_desc" type="text" class="form-control" id="mat_desc" size="55" maxlength="100" value="<?php if(isset($_POST['mat_desc'])) echo $_POST['mat_desc']; ?>"  placeholder="Enter Material Description"/>
+                  <input name="mat_desc" type="text" class="form-control" id="mat_desc" size="55" maxlength="100" value="<?php if(isset($_POST['mat_desc'])) echo html_esc($_POST['mat_desc']); ?>"  placeholder="Enter Material Description"/>
                    <div class="form-control-feedback" ><?php echo $message_matdesc; ?></div>
                     </div>
                 </div>
                  <div class="form-group row">
                   <label class="control-label col-md-3">Plant Code : <font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                     <input name="plant" type="text"  class="form-control"  id="plant" size="20" maxlength="20" value="<?php if(isset($_POST['plant'])) echo $_POST['plant']; ?>" placeholder="Enter Plant Code" />
+                     <input name="plant" type="text"  class="form-control"  id="plant" size="20" maxlength="20" value="<?php if(isset($_POST['plant'])) echo html_esc($_POST['plant']); ?>" placeholder="Enter Plant Code" />
                     <div class="form-control-feedback" ><?php echo $message_p_code; ?></div>
                 </div>
               </div>
               <div class="form-group row">
                   <label class="control-label col-md-3">Cost Center :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                     <input name="cost_center" type="text" class="form-control" placeholder="Enter Cost Center"id="cost_center" size="20" maxlength="20" value="<?php if(isset($_POST['cost_center'])) echo $_POST['cost_center']; ?>" />
+                     <input name="cost_center" type="text" class="form-control" placeholder="Enter Cost Center"id="cost_center" size="20" maxlength="20" value="<?php if(isset($_POST['cost_center'])) echo html_esc($_POST['cost_center']); ?>" />
                      <div class="form-control-feedback" ><?php echo $message_cc; ?></div>
                 </div>
               </div>
@@ -238,9 +238,9 @@ if (isset($message))
 	
 	           if($_POST['Submit7'] == true){ ?>
                <!--RETAIN VALUE-->
-            <option value="<?php echo $row7["UOM"]; ?>" <?php if($row7["UOM"] == $_POST["BUn"]) { echo "selected"; } ?>> <?php echo $row7["UOM"]; ?></option> 
+            <option value="<?php echo html_esc($row7["UOM"]); ?>" <?php if($row7["UOM"] == $_POST["BUn"]) { echo "selected"; } ?>> <?php echo html_esc($row7["UOM"]); ?></option> 
                <?php }else{ ?>
-               <option value="<?php echo $row7["UOM"]; ?>"> <?php echo $row7["UOM"]; ?></option>    
+               <option value="<?php echo html_esc($row7["UOM"]); ?>"> <?php echo html_esc($row7["UOM"]); ?></option>    
                <?php } 
 							}
 	 

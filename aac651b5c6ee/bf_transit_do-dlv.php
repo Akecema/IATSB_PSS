@@ -109,8 +109,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -800,7 +800,7 @@ $data_rcv .= $data_rcv_ftp['plant_code'].";".$data_rcv_ftp['bflush_no'].";".$dat
                 <th colspan="3">
                 
        <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" class="form-control" autofocus/>        
-      <!-- <input name="barcode_gr" type="text" id="barcode_gr" maxlength="200" value="<?php if(isset($_POST['barcode_gr'])) echo $_POST['barcode_gr']; ?>" class="form-control" />-->
+      <!-- <input name="barcode_gr" type="text" id="barcode_gr" maxlength="200" value="<?php if(isset($_POST['barcode_gr'])) echo html_esc($_POST['barcode_gr']); ?>" class="form-control" />-->
               
                </th>
               </tr>
@@ -863,14 +863,14 @@ $data_rcv .= $data_rcv_ftp['plant_code'].";".$data_rcv_ftp['bflush_no'].";".$dat
 	 ?>   <tr>
      <td width="50">
      <div align="center">
-     <a href="delete_bf_transit_item.php?scan_doc=<?php echo $data_scan_gr["scan_doc"]; ?>&&p_id=<?php echo $data_scan_gr["id_scan_tp"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a>
+     <a href="delete_bf_transit_item.php?scan_doc=<?php echo html_esc($data_scan_gr["scan_doc"]); ?>&&p_id=<?php echo html_esc($data_scan_gr["id_scan_tp"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a>
       </div> </td>  
-    <td width="75"><?php echo $no3; ?> <input name="item_no[<?php echo $data_scan_gr["id_scan_tp"]; ?>]" type="hidden" value="<?php echo $no; ?>"></td>
-    <td width="150"><?php echo $data_scan_gr["material_no"];  ?></td>
-    <td width="220"><?php echo $data_scan_gr["material_desc"];  ?></td>
-    <td width="120"><?php echo $data_scan_gr["doc_gra"];  ?></td>
-    <td width="150"><?php echo $data_scan_gr["scan_qty"];  ?></td>
-    <td width="80"><?php echo $data_scan_gr["scan_uom"];  ?></td>
+    <td width="75"><?php echo $no3; ?> <input name="item_no[<?php echo html_esc($data_scan_gr["id_scan_tp"]); ?>]" type="hidden" value="<?php echo $no; ?>"></td>
+    <td width="150"><?php echo html_esc($data_scan_gr["material_no"]);  ?></td>
+    <td width="220"><?php echo html_esc($data_scan_gr["material_desc"]);  ?></td>
+    <td width="120"><?php echo html_esc($data_scan_gr["doc_gra"]);  ?></td>
+    <td width="150"><?php echo html_esc($data_scan_gr["scan_qty"]);  ?></td>
+    <td width="80"><?php echo html_esc($data_scan_gr["scan_uom"]);  ?></td>
     </tr>
 	<?php   
 
@@ -886,7 +886,7 @@ $data_rcv .= $data_rcv_ftp['plant_code'].";".$data_rcv_ftp['bflush_no'].";".$dat
             <table class="table table-bordered">
             <tr>
               <th width="250">Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -903,7 +903,7 @@ $data_rcv .= $data_rcv_ftp['plant_code'].";".$data_rcv_ftp['bflush_no'].";".$dat
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -953,7 +953,7 @@ $data_rcv .= $data_rcv_ftp['plant_code'].";".$data_rcv_ftp['bflush_no'].";".$dat
             <tr>
             <th>Quantity : </th>
             <td colspan="3">
-        <input name="qty_actual" type="number" min="1" value="<?php if(isset($_POST["qty_actual"])) { echo $_POST["qty_actual"]; } ?>" class="form-control"/><div class="form-control-feedback" ><?php echo $message_qok; ?></div>
+        <input name="qty_actual" type="number" min="1" value="<?php if(isset($_POST["qty_actual"])) { echo html_esc($_POST["qty_actual"]); } ?>" class="form-control"/><div class="form-control-feedback" ><?php echo $message_qok; ?></div>
 		     </td>
              </tr>
              

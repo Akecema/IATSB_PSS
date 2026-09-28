@@ -25,7 +25,8 @@ while ($info = $result->fetch_assoc()) {
     }
 
     // Cookie value is the stored hash, as ckies-brw.php/chk-auth_host.php compare against it.
-    set_login_cookies($username, (string)$info['password']);
+    $stored = upgrade_password_hash($dbc, $username, $pass, (string)$info['password']);
+    set_login_cookies($username, $stored);
     start_login_session($info, $username);
     if (login_runs_backjob($info)) {
         include 'backjob_clean.php';

@@ -111,8 +111,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,7 +244,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -258,7 +258,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                  <tr>
@@ -268,7 +268,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -349,7 +349,7 @@ $num_rowsBF = mysqli_num_rows($rsBF);   //how many material are there?
 <tr>
     <td width="1%">&nbsp;</td> 
     <td width="85%">&nbsp;</td> 
-      <td width="7%"><a href="rpt_dList_bf_tsit_dlv_download.php?plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+      <td width="7%"><a href="rpt_dList_bf_tsit_dlv_download.php?plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
      <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
    
   </tr>
@@ -408,23 +408,23 @@ $num_rowsBF = mysqli_num_rows($rsBF);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["plant_code"]; ?></td>
-                <td width="100"><?php echo $row["material_no"]; ?></td>
-                <td width="100"><?php echo $row["material_desc"]; ?></td>
+                <td width="80"><?php echo html_esc($row["plant_code"]); ?></td>
+                <td width="100"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["material_desc"]); ?></td>
                 <td width="100"><?php echo intval($row["qty_actual"]); ?></td>
-                <td width="80"><?php echo $row_mat["BUn"]; ?></td>
-                <td width="100"><?php echo $row["R"]; ?></td> 
-                <td width="100"><?php echo $row["bflush_no"]; ?></td>
+                <td width="80"><?php echo html_esc($row_mat["BUn"]); ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["bflush_no"]); ?></td>
                 <td width="150"><?php while ($row_gr_scanE = mysqli_fetch_array($result_gr_scanE))	 
 		            {
-		             echo $row_gr_scanE["doc_gra"]; echo "<br>";
+		             echo html_esc($row_gr_scanE["doc_gra"]); echo "<br>";
 		             }   ?>
                 </td>
-                <td width="100"><?php echo $row["bflush_no_ref"]; ?></td>
+                <td width="100"><?php echo html_esc($row["bflush_no_ref"]); ?></td>
                 
-                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo $row["R7"];  }else{    } ?></td>
+                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo html_esc($row["R7"]);  }else{    } ?></td>
                 <td width="200">
-                 <a href="#myNoteDisplayBFTRN<?php echo $row["bflush_no"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplayBFTRN<?php echo html_esc($row["bflush_no"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_bf_transit_dlv_wsel.php";   ?>

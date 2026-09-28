@@ -46,10 +46,10 @@ $rst_sta = mysqli_fetch_array($sta_res);
    <link rel="stylesheet" type="text/css" href="css/main-idx.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <script language="javascript">
 
- defaultStatus = "PSS Online  <?php echo $data_setup['title_desc']; ?>"
+ defaultStatus = "PSS Online  <?php echo html_esc($data_setup['title_desc']); ?>"
  function show ( text )
  {
   window.status=text;

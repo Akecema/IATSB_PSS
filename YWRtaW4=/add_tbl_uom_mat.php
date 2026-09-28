@@ -32,8 +32,8 @@ $url = "uom_mat_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -158,7 +158,7 @@ if (isset($message))
                 <div class="form-group row">
                   <label class="control-label col-md-3">UOM Code  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="UOM" type="text" class="form-control" id="UOM" size="20" maxlength="20" value="<?php if(isset($_POST['UOM'])) echo $_POST['UOM']; ?>"  placeholder="Enter UOM" />
+                  <input name="UOM" type="text" class="form-control" id="UOM" size="20" maxlength="20" value="<?php if(isset($_POST['UOM'])) echo html_esc($_POST['UOM']); ?>"  placeholder="Enter UOM" />
                    <div class="form-control-feedback" ><?php echo $message_rdesc; ?></div>
                     </div>
                 </div>

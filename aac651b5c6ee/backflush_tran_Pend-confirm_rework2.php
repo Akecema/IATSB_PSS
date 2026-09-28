@@ -99,8 +99,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -273,12 +273,12 @@ return "";
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
             </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>"></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>"></td>
          
            </tr>
             <tr>
@@ -293,7 +293,7 @@ return "";
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select></th>
@@ -310,7 +310,7 @@ return "";
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                  <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                   <?php
                   }
 				?>
@@ -327,7 +327,7 @@ return "";
                    while($row49=mysqli_fetch_array($result49)) 
 			      {
 				   ?>
-                  <option value="<?php echo $row49["material_no"]; ?>"<?php if($row49["material_no"] == $_GET["material_no"]) echo "selected"; ?>> <?php echo $row49["material_no"]; ?> - <?php echo $row49["material_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row49["material_no"]); ?>"<?php if($row49["material_no"] == $_GET["material_no"]) echo "selected"; ?>> <?php echo html_esc($row49["material_no"]); ?> - <?php echo html_esc($row49["material_desc"]); ?></option>
                   <?php
                   }
 				?>
@@ -502,23 +502,23 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
                 <tr>
                 <td width="30"><?php echo $no; ?></td>
                 <td width="48"><?php echo $model_name; ?></td>
-                <td width="48"><?php echo $row_final["material_no"]; ?></td>
-                <td width="120"><?php echo $row_final["bflush_pending"]; ?></td>
-                <td width="120"><?php echo $row_final["bflush_no"]; ?></td>
-                <td width="80"><?php echo $row_final["R2"]; ?></td>
+                <td width="48"><?php echo html_esc($row_final["material_no"]); ?></td>
+                <td width="120"><?php echo html_esc($row_final["bflush_pending"]); ?></td>
+                <td width="120"><?php echo html_esc($row_final["bflush_no"]); ?></td>
+                <td width="80"><?php echo html_esc($row_final["R2"]); ?></td>
                 <td width="80"><?php  echo $model_name2; ?></td> 
                 <td width="40"><?php echo $sta; ?></td> 
                 <td width="43"><div align="center"><?php echo number_format($row_final["qty_REWORK"]); ?></div></td>
                 <td width="90"><div align="center"><?php echo $status_out; ?></div></td>
                 <td width="100"> 
-                <a href="bflush_tran_Pend_c-rework.php?uid2=<?php echo $row_final["id"]; ?>" >
-               <!-- <a href="#myNoteRework<?php echo $row_final["id"]; ?>" data-toggle="modal"  target="_parent" >--><i class="fa fa-check-circle" aria-hidden="true"></i>Reworked Qty</a>
+                <a href="bflush_tran_Pend_c-rework.php?uid2=<?php echo html_esc($row_final["id"]); ?>" >
+               <!-- <a href="#myNoteRework<?php echo html_esc($row_final["id"]); ?>" data-toggle="modal"  target="_parent" >--><i class="fa fa-check-circle" aria-hidden="true"></i>Reworked Qty</a>
                 
                  <?php    
 				 //include "bflush_tran_Pend_c-rework.php";  
 				  ?>
                  
-               <input name="id[<?php echo $k; ?>]" type="hidden" value="<?php echo $row_final["id"]; ?>">
+               <input name="id[<?php echo $k; ?>]" type="hidden" value="<?php echo html_esc($row_final["id"]); ?>">
                </td>
                 </tr>
           

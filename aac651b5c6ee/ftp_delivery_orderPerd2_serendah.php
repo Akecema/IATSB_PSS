@@ -110,8 +110,8 @@ $pdio_no = $_GET["pdio_no"];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Generate Doc. No <?php echo $suid2; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Generate Doc. No <?php echo $suid2; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -345,9 +345,9 @@ $result_pps = mysqli_query($dbc,$query_pps);
 	 ?>
       <tr>
       <td width="10%"><?php echo $no; ?></td>
-      <td width="25%"><?php echo $row["pdio_no"]; ?></td>
-      <td width="15%"><?php echo $row["material_doc_gen"]; ?></td>
-      <td width="15%"><a href="../FromPortal2/DO/<?php echo $row["file_name"]; ?>.csv" target="_blank"><?php echo $row["file_name"]; ?></a></td>
+      <td width="25%"><?php echo html_esc($row["pdio_no"]); ?></td>
+      <td width="15%"><?php echo html_esc($row["material_doc_gen"]); ?></td>
+      <td width="15%"><a href="../FromPortal2/DO/<?php echo html_esc($row["file_name"]); ?>.csv" target="_blank"><?php echo html_esc($row["file_name"]); ?></a></td>
       <td width="15%">&nbsp;&nbsp;<a href="ftp_dlvdo-print_perodua_serendah.php?buid=<?php echo $buid2; ?>&&puid=<?php echo $puid2; ?>&&duid=<?php echo $duid2; ?>" target="_blank"><img src="../images/printe1.gif" width="16" height="14" hspace="2" vspace="2"/></a></td>
       </tr>
    

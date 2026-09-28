@@ -28,7 +28,7 @@ $result39 = mysqli_query($dbc,$query39);
 		
 	
     ?>
-      <option value="<?php echo $row39["material_cust_no"]; ?>" > <?php echo $row39["material_cust_no"]; ?> - <?php echo $row39["material_desc"]; ?></option>
+      <option value="<?php echo html_esc($row39["material_cust_no"]); ?>" > <?php echo html_esc($row39["material_cust_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?></option>
     
     <?php     }
     

@@ -93,8 +93,8 @@ $rst_sta19 = mysqli_fetch_array($sta_res19);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -303,7 +303,7 @@ exit();
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -326,13 +326,13 @@ exit();
 				   ?>
                      <?php if($_POST["submit3A"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_sect["sloc_code"]; ?>"<?php if($row_sect["sloc_code"] == $_POST["sloc_f"]) echo "selected"; ?>> <?php echo $row_sect["sloc_code"]; ?> - <?php echo $row_sect["sloc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_sect["sloc_code"]); ?>"<?php if($row_sect["sloc_code"] == $_POST["sloc_f"]) echo "selected"; ?>> <?php echo html_esc($row_sect["sloc_code"]); ?> - <?php echo html_esc($row_sect["sloc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_sect["sloc_code"]; ?>"> <?php echo $row_sect["sloc_code"]; ?> - <?php echo $row_sect["sloc_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_sect["sloc_code"]); ?>"> <?php echo html_esc($row_sect["sloc_code"]); ?> - <?php echo html_esc($row_sect["sloc_desc"]); ?></option>
                   <?php
 				    }  // else
 				  
@@ -358,13 +358,13 @@ exit();
 				   ?>
                      <?php if($_POST["submit3A"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_sect2["sloc_code"]; ?>"<?php if($row_sect2["sloc_code"] == $_POST["sloc_t"]) echo "selected"; ?>> <?php echo $row_sect2["sloc_code"]; ?> - <?php echo $row_sect2["sloc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_sect2["sloc_code"]); ?>"<?php if($row_sect2["sloc_code"] == $_POST["sloc_t"]) echo "selected"; ?>> <?php echo html_esc($row_sect2["sloc_code"]); ?> - <?php echo html_esc($row_sect2["sloc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_sect2["sloc_code"]; ?>"> <?php echo $row_sect2["sloc_code"]; ?> - <?php echo $row_sect2["sloc_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_sect2["sloc_code"]); ?>"> <?php echo html_esc($row_sect2["sloc_code"]); ?> - <?php echo html_esc($row_sect2["sloc_desc"]); ?></option>
                   <?php
 				    }  // else
 				  
@@ -377,13 +377,13 @@ exit();
               <tr>
               <th>Posting Date from :  <font color="#FF0000">*</font></th>
                <td colspan="3">
-               <input class="form-control" id="PSSDate" type="text" placeholder="Select Date From" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+               <input class="form-control" id="PSSDate" type="text" placeholder="Select Date From" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdf; ?></div>
               </td>
               </tr>
               <tr>
               <th>Posting Date to:  <font color="#FF0000">*</font></th>
-               <td colspan="3"><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date To" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" />
+               <td colspan="3"><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date To" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div> 
                 </th>
               </tr>

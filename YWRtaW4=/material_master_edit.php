@@ -54,8 +54,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+   <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,7 +100,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
   <body class="app sidebar-mini">
 
  
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_hdr"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_hdr"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -600,28 +600,28 @@ if (isset($message))
    <tr>
     <td width="28%">Material No.</td>
     <td width="3%">:</td>
-    <td width="69%"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_mat["material_no"]; ?>" class="form-control"></td>
+    <td width="69%"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_mat["material_no"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Material Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo $row_mat["material_desc"]; ?>" class="form-control" required /></td>
+    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo html_esc($row_mat["material_desc"]); ?>" class="form-control" required /></td>
     </tr>
     <tr>
     <td>Plant <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="plant" name="plant" value="<?php echo $row_mat["plant"];  ?>" class="form-control" required/> </td>
+   <td><input type="text" id="plant" name="plant" value="<?php echo html_esc($row_mat["plant"]);  ?>" class="form-control" required/> </td>
     </tr>
   <tr>
     <td>Material Type <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="material_type" name="material_type" value="<?php echo $row_mat["material_type"];  ?>" class="form-control" required />
+    <td><input type="text" id="material_type" name="material_type" value="<?php echo html_esc($row_mat["material_type"]);  ?>" class="form-control" required />
      </td>
     </tr>
     <tr>
     <td>Material Group</td>
     <td>:</td>
-    <td><input type="text" id="material_group" name="material_group"  value="<?php echo $row_mat["material_group"];  ?>" class="form-control" required />
+    <td><input type="text" id="material_group" name="material_group"  value="<?php echo html_esc($row_mat["material_group"]);  ?>" class="form-control" required />
      </td>
     </tr>
      <tr>
@@ -637,7 +637,7 @@ if (isset($message))
               while($row_line = mysqli_fetch_array($result_line)) {
         
               ?>
-         <option value="<?php echo $row_line["id_work"]; ?>" <?php if($row_line["id_work"] == $row_mat["work_center"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo $row_line["wc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_line["id_work"]); ?>" <?php if($row_line["id_work"] == $row_mat["work_center"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo html_esc($row_line["wc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -648,17 +648,17 @@ if (isset($message))
      <tr>
     <td>BOM <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="bom_hdr" name="bom_hdr" value="<?php echo $row_mat["bom"];  ?>" class="form-control" required/> </td>
+   <td><input type="text" id="bom_hdr" name="bom_hdr" value="<?php echo html_esc($row_mat["bom"]);  ?>" class="form-control" required/> </td>
     </tr>
      <tr>
     <td>Alternative BOM</td>
     <td>:</td>
-   <td><input type="text" id="alternative_bom_hdr" name="alternative_bom_hdr" value="<?php echo $row_mat["alternative_bom"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="alternative_bom_hdr" name="alternative_bom_hdr" value="<?php echo html_esc($row_mat["alternative_bom"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>BOM Usage</td>
     <td>:</td>
-   <td><input type="text" id="bom_usage_hdr" name="bom_usage_hdr" value="<?php echo $row_mat["bom_usage"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="bom_usage_hdr" name="bom_usage_hdr" value="<?php echo html_esc($row_mat["bom_usage"]);  ?>" class="form-control"/> </td>
     </tr>
     <tr>
     <td>BUn</td>
@@ -676,7 +676,7 @@ if (isset($message))
 		 while($row_unit = mysqli_fetch_array($result_unit)) {
 		 ?>
 				   <!--RETAIN VALUE-->
-	   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"] == $row_mat["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+	   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"] == $row_mat["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
 				   <?php }
              
 	 
@@ -691,21 +691,21 @@ if (isset($message))
     <td>:</td>
    <td>
    <!--<input class="form-control" id="demoDate" type="text" placeholder="Select Date" value="<?php //echo $row_mat["date_create"]; ?>">-->
-   <input type="date" name="date1" class="form-control input-xlarge datepicker" value="<?php echo $row_mat["date_create"]; ?>"  >
+   <input type="date" name="date1" class="form-control input-xlarge datepicker" value="<?php echo html_esc($row_mat["date_create"]); ?>"  >
    </td>
    </tr>
     <tr>
     <td>Date BOM Created </td>
     <td>:</td>
    <td>
-   <input type="date" name="date2" class="form-control input-xlarge datepicker" value="<?php echo $row_mat["date_bom_create"]; ?>"  >
+   <input type="date" name="date2" class="form-control input-xlarge datepicker" value="<?php echo html_esc($row_mat["date_bom_create"]); ?>"  >
    </td>
    </tr>
     <tr>
     <td>VClass </td>
     <td>:</td>
    <td>
-    <input type="text" id="Vclass" name="Vclass" value="<?php if(isset($_POST['Vclass'])) { echo $_POST['Vclass']; }else{ echo $row_mat["Vclass"];  } ?>" class="form-control"/>
+    <input type="text" id="Vclass" name="Vclass" value="<?php if(isset($_POST['Vclass'])) { echo html_esc($_POST['Vclass']); }else{ echo html_esc($row_mat["Vclass"]);  } ?>" class="form-control"/>
                
    </td>
    </tr>
@@ -724,7 +724,7 @@ if (isset($message))
 	 while($row88 = mysqli_fetch_array($result88)) 
 	  { 
 	?>  
-          <option value="<?php echo $row88["model_code"]; ?>" <?php if($row88["model_code"] == ($row_mat["model_code"])) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
+          <option value="<?php echo html_esc($row88["model_code"]); ?>" <?php if($row88["model_code"] == ($row_mat["model_code"])) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
   <?php   }  ?>
   
           </select></div>
@@ -745,7 +745,7 @@ if (isset($message))
               while($row_cat = mysqli_fetch_array($result_cat)) {
         
               ?>
-         <option value="<?php echo $row_cat["stamp_ind"]; ?>" <?php if($row_cat["stamp_ind"] == $row_mat["stamp_ind"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo $row_cat["stamp_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_cat["stamp_ind"]); ?>" <?php if($row_cat["stamp_ind"] == $row_mat["stamp_ind"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo html_esc($row_cat["stamp_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -756,12 +756,12 @@ if (isset($message))
         <tr>
     <td>Standard Packaging </td>
     <td>:</td>
-   <td><input type="text" id="std_package" name="std_package" value="<?php echo $row_mat["std_package"];  ?>" class="form-control" /> </td>
+   <td><input type="text" id="std_package" name="std_package" value="<?php echo html_esc($row_mat["std_package"]);  ?>" class="form-control" /> </td>
     </tr>
      <tr>
     <td>Type of package</td>
     <td>:</td>
-   <td><input type="text" id="type_package" name="type_package" value="<?php echo $row_mat["type_package"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="type_package" name="type_package" value="<?php echo html_esc($row_mat["type_package"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Part of Side </td>
@@ -777,22 +777,22 @@ if (isset($message))
      <tr>
     <td>Location Deliver</td>
     <td>:</td>
-   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo $row_mat["location_deliver"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo html_esc($row_mat["location_deliver"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Station Deliver</td>
     <td>:</td>
-   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo $row_mat["station_deliver"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo html_esc($row_mat["station_deliver"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Received Point</td>
     <td>:</td>
-   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo $row_mat["rcv_point"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo html_esc($row_mat["rcv_point"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Production Part No.</td>
     <td>:</td>
-   <td><input type="text" id="prod_part_no" name="prod_part_no" value="<?php echo $row_mat["prod_part_no"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="prod_part_no" name="prod_part_no" value="<?php echo html_esc($row_mat["prod_part_no"]);  ?>" class="form-control"/> </td>
     </tr>
  <tr>
     <td>Status BOM<font color="#FF0000">*</font></td>
@@ -830,28 +830,28 @@ if (isset($message))
                  <td width="28%">Component <font color="#FF0000">*</font></td>
                  <td width="3%" height="25">:</td>
                  <td width="69%" height="25">
-                   <input name="bill_component[<?php echo $i; ?>]" type="text" id="bill_component" size="20" maxlength="8" readonly value="<?php echo $row_9["bill_component"];   ?>" class="form-control" required />
+                   <input name="bill_component[<?php echo $i; ?>]" type="text" id="bill_component" size="20" maxlength="8" readonly value="<?php echo html_esc($row_9["bill_component"]);   ?>" class="form-control" required />
                  </td>
                </tr>
                <tr>
                  <td>Component Description <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="material_desc_c[<?php echo $i; ?>]" type="text"  class="form-control" id="material_desc_c" size="55" maxlength="100" value="<?php echo $row_9["material_desc_c"]; ?>" required/>
+                   <input name="material_desc_c[<?php echo $i; ?>]" type="text"  class="form-control" id="material_desc_c" size="55" maxlength="100" value="<?php echo html_esc($row_9["material_desc_c"]); ?>" required/>
                 </td>
                </tr>
                         <tr>
                  <td>Material Type <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-         <input name="mat_type_c[<?php echo $i; ?>]" type="text"  class="form-control" id="mat_type_c" size="20" maxlength="20" value="<?php echo $row_9["material_type"]; ?>" required/>
+         <input name="mat_type_c[<?php echo $i; ?>]" type="text"  class="form-control" id="mat_type_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["material_type"]); ?>" required/>
                  </td>
                </tr>
                
                <tr>
                  <td>Material Group</td>
                  <td>:</td>
-                 <td><input name="matl_group[<?php echo $i; ?>]" type="text"  class="form-control" id="matl_group" size="20" maxlength="20" value="<?php echo $row_9["matl_group"]; ?>" /></td>
+                 <td><input name="matl_group[<?php echo $i; ?>]" type="text"  class="form-control" id="matl_group" size="20" maxlength="20" value="<?php echo html_esc($row_9["matl_group"]); ?>" /></td>
                </tr>
 
 			   <tr>
@@ -869,7 +869,7 @@ if (isset($message))
 				{ 
 				?>  
 
-					<option value="<?php echo $row_cbom2["id_code"]; ?>" <?php if($row_cbom2["id_code"] == ($row_9["bom_item_category"])) echo "selected"; ?>> <?php echo stripslashes($row_cbom2["id_code"]); ?> - <?php echo stripslashes($row_cbom2["desc"]); ?></option>
+					<option value="<?php echo html_esc($row_cbom2["id_code"]); ?>" <?php if($row_cbom2["id_code"] == ($row_9["bom_item_category"])) echo "selected"; ?>> <?php echo stripslashes($row_cbom2["id_code"]); ?> - <?php echo stripslashes($row_cbom2["desc"]); ?></option>
 			     <?php   }  ?>
   
                   </select>       
@@ -881,20 +881,20 @@ if (isset($message))
                <tr>
                  <td>Plant <font color="#FF0000">*</font></td>
                  <td>:</td>
-                 <td><input name="plant_c[<?php echo $i; ?>]" type="text" class="form-control" id="plant_c" size="20" maxlength="20" value="<?php echo $row_9["plant"]; ?>" required />
+                 <td><input name="plant_c[<?php echo $i; ?>]" type="text" class="form-control" id="plant_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["plant"]); ?>" required />
                </td>
                </tr>
                <tr>
                  <td>BOM <font color="#FF0000">*</font></td>
                  <td>:</td>
-                 <td><input name="bom_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_c" size="20" maxlength="20" value="<?php echo $row_9["bom"]; ?>" required />
+                 <td><input name="bom_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["bom"]); ?>" required />
                 </td>
                </tr>
                <tr>
                  <td>Alternative BOM</td>
                  <td>:</td>
                  <td>
-         <input name="alternative_bom_c[<?php echo $i; ?>]" type="text"  class="form-control" id="alternative_bom_c" size="20" maxlength="20" value="<?php echo $row_9["alternative_bom"]; ?>" />
+         <input name="alternative_bom_c[<?php echo $i; ?>]" type="text"  class="form-control" id="alternative_bom_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["alternative_bom"]); ?>" />
                  </td>
                </tr>
 
@@ -902,7 +902,7 @@ if (isset($message))
                  <td>Item No. BOM</td>
                  <td>:</td>
                  <td>
-         <input name="bom_item_c[<?php echo $i; ?>]" type="text"  class="form-control" id="bom_item_c" size="20" maxlength="20" value="<?php echo $row_9["bom_item_no"]; ?>" />
+         <input name="bom_item_c[<?php echo $i; ?>]" type="text"  class="form-control" id="bom_item_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["bom_item_no"]); ?>" />
                  </td>
                </tr>
 
@@ -911,42 +911,42 @@ if (isset($message))
                  <td>Material Usage <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="bom_usage_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_usage_c" size="20" maxlength="20" value="<?php echo $row_9["bom_usage"]; ?>" required />
+                   <input name="bom_usage_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_usage_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["bom_usage"]); ?>" required />
                 </td>
                </tr>
 			   <tr>
                  <td>BOM Component Usage<font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="cbom_usage_comp[<?php echo $i; ?>]" type="number" class="form-control" id="cbom_usage_comp" min="0" value="<?php echo $row_9["usage_c"]; ?>" required />
+                   <input name="cbom_usage_comp[<?php echo $i; ?>]" type="number" class="form-control" id="cbom_usage_comp" min="0" value="<?php echo html_esc($row_9["usage_c"]); ?>" required />
                 </td>
                </tr>
                <tr>
                  <td>Consumption <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="consumption_c[<?php echo $i; ?>]" type="text" class="form-control" id="consumption_c" size="20" maxlength="20" value="<?php echo $row_9["consumption"]; ?>" required />
+                   <input name="consumption_c[<?php echo $i; ?>]" type="text" class="form-control" id="consumption_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["consumption"]); ?>" required />
                 </td>
                </tr>
 			   <tr>
                  <td>BOM Node </td>
                  <td>:</td>
                  <td>
-                   <input name="node_no_c[<?php echo $i; ?>]" type="text" class="form-control" id="node_no_c" size="20" maxlength="20" value="<?php echo $row_9["node_no"]; ?>" required />
+                   <input name="node_no_c[<?php echo $i; ?>]" type="text" class="form-control" id="node_no_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["node_no"]); ?>" required />
                 </td>
                </tr>
 			   <tr>
                  <td>Ver. No </td>
                  <td>:</td>
                  <td>
-                   <input name="ver_no_c[<?php echo $i; ?>]" type="text" class="form-control" id="ver_no_c" size="20" maxlength="20" value="<?php echo $row_9["ver_no"]; ?>" required />
+                   <input name="ver_no_c[<?php echo $i; ?>]" type="text" class="form-control" id="ver_no_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["ver_no"]); ?>" required />
                 </td>
                </tr>
 			   <tr>
                  <td>Component Vclass <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="comp_vclass_c[<?php echo $i; ?>]" type="text" class="form-control" id="comp_vclass_c" size="20" maxlength="20" value="<?php echo $row_9["comp_vclass"]; ?>" required />
+                   <input name="comp_vclass_c[<?php echo $i; ?>]" type="text" class="form-control" id="comp_vclass_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["comp_vclass"]); ?>" required />
                 </td>
                </tr>
                <tr>
@@ -970,35 +970,35 @@ if (isset($message))
 	?>
          </select>      -->  
                  
-                   <input name="comp_unit[<?php echo $i; ?>]" type="text" class="form-control" id="comp_unit" size="20" maxlength="20" value="<?php echo $row_9["comp_unit"]; ?>" />
+                   <input name="comp_unit[<?php echo $i; ?>]" type="text" class="form-control" id="comp_unit" size="20" maxlength="20" value="<?php echo html_esc($row_9["comp_unit"]); ?>" />
                  </td>
                </tr>
                     <tr>
                  <td>SLoc</td>
                  <td>:</td>
                  <td>
-                   <input name="sloc[<?php echo $i; ?>]" type="text" class="form-control" id="sloc" size="20" maxlength="20" value="<?php echo $row_9["sloc"]; ?>" />
+                   <input name="sloc[<?php echo $i; ?>]" type="text" class="form-control" id="sloc" size="20" maxlength="20" value="<?php echo html_esc($row_9["sloc"]); ?>" />
                  </td>
                </tr>
                  <tr>
                  <td>IsLoc</td>
                  <td>:</td>
                  <td>
-                   <input name="isloc[<?php echo $i; ?>]" type="text" class="form-control" id="isloc" size="20" maxlength="20" value="<?php echo $row_9["isloc"]; ?>" />
+                   <input name="isloc[<?php echo $i; ?>]" type="text" class="form-control" id="isloc" size="20" maxlength="20" value="<?php echo html_esc($row_9["isloc"]); ?>" />
                  </td>
                </tr>
                <tr>
                  <td>Valid From</td>
                  <td>:</td>
                  <td>
-              <input name="date3[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date3" size="20" maxlength="20" value="<?php echo $row_9["valid_from"]; ?>" />   
+              <input name="date3[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date3" size="20" maxlength="20" value="<?php echo html_esc($row_9["valid_from"]); ?>" />   
                 </td>
                </tr>
                <tr>
                  <td>Date BOM Created</td>
                  <td>:</td>
                  <td>
-                  <input name="date4[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date4" size="20" maxlength="20" value="<?php echo $row_9["date_create_bom"]; ?>" />
+                  <input name="date4[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date4" size="20" maxlength="20" value="<?php echo html_esc($row_9["date_create_bom"]); ?>" />
                </td>
                </tr>
                <?php
@@ -1015,13 +1015,13 @@ if (isset($message))
                  <td>Status BOM <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td> <select name="bom_status[<?php echo $i; ?>]"  class="form-control">
-                      <option value ="<?php  echo $row_9["bom_status"]; ?>" ><?php  echo $sts; ?></option>
+                      <option value ="<?php  echo html_esc($row_9["bom_status"]); ?>" ><?php  echo $sts; ?></option>
                       <option value="Y" class="title">Active</option>
                       <option value="N" class="title">Inactive</option>
                       </select></td>
                </tr>
                <tr>
-                 <td>&nbsp; <input type="hidden" name="id_dtl[<?php echo $i; ?>]" id="id_dtl" value="<?php echo $row_9["id_dtl"]; ?>"></td>
+                 <td>&nbsp; <input type="hidden" name="id_dtl[<?php echo $i; ?>]" id="id_dtl" value="<?php echo html_esc($row_9["id_dtl"]); ?>"></td>
                  <td>&nbsp;</td>
                  <td>&nbsp;</td>
                </tr>
@@ -1048,7 +1048,7 @@ if (isset($message))
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo $row2["id_hdr"];  ?>" >  
+             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo html_esc($row2["id_hdr"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  
             

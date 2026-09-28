@@ -96,8 +96,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-     <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+     <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -299,20 +299,20 @@ th {
    {
 		
       ?>        <tr class="item">
-                <td><div align="center"><?php  echo $row2["so_no"]; ?></div></td>
-                <td>&nbsp;<?php  echo $row2["material_no"]; ?></td>
-                <td><div align="center"><?php echo $row2["item_no"]; ?></div></td>
-                <td><?php  echo $row2["plant_code"]; ?></td>
-                <td><div align="center"><?php echo $row2["sold_no"]; ?></div></td>
-                <td><div align="center"><?php echo $row2["ship_no"]; ?></div></td>
-                <td> <div align="center"><?php echo $row2["user_closed"]; ?>
-                 <!--<a href="#myNoteWork<?php echo $row2["id"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>-->
+                <td><div align="center"><?php  echo html_esc($row2["so_no"]); ?></div></td>
+                <td>&nbsp;<?php  echo html_esc($row2["material_no"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["item_no"]); ?></div></td>
+                <td><?php  echo html_esc($row2["plant_code"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["sold_no"]); ?></div></td>
+                <td><div align="center"><?php echo html_esc($row2["ship_no"]); ?></div></td>
+                <td> <div align="center"><?php echo html_esc($row2["user_closed"]); ?>
+                 <!--<a href="#myNoteWork<?php echo html_esc($row2["id"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>-->
                  
                     <!--------------------------modal------------------------->
           <?php    //include "work_center_view.php";   ?>
                </div>
-                <td> <div align="center"><?php echo $row2["CT"]; ?>
-           <!--  <a href="#myNoteEdit<?php echo $row2["id"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>-->
+                <td> <div align="center"><?php echo html_esc($row2["CT"]); ?>
+           <!--  <a href="#myNoteEdit<?php echo html_esc($row2["id"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>-->
                  
                     <!--------------------------modal------------------------->
           <?php   //include "work_center_edit.php";   ?>

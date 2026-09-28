@@ -121,8 +121,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -247,7 +247,7 @@ div.dataTables_wrapper {
              <tr>
                 <th>DI/PDIO Number : </th>
                 <th colspan="3">
-         <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php echo $_GET['material_doc_gen'];  ?>" />  
+         <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php echo html_esc($_GET['material_doc_gen']);  ?>" />  
           <!--<div class="form-control-feedback" ><?php //echo $message_do; ?></div>-->
                </th>
               </tr>
@@ -265,7 +265,7 @@ div.dataTables_wrapper {
         
               ?>
 
-                  <option value="<?php echo $row27["id_cust"]; ?>" <?php if($row27["id_cust"] == $_GET["ship_point"]) echo "selected"; ?>> <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo $row27["cust_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["id_cust"]); ?>" <?php if($row27["id_cust"] == $_GET["ship_point"]) echo "selected"; ?>> <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo html_esc($row27["cust_desc"]); ?></option>
                   <?php
            }  ?>
                      
@@ -275,12 +275,12 @@ div.dataTables_wrapper {
             
               <tr>
                 <th>Delivery Date from :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php  echo $_GET['date1']; ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php  echo html_esc($_GET['date1']); ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
                     </td></tr>
                  <tr>
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
                 <td colspan="3">
-                <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php  echo $_GET['date2']; ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+                <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php  echo html_esc($_GET['date2']); ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
               </tr>
               <tr>
                 <th><input name="Submit22" type="submit" class="btn btn-info" id="button" value="SEARCH" /></th>
@@ -390,19 +390,19 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	   
       ?>
                 <tr>
-                <td width="150"><?php echo $row["material_doc_gen"]; ?></td>
-                <td width="150"><?php echo $row["pdio_no"]; ?></td>
-                <td width="100"><?php echo $row["R7"]; ?></td> 
-                <td width="80"><?php echo $row["ship_name"]; ?></td>
+                <td width="150"><?php echo html_esc($row["material_doc_gen"]); ?></td>
+                <td width="150"><?php echo html_esc($row["pdio_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["R7"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["ship_name"]); ?></td>
                 <td width="100">
-                 <a href="#myNoteDisplayDO<?php echo $row["material_doc_gen"]; ?><?php echo $row["plant_code"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplayDO<?php echo html_esc($row["material_doc_gen"]); ?><?php echo html_esc($row["plant_code"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_dlvdo_alldo_dlv_sel.php";   ?>
                 
                 </td>
                 <td width="100">              
-                <a href="#myNoteCancelDO<?php echo $row["material_doc_gen"]; ?><?php echo $row["plant_code"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
+                <a href="#myNoteCancelDO<?php echo html_esc($row["material_doc_gen"]); ?><?php echo html_esc($row["plant_code"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "cancel_dlvdo_alldo_dlv_sel.php";   ?>

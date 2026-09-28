@@ -105,8 +105,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -453,7 +453,7 @@ $data_rcv .= $row_infoB["plant_code"].";".$row_infoB["bflush_no_ref"].";".$row_i
 
 		   echo "<script>";
 		   echo "alert('Material Document $ref2 posted.');";
-		   echo "window.location='canC_bf_Confirm_Hwork-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+		   echo "window.location='canC_bf_Confirm_Hwork-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
 	       echo "</script>"; 
 		   exit(); //quit the script
 		
@@ -462,7 +462,7 @@ $data_rcv .= $row_infoB["plant_code"].";".$row_infoB["bflush_no_ref"].";".$row_i
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteCancelBFHWORKCON<?php echo $row["bflush_no"]; ?><?php echo $row["plan_no"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteCancelBFHWORKCON<?php echo html_esc($row["bflush_no"]); ?><?php echo html_esc($row["plan_no"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -541,7 +541,7 @@ $data_rcv .= $row_infoB["plant_code"].";".$row_infoB["bflush_no_ref"].";".$row_i
 
 <br>
 
-        <div class="content mt-12"><h5>Cancel Handwork <?php echo $row["bflush_no"]; ?>?</h5><br>
+        <div class="content mt-12"><h5>Cancel Handwork <?php echo html_esc($row["bflush_no"]); ?>?</h5><br>
        
 
     <form name="frmSearch" id="frmSearch" method="post" action="<?php //echo $_SERVER['PHP_SELF']; ?>" class="needs-validation"  novalidate>
@@ -560,14 +560,14 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
       ?>
      
-       <input name="uid9" type="hidden" value="<?php echo $row["bflush_no"]; ?> ">    
+       <input name="uid9" type="hidden" value="<?php echo html_esc($row["bflush_no"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $dateF; ?>"> 
        <input name="date2" type="hidden" value="<?php echo $dateT; ?>"> 
        <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
        <input name="trans_opt" type="hidden" value="<?php echo $trans_opt; ?>"> 
-       <input name="work_center" type="hidden" value="<?php echo $work_center; ?>">  
-       <input name="material_no" type="hidden" value="<?php echo $material_no; ?>"> 
-       <input name="plan_no" type="hidden" value="<?php echo $row["plan_no"]; ?>"> 
+       <input name="work_center" type="hidden" value="<?php echo html_esc($work_center); ?>">  
+       <input name="material_no" type="hidden" value="<?php echo html_esc($material_no); ?>"> 
+       <input name="plan_no" type="hidden" value="<?php echo html_esc($row["plan_no"]); ?>"> 
   
       
       <?php 

@@ -42,8 +42,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -246,12 +246,12 @@ th {
 	$row2_dtl = mysqli_fetch_array($rs_dtl);  
 	   
       ?> <tr class="item">
-            <td>&nbsp;<?php  echo $row2_dtl["proc_desc"]; ?></td>
-            <td>&nbsp;<?php  echo $row2["type_desc"]; ?></td>            
-            <td>&nbsp;<?php  echo $row2["status_type"]; ?></td>
+            <td>&nbsp;<?php  echo html_esc($row2_dtl["proc_desc"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row2["type_desc"]); ?></td>            
+            <td>&nbsp;<?php  echo html_esc($row2["status_type"]); ?></td>
             <td>
             <div align="center">
-                 <a href="#myNoteSloc<?php echo $row2["id_type"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteSloc<?php echo html_esc($row2["id_type"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "ppcdlv_type_rej_edit.php";   ?>

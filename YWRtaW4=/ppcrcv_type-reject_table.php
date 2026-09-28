@@ -33,8 +33,8 @@ $url = "ppcrcv_reject_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -192,7 +192,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Type Reject Desc. : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="type_desc" type="text" class="form-control" id="type_desc" size="20" maxlength="40" value="<?php if(isset($_POST['type_desc'])) echo $_POST['type_desc']; ?>"  placeholder="Enter Production Type Reject Description" />
+                  <input name="type_desc" type="text" class="form-control" id="type_desc" size="20" maxlength="40" value="<?php if(isset($_POST['type_desc'])) echo html_esc($_POST['type_desc']); ?>"  placeholder="Enter Production Type Reject Description" />
                    <div class="form-control-feedback" ><?php echo $message_rejdesc; ?></div>
                     </div>
                 </div>
@@ -229,7 +229,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["id_proc"]; ?>" > <?php echo stripslashes($row27["id_proc"]); ?> - <?php echo $row27["proc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["id_proc"]); ?>" > <?php echo stripslashes($row27["id_proc"]); ?> - <?php echo html_esc($row27["proc_desc"]); ?></option>
           <?php
            }  ?>
                             

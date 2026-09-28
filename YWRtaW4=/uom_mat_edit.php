@@ -60,8 +60,8 @@ $sta_res16 = mysqli_query($dbc,$sta16);
 $rst_sta16 = mysqli_fetch_array($sta_res16);
 
 	?>
- <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+ <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,7 +154,7 @@ $message = NULL; // create an empty new variable.
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteUMat<?php echo $row2["UOM"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteUMat<?php echo html_esc($row2["UOM"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -188,7 +188,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
     <tr>
     <td>UOM Code<font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="UOM" name="UOM" value="<?php echo $row_was["UOM"]; ?>" class="form-control" disabled /><div class="invalid-feedback">Please enter UOM.</div></td>
+    <td><input type="text" id="UOM" name="UOM" value="<?php echo html_esc($row_was["UOM"]); ?>" class="form-control" disabled /><div class="invalid-feedback">Please enter UOM.</div></td>
     </tr>
      <tr>
     <td>Status Reason<font color="#FF0000">*</font></td>
@@ -212,7 +212,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_UOM" name="id_UOM"  class="form-control" value="<?php echo $row2["UOM"];  ?>" >  
+             <input type="hidden" id="id_UOM" name="id_UOM"  class="form-control" value="<?php echo html_esc($row2["UOM"]);  ?>" >  
 
              <input name="submit9A" type="submit" id="submit9A" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>

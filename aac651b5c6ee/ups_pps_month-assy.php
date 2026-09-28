@@ -129,8 +129,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -784,14 +784,14 @@ exit();
                 <div class="form-group row col-md-10">
                   <label class="control-label col-md-3">Scan Kanban<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-10">
-                  <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) echo $_POST['pps_ref']; ?>" class="form-control" autofocus/>
+                  <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) echo html_esc($_POST['pps_ref']); ?>" class="form-control" autofocus/>
                
                     </div> <div class="col-md-2"><img src="../images/barcode_scan.jpeg" width="40" height="40" /></div>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Eg: Part Number|Model|Back No.|Part Name|Quantity|Kanban No.</small>
    
                     </div>
               <div class="form-group row">
-                  <input name="user_no" type="hidden" value="<?php echo $res["user_no"]; ?>" />
+                  <input name="user_no" type="hidden" value="<?php echo html_esc($res["user_no"]); ?>" />
                   <label class="control-label col-md-3"><font color="#FF0000"><b>* Compulsory field</b></font></label>
                     <div class="col-md-8">
                   &nbsp;
@@ -885,20 +885,20 @@ exit();
 		
       ?>
                 <tr>
-                <td width="50"><a href="delete_kanban_item.php?scan_doc=<?php echo $row["scan_doc"]; ?>&&p_id=<?php echo $row["id"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
-                <td width="50"><?php echo $no4; ?><input name="id[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["id"]; ?>">
-                <input name="item_no[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="80"><?php echo $row["back_no"]; ?></td>
-                <td width="250"><?php echo $row["material_no"]; ?>&nbsp;&nbsp;<?php echo $mesej;  ?></td>
-                <td width="150"> <input name="qty_actual[<?php echo $row["id"]; ?>]" type="text" id="qty_actual" value="<?php  if(isset($_POST['qty_actual'])){ echo $_POST["qty_actual"][($row["id"])]; }else{ echo intval($row["qty_plan"]); } ?>" class="form-control form-control-sm" required/> </td>
-                <td width="150"><select name="shift_ops[<?php echo $row["id"]; ?>]" id="shift_ops" class="form-control form-control-sm" required/>
+                <td width="50"><a href="delete_kanban_item.php?scan_doc=<?php echo html_esc($row["scan_doc"]); ?>&&p_id=<?php echo html_esc($row["id"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
+                <td width="50"><?php echo $no4; ?><input name="id[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["id"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="80"><?php echo html_esc($row["back_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row["material_no"]); ?>&nbsp;&nbsp;<?php echo $mesej;  ?></td>
+                <td width="150"> <input name="qty_actual[<?php echo html_esc($row["id"]); ?>]" type="text" id="qty_actual" value="<?php  if(isset($_POST['qty_actual'])){ echo html_esc($_POST["qty_actual"][($row["id"])]); }else{ echo intval($row["qty_plan"]); } ?>" class="form-control form-control-sm" required/> </td>
+                <td width="150"><select name="shift_ops[<?php echo html_esc($row["id"]); ?>]" id="shift_ops" class="form-control form-control-sm" required/>
                   <option value="" placeholder="Select Shift"> -- Select Shift --</option>
                   <option value="D/S" <?php if($shif_pA == "D/S"){  ?> selected<?php }  ?>>D/S - Day Shift</option>
                   <option value="N/S" <?php if($shif_pA == "N/S"){  ?> selected<?php }  ?>>N/S - Night Shift</option>
                 </select> <?php echo $message_shift; ?>   </td>
-                <td width="150"><?php echo $row["kanban_no"]; ?>
-                <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>">
-                <input name="mat_no[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["material_no"]; ?>"></td>
+                <td width="150"><?php echo html_esc($row["kanban_no"]); ?>
+                <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>">
+                <input name="mat_no[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["material_no"]); ?>"></td>
                 </td>
                 </tr>
                  

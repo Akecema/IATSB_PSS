@@ -144,8 +144,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -279,12 +279,12 @@ div.dataTables_wrapper {
   
       <div class="app-title">
         <div>
-           <h1><i class="fa fa-bar-chart"></i> <?php echo $rst_apprv8["apprv_name2"]; ?></h1>
+           <h1><i class="fa fa-bar-chart"></i> <?php echo html_esc($rst_apprv8["apprv_name2"]); ?></h1>
           <p>Cancellation</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><?php echo $rst_apprv8["apprv_name2"]; ?></li>
+          <li class="breadcrumb-item"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?></li>
           <li class="breadcrumb-item"><a href="canC_coo_disposal4-prd.php">Cancellation</a></li>
         </ul>
       </div> 
@@ -327,7 +327,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -336,11 +336,11 @@ div.dataTables_wrapper {
              </tr>
              <tr>
                 <th>Posting Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1'];  ?>" /><?php echo $message_psdt; ?></div>
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']);  ?>" /><?php echo $message_psdt; ?></div>
                     </td></tr>
                 <tr>
                 <th>Posting Date to : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" /><?php echo $message_psdt2; ?></div></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" /><?php echo $message_psdt2; ?></div></td>
               </tr>
                <tr>
                 <th>
@@ -423,7 +423,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	   
         
     	?>
-    <form action="canC_coo_disposal4-prdProc2.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>" method="post" name="myform" id="myform">    
+    <form action="canC_coo_disposal4-prdProc2.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>" method="post" name="myform" id="myform">    
                <!-- <form action="" method="post" name="myform" id="myform">-->
                 <table class="table table-hover table-bordered" id="example">
                <thead>
@@ -592,15 +592,15 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
                 <tr>
                 <td width="30">  
                 <div align="center"><?php echo $no4; ?><br>
-                  <input type="hidden" name="gid[<?php echo $row["id"]; ?>]" value="<?php echo $row["id"]; ?>" />
-                  <input name="id_item[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["doc_dis"]; ?>"></div></td>  
-                <td width="80"><?php echo $row["plant_cd"]; ?></td>
+                  <input type="hidden" name="gid[<?php echo html_esc($row["id"]); ?>]" value="<?php echo html_esc($row["id"]); ?>" />
+                  <input name="id_item[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>"></div></td>  
+                <td width="80"><?php echo html_esc($row["plant_cd"]); ?></td>
                 <td width="80"><?php echo $dept_name; ?></td>
-                <td width="150"><?php echo $row["doc_dis"]; ?></td> 
-                <td width="80"><?php echo $row["R"]; ?></td>
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["R"]); ?></td>
                 <td width="80"><?php echo $status_new; ?></td> 
                  <td width="100">
-                 <a href="#myNoteDisplayDIS<?php echo $row["doc_dis"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplayDIS<?php echo html_esc($row["doc_dis"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                   
          <!--------------------------modal------------------------->
@@ -637,7 +637,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
                 
                 </td>
                 <td width="100">              
-                <a href="#myNoteCancelDIS<?php echo $row["doc_dis"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
+                <a href="#myNoteCancelDIS<?php echo html_esc($row["doc_dis"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
                  
                     <!--------------------------modal------------------------->
           <?php       

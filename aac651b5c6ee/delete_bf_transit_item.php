@@ -17,7 +17,7 @@ include '../include/config.php';
 	 {
 			 
 			 echo "<script>";
-			 echo "window.location='bf_transit_do-dlv.php?uid2=$scan_doc'";
+			 echo "window.location='bf_transit_do-dlv.php?uid2=".html_esc($scan_doc)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

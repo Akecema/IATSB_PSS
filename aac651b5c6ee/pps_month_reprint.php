@@ -80,8 +80,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -197,12 +197,12 @@ th {
             <tr>
             <th>Date From : <font color="#FF0000">*</font></th>
             <td>
-           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
 		     </td>
              </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /></td>
               </tr>
               <tr>
                 <th>Plant : <font color="#FF0000">*</font></th>
@@ -218,7 +218,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -259,7 +259,7 @@ th {
                    while($row19=mysqli_fetch_array($result19)) 
 			      {
 				   ?>
-                  <option value="<?php echo $row19["file_name"]; ?>"> <?php echo $row19["file_name"]; ?></option>
+                  <option value="<?php echo html_esc($row19["file_name"]); ?>"> <?php echo html_esc($row19["file_name"]); ?></option>
                   <?php
                   }
 				?>
@@ -330,7 +330,7 @@ th {
 	
 			 
             echo "<script>";
-            echo "window.location='pps_month_reprint2.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&material_no=$material_no&&shift_ops=$shift_ops&&name_file=$name_file'";
+            echo "window.location='pps_month_reprint2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."&&shift_ops=".html_esc($shift_ops)."&&name_file=".html_esc($name_file)."'";
             echo "</script>";
             exit(); //quit the script
         }

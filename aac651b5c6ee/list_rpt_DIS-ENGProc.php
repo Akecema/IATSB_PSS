@@ -144,8 +144,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -277,7 +277,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
              </tr>
              <tr>
@@ -287,7 +287,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
             <th>Plant : <font color="#FF0000">*</font></th>
@@ -302,7 +302,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -434,7 +434,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
             <tr>
                 <td width="1%">&nbsp;</td> 
                 <td width="85%">&nbsp;</td> 
-                  <td width="7%"><a href="list_rpt_DIS-ENG_dLoad.php?plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>&&material_no=<?php echo $material_no; ?>&&rej_opt=<?php echo $rej_opt; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+                  <td width="7%"><a href="list_rpt_DIS-ENG_dLoad.php?plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>&&material_no=<?php echo html_esc($material_no); ?>&&rej_opt=<?php echo html_esc($rej_opt); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
                  <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
               </tr>
             </table> 
@@ -678,23 +678,23 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["model_code"]; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="150"><?php echo $row["plan_no"]; ?></td> 
-                <td width="150"><?php echo $row["TW"]; ?></td>
-                <td width="150"><?php echo $row["bflush_qqc_no"]; ?></td> 
-                <td width="150"><?php echo $row["doc_dis"]; ?></td> 
-                <td width="150"><?php echo $row["T"]; ?></td> 
+                <td width="80"><?php echo html_esc($row["model_code"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["plan_no"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["TW"]); ?></td>
+                <td width="150"><?php echo html_esc($row["bflush_qqc_no"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["T"]); ?></td> 
                 <td width="100"><?php echo $source_dis; ?></td> 
                 <td><?php if($row["UOM_unit"] == 'KG') { ?> <?php echo $qty_new; ?> <?php }else{ ?><?php echo intval($qty_new); ?> <?php } ?></td>
-                <td width="100"><?php echo $row_type["type_desc"]; ?></td> 
-                <td width="100"><?php echo $row_defect["defect_desc"]; ?></td>
-                <td width="150"><?php echo $row["reason_reject"]; ?></td>
+                <td width="100"><?php echo html_esc($row_type["type_desc"]); ?></td> 
+                <td width="100"><?php echo html_esc($row_defect["defect_desc"]); ?></td>
+                <td width="150"><?php echo html_esc($row["reason_reject"]); ?></td>
                 <td width="150"><?php echo $sta_dis; ?></td>
                 <td width="150"><?php if($dt_dis != "00-00-0000") { echo $dt_dis;  }else{  echo "&nbsp;"; } ?> </td>
-                <td width="150"><?php echo $row["disposal_no_ref"]; ?></td>
-                <td width="150"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo $row["T75"]; }?></td>
-                <td width="200"><?php echo $row["user_cancel"].' '.$data_u_can["user_fullname"];    ?>  </td> 
+                <td width="150"><?php echo html_esc($row["disposal_no_ref"]); ?></td>
+                <td width="150"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo html_esc($row["T75"]); }?></td>
+                <td width="200"><?php echo html_esc($row["user_cancel"]).' '.html_esc($data_u_can["user_fullname"]);    ?>  </td> 
                 </tr>
                  
           <?php 

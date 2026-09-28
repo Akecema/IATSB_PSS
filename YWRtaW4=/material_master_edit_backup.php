@@ -62,7 +62,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <html lang="en">
   <head>
     <meta name="description" content="PSS ITSB Online, Ingress Technologies Sdn. Bhd.,Ingress ">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,7 +84,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
   <body class="app sidebar-mini">
 
  
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_hdr"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_hdr"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -671,44 +671,44 @@ if (isset($message))
    <tr>
     <td width="191">Material No.</td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_mat["material_no"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_mat["material_no"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Material Description</td>
     <td width="28">:</td>
-    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo $row_mat["material_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo html_esc($row_mat["material_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Material Type</td>
     <td>:</td>
-    <td><input type="text" id="material_type" name="material_type" value="<?php echo $row_mat["material_type"];  ?>" class="form-control"/>
+    <td><input type="text" id="material_type" name="material_type" value="<?php echo html_esc($row_mat["material_type"]);  ?>" class="form-control"/>
      </td>
     </tr>
   <tr>
     <td>Material Group</td>
     <td>:</td>
-    <td><input type="text" id="material_group" name="material_group"  value="<?php echo $row_mat["material_group"];  ?>" class="form-control"/>
+    <td><input type="text" id="material_group" name="material_group"  value="<?php echo html_esc($row_mat["material_group"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Plant</td>
     <td>:</td>
-   <td><input type="text" id="plant" name="plant" value="<?php echo $row_mat["plant"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="plant" name="plant" value="<?php echo html_esc($row_mat["plant"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>BOM</td>
     <td>:</td>
-   <td><input type="text" id="bom" name="bom" value="<?php echo $row_mat["bom"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="bom" name="bom" value="<?php echo html_esc($row_mat["bom"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Alternative BOM</td>
     <td>:</td>
-   <td><input type="text" id="alternative_bom" name="alternative_bom" value="<?php echo $row_mat["alternative_bom"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="alternative_bom" name="alternative_bom" value="<?php echo html_esc($row_mat["alternative_bom"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>BOM Usage</td>
     <td>:</td>
-   <td><input type="text" id="bom_usage" name="bom_usage" value="<?php echo $row_mat["bom_usage"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="bom_usage" name="bom_usage" value="<?php echo html_esc($row_mat["bom_usage"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>UOM</td>
@@ -726,7 +726,7 @@ if (isset($message))
      while($row_unit = mysqli_fetch_array($result_unit)) {
 	 ?>
                <!--RETAIN VALUE-->
-   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"]==$row_mat["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"]==$row_mat["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
                <?php }
              
 	 
@@ -739,7 +739,7 @@ if (isset($message))
    
    
    
-   <input type="text" id="BUn" name="BUn" value="<?php echo $row_mat["BUn"];  ?>" class="form-control"/> </td>
+   <input type="text" id="BUn" name="BUn" value="<?php echo html_esc($row_mat["BUn"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Date Created <font color="#FF0000">*</font></td>
@@ -783,27 +783,27 @@ if (isset($message))
      <tr>
     <td>Standard Packaging <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="std_package" name="std_package" value="<?php echo $row_mat["std_package"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="std_package" name="std_package" value="<?php echo html_esc($row_mat["std_package"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Type of package</td>
     <td>:</td>
-   <td><input type="text" id="type_package" name="plant" value="<?php echo $row_mat["type_package"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="type_package" name="plant" value="<?php echo html_esc($row_mat["type_package"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Location Deliver</td>
     <td>:</td>
-   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo $row_mat["location_deliver"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo html_esc($row_mat["location_deliver"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Station Deliver</td>
     <td>:</td>
-   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo $row_mat["station_deliver"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo html_esc($row_mat["station_deliver"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Received Point</td>
     <td>:</td>
-   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo $row_mat["rcv_point"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo html_esc($row_mat["rcv_point"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Part of Side <font color="#FF0000">*</font></td>
@@ -840,7 +840,7 @@ if (isset($message))
 				  
 				  
 				  ?>
-                <option value="<?php echo $row3["factory_desc2"]; ?>" <?php if($row3["factory_desc2"] == $row_mat["id_factory"]) echo "selected"; ?>> <?php echo $row3["factory_desc"]; ?></option>
+                <option value="<?php echo html_esc($row3["factory_desc2"]); ?>" <?php if($row3["factory_desc2"] == $row_mat["id_factory"]) echo "selected"; ?>> <?php echo html_esc($row3["factory_desc"]); ?></option>
                 <?php
                   }
 				?>
@@ -855,7 +855,7 @@ if (isset($message))
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo $row2["id_hdr"];  ?>" >  
+             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo html_esc($row2["id_hdr"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  
             

@@ -26,8 +26,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,9 +244,9 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
   <tr>
     <td width="40%" height="46"><table width="100%" border="0" cellspacing="2" cellpadding="3">
       <tr>
-        <td width="100%">&nbsp;<?php echo $data_plant["comp_add1"].'&nbsp;'.$data_plant["comp_add2"].'&nbsp;'.$data_plant["comp_add3"];  ?><br>
-          &nbsp;<?php echo $data_plant["comp_postcode"].'&nbsp;'.$data_plant["comp_city"].'&nbsp;'.$data_plant["comp_state"]; ?><br>
-          &nbsp;<?php echo $data_plant["comp_telno1"].'&nbsp;'.$data_plant["comp_fax"]; ?>
+        <td width="100%">&nbsp;<?php echo html_esc($data_plant["comp_add1"]).'&nbsp;'.html_esc($data_plant["comp_add2"]).'&nbsp;'.html_esc($data_plant["comp_add3"]);  ?><br>
+          &nbsp;<?php echo html_esc($data_plant["comp_postcode"]).'&nbsp;'.html_esc($data_plant["comp_city"]).'&nbsp;'.html_esc($data_plant["comp_state"]); ?><br>
+          &nbsp;<?php echo html_esc($data_plant["comp_telno1"]).'&nbsp;'.html_esc($data_plant["comp_fax"]); ?>
           
           </td>
         </tr>
@@ -265,11 +265,11 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
   <tr>
     <td rowspan="4" width="40%"><table width="100%" border="0" cellspacing="2" cellpadding="3">
       <tr>
-        <td width="100%">&nbsp;<b><?php echo $data_vendor["vendor_name"];  ?></b><br>
-          &nbsp;<?php echo $data_vendor["add_no1"].'&nbsp;'.$data_vendor["add_no2"];  ?><br>
-          &nbsp;<?php echo $data_vendor["post_code"].'&nbsp;'.$data_vendor["post_city"].'&nbsp;'.$data_vendor["post_region"].'&nbsp;'.$data_vendor["post_country"]; ?><br>
-          &nbsp;<?php echo $data_vendor["tphone"].'&nbsp;'.$data_vendor["fax_no"]; ?><br>
-          &nbsp; <b>Vendor Code :<?php echo $data_vendor["vendor_code"]; ?></b> <br></td>
+        <td width="100%">&nbsp;<b><?php echo html_esc($data_vendor["vendor_name"]);  ?></b><br>
+          &nbsp;<?php echo html_esc($data_vendor["add_no1"]).'&nbsp;'.html_esc($data_vendor["add_no2"]);  ?><br>
+          &nbsp;<?php echo html_esc($data_vendor["post_code"]).'&nbsp;'.html_esc($data_vendor["post_city"]).'&nbsp;'.html_esc($data_vendor["post_region"]).'&nbsp;'.html_esc($data_vendor["post_country"]); ?><br>
+          &nbsp;<?php echo html_esc($data_vendor["tphone"]).'&nbsp;'.html_esc($data_vendor["fax_no"]); ?><br>
+          &nbsp; <b>Vendor Code :<?php echo html_esc($data_vendor["vendor_code"]); ?></b> <br></td>
       </tr>
     </table></td>
     <td width="20%">Your D.O. No.</td>
@@ -285,7 +285,7 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
   </tr>
   <tr>
     <td width="20%">Date</td>
-    <td width="40%"><span class="style3"><?php echo $db_rs["T"]; ?></span></td>
+    <td width="40%"><span class="style3"><?php echo html_esc($db_rs["T"]); ?></span></td>
   </tr>
   </table>
 <!--</div>-->
@@ -375,12 +375,12 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
 		 ?>
         
         <td width="60" height="28"><?php  echo $no; ?></td>
-        <td width="150" height="28"><b><?php  echo $row["material_no"]; ?></b></td>
-        <td width="300"><?php  echo $row["material_desc"]; ?></td> 
+        <td width="150" height="28"><b><?php  echo html_esc($row["material_no"]); ?></b></td>
+        <td width="300"><?php  echo html_esc($row["material_desc"]); ?></td> 
         <td width="69" height="28"><div align="center"><?php  echo intval($row["qty_gra"]); ?></div></td> 
-        <td width="55" height="28"><div align="center"><?php  echo $row["uom_gra"]; ?></div></td>
+        <td width="55" height="28"><div align="center"><?php  echo html_esc($row["uom_gra"]); ?></div></td>
         <td width="151" height="28"><div align="center"><?php echo $sta; ?></div></td>
-        <td width="130"><?php  echo $row["remark_gra"]; ?></td>
+        <td width="130"><?php  echo html_esc($row["remark_gra"]); ?></td>
         <td width="150" height="28"> <div align="center">
        <?php
 
@@ -416,8 +416,8 @@ echo $barcodeobj->getBarcodeSVGcode(3.0, 3.0, 'black');
       </tr>
       <tr>
         <td width="32%"><div align="center">Q.A</div><br>
-        <div align="left">Name :  &nbsp;<span class="style5"><?php if($db_rs["user_generate_gra"] != "") { echo $data_issue["user_fullname"];   } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
-        Date :  &nbsp;<span class="style5"><?php if($db_rs["H"] != "00-00-0000") { echo $db_rs["H"];  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></td>
+        <div align="left">Name :  &nbsp;<span class="style5"><?php if($db_rs["user_generate_gra"] != "") { echo html_esc($data_issue["user_fullname"]);   } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+        Date :  &nbsp;<span class="style5"><?php if($db_rs["H"] != "00-00-0000") { echo html_esc($db_rs["H"]);  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></td>
       </tr>
     </table></td>
     <td width="32%"><table width="90%" border="0" cellspacing="2" cellpadding="3">
@@ -430,8 +430,8 @@ echo $barcodeobj->getBarcodeSVGcode(3.0, 3.0, 'black');
       <tr>
         <td width="32%"><div align="center">Store</div>
           <br>
-          <div align="left">Name :  &nbsp;<span class="style5"><?php if($db_rs["return_by"] != "") { echo $data_return["user_fullname"];  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
-            Date :  &nbsp;<span class="style5"><?php if($db_rs["J"] != "00-00-0000") { echo $db_rs["J"];  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></td>
+          <div align="left">Name :  &nbsp;<span class="style5"><?php if($db_rs["return_by"] != "") { echo html_esc($data_return["user_fullname"]);  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+            Date :  &nbsp;<span class="style5"><?php if($db_rs["J"] != "00-00-0000") { echo html_esc($db_rs["J"]);  } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div></td>
       </tr>
     </table></td>
    <td width="32%"><table width="98%" border="0" cellspacing="2" cellpadding="3">

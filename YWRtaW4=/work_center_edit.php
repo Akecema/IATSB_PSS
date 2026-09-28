@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -248,7 +248,7 @@ if (empty($_POST['wc_desc2']))
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_work"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_work"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -276,12 +276,12 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
    <tr>
     <td width="191">Work Center</td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_work" name="id_work" readonly value="<?php  echo $row_work["id_work"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_work" name="id_work" readonly value="<?php  echo html_esc($row_work["id_work"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Work Center Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="wc_desc" name="wc_desc" value="<?php echo $row_work["wc_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter work center description.</div></td>
+    <td><input type="text" id="wc_desc" name="wc_desc" value="<?php echo html_esc($row_work["wc_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter work center description.</div></td>
     </tr>
   <tr>
     <td>Plant Code <font color="#FF0000">*</font></td>
@@ -297,7 +297,7 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row_work["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row_work["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -308,13 +308,13 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
   <tr>
     <td>Cost Center <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="cost_center" name="cost_center"  value="<?php echo $row_work["cost_center"];  ?>" class="form-control" required /><div class="invalid-feedback">Please enter cost center code.</div>
+    <td><input type="text" id="cost_center" name="cost_center"  value="<?php echo html_esc($row_work["cost_center"]);  ?>" class="form-control" required /><div class="invalid-feedback">Please enter cost center code.</div>
      </td>
     </tr>
       <tr>
     <td>Cost Center Description <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="cc_desc" name="cc_desc" value="<?php echo $row_work["cc_desc"];  ?>" class="form-control" required/><div class="invalid-feedback">Please enter cost center description.</div> </td>
+   <td><input type="text" id="cc_desc" name="cc_desc" value="<?php echo html_esc($row_work["cc_desc"]);  ?>" class="form-control" required/><div class="invalid-feedback">Please enter cost center description.</div> </td>
     </tr>
      <tr>
     <td>Factory <font color="#FF0000">*</font></td>
@@ -331,7 +331,7 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
 				  
 				  
 				  ?>
-                <option value="<?php echo $row3["factory_id"]; ?>" <?php if($row3["factory_id"] == $row_work["id_factory"]) echo "selected"; ?>> <?php echo $row3["factory_desc"]; ?></option>
+                <option value="<?php echo html_esc($row3["factory_id"]); ?>" <?php if($row3["factory_id"] == $row_work["id_factory"]) echo "selected"; ?>> <?php echo html_esc($row3["factory_desc"]); ?></option>
                 <?php
                   }
 				?>
@@ -358,7 +358,7 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
 				  
 				  
 				  ?>
-                <option value="<?php echo $row4["desc_level"]; ?>" <?php if($row4["desc_level"] == $row_work["dept_acc"]) echo "selected"; ?>> <?php echo $row4["desc_level"]; ?></option>
+                <option value="<?php echo html_esc($row4["desc_level"]); ?>" <?php if($row4["desc_level"] == $row_work["dept_acc"]) echo "selected"; ?>> <?php echo html_esc($row4["desc_level"]); ?></option>
                 <?php
                   }
 				?>
@@ -383,7 +383,7 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
     <tr>
     <td>Model Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="wc_desc2" name="wc_desc2" value="<?php echo $row_work["wc_desc2"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter model description.</div></td>
+    <td><input type="text" id="wc_desc2" name="wc_desc2" value="<?php echo html_esc($row_work["wc_desc2"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter model description.</div></td>
     </tr>
      <tr>
     <td>Category Material </td>
@@ -410,8 +410,8 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_work" name="id_work"  class="form-control" value="<?php echo $row2["id_work"];  ?>" > 
-             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo $row2["id"];  ?>" >  
+             <input type="hidden" id="id_work" name="id_work"  class="form-control" value="<?php echo html_esc($row2["id_work"]);  ?>" > 
+             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo html_esc($row2["id"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

@@ -95,8 +95,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -228,7 +228,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -243,7 +243,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                 <tr>
@@ -253,7 +253,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -337,7 +337,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 <tr>
     <td width="1%">&nbsp;</td> 
     <td width="85%">&nbsp;</td> 
-    <td width="7%"><a href="report_document_list_GRA_download.php?plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+    <td width="7%"><a href="report_document_list_GRA_download.php?plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
     
   </tr>
 </table> 
@@ -384,15 +384,15 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["plant_code"]; ?></td>
-                <td width="80"><?php echo $row["vendor_no"]; ?></td>
+                <td width="80"><?php echo html_esc($row["plant_code"]); ?></td>
+                <td width="80"><?php echo html_esc($row["vendor_no"]); ?></td>
                 <td width="80"><?php echo $shift_nw; ?></td>
-                <td width="100"><?php echo $row["R"]; ?></td> 
-                <td width="100"><?php echo $row["doc_gra"];    ?></td>
-                <td width="100"><?php if($row["status_gra"] == $rst_sta4["status_desc"]) { echo $row["ref_doc_gra"];  }  ?></td>
-                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo $row["R7"];  }else{   }  ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["doc_gra"]);    ?></td>
+                <td width="100"><?php if($row["status_gra"] == $rst_sta4["status_desc"]) { echo html_esc($row["ref_doc_gra"]);  }  ?></td>
+                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo html_esc($row["R7"]);  }else{   }  ?></td>
                 <td width="100">
-                 <a href="#myNoteDisplay<?php echo $row["doc_gra"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplay<?php echo html_esc($row["doc_gra"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_gra_tran_qc_wsel.php";   ?>

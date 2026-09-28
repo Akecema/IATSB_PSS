@@ -164,8 +164,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -377,17 +377,17 @@ input[value="+ Add Item"]{
   <tr>
     <td><b>Purchase Order No. </b></td>
     <td>:</td>
-    <td><?php echo $data_bb["po_no"];   ?></td>
+    <td><?php echo html_esc($data_bb["po_no"]);   ?></td>
   </tr>
   <tr>
     <td><b>Vendor Name </b></td>
     <td>:</td>
-    <td><?php echo $data_vend["vendor_name"];  ?></td>
+    <td><?php echo html_esc($data_vend["vendor_name"]);  ?></td>
   </tr>
   <tr>
     <td><b>Model </b></td>
     <td>:</td>
-    <td><?php echo $data_bb["model_cd"];   ?></td>
+    <td><?php echo html_esc($data_bb["model_cd"]);   ?></td>
   </tr>
 </table>
 </td>
@@ -403,12 +403,12 @@ input[value="+ Add Item"]{
       <tr>
         <td width="194"><b>Delivery Date</b></td>
         <td width="12">:</td>
-        <td width="228"><?php echo $data_bb["T3"];   ?></td>
+        <td width="228"><?php echo html_esc($data_bb["T3"]);   ?></td>
       </tr>
       <tr>
         <td width="194"><b>Delivery Time [ETD]</b></td>
         <td width="12">:</td>
-        <td width="228"><?php echo $data_bb["DI_dlv_time"];   ?></td>
+        <td width="228"><?php echo html_esc($data_bb["DI_dlv_time"]);   ?></td>
       </tr>
     </table>
     </tr>
@@ -474,16 +474,16 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 	$pend_qty = ($data_display_det ["kanban_order"] - ($tot_di_qty));
   ?>
    <tr>
-    <td width="60"><div align="center"><?php echo $row2["do_no"]; ?></div></td>
+    <td width="60"><div align="center"><?php echo html_esc($row2["do_no"]); ?></div></td>
     <td width="60"><div align="center"><?php echo $noA; ?></div></td>
     <td width="150"><div align="center"><?php echo $data_display_det ["back_no"]; ?></div></td>
-    <td width="200"><?php echo $data_display_det["material_no"]; ?></td>
-    <td width="300"><?php echo $data_display_det["material_desc"]; ?></td>
-    <td width="100"><div align="center"><?php echo $data_display_det["kanban_order"]; ?></div></td>
+    <td width="200"><?php echo html_esc($data_display_det["material_no"]); ?></td>
+    <td width="300"><?php echo html_esc($data_display_det["material_desc"]); ?></td>
+    <td width="100"><div align="center"><?php echo html_esc($data_display_det["kanban_order"]); ?></div></td>
     <td width="100"><div align="center"> <?php echo intval($data_display_det["qty_dlv"]); ?>	</div></td> 
     <td width="100"><div align="center"><?php if($pend_qty > 0.000 ) { echo $pend_qty; }elseif($pend_qty == 0 ) { echo "0"; }else{   echo "(".((-1)*($pend_qty)).")";     }  ?></div> 
-   <td width="100"><div align="center"><?php echo $data_display_det["std_package"]; ?></div>  </td>      
-    <td width="100"><div align="center"><?php echo $data_display_det["uom_dlv"]; ?></div></td>
+   <td width="100"><div align="center"><?php echo html_esc($data_display_det["std_package"]); ?></div>  </td>      
+    <td width="100"><div align="center"><?php echo html_esc($data_display_det["uom_dlv"]); ?></div></td>
     </tr>
   
  <?php 
@@ -507,9 +507,9 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
      <div align="left">   
       
        <input name="uid2" type="hidden" value="<?php echo $buid2; ?>">  
-       <input name="date1" type="hidden" value="<?php echo $dateF; ?>">  
-       <input name="date2" type="hidden" value="<?php echo $dateT; ?>">  
-       <input name="vendor_code" type="hidden" value="<?php echo $vendor_code; ?>">    
+       <input name="date1" type="hidden" value="<?php echo html_esc($dateF); ?>">  
+       <input name="date2" type="hidden" value="<?php echo html_esc($dateT); ?>">  
+       <input name="vendor_code" type="hidden" value="<?php echo html_esc($vendor_code); ?>">    
      
   
       <input action="action" onclick="window.history.go(-1); return false;" class="btn btn-info btn-sm" type="submit" value="BACK" />

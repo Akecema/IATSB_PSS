@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -254,7 +254,7 @@ $query_upd = "UPDATE table_material_itsb SET material_desc = '".sql_esc($materia
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_mat"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_mat"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -282,12 +282,12 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
    <tr>
     <td width="191">Material No. <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_con["material_no"]; ?>" class="form-control" required /></td>
+    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_con["material_no"]); ?>" class="form-control" required /></td>
     </tr>
   <tr>
     <td>Material Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo $row_con["material_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter material description.</div></td>
+    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo html_esc($row_con["material_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter material description.</div></td>
     </tr>
   <tr>
     <td>Plant Code <font color="#FF0000">*</font></td>
@@ -302,7 +302,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row_con["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row_con["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -324,7 +324,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 	 while($row48 = mysqli_fetch_array($result48)) 
 	  { 
 	?>  
-          <option value="<?php echo $row48["id"]; ?>" <?php if($row48["id"] == $row_con["mat_type"]) echo "selected"; ?>> <?php echo stripslashes($row48["mtype_name"]); ?></option>
+          <option value="<?php echo html_esc($row48["id"]); ?>" <?php if($row48["id"] == $row_con["mat_type"]) echo "selected"; ?>> <?php echo stripslashes($row48["mtype_name"]); ?></option>
   <?php   }  ?>
   
           </select>
@@ -346,7 +346,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
               while($row_line = mysqli_fetch_array($result_line)) {
         
               ?>
-         <option value="<?php echo $row_line["id_work"]; ?>" <?php if($row_line["id_work"] == $row_con["prod_line"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo $row_line["wc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_line["id_work"]); ?>" <?php if($row_line["id_work"] == $row_con["prod_line"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo html_esc($row_line["wc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -357,7 +357,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
     <tr>
      <td>Material of Group</td>
     <td>:</td>
-    <td><input type="text" id="material_group" name="material_group" value="<?php echo $row_con["material_group"];  ?> " class="form-control"/>
+    <td><input type="text" id="material_group" name="material_group" value="<?php echo html_esc($row_con["material_group"]);  ?> " class="form-control"/>
      </td>
     </tr>
      <tr>
@@ -375,7 +375,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 		 while($row_unit = mysqli_fetch_array($result_unit)) {
 		 ?>
 				   <!--RETAIN VALUE-->
-	   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"] == $row_con["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+	   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"] == $row_con["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
 				   <?php }
              
 	 
@@ -389,7 +389,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
     <tr>
      <td>VClass</td>
     <td>:</td>
-    <td><input type="text" id="Vclass" name="Vclass" value="<?php echo $row_con["Vclass"];  ?>" class="form-control"/>
+    <td><input type="text" id="Vclass" name="Vclass" value="<?php echo html_esc($row_con["Vclass"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
@@ -406,7 +406,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 	 while($row88 = mysqli_fetch_array($result88)) 
 	  { 
 	?>  
-          <option value="<?php echo $row88["id_model"]; ?>" <?php if($row_con["model_code"] == $row88["id_model"]) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
+          <option value="<?php echo html_esc($row88["id_model"]); ?>" <?php if($row_con["model_code"] == $row88["id_model"]) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
   <?php   }  ?>
   
           </select></div> <!-- <div class="form-control-feedback" ><?php echo $message_model; ?></div> -->
@@ -426,7 +426,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
               while($row_cat = mysqli_fetch_array($result_cat)) {
         
               ?>
-         <option value="<?php echo $row_cat["stamp_ind"]; ?>" <?php if($row_cat["stamp_ind"] == $row_con["category_mat"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo $row_cat["stamp_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_cat["stamp_ind"]); ?>" <?php if($row_cat["stamp_ind"] == $row_con["category_mat"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo html_esc($row_cat["stamp_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -438,25 +438,25 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
     <tr>
      <td>Standard Package</td>
     <td>:</td>
-    <td><input type="text" id="std_packaging" name="std_packaging"  value="<?php echo $row_con["std_packaging"];  ?> " class="form-control"/>
+    <td><input type="text" id="std_packaging" name="std_packaging"  value="<?php echo html_esc($row_con["std_packaging"]);  ?> " class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Type Package</td>
     <td>:</td>
-    <td><input type="text" id="type_package" name="type_package" value="<?php echo $row_con["type_package"];  ?>" class="form-control"/>
+    <td><input type="text" id="type_package" name="type_package" value="<?php echo html_esc($row_con["type_package"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Part Side</td>
     <td>:</td>
-    <td><input type="text" id="part_side" name="part_side" value="<?php echo $row_con["part_side"];  ?>" class="form-control"/>
+    <td><input type="text" id="part_side" name="part_side" value="<?php echo html_esc($row_con["part_side"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Back No.</td>
     <td>:</td>
-    <td><input type="text" id="back_no" name="back_no" value="<?php echo $row_con["back_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="back_no" name="back_no" value="<?php echo html_esc($row_con["back_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
@@ -473,7 +473,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["sloc_code"]; ?>" <?php if($row57["sloc_code"] == $row_con["sloc"]) echo "selected"; ?>> <?php echo stripslashes($row57["sloc_code"]); ?> - <?php echo $row57["sloc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row57["sloc_code"]); ?>" <?php if($row57["sloc_code"] == $row_con["sloc"]) echo "selected"; ?>> <?php echo stripslashes($row57["sloc_code"]); ?> - <?php echo html_esc($row57["sloc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -483,25 +483,25 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
     <tr>
      <td>Size Dim</td>
     <td>:</td>
-    <td><input type="text" id="size_dim" name="size_dim" value="<?php echo $row_con["size_dim"];  ?>" class="form-control"/>
+    <td><input type="text" id="size_dim" name="size_dim" value="<?php echo html_esc($row_con["size_dim"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Customer Part No.</td>
     <td>:</td>
-    <td><input type="text" id="cust_part_no" name="cust_part_no" value="<?php echo $row_con["cust_part_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_part_no" name="cust_part_no" value="<?php echo html_esc($row_con["cust_part_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Customer Part Name</td>
     <td>:</td>
-    <td><input type="text" id="material_desc_cust" name="material_desc_cust" value="<?php echo $row_con["material_desc_cust"];  ?>" class="form-control"/>
+    <td><input type="text" id="material_desc_cust" name="material_desc_cust" value="<?php echo html_esc($row_con["material_desc_cust"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Production Part No.</td>
     <td>:</td>
-    <td><input type="text" id="prod_part_no" name="prod_part_no" value="<?php echo $row_con["prod_part_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="prod_part_no" name="prod_part_no" value="<?php echo html_esc($row_con["prod_part_no"]);  ?>" class="form-control"/>
      </td>
      <tr>
      <td>Vendor Code</td>
@@ -517,7 +517,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
               while($row_ven = mysqli_fetch_array($result_ven)) {
         
               ?>
-         <option value="<?php echo $row_ven["vendor_code"]; ?>" <?php if($row_ven["vendor_code"] == $row_con["vendor_id"]) echo "selected"; ?>> <?php echo stripslashes($row_ven["vendor_code"]); ?> - <?php echo $row_ven["vendor_name"]; ?></option>
+         <option value="<?php echo html_esc($row_ven["vendor_code"]); ?>" <?php if($row_ven["vendor_code"] == $row_con["vendor_id"]) echo "selected"; ?>> <?php echo stripslashes($row_ven["vendor_code"]); ?> - <?php echo html_esc($row_ven["vendor_name"]); ?></option>
           <?php
            }  ?>
                             
@@ -529,37 +529,37 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
      <tr>
      <td>Material Group</td>
     <td>:</td>
-    <td><input type="text" id="mat_group" name="mat_group" value="<?php echo $row_con["mat_group"];  ?>" class="form-control"/>
+    <td><input type="text" id="mat_group" name="mat_group" value="<?php echo html_esc($row_con["mat_group"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Account Group</td>
     <td>:</td>
-    <td><input type="text" id="acc_group" name="acc_group"  value="<?php echo $row_con["acc_group"];  ?>" class="form-control"/>
+    <td><input type="text" id="acc_group" name="acc_group"  value="<?php echo html_esc($row_con["acc_group"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>PP Log No.</td>
     <td>:</td>
-    <td><input type="text" id="pp_log_no" name="pp_log_no" value="<?php echo $row_con["pp_log_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="pp_log_no" name="pp_log_no" value="<?php echo html_esc($row_con["pp_log_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>PP Log Description</td>
     <td>:</td>
-    <td><input type="text" id="pp_log_desc" name="pp_log_desc" value="<?php echo $row_con["pp_log_desc"];  ?>" class="form-control"/>
+    <td><input type="text" id="pp_log_desc" name="pp_log_desc" value="<?php echo html_esc($row_con["pp_log_desc"]);  ?>" class="form-control"/>
      </td>
     </tr> 
     <tr>
      <td>Customer Code</td>
     <td>:</td>
-    <td><input type="text" id="cust_code" name="cust_code" value="<?php echo $row_con["cust_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_code" name="cust_code" value="<?php echo html_esc($row_con["cust_code"]);  ?>" class="form-control"/>
      </td>
     </tr> 
     <tr>
      <td>Customer Name</td>
     <td>:</td>
-    <td><input type="text" id="cust_name" name="cust_name" value="<?php echo $row_con["cust_name"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_name" name="cust_name" value="<?php echo html_esc($row_con["cust_name"]);  ?>" class="form-control"/>
      </td>
     </tr> 
      <tr>
@@ -607,7 +607,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_mat" name="id_mat"  class="form-control" value="<?php echo $row2["id_mat"];  ?>" >  
+             <input type="hidden" id="id_mat" name="id_mat"  class="form-control" value="<?php echo html_esc($row2["id_mat"]);  ?>" >  
              <input name="Submit19" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

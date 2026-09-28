@@ -1464,7 +1464,7 @@ $data_function = mysqli_fetch_array($result_function);   //how many records are 
                 
          <?php if (($url == "detail_aprv_coo_disposal4-prd.php") || ($url == "detail_aprv_coo_disposal4-prd-aprv.php") || ($url == "canC_coo_disposal4-prd.php") || ($url == "detail_rej_coo_disposal4-prd-aprv.php") || ($url == "FTP_gratranfer_monitor_DIS.php")) { ?>
          
-    <li class="treeview is-expanded"><a href="" class="app-menu__item active"  data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-up"></i><span class="app-menu__label"><?php echo $rst_apprv8["apprv_name2"]; ?></span> <i class="treeview-indicator fa fa-angle-right"></i></a> <?php }else { echo "<li class='treeview'>"; ?><a href="" class="app-menu__item"  data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-up"></i><span class="app-menu__label"><?php echo $rst_apprv8["apprv_name2"]; ?></span> <i class="treeview-indicator fa fa-angle-right"></i></a><?php } ?>
+    <li class="treeview is-expanded"><a href="" class="app-menu__item active"  data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-up"></i><span class="app-menu__label"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?></span> <i class="treeview-indicator fa fa-angle-right"></i></a> <?php }else { echo "<li class='treeview'>"; ?><a href="" class="app-menu__item"  data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-up"></i><span class="app-menu__label"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?></span> <i class="treeview-indicator fa fa-angle-right"></i></a><?php } ?>
     
       <ul class="treeview-menu">
        

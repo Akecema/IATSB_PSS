@@ -123,8 +123,8 @@ $buid = base64_decode($_GET["buid"]);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Document No <?php echo $buid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Document No <?php echo $buid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -370,21 +370,21 @@ body
     <td>&nbsp;<h5><font color="#999999"><b>DISPLAY PO VS GR (QUANTITY)</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $data_bb["plant_code"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($data_bb["plant_code"]);   ?></div></td>
     <td>&nbsp;</td> 
 	<td>&nbsp;</td> 
    <tr> 
-    <td><div align="left"><b>Purchase Order No. :  </b><?php echo $data_bb["purc_ord_no"];   ?></div></td>
+    <td><div align="left"><b>Purchase Order No. :  </b><?php echo html_esc($data_bb["purc_ord_no"]);   ?></div></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td><div align="left"><b>Delivery Order No. :  </b><?php echo $data_bb["dlv_ord_no"];   ?></div></td>
+    <td><div align="left"><b>Delivery Order No. :  </b><?php echo html_esc($data_bb["dlv_ord_no"]);   ?></div></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
    <tr>
-    <td><div align="left"><b>Vendor : </b> <?php echo $data_bb["vendor_id"];   ?> - <?php echo $data_vend["vendor_name"]; ?></div></td>
+    <td><div align="left"><b>Vendor : </b> <?php echo html_esc($data_bb["vendor_id"]);   ?> - <?php echo html_esc($data_vend["vendor_name"]); ?></div></td>
     <td>&nbsp;</td>
 	<td>&nbsp;</td>
   </tr>
@@ -484,13 +484,13 @@ $Grd_total_new_bal = ($row2["po_qty"] );
   ?>
   <tr>
     <td><?php echo $no; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["model_gr"]; ?></td>
-    <td><?php echo $row2["po_qty"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["model_gr"]); ?></td>
+    <td><?php echo html_esc($row2["po_qty"]); ?></td>
 	<td><?php echo number_format($tot_gr_qtyB,3); ?></td>
     <td><?php echo number_format($Grd_total_new_bal,3); ?></td>
-    <td><?php echo $row2["ord_uom"]; ?></td>
+    <td><?php echo html_esc($row2["ord_uom"]); ?></td>
   </tr>
   
  <?php 

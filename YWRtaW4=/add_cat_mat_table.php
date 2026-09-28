@@ -32,8 +32,8 @@ $url = "cat_mat_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -178,14 +178,14 @@ $status_stamp = $_POST['status_stamp'];
                 <div class="form-group row">
                   <label class="control-label col-md-3">Category Code : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="stamp_ind" type="text" class="form-control" id="stamp_ind" size="20" maxlength="20" value="<?php if(isset($_POST['stamp_ind'])) echo $_POST['stamp_ind']; ?>"  placeholder="Enter Category Code" />
+                  <input name="stamp_ind" type="text" class="form-control" id="stamp_ind" size="20" maxlength="20" value="<?php if(isset($_POST['stamp_ind'])) echo html_esc($_POST['stamp_ind']); ?>"  placeholder="Enter Category Code" />
                    <div class="form-control-feedback" ><?php echo $message_cat; ?></div>
                     </div>
                 </div>
                  <div class="form-group row">
                   <label class="control-label col-md-3">Category Description : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="stamp_desc" type="text" class="form-control" id="stamp_desc" size="20" maxlength="20" value="<?php if(isset($_POST['stamp_desc'])) echo $_POST['stamp_desc']; ?>"  placeholder="Enter Category Description"/>
+                  <input name="stamp_desc" type="text" class="form-control" id="stamp_desc" size="20" maxlength="20" value="<?php if(isset($_POST['stamp_desc'])) echo html_esc($_POST['stamp_desc']); ?>"  placeholder="Enter Category Description"/>
                    <div class="form-control-feedback" ><?php echo $message_catdesc; ?></div>
                     </div>
                 </div>
@@ -202,7 +202,7 @@ $status_stamp = $_POST['status_stamp'];
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             

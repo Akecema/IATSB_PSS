@@ -85,8 +85,8 @@ $data_tit = mysqli_fetch_array($result_pps_tit);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Material Doc. No <?php echo $data_tit["do_no"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Material Doc. No <?php echo html_esc($data_tit["do_no"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -387,28 +387,28 @@ echo "</table></center>";
   <tr>
     <td><b>Purchase Order No.</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["po_no"];   ?></td>
+    <td><?php echo html_esc($data_bb["po_no"]);   ?></td>
   </tr>
  
   <tr>
     <td><b>Delivery Instruction No.</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["DI_doc"];   ?></td>
+    <td><?php echo html_esc($data_bb["DI_doc"]);   ?></td>
   </tr>
   <tr>
     <td><b>Model</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["model_cd"];   ?></td>
+    <td><?php echo html_esc($data_bb["model_cd"]);   ?></td>
   </tr>
   <tr>
     <td><b>Vendor Name</b></td>
     <td>:</td>
-    <td><?php echo $data_vend["vendor_name"];  ?></td>
+    <td><?php echo html_esc($data_vend["vendor_name"]);  ?></td>
   </tr>
   <tr>
     <td><b>Vendor DO No.</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["supp_do"];   ?></td>
+    <td><?php echo html_esc($data_bb["supp_do"]);   ?></td>
   </tr> 
   <tr>
     <td>&nbsp;</td>
@@ -418,12 +418,12 @@ echo "</table></center>";
   <tr>
     <td>Delivery Date</td>
     <td>:</td>
-    <td><?php echo $data_bb["D3"];   ?></td>
+    <td><?php echo html_esc($data_bb["D3"]);   ?></td>
   </tr>
   <tr>
     <td>Delivery Time [ETD]</td>
     <td>:</td>
-    <td><?php echo $data_bb["DI_dlv_time"];   ?><?php //echo $data_bb["DT4"].'&nbsp;'.$waktu_dec;   ?></td>
+    <td><?php echo html_esc($data_bb["DI_dlv_time"]);   ?><?php //echo $data_bb["DT4"].'&nbsp;'.$waktu_dec;   ?></td>
   </tr>
     <tr>
     <td>&nbsp;</td>
@@ -567,16 +567,16 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
    
     <td width="60"><div align="center"><?php echo $noA; ?></div></td>
-    <td width="150"><div align="center"><?php echo $row2["back_no"]; ?></div></td>
-    <td width="200"><?php echo $row2["material_no"]; ?></td>
-    <td width="300"><?php echo $row2["material_desc"]; ?></td>
-    <td width="100"><div align="center"> <?php if($row2["qty_dlv"] > 0.000 ) { echo $row2["std_package"];  }else{  echo '0'; } ?>	</div></td> 
+    <td width="150"><div align="center"><?php echo html_esc($row2["back_no"]); ?></div></td>
+    <td width="200"><?php echo html_esc($row2["material_no"]); ?></td>
+    <td width="300"><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td width="100"><div align="center"> <?php if($row2["qty_dlv"] > 0.000 ) { echo html_esc($row2["std_package"]);  }else{  echo '0'; } ?>	</div></td> 
     <td width="100"><div align="center"><?php echo $tag_pack; ?></div></td>  
     <td width="100"><div align="center"><?php echo intval($row2["kanban_order"]); ?></div></td>  
     <td width="100"><div align="center"><?php if($row2["qty_dlv"] > 0.000 ) { echo intval($row2["qty_dlv"]); }else{  echo '0'; } ?></div></td>
     <td width="100"><div align="center"><?php if(($pend_qty > 0.000 ) && ($pend_qty != ($row2["kanban_order"])) && ($pend_qty > ($row2["kanban_order"]))) { echo "(".$pend_qty.")"; }elseif($pend_qty == 0 ) { echo "0"; }elseif(($pend_qty > 0.000 ) && ($pend_qty == ($row2["kanban_order"]))){ echo $pend_qty;  }elseif(($pend_qty > 0.000 ) && ($pend_qty < ($row2["kanban_order"]))){ echo $pend_qty;  }else{   echo ((-1)*($pend_qty));     }  ?></div></td>   
-    <td width="100"><div align="center"><?php echo $row2["uom_dlv"]; ?></div></td>
-    <td width="200"><div align="center"><?php echo $row2["supp_part_no"]; ?></div></td>
+    <td width="100"><div align="center"><?php echo html_esc($row2["uom_dlv"]); ?></div></td>
+    <td width="200"><div align="center"><?php echo html_esc($row2["supp_part_no"]); ?></div></td>
     <td width="150"></td>
     </tr>
  <?php 
@@ -624,7 +624,7 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
 <table width="100%" border="1" cellspacing="1" cellpadding="1">
   <tr>
-    <td colspan="2" height="30"><span class="style1B"><div align="center"><?php echo $data_setup["title_desc"]; ?></div></span></td>
+    <td colspan="2" height="30"><span class="style1B"><div align="center"><?php echo html_esc($data_setup["title_desc"]); ?></div></span></td>
     <td colspan="2"><span class="style1B"><div align="center">VENDOR</div></span></td>
   </tr>
   <tr>

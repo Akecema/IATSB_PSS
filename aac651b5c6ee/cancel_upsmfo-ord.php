@@ -121,8 +121,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,8 +244,8 @@ page-break-before: always ;
 	   {
 
 		   echo "<script>";
-		   echo "alert('Material Forecast Order $mfo_no has been deleted.');";
-		   echo "window.location='mnt_mfo-ordProc2.php?vendor_no=$vendor_no&&month_mfo=$month_mfo&&year_mfo=$year_mfo'";
+		   echo "alert('Material Forecast Order ".html_esc($mfo_no)." has been deleted.');";
+		   echo "window.location='mnt_mfo-ordProc2.php?vendor_no=".html_esc($vendor_no)."&&month_mfo=".html_esc($month_mfo)."&&year_mfo=".html_esc($year_mfo)."'";
 	       echo "</script>"; 
 		   exit(); //quit the script
 		   
@@ -255,7 +255,7 @@ page-break-before: always ;
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteCancelMFO<?php echo $row["upload_id"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteCancelMFO<?php echo html_esc($row["upload_id"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -292,11 +292,11 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
       ?>
      
-       <input name="uid4" type="hidden" value="<?php echo $row["upload_id"]; ?> ">    
-       <input name="month_mfo" type="hidden" value="<?php echo $month_mfo; ?>"> 
-       <input name="year_mfo" type="hidden" value="<?php echo $year_mfo; ?>"> 
-       <input name="vendor_no" type="hidden" value="<?php echo $vendor_no; ?>">  
-       <input name="mfo_no" type="hidden" value="<?php  echo $row6["mfo_no"]; ?>"> 
+       <input name="uid4" type="hidden" value="<?php echo html_esc($row["upload_id"]); ?> ">    
+       <input name="month_mfo" type="hidden" value="<?php echo html_esc($month_mfo); ?>"> 
+       <input name="year_mfo" type="hidden" value="<?php echo html_esc($year_mfo); ?>"> 
+       <input name="vendor_no" type="hidden" value="<?php echo html_esc($vendor_no); ?>">  
+       <input name="mfo_no" type="hidden" value="<?php  echo html_esc($row6["mfo_no"]); ?>"> 
   
       
       <?php 

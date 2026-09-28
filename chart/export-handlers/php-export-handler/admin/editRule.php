@@ -108,7 +108,7 @@
 				<div class="control-group">
 				<label class="control-label" for="ip">CIDR/IP to disallow</label>
 				<div class="controls">
-				  <input type="text" id="ip" name ="ip"  class="span2" value="<?php echo $params['ip']?>">
+				  <input type="text" id="ip" name ="ip"  class="span2" value="<?php echo html_esc($params['ip'])?>">
 				  
 				</div>
 			  </div>
@@ -116,12 +116,12 @@
 			  <div class="control-group">
 				<label class="control-label" for="reason">Reason</label>
 				<div class="controls">
-				  <textarea rows="3" id="reason" class="span4" name="reason"><?php echo $params['reason']?></textarea>
+				  <textarea rows="3" id="reason" class="span4" name="reason"><?php echo html_esc($params['reason'])?></textarea>
 				</div>
 			  </div>
 			  <div class="control-group">
 				<div class="controls">      
-					<input type="hidden" name="id" id="id" value="<?php echo $params['id']?>">
+					<input type="hidden" name="id" id="id" value="<?php echo html_esc($params['id'])?>">
 				  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 				</div>
 			  </div>

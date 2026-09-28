@@ -36,8 +36,8 @@ $rst_sta4 = mysqli_fetch_array($sta_res4);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -309,7 +309,7 @@ $html.="</table>";
 		   //--------------end transaction upload into table pps_upload------------------------------------//
 			
 			echo "<script>";
-		    echo "window.location='detail_pps_sheet_printing.php?upload_id=$upload_id'";
+		    echo "window.location='detail_pps_sheet_printing.php?upload_id=".html_esc($upload_id)."'";
 			echo "</script>";	
 			exit;
 			

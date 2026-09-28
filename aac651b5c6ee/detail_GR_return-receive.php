@@ -113,8 +113,8 @@ $rst_sta26 = mysqli_fetch_array($sta_res26);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -780,7 +780,7 @@ exit();
              <tr>
                 <th>Scan GRA Barcode : <font color="#FF0000">*</font>&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1. Goods Return Advise" data-html="true" data-placement="left"></i></th>
                 <th colspan="2">
-          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo $_POST['pps_ref']; } ?>" class="form-control" autofocus/> 
+          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo html_esc($_POST['pps_ref']); } ?>" class="form-control" autofocus/> 
             
           &nbsp;&nbsp;<small>Eg: Part Number|Plant|Purchase Order No.|Doc. No.|Posting Date|Location|Quantity|UoM|GR Doc. No.|Delivery Order No. </small>
           
@@ -824,7 +824,7 @@ exit();
             </tr>  
             <tr>
               <th>Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -877,18 +877,18 @@ exit();
 		
       ?>
                 <tr>
-                <td width="50"><a href="delete_gra_return_item.php?scan_doc=<?php echo $row["scan_doc"]; ?>&&p_id=<?php echo $row["id_scan"]; ?>&&pps_ref=<?php echo $row["barcode_ref"]; ?>&&date1=<?php echo $row["posting_date"]; ?>&&shift_ops=<?php echo $row["scan_shift"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
-                <td width="50"><?php echo $no4; ?><input name="id_scan[<?php echo $row["id_gra_qc"]; ?>]" type="hidden" value="<?php echo $row["id_gra_qc"]; ?>">
-                <input name="item_no[<?php echo $row["id_gra_qc"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="350"><?php echo $row["material_desc"]; ?></td>
+                <td width="50"><a href="delete_gra_return_item.php?scan_doc=<?php echo html_esc($row["scan_doc"]); ?>&&p_id=<?php echo html_esc($row["id_scan"]); ?>&&pps_ref=<?php echo html_esc($row["barcode_ref"]); ?>&&date1=<?php echo html_esc($row["posting_date"]); ?>&&shift_ops=<?php echo html_esc($row["scan_shift"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
+                <td width="50"><?php echo $no4; ?><input name="id_scan[<?php echo html_esc($row["id_gra_qc"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_gra_qc"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_gra_qc"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="350"><?php echo html_esc($row["material_desc"]); ?></td>
                 <td width="100"> <?php echo intval($row["scan_qty"]); ?></td>
-                <td width="80"><?php echo $row["scan_uom"]; ?></td> 
+                <td width="80"><?php echo html_esc($row["scan_uom"]); ?></td> 
                 <td width="300">		
-				  <input name="bar_gr[<?php echo $row["id_gra_qc"]; ?>]" type="text" id="bar_gr" value="<?php if(isset($_POST['bar_gr'])){ echo $_POST["bar_gr"][($row["id_gra_qc"])]; }else{ echo $row["gr_doc_no"]; } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)" required autofocus/>
+				  <input name="bar_gr[<?php echo html_esc($row["id_gra_qc"]); ?>]" type="text" id="bar_gr" value="<?php if(isset($_POST['bar_gr'])){ echo html_esc($_POST["bar_gr"][($row["id_gra_qc"])]); }else{ echo html_esc($row["gr_doc_no"]); } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)" required autofocus/>
 		        </td> 
-                <td width="300"><?php echo $data_sc_asal["remark_gra"]; ?>
-                <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>">
+                <td width="300"><?php echo html_esc($data_sc_asal["remark_gra"]); ?>
+                <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>">
                 
                 </td>
                 </tr>

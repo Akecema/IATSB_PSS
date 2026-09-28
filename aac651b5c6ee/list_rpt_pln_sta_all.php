@@ -80,8 +80,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -269,12 +269,12 @@ th {
             <tr>
             <th>Date From : <font color="#FF0000">*</font></th>
             <td>
-           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
+           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
 		     </td>
              </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
               </tr>
               <tr>
                 <th>Plant : <font color="#FF0000">*</font></th>
@@ -290,7 +290,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -316,18 +316,18 @@ th {
              <option value="NULL" placeholder="Select Status"> -- Select Status -- </option>
                    <?php if($_POST['Submit2'] == true)
 						{ ?>
-               <option value="<?php echo $rst_sta["status_desc"]; ?>" <?php if($_POST["status_pps"] == '".$rst_sta["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo $rst_sta["status_desc"]; ?></option>
-                <option value="<?php echo $rst_sta2["status_desc"]; ?>" <?php if($_POST["status_pps"] == '".$rst_sta2["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo $rst_sta2["status_desc"]; ?></option>
-                  <option value="<?php echo $rst_sta7["status_desc"]; ?>" <?php if($_POST["status_pps"] == '".$rst_sta7["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo $rst_sta7["status_desc"]; ?></option>
-                  <option value="<?php echo $rst_sta13["status_desc"]; ?>" <?php if($_POST["status_pps"] == '".$rst_sta13["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo $rst_sta13["status_desc"]; ?></option>
+               <option value="<?php echo html_esc($rst_sta["status_desc"]); ?>" <?php if($_POST["status_pps"] == '".$rst_sta["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta["status_desc"]); ?></option>
+                <option value="<?php echo html_esc($rst_sta2["status_desc"]); ?>" <?php if($_POST["status_pps"] == '".$rst_sta2["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta2["status_desc"]); ?></option>
+                  <option value="<?php echo html_esc($rst_sta7["status_desc"]); ?>" <?php if($_POST["status_pps"] == '".$rst_sta7["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta7["status_desc"]); ?></option>
+                  <option value="<?php echo html_esc($rst_sta13["status_desc"]); ?>" <?php if($_POST["status_pps"] == '".$rst_sta13["status_desc"]."') { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta13["status_desc"]); ?></option>
                <?php 
 						}
 						else
 						{ ?>
-               <option value="<?php echo $rst_sta["status_desc"]; ?>"><?php echo $rst_sta["status_desc"]; ?></option>
-               <option value="<?php echo $rst_sta2["status_desc"]; ?>"><?php echo $rst_sta2["status_desc"]; ?></option>
-               <option value="<?php echo $rst_sta7["status_desc"]; ?>"><?php echo $rst_sta7["status_desc"]; ?></option>
-                 <option value="<?php echo $rst_sta13["status_desc"]; ?>"><?php echo $rst_sta13["status_desc"]; ?></option>
+               <option value="<?php echo html_esc($rst_sta["status_desc"]); ?>"><?php echo html_esc($rst_sta["status_desc"]); ?></option>
+               <option value="<?php echo html_esc($rst_sta2["status_desc"]); ?>"><?php echo html_esc($rst_sta2["status_desc"]); ?></option>
+               <option value="<?php echo html_esc($rst_sta7["status_desc"]); ?>"><?php echo html_esc($rst_sta7["status_desc"]); ?></option>
+                 <option value="<?php echo html_esc($rst_sta13["status_desc"]); ?>"><?php echo html_esc($rst_sta13["status_desc"]); ?></option>
                <?php } ?>
                  </select>    
                 </th>

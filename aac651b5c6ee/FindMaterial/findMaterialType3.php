@@ -19,7 +19,7 @@ $result9 = mysql_query($query9);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,14 +43,14 @@ $result9 = mysql_query($query9);
 </head>
 <body>
   <div id="sloc_div"> 
-     <select name="ploc" id="ploc" class="span5" onChange="getUOM(<?=$material_type?>,<?=$material_no?>,this.value)">
+     <select name="ploc" id="ploc" class="span5" onChange="getUOM(<?=html_esc($material_type)?>,<?=html_esc($material_no)?>,this.value)">
      <option value="NULL" placeholder="Select Storage Location "> -- Select Storage Location jjj --</option>
 	<?php
     while($row9=mysql_fetch_array($result9)) 
     {
           
     ?>
-    <option value="<?php echo $row9["ploc"]; ?>" > <?php echo $row9["ploc"]; ?> </option>
+    <option value="<?php echo html_esc($row9["ploc"]); ?>" > <?php echo html_esc($row9["ploc"]); ?> </option>
     
     <?php     }
     

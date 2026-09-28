@@ -131,8 +131,8 @@ $rst_sta31 = mysqli_fetch_array($sta_res31);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -257,12 +257,12 @@ div.dataTables_wrapper {
             </tr> 
              <tr>
                 <th>Delivery Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php  echo $_GET['date1']; ?>" /> 
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php  echo html_esc($_GET['date1']); ?>" /> 
                     <?php echo $message_psdt; ?> 
                     </td></tr>
                  <tr>
                 <th>Delivery Date to : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php  echo $_GET['date2']; ?>" />
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php  echo html_esc($_GET['date2']); ?>" />
                 <?php echo $message_psdtT; ?> 
                 </td>
               </tr>
@@ -280,7 +280,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                      <option value="<?php echo $row27["id_cust"]; ?>"  <?php if($row27["id_cust"]==$_GET["ship_to"]) echo "selected"; ?>> <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo $row27["cust_desc"]; ?></option>
+                      <option value="<?php echo html_esc($row27["id_cust"]); ?>"  <?php if($row27["id_cust"]==$_GET["ship_to"]) echo "selected"; ?>> <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo html_esc($row27["cust_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -303,7 +303,7 @@ div.dataTables_wrapper {
                 {
             ?>
                                    <!--RETAIN VALUE-->
-         <option value="<?php echo $row49["model_code"];  ?>" <?php if($row49["model_code"]==$_GET["model_code"]) echo "selected"; ?>> <?php echo $row49["model_code"]; ?> - <?php echo $row49["model_desc"]; ?></option>
+         <option value="<?php echo html_esc($row49["model_code"]);  ?>" <?php if($row49["model_code"]==$_GET["model_code"]) echo "selected"; ?>> <?php echo html_esc($row49["model_code"]); ?> - <?php echo html_esc($row49["model_desc"]); ?></option>
                                  
                 
                 <?php     }
@@ -329,7 +329,7 @@ div.dataTables_wrapper {
                 {
                 ?>
                                    <!--RETAIN VALUE-->
-          <option value="<?php echo $row39["material_no"];  ?>" <?php if($row39["material_no"]==$_GET["material_no"]) echo "selected"; ?>> <?php echo $row39["material_no"]; ?> - <?php echo $row39["material_desc"]; ?></option>
+          <option value="<?php echo html_esc($row39["material_no"]);  ?>" <?php if($row39["material_no"]==$_GET["material_no"]) echo "selected"; ?>> <?php echo html_esc($row39["material_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?></option>
                                
                 
                 <?php     }
@@ -507,11 +507,11 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	   
       ?>
                 <tr>
-                <td width="80"><?php echo $row["ship_point"]; ?></td>
-                <td width="150"><?php echo $row["ship_name"]; ?></td>
-                <td width="150"><?php echo $row["material_no"]; ?></td>
-                <td width="220"><?php echo $row["material_desc"]; ?></td> 
-                <td width="60"><?php echo $row_mat["mat_group"]; ?></td>
+                <td width="80"><?php echo html_esc($row["ship_point"]); ?></td>
+                <td width="150"><?php echo html_esc($row["ship_name"]); ?></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="220"><?php echo html_esc($row["material_desc"]); ?></td> 
+                <td width="60"><?php echo html_esc($row_mat["mat_group"]); ?></td>
                 <td width="100"><?php echo $total_qty; ?></td>
      
               

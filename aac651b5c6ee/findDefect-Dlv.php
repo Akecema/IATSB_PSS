@@ -25,7 +25,7 @@ if($request == 1){
        while($row_type = mysqli_fetch_array($result_type)) 
        {   
        ?>
-      <option value="<?php echo $row_type["id_type"]; ?>">  <?php echo $row_type["type_desc"]; ?></option>
+      <option value="<?php echo html_esc($row_type["id_type"]); ?>">  <?php echo html_esc($row_type["type_desc"]); ?></option>
       <?php 
        }
       ?>
@@ -55,7 +55,7 @@ if($request == 2){
 	while($row_fcatX = mysqli_fetch_assoc($rs_IndcX))
 	{ 
 	?>
-	<option value="<?php echo $row_fcatX['id_defect']; ?>"><?php echo $row_fcatX['defect_desc']; ?></option>
+	<option value="<?php echo html_esc($row_fcatX['id_defect']); ?>"><?php echo html_esc($row_fcatX['defect_desc']); ?></option>
 	<?php
 	}
 	?>

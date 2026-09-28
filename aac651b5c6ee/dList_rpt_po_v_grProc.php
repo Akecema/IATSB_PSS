@@ -102,8 +102,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -246,7 +246,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -269,7 +269,7 @@ th {
 				  
         
               ?>
-                      <option value="<?php echo $data_ath_vend["vendor_code"]; ?>" <?php if($data_ath_vend["vendor_code"] == $_GET["vendor_no"]) echo "selected"; ?> > <?php echo stripslashes($data_ath_vend["vendor_code"]); ?> - <?php echo $data_ath_vend["vendor_name"]; ?></option>
+                      <option value="<?php echo html_esc($data_ath_vend["vendor_code"]); ?>" <?php if($data_ath_vend["vendor_code"] == $_GET["vendor_no"]) echo "selected"; ?> > <?php echo stripslashes($data_ath_vend["vendor_code"]); ?> - <?php echo html_esc($data_ath_vend["vendor_name"]); ?></option>
                       <?php
            }  ?>    
 				  
@@ -284,7 +284,7 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                  <tr>
@@ -294,7 +294,7 @@ th {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -381,7 +381,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
             <tr>
                 <td width="1%">&nbsp;</td> 
                 <td width="85%">&nbsp;</td> 
-                  <td width="7%"><a href="rpt_dList_rpt_po_v_gr_download.php?plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&vendor_no=<?php echo $vendor_no; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+                  <td width="7%"><a href="rpt_dList_rpt_po_v_gr_download.php?plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&vendor_no=<?php echo html_esc($vendor_no); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
                  <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
                
               </tr>
@@ -501,15 +501,15 @@ if($row["ord_uom"] == 'PCS')
 
                 <tr>
                 <td width="30"><?php echo $no4; ?></td> 
-                <td width="150"><?php echo $row["vendor_id"]; ?></td>
-                <td width="150"><?php echo $row["purc_ord_no"]; ?></td>
-                <td width="150"><?php echo $row["material_no"]; ?></td>
-                <td width="300"><?php echo $row["material_desc"]; ?></td>
-                <td width="150"><?php echo $row["model_gr"]; ?></td>
+                <td width="150"><?php echo html_esc($row["vendor_id"]); ?></td>
+                <td width="150"><?php echo html_esc($row["purc_ord_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="300"><?php echo html_esc($row["material_desc"]); ?></td>
+                <td width="150"><?php echo html_esc($row["model_gr"]); ?></td>
                 <td width="150"><span class="badge badge-pill badge-primary"><?php echo $PO_baru; ?></span></td>
                 <td width="150"><?php if($GR_baru < 0) { ?><span class="badge badge-pill badge-warning"><?php echo $GR_baru; ?></span><?php }else{ ?><span class="badge badge-pill badge-info"> <?php echo $GR_baru; ?></span> <?php } ?> </td>
                 <td width="150"><?php if($Grd_baru < 0) { ?><span class="badge badge-pill badge-danger"><?php echo $Grd_baru; ?></span><?php }else{ ?><span class="badge badge-pill badge-success"> <?php echo $Grd_baru; ?></span> <?php } ?></td>
-                <td width="150"><?php echo $row["ord_uom"]; ?></td>              
+                <td width="150"><?php echo html_esc($row["ord_uom"]); ?></td>              
                 </tr>
     
         <?php

@@ -121,8 +121,8 @@ $row_vend = mysqli_fetch_array($result_vend);
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+<meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -232,8 +232,8 @@ $row_vend = mysqli_fetch_array($result_vend);
         <div class="tile-body">
               <div class="table-responsive">
  
-           <!-- <form name="frm-example" id="frm-example" method="post" action="ist-new0.php?purc_ord_no=<?php echo $purc_ord_no; ?>">-->
-            <form  method="post" action="ppc_receiv-gd-rect-ist-newist-new0.php?purc_ord_no=<?php echo $purc_ord_no; ?>&&matDoc=<?php echo $matDoc; ?>">
+           <!-- <form name="frm-example" id="frm-example" method="post" action="ist-new0.php?purc_ord_no=<?php echo html_esc($purc_ord_no); ?>">-->
+            <form  method="post" action="ppc_receiv-gd-rect-ist-newist-new0.php?purc_ord_no=<?php echo html_esc($purc_ord_no); ?>&&matDoc=<?php echo html_esc($matDoc); ?>">
 
              
             <table class="table table-bordered">
@@ -243,17 +243,17 @@ $row_vend = mysqli_fetch_array($result_vend);
             </tr>
             <tr>
                 <th>Vendor :</th>
-                <th colspan="2"><input class="form-control" id="vendor_id" type="text" name="vendor_id" readonly value="<?php echo $row_vend["vendor_id"]. ' - ' .$row5a["vendor_name"]; ?>"/></th>
+                <th colspan="2"><input class="form-control" id="vendor_id" type="text" name="vendor_id" readonly value="<?php echo html_esc($row_vend["vendor_id"]). ' - ' .html_esc($row5a["vendor_name"]); ?>"/></th>
             </tr>
             <tr>
                 <th>Delivery Order No. : <font color="#FF0000">*</font></th>
                 <td colspan="2">
-                <input class="form-control" id="dlv_ord_no" type="text" placeholder="Enter Delivery Order No." name="dlv_ord_no"  value="<?php if(isset($_POST["dlv_ord_no"])) { echo $_POST["dlv_ord_no"]; } ?>"/> 
+                <input class="form-control" id="dlv_ord_no" type="text" placeholder="Enter Delivery Order No." name="dlv_ord_no"  value="<?php if(isset($_POST["dlv_ord_no"])) { echo html_esc($_POST["dlv_ord_no"]); } ?>"/> 
             	</td>
             </tr>
             <tr>
             	<th>Posting Date : </th>
-            	<td colspan="2"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="PSSDate" value="<?php if(isset($_POST['PSSDate'])){ echo $_POST['PSSDate']; }else{ echo $fmt_curr_date; } ?>"></td>
+            	<td colspan="2"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="PSSDate" value="<?php if(isset($_POST['PSSDate'])){ echo html_esc($_POST['PSSDate']); }else{ echo $fmt_curr_date; } ?>"></td>
             </tr>
             <tr>
             <th>Shift :</th>
@@ -316,15 +316,15 @@ $row_vend = mysqli_fetch_array($result_vend);
                  
                     <tr>
                     <td width="50"><?php echo $counter; ?>.<?php //echo $row["id_gr"]; ?>
-                    <input type="checkbox" id="checkbox" name="e_grid[]" value="<?php echo $row["id"]; ?>" style="display:none" checked></td>
-                    <td width="150"><?php echo $row_info["material_no"]; ?></td>
-                    <td width="350"><?php echo $row_info["material_desc"]; ?></td>
+                    <input type="checkbox" id="checkbox" name="e_grid[]" value="<?php echo html_esc($row["id"]); ?>" style="display:none" checked></td>
+                    <td width="150"><?php echo html_esc($row_info["material_no"]); ?></td>
+                    <td width="350"><?php echo html_esc($row_info["material_desc"]); ?></td>
                     <td width="100"><?php echo (intval($row_info["po_qty"])); ?></td>
                     <td width="100"><?php echo $tot_gr_qty; ?></td>
                     <td width="200"><input name="gr_qty[]" id="gr_qty"  type="number" class="form-control form-control-sm"></td>
-                    <td width="100"><?php echo $row_info["ord_uom"]; ?></td>
-                    <td width="200"><input name="sloc_gr[]" type="text" value="<?php echo $row_info["sloc"]; ?>" id="sloc_gr" class="form-control form-control-sm"></td>
-                    <td width="200"><input name="std_package[]" type="text" value="<?php echo $row["std_package"]; ?>" id="std_package" class="form-control form-control-sm"></td>
+                    <td width="100"><?php echo html_esc($row_info["ord_uom"]); ?></td>
+                    <td width="200"><input name="sloc_gr[]" type="text" value="<?php echo html_esc($row_info["sloc"]); ?>" id="sloc_gr" class="form-control form-control-sm"></td>
+                    <td width="200"><input name="std_package[]" type="text" value="<?php echo html_esc($row["std_package"]); ?>" id="std_package" class="form-control form-control-sm"></td>
                   </tr>
 					<?php 
 						$no4++;
@@ -344,7 +344,7 @@ $row_vend = mysqli_fetch_array($result_vend);
           </div>
         </div>
         <div class="tile-footer">
-            <a href="ppc_receiv-gd-rect-ist3.php?purc_ord_no=<?php echo $purc_ord_no; ?>" type="button" class="btn btn-warning btn-sm">BACK </a>
+            <a href="ppc_receiv-gd-rect-ist3.php?purc_ord_no=<?php echo html_esc($purc_ord_no); ?>" type="button" class="btn btn-warning btn-sm">BACK </a>
             <button class="btn btn-primary btn-sm" name="submitgr" onClick="return addGr()">SUBMIT</button>
         </div>
         </form>

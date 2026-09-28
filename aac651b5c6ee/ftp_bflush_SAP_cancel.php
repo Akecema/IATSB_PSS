@@ -113,7 +113,7 @@ file_put_contents($file,$data);
 		echo "<script>";
 		echo "alert('FTP Transferred to SAP.');";
 	//	echo "parent.tb_remove(); parent.location.reload(1)";
-		echo "window.location='cancellation_list_backflush_tran2.php?date1=$dateF&&date2=$dateT&&factory=$factory&&work_center=$work_center&&plan_no=$plan_no&&shift_ops=$shift_ops'";
+		echo "window.location='cancellation_list_backflush_tran2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&factory=".html_esc($factory)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&shift_ops=".html_esc($shift_ops)."'";
 		echo "</script>";
 		exit(); //quit the script
 		

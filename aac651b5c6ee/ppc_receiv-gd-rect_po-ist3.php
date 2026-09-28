@@ -144,8 +144,8 @@ $purc_ord_no = $_GET["purc_ord_no"];
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+<meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -306,7 +306,7 @@ $query_tag3 = "INSERT INTO po_detail_trans_gr(id,id_scan,id_DI,id_gen,scan_doc,d
 	}
 
 	echo "<script>";
-	echo "window.location='ppc_receiv-gd-rect-ist-new_po.php?purc_ord_no=$purc_ord_no&&matDoc=$ref3'"; 
+	echo "window.location='ppc_receiv-gd-rect-ist-new_po.php?purc_ord_no=".html_esc($purc_ord_no)."&&matDoc=$ref3'"; 
 	echo "</script>";
 	exit(); //quit the script
 	
@@ -317,7 +317,7 @@ $query_tag3 = "INSERT INTO po_detail_trans_gr(id,id_scan,id_DI,id_gen,scan_doc,d
 	    
     echo '<script type="text/javascript">';
 	echo "alert('Error! Transaction failed. Please select item.');";
-	echo "window.location='ppc_receiv-gd-rect_po-ist3.php?purc_ord_no=$purc_ord_no';"; 
+	echo "window.location='ppc_receiv-gd-rect_po-ist3.php?purc_ord_no=".html_esc($purc_ord_no)."';"; 
 	echo "</script>";
 	exit(); //quit the script
  	 
@@ -410,10 +410,10 @@ $query_tag3 = "INSERT INTO po_detail_trans_gr(id,id_scan,id_DI,id_gen,scan_doc,d
 				  ?> 
                   <tr>
                     <td width="5%" align="center">
-                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id_gr"]; ?>" class="form-check"><?php //echo $row["id_gr"]; ?></td>
-                    <td><?php echo $row["material_no"]; ?></td>
-                    <td><?php echo $row["material_desc"]; ?> &nbsp;&nbsp;<?php if(($tot_gr_qty) > $row_info["po_qty"]) { ?><div class="form-control-feedback" ><?php echo $msg; ?></div><?php } ?></td>
-					<td><?php echo $row_siz["size_dim"]; ?></td>
+                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id_gr"]); ?>" class="form-check"><?php //echo $row["id_gr"]; ?></td>
+                    <td><?php echo html_esc($row["material_no"]); ?></td>
+                    <td><?php echo html_esc($row["material_desc"]); ?> &nbsp;&nbsp;<?php if(($tot_gr_qty) > $row_info["po_qty"]) { ?><div class="form-control-feedback" ><?php echo $msg; ?></div><?php } ?></td>
+					<td><?php echo html_esc($row_siz["size_dim"]); ?></td>
 				</tr>
 
                   <?php 

@@ -149,7 +149,7 @@ exit();
       
       <img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name"><?php echo $res['user_fullname']; ?></p>
+          <p class="app-sidebar__user-name"><?php echo html_esc($res['user_fullname']); ?></p>
          <!-- <p class="app-sidebar__user-designation">Frontend Developer</p>-->
       <!--  </div>
       </div>

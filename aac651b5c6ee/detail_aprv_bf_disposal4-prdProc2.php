@@ -132,8 +132,8 @@ $rst_sta29 = mysqli_fetch_array($sta_res29);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -335,7 +335,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -354,7 +354,7 @@ div.dataTables_wrapper {
               while($row37 = mysqli_fetch_array($result37)) {
         
               ?>
-         <option value="<?php echo $row37["doc_dis"]; ?>" <?php if($row37["doc_dis"] == $_GET["doc_dis"]) echo "selected"; ?>> <?php echo stripslashes($row37["doc_dis"]); ?></option>
+         <option value="<?php echo html_esc($row37["doc_dis"]); ?>" <?php if($row37["doc_dis"] == $_GET["doc_dis"]) echo "selected"; ?>> <?php echo stripslashes($row37["doc_dis"]); ?></option>
           <?php
            }  ?>
                             
@@ -365,8 +365,8 @@ div.dataTables_wrapper {
                <tr>
                 <th>
                 <input name="Submit25" type="submit" class="btn btn-info" id="button" value="SEARCH" />
-                <input name="date1" type="hidden" value="<?php echo $_GET['date1']; ?> ">
-                <input name="date2" type="hidden" value="<?php echo $_GET['date2']; ?> ">
+                <input name="date1" type="hidden" value="<?php echo html_esc($_GET['date1']); ?> ">
+                <input name="date2" type="hidden" value="<?php echo html_esc($_GET['date2']); ?> ">
                 <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">
                  <input name="doc_dis" type="hidden" value="<?php echo $doc_dis; ?>">
                 </th>
@@ -595,16 +595,16 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30">  
-                <div align="center"><?php echo $no4; ?><br><input type="checkbox" name="cancel[]" value="<?php echo $row["doc_dis"]; ?>" <?=was_checked($row["doc_dis"],$a) ?> /><input type="hidden" name="Check_ctr" value="yes" 
+                <div align="center"><?php echo $no4; ?><br><input type="checkbox" name="cancel[]" value="<?php echo html_esc($row["doc_dis"]); ?>" <?=was_checked($row["doc_dis"],$a) ?> /><input type="hidden" name="Check_ctr" value="yes" 
 onClick="Check(document.myform.cancel)">
-                  <input type="hidden" name="gid[<?php echo $row["id"]; ?>]" value="<?php echo $row["id"]; ?>" />
-                  <input name="id_item[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["doc_dis"]; ?>"></div></td>  
+                  <input type="hidden" name="gid[<?php echo html_esc($row["id"]); ?>]" value="<?php echo html_esc($row["id"]); ?>" />
+                  <input name="id_item[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>"></div></td>  
                  <td width="80"><?php echo $plant_new; ?></td>
-                <td width="150"><?php echo $row["doc_dis"]; ?></td> 
-                <td width="80"><?php echo $row["ploc_prod_reject"]; ?></td>
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["ploc_prod_reject"]); ?></td>
                 <td width="80"><?php echo $status_new; ?></td> 
                 <td width="100">
-                 <a href="#myNoteApprv<?php echo $row["doc_dis"]; ?>" data-toggle="modal"  target="_parent"><i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Approval</a> 
+                 <a href="#myNoteApprv<?php echo html_esc($row["doc_dis"]); ?>" data-toggle="modal"  target="_parent"><i class="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Approval</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_apprv_dis-HCooPRDC.php";   ?>

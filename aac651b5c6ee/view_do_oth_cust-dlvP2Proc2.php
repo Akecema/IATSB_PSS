@@ -81,8 +81,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -162,7 +162,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
              <tr>
                 <th>DI/PDIO Number : </th>
                 <th colspan="2">
-           <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php echo $_GET['material_doc_gen']; ?>" /> 
+           <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php echo html_esc($_GET['material_doc_gen']); ?>" /> 
             <!-- <div id="result"></div>-->
                </th>
               </tr>
@@ -179,7 +179,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
               while($row17 = mysqli_fetch_array($result17)) {
         
               ?>
-         <option value="<?php echo $row17["id_cust"]; ?>" <?php if($row17["id_cust"] == $_GET["ship_point"]) echo "selected"; ?> ><?php echo $row17["id_cust"]; ?> - <?php echo stripslashes($row17["cust_desc"]); ?> </option>
+         <option value="<?php echo html_esc($row17["id_cust"]); ?>" <?php if($row17["id_cust"] == $_GET["ship_point"]) echo "selected"; ?> ><?php echo html_esc($row17["id_cust"]); ?> - <?php echo stripslashes($row17["cust_desc"]); ?> </option>
           <?php
            }  ?>
                             
@@ -193,13 +193,13 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
                 <th>Delivery Date from :  </th>
                 <td colspan="3"> 
 			
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >                  
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >                  
                     </td></tr>
                 <tr>
                 <th>Delivery Date to :  </th>
                 <td colspan="3">
 			
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
                 <th><input name="submitCT" type="submit" class="btn btn-info" id="button" value="SEARCH" /></th>
@@ -276,7 +276,7 @@ $where_sql =  $wheresql_01 .$wheresql_02 .$wheresql_03 .$wheresql_04;
            ?>
            
            
-             <form name="myform" method="post" action="view_do_oth_cust-dlvP2Proc2.php?material_doc_gen=<?php echo $material_doc_gen; ?>&&ship_point=<?php echo $ship_point; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>">
+             <form name="myform" method="post" action="view_do_oth_cust-dlvP2Proc2.php?material_doc_gen=<?php echo html_esc($material_doc_gen); ?>&&ship_point=<?php echo html_esc($ship_point); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>">
                
                   <table class="table table-hover table-bordered" id="example">
                   <thead>
@@ -368,30 +368,30 @@ $where_sql =  $wheresql_01 .$wheresql_02 .$wheresql_03 .$wheresql_04;
                 if($row["status_DO"] == $rst_sta3["status_desc"])
 	        {    
 	        ?>  
-                  <a href="#myNoteDisplayDOOC<?php echo $row["material_doc_gen"]; ?>" data-toggle="modal" target="_parent">
+                  <a href="#myNoteDisplayDOOC<?php echo html_esc($row["material_doc_gen"]); ?>" data-toggle="modal" target="_parent">
                  
                     <!--------------------------modal------------------------->
           <?php    include "view_do_per2_oth_cust-preview.php";   ?>
-                <?php echo $row["material_doc_gen"]; ?>
+                <?php echo html_esc($row["material_doc_gen"]); ?>
                </a>
                 <?php  }elseif($row["status_DO"] == $rst_sta4["status_desc"])
 	          {   ?>  
-             <a href="#myNoteDisplayDOOCcanC<?php echo $row["ref_material_doc"]; ?>" data-toggle="modal" target="_parent">
+             <a href="#myNoteDisplayDOOCcanC<?php echo html_esc($row["ref_material_doc"]); ?>" data-toggle="modal" target="_parent">
                  
                     <!--------------------------modal------------------------->
           <?php    include "view_docanC_per2_oth_cust-preview.php";   ?>
-                <?php echo $row["material_doc_gen"]; ?>
-               </a><br><font color="red"><?php echo $row["ref_material_doc"]; ?></font>
+                <?php echo html_esc($row["material_doc_gen"]); ?>
+               </a><br><font color="red"><?php echo html_esc($row["ref_material_doc"]); ?></font>
                 <?php  }   ?> 
                
                
                </td>
-                <td width="200"><?php echo $row_soi_info["cust_do_no"]; ?> </td>
-                <td width="150"><?php echo $row["R8"]; ?></td>
+                <td width="200"><?php echo html_esc($row_soi_info["cust_do_no"]); ?> </td>
+                <td width="150"><?php echo html_esc($row["R8"]); ?></td>
                 <td width="150"><?php echo $shift_ds; ?></td>
-                <td width="150"><?php echo $row["trip_no"]; ?></td>
-                <td width="150" height="28"><?php echo $row["R"]; ?></td>
-                <td width="150"><?php echo $row["ship_point"]; ?></td>
+                <td width="150"><?php echo html_esc($row["trip_no"]); ?></td>
+                <td width="150" height="28"><?php echo html_esc($row["R"]); ?></td>
+                <td width="150"><?php echo html_esc($row["ship_point"]); ?></td>
                 <td width="150"><?php echo $msg_sta; ?></td>
                </tr>
                
@@ -428,10 +428,10 @@ $where_sql =  $wheresql_01 .$wheresql_02 .$wheresql_03 .$wheresql_04;
     <td>&nbsp;   
 				
 			
-               <input name="material_doc_gen" type="hidden" value="<?php echo $material_doc_gen; ?>">  
-               <input name="ship_point" type="hidden" value="<?php echo $ship_point; ?>"> 
-               <input name="date1" type="hidden" value="<?php echo $dateF; ?>"> 
-               <input name="date2" type="hidden" value="<?php echo $dateT; ?>"> 
+               <input name="material_doc_gen" type="hidden" value="<?php echo html_esc($material_doc_gen); ?>">  
+               <input name="ship_point" type="hidden" value="<?php echo html_esc($ship_point); ?>"> 
+               <input name="date1" type="hidden" value="<?php echo html_esc($dateF); ?>"> 
+               <input name="date2" type="hidden" value="<?php echo html_esc($dateT); ?>"> 
           
               
             </td>

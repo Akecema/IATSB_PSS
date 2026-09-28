@@ -114,8 +114,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -243,18 +243,18 @@ div.dataTables_wrapper {
             <tr>
                 <th>Purchase Order : </th>
                 <th colspan="3">
-           <input class="form-control" id="purc_ord_no" type="text" placeholder="Enter PO Number" name="purc_ord_no" value="<?php echo $_GET['purc_ord_no'];  ?>" />    
+           <input class="form-control" id="purc_ord_no" type="text" placeholder="Enter PO Number" name="purc_ord_no" value="<?php echo html_esc($_GET['purc_ord_no']);  ?>" />    
           <!--<div class="form-control-feedback" ><?php //echo $message_do; ?></div>-->
                </th>
               </tr>
                 <tr>
                 <th>Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" /> 
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" /> 
                     </td></tr>
                 <tr>
                 <th>Date to : <font color="#FF0000">*</font></th>
                 
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" /></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" /></td>
              
               </tr>
               <tr>
@@ -270,7 +270,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                      <option value="<?php echo $row27["vendor_code"]; ?>" <?php if($row27["vendor_code"] == $_GET["vendor_id"]) echo "selected"; ?> > <?php echo stripslashes($row27["vendor_code"]); ?> - <?php echo $row27["vendor_name"]; ?></option>
+                      <option value="<?php echo html_esc($row27["vendor_code"]); ?>" <?php if($row27["vendor_code"] == $_GET["vendor_id"]) echo "selected"; ?> > <?php echo stripslashes($row27["vendor_code"]); ?> - <?php echo html_esc($row27["vendor_name"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -290,7 +290,7 @@ div.dataTables_wrapper {
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["material_no"]; ?>" <?php if($row57["material_no"] == $_GET["cust_mat_no"]) echo "selected"; ?> > <?php echo stripslashes($row57["material_no"]); ?> - <?php echo $row57["material_desc"]; ?></option>
+         <option value="<?php echo html_esc($row57["material_no"]); ?>" <?php if($row57["material_no"] == $_GET["cust_mat_no"]) echo "selected"; ?> > <?php echo stripslashes($row57["material_no"]); ?> - <?php echo html_esc($row57["material_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -389,7 +389,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
     <tr>
     <td width="1%">&nbsp;</td> 
     <td width="85%">&nbsp;</td> 
-    <td width="7%"><a href="rpt_dList_po_rec_download.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&purc_ord_no=<?php echo $purc_ord_no; ?>&&material_no=<?php echo $material_no; ?>&&vendor_id=<?php echo $vendor_id; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+    <td width="7%"><a href="rpt_dList_po_rec_download.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&purc_ord_no=<?php echo html_esc($purc_ord_no); ?>&&material_no=<?php echo html_esc($material_no); ?>&&vendor_id=<?php echo html_esc($vendor_id); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
     <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
     </tr>
     </table> 
@@ -420,14 +420,14 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="100"><?php echo $row["purc_ord_no"]; ?></td>
-                <td width="80"><?php echo $row["item_no"]; ?></td>
-                <td width="100"><?php echo $row["material_no"]; ?></td>
-                <td width="100"><?php echo $row["vendor_id"]; ?></td>
+                <td width="100"><?php echo html_esc($row["purc_ord_no"]); ?></td>
+                <td width="80"><?php echo html_esc($row["item_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["vendor_id"]); ?></td>
                  <td width="100"><?php echo (intval($row["po_qty"])); ?></td>  
-                <td width="100"><?php echo $row["R"]; ?></td> 
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
               <!--  <td width="100">
-                 <a href="#myNoteDisplayDO<?php echo $row["id"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplayDO<?php echo html_esc($row["id"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php  //  include "display_soi_all_dlv.php";   ?>

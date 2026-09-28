@@ -96,8 +96,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-     <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+     <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -298,14 +298,14 @@ th {
    {
 		
       ?>        <tr class="item">
-                <td><div align="center"><?php  echo $row2["so_no"]; ?></div></td>
-                <td>&nbsp;<?php  echo $row2["ship_to"]; ?></td>
-                <td><div align="center"><?php echo $row2["ship_desc"]; ?></div></td>
-                <td><?php  echo $row2["plant_code"]; ?></td>
-                <td><div align="center"><?php echo $row2["CT"]; ?></div></td>
+                <td><div align="center"><?php  echo html_esc($row2["so_no"]); ?></div></td>
+                <td>&nbsp;<?php  echo html_esc($row2["ship_to"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["ship_desc"]); ?></div></td>
+                <td><?php  echo html_esc($row2["plant_code"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["CT"]); ?></div></td>
              
                 <td> 
-                 <a href="#myNoteWork<?php echo $row2["id_so"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
+                 <a href="#myNoteWork<?php echo html_esc($row2["id_so"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "close_sales_view.php";   ?></td>

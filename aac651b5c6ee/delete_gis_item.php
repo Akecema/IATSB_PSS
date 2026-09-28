@@ -23,7 +23,7 @@ include '../include/config.php';
 	
 			 
 			 echo "<script>";
-			 echo "window.location='detail_GR_GI-receive.php?scan_doc=$scan_doc&&plant_code=$plant_code&&date1=$dateF&&shift_ops=$shift_ops&&work_center=$work_center&&material_no=$material_no'";
+			 echo "window.location='detail_GR_GI-receive.php?scan_doc=".html_esc($scan_doc)."&&plant_code=".html_esc($plant_code)."&&date1=".html_esc($dateF)."&&shift_ops=".html_esc($shift_ops)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

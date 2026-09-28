@@ -27,9 +27,9 @@ $result68 =mysqli_query($dbc,$query68);
 			      {
 					  if($_POST['Submit19'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row68["id"]; ?>" <?php if($row68["id"]==$_POST["mat_type"]) echo "selected"; ?>> <?php echo stripslashes($row68["mtype_name"]); ?></option>
+                       <option value="<?php echo html_esc($row68["id"]); ?>" <?php if($row68["id"]==$_POST["mat_type"]) echo "selected"; ?>> <?php echo stripslashes($row68["mtype_name"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row68["id"]; ?>" > <?php echo stripslashes($row68["mtype_name"]); ?></option>
+                       <option value="<?php echo html_esc($row68["id"]); ?>" > <?php echo stripslashes($row68["mtype_name"]); ?></option>
                        <?php } ?>
 	
               <?php    }

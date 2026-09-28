@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <html lang="en">
   <head>
     <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -270,7 +270,7 @@ chk[i].checked = false ;
 				  
         
               ?>
-                      <option value="<?php echo $data_ath_vend["vendor_id"]; ?>" > <?php echo stripslashes($data_ath_vend["vendor_id"]); ?> - <?php echo $row27["vendor_name"]; ?></option>
+                      <option value="<?php echo html_esc($data_ath_vend["vendor_id"]); ?>" > <?php echo stripslashes($data_ath_vend["vendor_id"]); ?> - <?php echo html_esc($row27["vendor_name"]); ?></option>
                       <?php
            }  ?>
                     </select><div class="form-control-feedback" ><?php echo $message_vcode; ?></div>
@@ -278,11 +278,11 @@ chk[i].checked = false ;
              </tr>
              <tr>
                 <th>Delivery Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                     </td></tr>
                <tr>
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /></td>
               </tr>
              
               <tr>

@@ -17,7 +17,7 @@ $row39T = mysqli_fetch_array($result39T);
 <div id="mat_div"> 
  <!-- Back No. : <?php  //echo $row39T["back_no"];   ?><br />
   Part Name : <?php  //echo $row39T["material_desc"];   ?><br />       --> 
-            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php  echo $row39T["back_no"];   ?>" />  
+            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php  echo html_esc($row39T["back_no"]);   ?>" />  
 
 </div>
    

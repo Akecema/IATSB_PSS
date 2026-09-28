@@ -26,8 +26,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -214,17 +214,17 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
       <tr>
         <th width="47%"><div align="left"><span class="style3">Production Plant</span></div></th>
         <th width="4%"><span class="style3">:</span></th>
-        <th width="49%"><span class="style3"> <?php echo $db_rs["comp_code"]; ?></span></th>
+        <th width="49%"><span class="style3"> <?php echo html_esc($db_rs["comp_code"]); ?></span></th>
       </tr>
       <tr>
         <th><div align="left"><span class="style3">Plant</span></div></th>
         <th><span class="style3">:</span></th>
-        <th><span class="style3"> <?php echo $db_rs["plant_code"]; ?></span></th>
+        <th><span class="style3"> <?php echo html_esc($db_rs["plant_code"]); ?></span></th>
       </tr>
       <tr>
         <th><div align="left"><span class="style3">Production Line</span></div></th>
         <th><span class="style3">:</span></th>
-        <th> <?php echo $db_rs["work_center"]; ?></th>
+        <th> <?php echo html_esc($db_rs["work_center"]); ?></th>
       </tr>
     </table></td>
     <td>&nbsp;</td>
@@ -233,18 +233,18 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
         <th width="125" height="28"><div align="left"><span class="style3">Month/Year</span></div></th>
         <th width="10" height="28"><span class="style3">:</span></th>
         <th width="177" height="28"><span class="style3">
-          <?php echo $db_rs["month_plan"]; ?>/ <?php echo $db_rs["year_plan"]; ?>
+          <?php echo html_esc($db_rs["month_plan"]); ?>/ <?php echo html_esc($db_rs["year_plan"]); ?>
         </span></th>
       </tr>
       <tr>
         <th width="125" height="28"><div align="left"><span class="style3"> Date</span></div></th>
         <th height="28"><span class="style3">:</span></th>
-        <th height="28"><span class="style3"><?php echo $db_rs["K"]; ?></span></th>
+        <th height="28"><span class="style3"><?php echo html_esc($db_rs["K"]); ?></span></th>
       </tr>
       <tr>
         <th height="28"><div align="left"><span class="style3">Filename</span></div></th>
         <th height="28"><span class="style3">:</span></th>
-        <th height="28"><span class="style3"><?php echo $data_ftp_pps["file_name"]; ?></span></th>
+        <th height="28"><span class="style3"><?php echo html_esc($data_ftp_pps["file_name"]); ?></span></th>
       </tr>
     </table></td>
     </tr>
@@ -315,15 +315,15 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
 		 ?>
    
           <td width="60" height="28"><?php  echo $no; ?></td>
-          <td width="60" height="28"><?php  echo $row["model_code"]; ?></td>
-          <td width="384"><b><?php  echo $row["material_no"]; ?></b><?php  echo $data_mat_h["material_desc"]; ?></td>
-          <td width="151" height="28"><div align="center"><?php echo $row["plan_no"]; ?></div></td>
-          <td width="93" height="28"><?php  echo $row["T"]; ?></td>
+          <td width="60" height="28"><?php  echo html_esc($row["model_code"]); ?></td>
+          <td width="384"><b><?php  echo html_esc($row["material_no"]); ?></b><?php  echo html_esc($data_mat_h["material_desc"]); ?></td>
+          <td width="151" height="28"><div align="center"><?php echo html_esc($row["plan_no"]); ?></div></td>
+          <td width="93" height="28"><?php  echo html_esc($row["T"]); ?></td>
           <td width="46" height="28"><div align="center"><font color="#FF0000"><?php echo $sta; ?></font></div></td>
-          <td width="46"><div align="center"><?php echo $row["seq_pps"]; ?></div></td>
+          <td width="46"><div align="center"><?php echo html_esc($row["seq_pps"]); ?></div></td>
           <td width="69" height="28"><div align="center"><?php  echo intval($row["qty_plan"]); ?></div></td>
           <td width="55" height="28"><div align="center"><font color="#FF0000">
-            <?php  echo $data_mat_h["BUn"]; ?>
+            <?php  echo html_esc($data_mat_h["BUn"]); ?>
           </font></div></td>
           <td width="90" height="28"> <div align="left">
        <?php
@@ -344,7 +344,7 @@ $barcodeobj = new TCPDF2DBarcode($bar_text, 'QRcode');
 
 ?>
                   </div></td>
-          <td width="90" height="28"><?php  echo $row["status_pps"]; ?></td>
+          <td width="90" height="28"><?php  echo html_esc($row["status_pps"]); ?></td>
           <td width="130">&nbsp;</td>
           </tr>
         <?php 
@@ -370,8 +370,8 @@ $barcodeobj = new TCPDF2DBarcode($bar_text, 'QRcode');
  ?>
 </div>
 
-    <form name="form1" action="printing_pps_sheet_release.php?upload_id=<?php echo $upload_id; ?>" method="post" class="form-horizontal">
-<input type="hidden" name="upload_id" value="<?php echo $upload_id; ?>">
+    <form name="form1" action="printing_pps_sheet_release.php?upload_id=<?php echo html_esc($upload_id); ?>" method="post" class="form-horizontal">
+<input type="hidden" name="upload_id" value="<?php echo html_esc($upload_id); ?>">
 
 <input name="submit_rel" type="submit" id="submit" value="PRINT" class="btn btn-primary btn-sm" >
 
@@ -399,7 +399,7 @@ $barcodeobj = new TCPDF2DBarcode($bar_text, 'QRcode');
 	
     echo '<script type="text/javascript">';
 	//echo 'window.print();';
-	echo "window.open('detail_pps_sheet_print_by_id.php?upload_id=$upload_id', '_blank');";
+	echo "window.open('detail_pps_sheet_print_by_id.php?upload_id=".html_esc($upload_id)."', '_blank');";
 	echo "opener.location.href = 'upload_pps_month.php';"; 
 	echo "window.close()";
 	echo "</script>";

@@ -46,8 +46,8 @@ if(isset($_GET["txtKeyword"]))
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -239,29 +239,29 @@ if(isset($_GET["txtKeyword"]))
 
                     <tr>
                       <td><?php echo $no_idx; ?>.</td>
-                      <td><?php echo $row["user_fullname"]; ?></td>
-                      <td><?php echo $row["staff_ID"]; ?></td>
+                      <td><?php echo html_esc($row["user_fullname"]); ?></td>
+                      <td><?php echo html_esc($row["staff_ID"]); ?></td>
                       <td><?php echo $sts; ?></td>
                       <td> 
-                        <a href="#myNoteUser<?php echo $user_no; ?><?php echo $row["staff_ID"]; ?>" data-toggle="modal" class="btn btn-success btn-sm"  target="_parent" title="View details"><i class="fa fa-bars" aria-hidden="true"></i>View</a>
+                        <a href="#myNoteUser<?php echo html_esc($user_no); ?><?php echo html_esc($row["staff_ID"]); ?>" data-toggle="modal" class="btn btn-success btn-sm"  target="_parent" title="View details"><i class="fa fa-bars" aria-hidden="true"></i>View</a>
                         
                         <!--------------------------modal------------------------->
                         <?php include "detail_user.php";   ?>
 
-                        <a href="javascript:;" onclick="window.location.href='edit_user_detail.php?usrNo=<?php echo $user_no;?>&&usrId=<?php echo $row['staff_ID'];?>';" class="btn btn-warning btn-sm" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+                        <a href="javascript:;" onclick="window.location.href='edit_user_detail.php?usrNo=<?php echo html_esc($user_no);?>&&usrId=<?php echo html_esc($row['staff_ID']);?>';" class="btn btn-warning btn-sm" title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
 
                         <?php
                         if($row["status_failed"] == "Y")
                         {
                         ?>
-                          <a href="#myNoteLock<?php echo $user_no; ?><?php echo $row["staff_ID"]; ?>" data-toggle="modal"  class="btn btn-success btn-sm" target="_parent" title="Unlock User"><i class="fa fa-lock" aria-hidden="true"></i>Unlock</a>
+                          <a href="#myNoteLock<?php echo html_esc($user_no); ?><?php echo html_esc($row["staff_ID"]); ?>" data-toggle="modal"  class="btn btn-success btn-sm" target="_parent" title="Unlock User"><i class="fa fa-lock" aria-hidden="true"></i>Unlock</a>
                                 
                           <!--------------------------modal------------------------->
                           <?php   include "unlock_pass_account.php";  
                       
                         }else{ 
                         ?>       
-                          <a href="#myNoteLockZA<?php echo $user_no; ?><?php echo $row["staff_ID"]; ?>" data-toggle="modal"  class="btn btn-dark btn-sm" target="_parent" title="Lock User"><i class="fa fa-unlock" aria-hidden="true"></i>Lock</a>
+                          <a href="#myNoteLockZA<?php echo html_esc($user_no); ?><?php echo html_esc($row["staff_ID"]); ?>" data-toggle="modal"  class="btn btn-dark btn-sm" target="_parent" title="Lock User"><i class="fa fa-unlock" aria-hidden="true"></i>Lock</a>
                                 
                           <!--------------------------modal------------------------->
                           <?php    include "lock_pass_account.php";   

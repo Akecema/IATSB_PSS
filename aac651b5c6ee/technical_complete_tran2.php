@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,11 +307,11 @@ chk[i].checked = false ;
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" ><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>		     </td>
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" ><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>		     </td>
             </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>"><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>"><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
            </tr>
             <tr>
                 <th>Process :</th>
@@ -337,7 +337,7 @@ chk[i].checked = false ;
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["material_no"]; ?>" <?php if($row5["material_no"] == $_GET["material_no"]) echo "selected"; ?>>(<?php echo $row5["back_no"]; ?>)&nbsp;<?php echo $row5["material_no"]; ?> -  <?php echo $row5["material_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row5["material_no"]); ?>" <?php if($row5["material_no"] == $_GET["material_no"]) echo "selected"; ?>>(<?php echo html_esc($row5["back_no"]); ?>)&nbsp;<?php echo html_esc($row5["material_no"]); ?> -  <?php echo html_esc($row5["material_desc"]); ?></option>
                   <?php
                   }
 				?> 
@@ -463,7 +463,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	         echo '<div align="center">There are currently  '. $num_rows.' record(s).</div>';
 			 
 ?>
-  <form name="myform" method="post" action="technical_complete_tran2.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>">
+  <form name="myform" method="post" action="technical_complete_tran2.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>">
  
                 <table class="table table-hover table-bordered" id="example">
                 <thead>
@@ -589,22 +589,22 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
                 <tr>
                 <td width="30">
              <div align="center">
-          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row_final["id"]; ?>" class="form-check">       
+          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row_final["id"]); ?>" class="form-check">       
                  <?php //echo $no; ?></div></td>
-                <td width="48"><?php echo $row_final["back_no"]; ?></td>
-                <td width="48"><?php echo $row_final["material_no"]; ?></td>
+                <td width="48"><?php echo html_esc($row_final["back_no"]); ?></td>
+                <td width="48"><?php echo html_esc($row_final["material_no"]); ?></td>
                 <td width="120">
                 
-     <a href="#myNoteView<?php echo $row_final["id"]; ?>" data-toggle="modal"  target="_parent" ><b><?php echo $row_final["plan_no"]; ?></b> <?php include "detail_pps_sheet_close_view.php";   ?></a>             
+     <a href="#myNoteView<?php echo html_esc($row_final["id"]); ?>" data-toggle="modal"  target="_parent" ><b><?php echo html_esc($row_final["plan_no"]); ?></b> <?php include "detail_pps_sheet_close_view.php";   ?></a>             
                 
                 
                 </td>
-                <td width="80"><?php echo $row_final["R"]; ?></td>
+                <td width="80"><?php echo html_esc($row_final["R"]); ?></td>
                 <td width="40"><?php echo $sta; ?></td> 
                 <td width="90"><?php echo $msg_sta; ?></td>
-                <td width="100" contenteditable="true" onBlur="saveToDatabase(this,'remark_closed','<?php echo $row_final["id"]; ?>')" onClick="showEdit(this);"><?php echo $row_final["remark_closed"];  ?></td>
-               <!-- <td><textarea name="remark_closed[<?php echo $row_final["id"]; ?>]" id="textarea" rows="2" cols="10" maxlength="250" ><?php if (isset($_POST['remark_closed'][($row_final["id"])])) { echo $_POST['remark_closed'][($row_final["id"])]; } ?></textarea>-->
-               <input name="sid[]" type="hidden" value="<?php echo $row_final["id"]; ?>">
+                <td width="100" contenteditable="true" onBlur="saveToDatabase(this,'remark_closed','<?php echo html_esc($row_final["id"]); ?>')" onClick="showEdit(this);"><?php echo html_esc($row_final["remark_closed"]);  ?></td>
+               <!-- <td><textarea name="remark_closed[<?php echo html_esc($row_final["id"]); ?>]" id="textarea" rows="2" cols="10" maxlength="250" ><?php if (isset($_POST['remark_closed'][($row_final["id"])])) { echo html_esc($_POST['remark_closed'][($row_final["id"])]); } ?></textarea>-->
+               <input name="sid[]" type="hidden" value="<?php echo html_esc($row_final["id"]); ?>">
                </td>
                 </tr>
           
@@ -815,7 +815,7 @@ $('#example').DataTable();
 			
 			
 			$.ajax({
-			 url: "technical_complete_tran2Proc.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>",
+			 url: "technical_complete_tran2Proc.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid

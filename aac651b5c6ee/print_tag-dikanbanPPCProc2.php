@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -229,7 +229,7 @@ th {
               while($data_dikanban2 = mysqli_fetch_array($result_dikanban2)) {
 				  
               ?>
-                      <option value="<?php echo $data_dikanban2["DI_doc"]; ?>" <?php if($data_dikanban2["DI_doc"] == $_GET["DI_doc"]) echo "selected"; ?>> <?php echo $data_dikanban2["DI_doc"]; ?> </option>
+                      <option value="<?php echo html_esc($data_dikanban2["DI_doc"]); ?>" <?php if($data_dikanban2["DI_doc"] == $_GET["DI_doc"]) echo "selected"; ?>> <?php echo html_esc($data_dikanban2["DI_doc"]); ?> </option>
                       <?php
            }  ?>
                     </select>
@@ -260,7 +260,7 @@ th {
 
         
               ?>
-                  <option value="<?php echo $data_ath_vend2["vendor_id"]; ?>" <?php if($data_ath_vend2["vendor_id"] == $_GET["vendor_code"]) echo "selected"; ?>> <?php echo stripslashes($row27A["vendor_code"]); ?> - <?php echo $row27A["vendor_name"]; ?></option>
+                  <option value="<?php echo html_esc($data_ath_vend2["vendor_id"]); ?>" <?php if($data_ath_vend2["vendor_id"] == $_GET["vendor_code"]) echo "selected"; ?>> <?php echo stripslashes($row27A["vendor_code"]); ?> - <?php echo html_esc($row27A["vendor_name"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -274,7 +274,7 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                 <tr>
@@ -284,7 +284,7 @@ th {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -407,12 +407,12 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="150"><?php echo $row["DI_doc"]; ?></td>
-                <td width="150"><?php echo $row["po_no"]; ?></td>
-                <td width="150"><?php echo $row["do_no"]; ?></td>
-                <td width="250"><?php echo $row_vcode["vendor_name"]; ?></td>
-                <td width="100"><?php echo $row["model_cd"]; ?></td>
-                <td width="100"><?php echo $row["RP"]; ?></td>
+                <td width="150"><?php echo html_esc($row["DI_doc"]); ?></td>
+                <td width="150"><?php echo html_esc($row["po_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["do_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row_vcode["vendor_name"]); ?></td>
+                <td width="100"><?php echo html_esc($row["model_cd"]); ?></td>
+                <td width="100"><?php echo html_esc($row["RP"]); ?></td>
                 <td width="150">
           <a href="print_DI_display-delivery_order.php?buid=<?php echo base64_encode($row["DI_doc"]);  ?>&&buid2=<?php echo base64_encode($row["do_no"]);  ?>" target="_blank" class="btn btn-info btn-sm"><img src="../images/print_new.png" width="16" height="16" alt="Print DO">&nbsp;Print DO</a>          
        

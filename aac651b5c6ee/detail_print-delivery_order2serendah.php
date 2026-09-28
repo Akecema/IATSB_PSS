@@ -490,8 +490,8 @@ $pdio_no = $_POST["pdio_no"];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Generate Doc. No <?php echo $suid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Generate Doc. No <?php echo $suid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -668,7 +668,7 @@ while($row = mysqli_fetch_array($result_pps))
 
      <table width="98%" border="0" cellspacing="1" cellpadding="1">
      <tr>
-      <td colspan="6"><p><b>DI/PDIO Number   : <font color="#0000FF"><?php echo $row["pdio_no"]; ?> </font></b></p></td>
+      <td colspan="6"><p><b>DI/PDIO Number   : <font color="#0000FF"><?php echo html_esc($row["pdio_no"]); ?> </font></b></p></td>
       </tr>
       </table>
       <table width="98%" border="0" cellspacing="1" cellpadding="1">
@@ -698,14 +698,14 @@ while($row_pdio = mysqli_fetch_array($result_pdio_grp))
  
 	 ?>
       <tr>
-      <td width="10%"><?php echo $row_pdio["pdio_no"]; ?></td>
-      <td width="15%"><?php echo $row_pdio["material_no"]; ?></td>
-      <td width="15%"><?php echo $row_pdio["cust_mat_no"]; ?></td>
+      <td width="10%"><?php echo html_esc($row_pdio["pdio_no"]); ?></td>
+      <td width="15%"><?php echo html_esc($row_pdio["material_no"]); ?></td>
+      <td width="15%"><?php echo html_esc($row_pdio["cust_mat_no"]); ?></td>
       <td width="10%"><?php echo intval($row_pdio["qty_dlv"]); ?></td>
-      <td width="10%"><?php echo $row_pdio["ship_from"]; ?></td>
-      <td width="10%"><?php echo $row_pdio["ship_to"]; ?></td>
-      <td width="15%"><?php echo $row_temp["S17"]; ?></td>
-	  <td width="15%"><?php echo $row_pdio["T7"]; ?></td>
+      <td width="10%"><?php echo html_esc($row_pdio["ship_from"]); ?></td>
+      <td width="10%"><?php echo html_esc($row_pdio["ship_to"]); ?></td>
+      <td width="15%"><?php echo html_esc($row_temp["S17"]); ?></td>
+	  <td width="15%"><?php echo html_esc($row_pdio["T7"]); ?></td>
     </tr>
     
     <?php  } //end while loop ?>

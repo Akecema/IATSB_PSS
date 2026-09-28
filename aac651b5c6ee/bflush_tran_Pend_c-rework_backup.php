@@ -103,8 +103,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1221,7 +1221,7 @@ $query_tag3 = "INSERT INTO print_tag_bf_pending_confirm_rework(id_tag,tag_no,id_
 		   $uid =	base64_encode($uid2); 
 		   
 	       echo "<script>";
-		   echo "alert('Rework Document No : $ref                                        NG Quantity : $ng_qty     Process : $row_prc[proc_desc]         Type : $row_type[type_desc]         Defectives : $row_defect[defect_desc]        Reason : $row_defect[id_reason]     ');";
+		   echo "alert('Rework Document No : $ref                                        NG Quantity : $ng_qty     Process : ".html_esc($row_prc['proc_desc'])."         Type : ".html_esc($row_type['type_desc'])."         Defectives : ".html_esc($row_defect['defect_desc'])."        Reason : ".html_esc($row_defect['id_reason'])."     ');";
 		   echo "window.location='ftp_bflush_SAP_pend-confirm-rwk.php?buid=$ref11&&uid=$uid'";
 	       echo "</script>"; 
 		   exit(); //quit the script
@@ -1255,7 +1255,7 @@ if (isset($message))
 	     $data_plant = mysqli_fetch_array($result_plant);
 		  
 		  ?>        
-        <form name="myform" method="post" action="bflush_tran_Pend_c-rework.php?uid2=<?php echo $uid2; ?>">
+        <form name="myform" method="post" action="bflush_tran_Pend_c-rework.php?uid2=<?php echo html_esc($uid2); ?>">
             <table width="100%" border="0" cellpadding="2">
      <tr>
        <td width="52%" height="234">
@@ -1263,32 +1263,32 @@ if (isset($message))
             <tr>
              <th scope="row"><div align="left">Plant</div></th>
              <td>:</td>
-             <td><?php echo $data_plant["plant_desc"]; ?></td>
+             <td><?php echo html_esc($data_plant["plant_desc"]); ?></td>
             </tr>
             <tr>
              <th scope="row"><div align="left">Model</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["model_code"]; ?></td>
+             <td><?php echo html_esc($data_scan["model_code"]); ?></td>
             </tr>
             <tr>
              <th scope="row"><div align="left">Part Name</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_desc"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_desc"]); ?></td>
              </tr>
              <tr>
              <th scope="row"><div align="left">Part Number</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_no"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_no"]); ?></td>
              </tr>
              <tr>
              <th width="33%"><div align="left">Pending Doc. No.</div></th>
              <td width="5%"> :</td>
-             <td width="62%"><?php echo $data_scan["bflush_no"]; ?></td>
+             <td width="62%"><?php echo html_esc($data_scan["bflush_no"]); ?></td>
              </tr>
              <!--<tr>
              <th scope="row"><div align="left">Planned Date</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["scan_date_plan"]; ?></td>
+             <td><?php echo html_esc($data_scan["scan_date_plan"]); ?></td>
              </tr>-->
               <tr>
              <th scope="row"><div align="left">Quantity</div></th>
@@ -1327,7 +1327,7 @@ if (isset($message))
                      <td width="14%">Posting Date</td>
                      <td width="2%">:</td>
                      <td colspan="2"> 
-                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> 
+                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> 
                      </td>
                     </tr>
                      <tr>
@@ -1337,7 +1337,7 @@ if (isset($message))
                        <?php if($_POST["con_bfpend"] == true)
 		{  
 		?>
-                       <option value="<?php echo $_POST["time1"]; ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time1"]); ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1354,7 +1354,7 @@ if (isset($message))
                        <?php if($_POST["con_bfpend"] == true)  
 		{  
 		?>
-                       <option value="<?php echo $_POST["time2"]; ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time2"]); ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1391,14 +1391,14 @@ if (isset($message))
                      <tr>
                      <td width="20%"><font color="#000000">Enter OK Quantity</font></td>
                      <td width="1%">:</td>
-                     <td colspan="2"> <input name="ok_qty" type="number" min="1" value="<?php if(isset($_POST["ok_qty"])) { echo $_POST["ok_qty"]; } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>" /><div class="form-control-feedback" ><?php echo $message_mqok; ?></div></td>
+                     <td colspan="2"> <input name="ok_qty" type="number" min="1" value="<?php if(isset($_POST["ok_qty"])) { echo html_esc($_POST["ok_qty"]); } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>" /><div class="form-control-feedback" ><?php echo $message_mqok; ?></div></td>
                       </tr></table> </div>
                      <div class="NG box"> 
                      <table width="99%" class="table table-bordered">
                      <tr>
                      <td width="20%"><font color="#000000">Enter NG Quantity</font></td>
                      <td width="1%">:</td> 
-                     <td colspan="2">  <input name="ng_qty" type="number" min="1" value="<?php if(isset($_POST["ng_qty"])) { echo $_POST["ng_qty"]; } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>"/><div class="form-control-feedback" ><?php echo $message_mqng; ?></div></td>
+                     <td colspan="2">  <input name="ng_qty" type="number" min="1" value="<?php if(isset($_POST["ng_qty"])) { echo html_esc($_POST["ng_qty"]); } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>"/><div class="form-control-feedback" ><?php echo $message_mqng; ?></div></td>
                       </tr>
                        <tr>
                      <td width="20%"><font color="#000000">Process of Reject</font></td>
@@ -1416,13 +1416,13 @@ if (isset($message))
 				   ?>
                      <?php if($_POST["con_bfpend"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_proc["id_proc"]; ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo $row_proc["proc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_proc["id_proc"]; ?>"> <?php echo $row_proc["proc_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                   <?php
 				    }  // else
 				  

@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -209,7 +209,7 @@ th {
 			$factory = $_GET["factory"];
 			  
 			  ?>
-            <form action="report_PPCProc_consumable.php?temp_mrin=<?php echo $temp_mrin; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&factory=<?php echo $factory; ?>" method="get" name="frmSearch" id="frmSearch">
+            <form action="report_PPCProc_consumable.php?temp_mrin=<?php echo html_esc($temp_mrin); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&factory=<?php echo html_esc($factory); ?>" method="get" name="frmSearch" id="frmSearch">
             <table class="table table-bordered">
             <tr>
             <th>Posting Date From : <font color="#FF0000">*</font></th>
@@ -219,12 +219,12 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
              
 		     </td>
               <th>Posting Date To : <font color="#FF0000">*</font></th>
               <td>
-			   <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>">
+			   <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>">
 			  </td>
             </tr>
               <tr>
@@ -240,14 +240,14 @@ th {
 				  
 				  
 				  ?>
-                <option value="<?php echo $row3["factory_desc2"]; ?>" <?php if($row3["factory_desc2"] == $_GET["factory"]) echo "selected"; ?>> <?php echo $row3["factory_desc"]; ?></option>
+                <option value="<?php echo html_esc($row3["factory_desc2"]); ?>" <?php if($row3["factory_desc2"] == $_GET["factory"]) echo "selected"; ?>> <?php echo html_esc($row3["factory_desc"]); ?></option>
                 <?php
                   }
 				?>
               </select>
               </td>
           <th>MRIN No :</th>
-          <td><input name="temp_mrin" type="text" id="temp_mrin" class="form-control" value="<?php echo $_GET["temp_mrin"]; ?>" /></td>
+          <td><input name="temp_mrin" type="text" id="temp_mrin" class="form-control" value="<?php echo html_esc($_GET["temp_mrin"]); ?>" /></td>
            </tr>
               <tr>
                   <th>&nbsp;<font color="#FF0000">* Compulsory field</font></th>
@@ -259,8 +259,8 @@ th {
         </form>
  
  
-               <!-- <form name="frmSearch5" method="post" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">-->
-               <form name="frmSearch5" method="post" action="report_PPCProc_consumable.php?temp_mrin=<?php echo $temp_mrin; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&factory=<?php echo $factory; ?>">
+               <!-- <form name="frmSearch5" method="post" action="<?php echo html_esc($_SERVER['SCRIPT_NAME']); ?>">-->
+               <form name="frmSearch5" method="post" action="report_PPCProc_consumable.php?temp_mrin=<?php echo html_esc($temp_mrin); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&factory=<?php echo html_esc($factory); ?>">
                 <table width="350" align="right">
                 <tr>
                 <th><div align="right">
@@ -465,14 +465,14 @@ $since_start = $start_date->diff(new DateTime($date_transfer));
           
           
             <tr class="item">
-            <td>&nbsp;<?php  echo $row_cons["temp_mrin"]; ?></td>
-            <td>&nbsp;<?php  echo $row_cons["factory"]; ?></td>
-            <td>&nbsp;<?php  echo $row_cons["id_work"]; ?></td>
-            <td>&nbsp;<?php  echo $row_cons["date_require"];  ?></td>
-            <td>&nbsp;<?php  echo $row_cons["time_require"]; ?></td>
-            <td>&nbsp;<?php  echo $data_u["user_fullname"]; ?></td>
+            <td>&nbsp;<?php  echo html_esc($row_cons["temp_mrin"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row_cons["factory"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row_cons["id_work"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row_cons["date_require"]);  ?></td>
+            <td>&nbsp;<?php  echo html_esc($row_cons["time_require"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($data_u["user_fullname"]); ?></td>
             <td><div align="center">
-                 <a href="#myNoteCon<?php echo $row_cons["temp_mrin"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
+                 <a href="#myNoteCon<?php echo html_esc($row_cons["temp_mrin"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "detail_consumable_request.php";   ?>
@@ -480,7 +480,7 @@ $since_start = $start_date->diff(new DateTime($date_transfer));
           
               </td> 
               <td><div align="center">
-                 <a href="#myNotePrint<?php echo $row_cons["temp_mrin"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/printe1.gif" width="16" height="16" alt="Print">&nbsp;Print</a>
+                 <a href="#myNotePrint<?php echo html_esc($row_cons["temp_mrin"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/printe1.gif" width="16" height="16" alt="Print">&nbsp;Print</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "detail_consumable_request_printing.php";   ?>
@@ -511,7 +511,7 @@ if($prev_page)
 {   
  
     echo "<div class='pagin'>";
-	echo " <a href='report_PPCProc_consumable.php?Page=$prev_page&txtKeyword=$strKeyword&temp_mrin=$temp_mrin&&date1=$dateF&&date2=$dateT&&factory=$factory' class='pagin'><< Back</a> ";
+	echo " <a href='report_PPCProc_consumable.php?Page=$prev_page&txtKeyword=$strKeyword&temp_mrin=".html_esc($temp_mrin)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&factory=".html_esc($factory)."' class='pagin'><< Back</a> ";
 	echo "</div>";
 }
 
@@ -521,7 +521,7 @@ for($i=1; $i<=$num_pages; $i++){
 	    if($i < 5)
         {
 	    echo "<div class='pagin'>";
-		echo "<a href='report_PPCProc_consumable.php?Page=$i&txtKeyword=$strKeyword&temp_mrin=$temp_mrin&&date1=$dateF&&date2=$dateT&&factory=$factory' class='pagin'> $i </a> ";
+		echo "<a href='report_PPCProc_consumable.php?Page=$i&txtKeyword=$strKeyword&temp_mrin=".html_esc($temp_mrin)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&factory=".html_esc($factory)."' class='pagin'> $i </a> ";
 		echo "</div>";
 		} //end num page
 	}
@@ -535,7 +535,7 @@ for($i=1; $i<=$num_pages; $i++){
 if($page!=$num_pages)
 {
 	echo "<div class='pagin'>"; 
-	echo " <a href ='report_PPCProc_consumable.php?Page=$next_page&txtKeyword=$strKeyword&temp_mrin=$temp_mrin&&date1=$dateF&&date2=$dateT&&factory=$factory' class='pagin'>Next>></a> ";
+	echo " <a href ='report_PPCProc_consumable.php?Page=$next_page&txtKeyword=$strKeyword&temp_mrin=".html_esc($temp_mrin)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&factory=".html_esc($factory)."' class='pagin'>Next>></a> ";
 	echo "</div>";
 }
 

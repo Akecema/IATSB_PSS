@@ -15,7 +15,7 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <html lang="en">
 <head>
 
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@ $data_setup = mysqli_fetch_array($rs_setup);
  
 <script language="javascript">
 
- defaultStatus = "PSS Online  <?php echo $data_setup['title_desc']; ?>"
+ defaultStatus = "PSS Online  <?php echo html_esc($data_setup['title_desc']); ?>"
  function show ( text )
  {
   window.status=text;

@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -232,7 +232,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["vendor_code"]; ?>" <?php if($row27["vendor_code"] == $_GET["vendor_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["vendor_code"]); ?> - <?php echo $row27["vendor_name"]; ?></option>
+                  <option value="<?php echo html_esc($row27["vendor_code"]); ?>" <?php if($row27["vendor_code"] == $_GET["vendor_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["vendor_code"]); ?> - <?php echo html_esc($row27["vendor_name"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -246,7 +246,7 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                 <tr>
@@ -256,7 +256,7 @@ th {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -365,16 +365,16 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["vendor_no"]; ?></td>
-                <td width="100"><?php echo $row["shift_day"]; ?></td>
-                <td width="100"><?php echo $row["R"]; ?></td>
-                <td width="100"><?php echo $row["doc_tp"]; ?></td>
-                 <td width="100"> <a href="#myNoteView<?php echo $row["doc_tp"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                <td width="80"><?php echo html_esc($row["vendor_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["shift_day"]); ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td>
+                <td width="100"><?php echo html_esc($row["doc_tp"]); ?></td>
+                 <td width="100"> <a href="#myNoteView<?php echo html_esc($row["doc_tp"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_tp_subcont_sel.php";   ?></td>
           
-                 <td width="100"> <a href="#myNoteCancel<?php echo $row["doc_tp"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
+                 <td width="100"> <a href="#myNoteCancel<?php echo html_esc($row["doc_tp"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Cancel</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "cancel_tp_subcont_selected.php";   ?></td>

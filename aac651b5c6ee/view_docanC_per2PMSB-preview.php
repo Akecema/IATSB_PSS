@@ -104,8 +104,8 @@ $rst_sta31 = mysqli_fetch_array($sta_res31);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -213,7 +213,7 @@ page-break-before: always ;
  
  
 ?>
-  <div class="modal fade printable autoprint" id="myNoteDisplayDOPMSBscanC<?php echo $row["ref_material_doc"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteDisplayDOPMSBscanC<?php echo html_esc($row["ref_material_doc"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content modal-dialog-scrollable">
                             <div class="modal-header">
@@ -249,19 +249,19 @@ page-break-before: always ;
     <td valign="top">&nbsp;<h5><font color="#999999"><b>PSS DELIVERY ORDER</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $data_plant["plant_desc"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($data_plant["plant_desc"]);   ?></div></td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>Document No. :  </b><?php echo $row["material_doc_gen"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($row["material_doc_gen"]);   ?></div></td>
   </tr>
    <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>PDIO No. :  </b><?php echo $row["pdio_no"];   ?></div></td>
+    <td><div align="left"><b>PDIO No. :  </b><?php echo html_esc($row["pdio_no"]);   ?></div></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>Cancellation Document No. :  </b><?php echo $row["ref_material_doc"];   ?></div></td>
+    <td><div align="left"><b>Cancellation Document No. :  </b><?php echo html_esc($row["ref_material_doc"]);   ?></div></td>
   </tr>
    </table>
 
@@ -309,13 +309,13 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><?php echo $no; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
     <td><?php echo intval($row2["qty_dlv"]); ?></td>
-    <td><?php echo $row2["unit_soi"]; ?></td>
-    <td><?php echo $row2["pdio_no"]; ?></td>
-    <td><?php echo $row_sql2A["part_seq"]; ?></td> 
-    <td><?php echo $row2["tag_no"]; ?></td>
+    <td><?php echo html_esc($row2["unit_soi"]); ?></td>
+    <td><?php echo html_esc($row2["pdio_no"]); ?></td>
+    <td><?php echo html_esc($row_sql2A["part_seq"]); ?></td> 
+    <td><?php echo html_esc($row2["tag_no"]); ?></td>
     </tr>
   
  <?php 
@@ -329,10 +329,10 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   </tbody>
 </table>
  <br><br>  
-      <input name="uid2" type="hidden" id="uid2" value="<?php echo $row["ref_material_doc"]; ?>">
-      <input name="date1"  type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2"  type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
-      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo $row["ship_point"]; ?>">
+      <input name="uid2" type="hidden" id="uid2" value="<?php echo html_esc($row["ref_material_doc"]); ?>">
+      <input name="date1"  type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2"  type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
+      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo html_esc($row["ship_point"]); ?>">
        
          <!-- <div class="modal-footer pull-left">-->
        

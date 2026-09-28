@@ -36,8 +36,8 @@ $url = "dash_brdprod2.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $url = "dash_brdprod2.php";
 		<script type="text/javascript">
         jQuery(document).ready(function ($) {
         $.fancybox({
-        href: "backjob_initial_pass.php?username=<?php echo $username; ?>",
+        href: "backjob_initial_pass.php?username=<?php echo html_esc($username); ?>",
         type: "iframe" // <-- whatever content image, inline, swf, etc
         });
         }); // ready
@@ -97,7 +97,7 @@ $url = "dash_brdprod2.php";
         <script type="text/javascript">
         jQuery(document).ready(function ($) {
         $.fancybox({
-        href: "backjob_reminder_pass.php?username=<?php echo $username; ?>",
+        href: "backjob_reminder_pass.php?username=<?php echo html_esc($username); ?>",
         type: "iframe" // <-- whatever content image, inline, swf, etc
         });
         }); // ready
@@ -196,7 +196,7 @@ $url = "dash_brdprod2.php";
 								$Pdate = date('Y', strtotime($rowYr['date_posting']))
 								
 							?>
-                            <option value="<?php echo $rowYr["planyear"]; ?>" <?php if($rowYr["planyear"] == $crtYr) echo "selected"; ?>> <?php echo $rowYr["planyear"]; ?></option>
+                            <option value="<?php echo html_esc($rowYr["planyear"]); ?>" <?php if($rowYr["planyear"] == $crtYr) echo "selected"; ?>> <?php echo html_esc($rowYr["planyear"]); ?></option>
 							<?php
 							}
 							?>   
@@ -213,7 +213,7 @@ $url = "dash_brdprod2.php";
 							while($rowMth = mysqli_fetch_array($resultMth)) 
 							{ 
 							?>
-							<option value="<?php echo $rowMth["month_int"]; ?>"> <?php echo $rowMth["month_descp"]; ?></option>
+							<option value="<?php echo html_esc($rowMth["month_int"]); ?>"> <?php echo html_esc($rowMth["month_descp"]); ?></option>
 							<?php
 							}
 							?>   
@@ -427,7 +427,7 @@ $url = "dash_brdprod2.php";
                             $Pdate2 = date('Y', strtotime($rowYr2['date_posting']))
                             
                         ?>
-                        <option value="<?php echo $rowYr2["planyear"]; ?>" <?php if($rowYr2["planyear"] == $crtYr) echo "selected"; ?>> <?php echo $rowYr2["planyear"]; ?></option>
+                        <option value="<?php echo html_esc($rowYr2["planyear"]); ?>" <?php if($rowYr2["planyear"] == $crtYr) echo "selected"; ?>> <?php echo html_esc($rowYr2["planyear"]); ?></option>
                         <?php
                         }
                         ?>   
@@ -444,7 +444,7 @@ $url = "dash_brdprod2.php";
                         while($rowMth2 = mysqli_fetch_array($resultMth2)) 
                         { 
                         ?>
-                        <option value="<?php echo $rowMth2["month_int"]; ?>"> <?php echo $rowMth2["month_descp"]; ?></option>
+                        <option value="<?php echo html_esc($rowMth2["month_int"]); ?>"> <?php echo html_esc($rowMth2["month_descp"]); ?></option>
                         <?php
                         }
                         ?>   
@@ -621,7 +621,7 @@ $url = "dash_brdprod2.php";
                             $Pdate3 = date('Y', strtotime($rowYr3['date_posting']))
                             
                         ?>
-                        <option value="<?php echo $rowYr3["planyear"]; ?>" <?php if($rowYr3["planyear"] == $sYr3) echo "selected"; ?>> <?php echo $rowYr3["planyear"]; ?></option>
+                        <option value="<?php echo html_esc($rowYr3["planyear"]); ?>" <?php if($rowYr3["planyear"] == $sYr3) echo "selected"; ?>> <?php echo html_esc($rowYr3["planyear"]); ?></option>
                         <?php
                         }
                         ?>   
@@ -638,7 +638,7 @@ $url = "dash_brdprod2.php";
                         while($rowMth3 = mysqli_fetch_array($resultMth3)) 
                         { 
                         ?>
-                        <option value="<?php echo $rowMth3["month_int"]; ?>" <?php if($rowMth3["month_int"] == $sMth3) echo "selected"; ?>> <?php echo $rowMth3["month_descp"]; ?></option>
+                        <option value="<?php echo html_esc($rowMth3["month_int"]); ?>" <?php if($rowMth3["month_int"] == $sMth3) echo "selected"; ?>> <?php echo html_esc($rowMth3["month_descp"]); ?></option>
                         <?php
                         }
                         ?>   

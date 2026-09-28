@@ -31,8 +31,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -154,7 +154,7 @@ th {
   
                    while($row3 = mysqli_fetch_array($result3)) 
 			      {
-                  echo'<option value="',$row3["factory_desc2"],'">',stripslashes($row3["factory_desc"]),'</option>';
+                  echo'<option value="',html_esc($row3["factory_desc2"]),'">',stripslashes($row3["factory_desc"]),'</option>';
                   }
 				?>
                         </select></td>
@@ -214,7 +214,7 @@ th {
 	
 			 
             echo "<script>";
-            echo "window.location='report_PPCProc_consumable.php?temp_mrin=$temp_mrin&&date1=$dateF&&date2=$dateT&&factory=$factory'";
+            echo "window.location='report_PPCProc_consumable.php?temp_mrin=".html_esc($temp_mrin)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&factory=".html_esc($factory)."'";
             echo "</script>";
             exit(); //quit the script
         }

@@ -98,8 +98,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1132,7 +1132,7 @@ while($row = mysqli_fetch_array($result_tag))
 		   $uid =	base64_encode($uid2);
 	
 	       echo "<script>";
-		   echo "alert('Handwork Document No : $ref                                        NG Quantity : $ng_qty      Process : $row_prc[proc_desc]        Type : $row_type[type_desc]        Defectives : $row_defect[defect_desc]      Reason : $reason_reject');";
+		   echo "alert('Handwork Document No : $ref                                        NG Quantity : $ng_qty      Process : ".html_esc($row_prc['proc_desc'])."        Type : ".html_esc($row_type['type_desc'])."        Defectives : ".html_esc($row_defect['defect_desc'])."      Reason : $reason_reject');";
 		   echo "window.location='ftp_bflush_SAP_hwok-confirm.php?buid=$ref11&&uid=$uid'";
 	       echo "</script>"; 
 		   exit(); //quit the script
@@ -1172,7 +1172,7 @@ if (isset($message))
 	   $data_bf = mysqli_fetch_array($result_bf);
 		  
 		  ?>        
-        <form name="myform" method="post" action="confirm_backflushProc_Hwok-confirm.php?uid2=<?php echo $uid2; ?>">
+        <form name="myform" method="post" action="confirm_backflushProc_Hwok-confirm.php?uid2=<?php echo html_esc($uid2); ?>">
             <table width="100%" border="0" cellpadding="2">
      <tr>
        <td width="52%" height="234">
@@ -1180,17 +1180,17 @@ if (isset($message))
             <tr>
              <th scope="row"><div align="left">Back No.</div></th>
              <td>:</td>
-             <td><?php echo  $data_scan["back_no"]; ?></td>
+             <td><?php echo  html_esc($data_scan["back_no"]); ?></td>
             </tr> 
             <tr>
              <th scope="row"><div align="left">Part Number</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_no"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_no"]); ?></td>
              </tr>
             <tr>
              <th scope="row"><div align="left">Part Name</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_desc"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_desc"]); ?></td>
              </tr>
             <!-- <tr>
              <th width="33%"><div align="left">Planned Order No.</div></th>
@@ -1200,12 +1200,12 @@ if (isset($message))
              <tr>
              <th width="33%"><div align="left">Backflush Handwork Doc. No.</div></th>
              <td width="5%"> :</td>
-             <td width="62%"><?php echo $data_scan["bflush_hwork"]; ?></td>
+             <td width="62%"><?php echo html_esc($data_scan["bflush_hwork"]); ?></td>
              </tr>
              <tr>
              <th scope="row"><div align="left">Posting Date</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["B"]; ?></td>
+             <td><?php echo html_esc($data_scan["B"]); ?></td>
              </tr>
              <!-- <tr>
              <th scope="row"><div align="left">Planned Quantity</div></th>
@@ -1220,7 +1220,7 @@ if (isset($message))
              <tr>
              <th scope="row"><div align="left">Line</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["work_center"]; ?></td>
+             <td><?php echo html_esc($data_scan["work_center"]); ?></td>
              </tr>
              </table></td>
        <td width="48%">
@@ -1249,7 +1249,7 @@ if (isset($message))
                      <td width="14%">Posting Date</td>
                      <td width="2%">:</td>
                      <td colspan="2"> 
-                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> 
+                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> 
                      </td>
                     </tr>
                      <tr>
@@ -1259,7 +1259,7 @@ if (isset($message))
                        <?php if($_POST["con_bfhwork"] == true)
 		{  
 		?>
-                       <option value="<?php echo $_POST["time1"]; ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time1"]); ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1276,7 +1276,7 @@ if (isset($message))
                        <?php if($_POST["con_bfhwork"] == true)  
 		{  
 		?>
-                       <option value="<?php echo $_POST["time2"]; ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time2"]); ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1313,7 +1313,7 @@ if (isset($message))
                      <tr>
                      <td width="20%"><font color="#000000">Enter OK Quantity</font></td>
                      <td width="1%">:</td>
-                     <td colspan="2"> <input name="ok_qty" type="number" min="1" value="<?php if(isset($_POST["ok_qty"])) { echo $_POST["ok_qty"]; } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>" /><div class="form-control-feedback" ><?php echo $message_mqok; ?></div></td>
+                     <td colspan="2"> <input name="ok_qty" type="number" min="1" value="<?php if(isset($_POST["ok_qty"])) { echo html_esc($_POST["ok_qty"]); } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>" /><div class="form-control-feedback" ><?php echo $message_mqok; ?></div></td>
                       </tr></table> </div>
                    
                      <div class="NG box"> 
@@ -1321,7 +1321,7 @@ if (isset($message))
                      <tr>
                      <td width="20%"><font color="#000000">Enter NG Quantity</font></td>
                      <td width="1%">:</td> 
-                     <td colspan="2">  <input name="ng_qty" type="number" min="1" value="<?php if(isset($_POST["ng_qty"])) { echo $_POST["ng_qty"]; } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>"/><div class="form-control-feedback" ><?php echo $message_mqng; ?></div></td>
+                     <td colspan="2">  <input name="ng_qty" type="number" min="1" value="<?php if(isset($_POST["ng_qty"])) { echo html_esc($_POST["ng_qty"]); } ?>" class="form-control" max="<?php echo $chk_total_bal; ?>"/><div class="form-control-feedback" ><?php echo $message_mqng; ?></div></td>
                       </tr>
                          <tr>
                      <td width="20%"><font color="#000000">Process of Reject</font></td>
@@ -1339,13 +1339,13 @@ if (isset($message))
 				   ?>
                      <?php if($_POST["con_firmng"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_proc["id_proc"]; ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo $row_proc["proc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_proc["id_proc"]; ?>"> <?php echo $row_proc["proc_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                   <?php
 				    }  // else
 				  

@@ -112,8 +112,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -248,7 +248,7 @@ page-break-before: always ;
 
 	   echo "<script>";
 	   echo "alert('Your transaction has been processed successfully');";
-	   echo "window.location='detail_list_bf_disposal-prdProc2.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center'";
+	   echo "window.location='detail_list_bf_disposal-prdProc2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."'";
 	   echo "</script>"; 
 	   exit(); //quit the script
 
@@ -256,7 +256,7 @@ page-break-before: always ;
 
  }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteEdit<?php echo $row["doc_dis"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteEdit<?php echo html_esc($row["doc_dis"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content modlDisplay">
                             <div class="modal-header">
@@ -331,7 +331,7 @@ $db_rs2 = mysqli_fetch_array($rs2);
  
 
 
-      <form name="edt_sheet" id="edt_sheet" action="detail_list_bf_disposal-prd_edtENG.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>" method="post">
+      <form name="edt_sheet" id="edt_sheet" action="detail_list_bf_disposal-prd_edtENG.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>" method="post">
       <table class="table-bordered" style="width:150%">
       <thead>
         <tr>
@@ -414,32 +414,32 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
       ?>
        <tr>
         <td width="30"><?php echo $no; ?></td>
-        <td width="100"><?php echo $row2["R"]; ?> </td>
+        <td width="100"><?php echo html_esc($row2["R"]); ?> </td>
         <td width="80"><?php echo  $model_name; ?></td>
-        <td width="250"><?php echo $row2["material_no"]; ?></td>
-        <td width="100"><font color="#0000CC"><?php echo $row2["plant_cd"]; ?></font></td>
+        <td width="250"><?php echo html_esc($row2["material_no"]); ?></td>
+        <td width="100"><font color="#0000CC"><?php echo html_esc($row2["plant_cd"]); ?></font></td>
         <td width="60">
          <?php if( $row2["UOM_unit"] == 'KG'){  ?><input name="qty_disposal" type="text" value="<?php echo $qty_new; ?>" class="form-control" disabled >  </td>
    <?php   }else{  ?>   
         <input name="qty_disposal" type="text" value="<?php echo (intval($qty_new)); ?>" class="form-control" disabled ><?php } ?>    </td>
-        <td width="80"><?php echo  $row2["UOM_unit"]; ?></td>
-        <td width="80"><?php echo  $row2["ploc_prod_reject"]; ?></td>
-        <td width="80"><?php echo  $row2["cost_center"]; ?></td>
-        <td width="100"><?php echo $row_proc["proc_desc"]; ?></td>
-        <td width="100"><?php echo $row_type["type_desc"]; ?></td>
-        <td width="100"><?php echo $row_defect["defect_desc"]; ?></td>
-        <td width="100"><?php echo $row2["reason_reject"]; ?></td>
+        <td width="80"><?php echo  html_esc($row2["UOM_unit"]); ?></td>
+        <td width="80"><?php echo  html_esc($row2["ploc_prod_reject"]); ?></td>
+        <td width="80"><?php echo  html_esc($row2["cost_center"]); ?></td>
+        <td width="100"><?php echo html_esc($row_proc["proc_desc"]); ?></td>
+        <td width="100"><?php echo html_esc($row_type["type_desc"]); ?></td>
+        <td width="100"><?php echo html_esc($row_defect["defect_desc"]); ?></td>
+        <td width="100"><?php echo html_esc($row2["reason_reject"]); ?></td>
         <td width="300">              
-               <textarea name="remarks[]" class="form-control-range" id="exampleFormControlTextarea1" rows="5" cols="100"><?php  echo $row2["remarks"];  ?></textarea>
-               <input name="tid[]" type="hidden" value="<?php echo $row2["id"]; ?>">
+               <textarea name="remarks[]" class="form-control-range" id="exampleFormControlTextarea1" rows="5" cols="100"><?php  echo html_esc($row2["remarks"]);  ?></textarea>
+               <input name="tid[]" type="hidden" value="<?php echo html_esc($row2["id"]); ?>">
              
         </td>
      
-       <input name="uid2" type="hidden" value="<?php echo $row["doc_dis"]; ?> ">    
-       <input name="date1" type="hidden" value="<?php echo $_GET["date1"]; ?> "> 
-       <input name="date2" type="hidden" value="<?php echo $_GET["date2"] ?> "> 
-       <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
-       <input name="work_center" type="hidden" value="<?php echo $work_center; ?>"> 
+       <input name="uid2" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?> ">    
+       <input name="date1" type="hidden" value="<?php echo html_esc($_GET["date1"]); ?> "> 
+       <input name="date2" type="hidden" value="<?php echo html_esc($_GET["date2"]) ?> "> 
+       <input name="plant_code" type="hidden" value="<?php echo html_esc($plant_code); ?>">  
+       <input name="work_center" type="hidden" value="<?php echo html_esc($work_center); ?>"> 
    
       </tr> 
       <?php 

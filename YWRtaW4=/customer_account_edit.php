@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-     <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+     <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,7 +307,7 @@ if (isset($message))
 }
 } 
  ?> 
-  <div class="modal fade" id="myNoteEditCust<?php echo $row2["id_cust"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEditCust<?php echo html_esc($row2["id_cust"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -335,12 +335,12 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
    <tr>
     <td width="191">Customer Code </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_cust" name="id_cust" value="<?php  echo $row_ven["id_cust"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_cust" name="id_cust" value="<?php  echo html_esc($row_ven["id_cust"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Customer Name <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="cust_desc" name="cust_desc" value="<?php echo $row_ven["cust_desc"]; ?>" class="form-control" required/><div class="invalid-feedback">Please enter customer name.</div>
+    <td><input type="text" id="cust_desc" name="cust_desc" value="<?php echo html_esc($row_ven["cust_desc"]); ?>" class="form-control" required/><div class="invalid-feedback">Please enter customer name.</div>
      </td>
     </tr>
    <tr>
@@ -357,7 +357,7 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
               while($row17 = mysqli_fetch_array($result17)) {
         
               ?>
-         <option value="<?php echo $row17["customer_code"]; ?>" <?php if($row17["customer_code"] == $row_ven["cust_ID"]) echo "selected"; ?> > <?php echo stripslashes($row17["customer_code"]); ?> </option>
+         <option value="<?php echo html_esc($row17["customer_code"]); ?>" <?php if($row17["customer_code"] == $row_ven["cust_ID"]) echo "selected"; ?> > <?php echo stripslashes($row17["customer_code"]); ?> </option>
           <?php
            }  ?>
                             
@@ -368,87 +368,87 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
      <tr>
     <td>Address No. 1 <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="add_no1" name="add_no1" value="<?php echo $row_ven["add_no1"];  ?>" class="form-control" required/>
+    <td><input type="text" id="add_no1" name="add_no1" value="<?php echo html_esc($row_ven["add_no1"]);  ?>" class="form-control" required/>
      <div class="invalid-feedback">Please enter address no.1.</div>
      </td>
     </tr>
      <tr>
     <td>Address No. 2 </td>
     <td>:</td>
-    <td><input type="text" id="add_no2" name="add_no2" value="<?php echo $row_ven["add_no2"];  ?>" class="form-control"/>
+    <td><input type="text" id="add_no2" name="add_no2" value="<?php echo html_esc($row_ven["add_no2"]);  ?>" class="form-control"/>
     <div class="invalid-feedback">Please enter address no.2.</div>
      </td>
     </tr>
      <tr>
     <td>Postcode <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="post_code" name="post_code" maxlength="10" value="<?php echo $row_ven["post_code"];  ?>" class="form-control" required/>
+    <td><input type="text" id="post_code" name="post_code" maxlength="10" value="<?php echo html_esc($row_ven["post_code"]);  ?>" class="form-control" required/>
     <div class="invalid-feedback">Please enter postcode.</div>
      </td>
     </tr>
      <tr>
     <td>City <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="post_city" name="post_city" value="<?php echo $row_ven["post_city"];  ?>" class="form-control" required/>
+    <td><input type="text" id="post_city" name="post_city" value="<?php echo html_esc($row_ven["post_city"]);  ?>" class="form-control" required/>
     <div class="invalid-feedback">Please enter city.</div>
      </td>
     </tr>
      <tr>
     <td>Region <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="post_region" name="post_region" value="<?php echo $row_ven["post_region"];  ?>" class="form-control" required/> <div class="invalid-feedback">Please enter region.</div>
+    <td><input type="text" id="post_region" name="post_region" value="<?php echo html_esc($row_ven["post_region"]);  ?>" class="form-control" required/> <div class="invalid-feedback">Please enter region.</div>
      </td>
     </tr>
      <tr>
     <td>Country <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="post_country" name="post_country" value="<?php echo $row_ven["post_country"];  ?>" class="form-control" required/> <div class="invalid-feedback">Please enter country.</div>
+    <td><input type="text" id="post_country" name="post_country" value="<?php echo html_esc($row_ven["post_country"]);  ?>" class="form-control" required/> <div class="invalid-feedback">Please enter country.</div>
      </td>
     </tr>
      <tr>
     <td>Phone</td>
     <td>:</td>
-    <td><input type="text" id="tphone" name="tphone" maxlength="20" value="<?php echo $row_ven["tphone"];  ?>" class="form-control"/>
+    <td><input type="text" id="tphone" name="tphone" maxlength="20" value="<?php echo html_esc($row_ven["tphone"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Fax</td>
     <td>:</td>
-    <td><input type="text" id="fax_no" name="fax_no" maxlength="20" value="<?php echo $row_ven["fax_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="fax_no" name="fax_no" maxlength="20" value="<?php echo html_esc($row_ven["fax_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Payment Method</td>
     <td>:</td>
-    <td><input type="text" id="payment_method" name="payment_method" value="<?php echo $row_ven["payment_method"];  ?>" class="form-control"/>
+    <td><input type="text" id="payment_method" name="payment_method" value="<?php echo html_esc($row_ven["payment_method"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Term Payment</td>
     <td>:</td>
-    <td><input type="text" id="term_payment" name="term_payment" value="<?php echo $row_ven["term_payment"];  ?>" class="form-control"/>
+    <td><input type="text" id="term_payment" name="term_payment" value="<?php echo html_esc($row_ven["term_payment"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>User Created</td>
     <td>:</td>
-    <td><input type="text" id="user_create" name="user_create" value="<?php echo $data_create["user_fullname"];  ?>" class="form-control"/>
+    <td><input type="text" id="user_create" name="user_create" value="<?php echo html_esc($data_create["user_fullname"]);  ?>" class="form-control"/>
      </td>
     </tr>  <tr>
     <td>Date Created</td>
     <td>:</td>
-    <td><input type="text" id="date_create" name="date_create" value="<?php echo $row_ven["date_create"];  ?>" class="form-control"/>
+    <td><input type="text" id="date_create" name="date_create" value="<?php echo html_esc($row_ven["date_create"]);  ?>" class="form-control"/>
      </td>
     </tr>  <tr>
     <td>User Updated</td>
     <td>:</td>
-    <td><input type="text" id="user_update" name="user_update" value="<?php echo $data_update["user_fullname"];  ?>" class="form-control"/>
+    <td><input type="text" id="user_update" name="user_update" value="<?php echo html_esc($data_update["user_fullname"]);  ?>" class="form-control"/>
      </td>
     </tr>  
     <tr>
     <td>Date Updated</td>
     <td>:</td>
-    <td><input type="text" id="date_update" name="date_update" value="<?php echo $row_ven["date_update"];  ?>" class="form-control"/>
+    <td><input type="text" id="date_update" name="date_update" value="<?php echo html_esc($row_ven["date_update"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
@@ -477,7 +477,7 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row_ven["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row_ven["plant_code"] == $row27["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -498,7 +498,7 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["country_code"]; ?>" <?php if($row_ven["country_code"] == $row57["country_code"]) echo "selected"; ?> > <?php echo stripslashes($row57["country_code"]); ?> - <?php echo $row57["country_text"]; ?></option>
+         <option value="<?php echo html_esc($row57["country_code"]); ?>" <?php if($row_ven["country_code"] == $row57["country_code"]) echo "selected"; ?> > <?php echo stripslashes($row57["country_code"]); ?> - <?php echo html_esc($row57["country_text"]); ?></option>
           <?php
            }  ?>
                             
@@ -510,7 +510,7 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
        <tr>
     <td>Short Name</td>
     <td>:</td>
-    <td><input type="text" id="cust_sname" name="cust_sname" value="<?php echo $row_ven["cust_sname"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_sname" name="cust_sname" value="<?php echo html_esc($row_ven["cust_sname"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
@@ -523,7 +523,7 @@ $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
        </div><!-- /# card -->
        <br />
               <div class="modal-footer"> 
-             <input type="hidden" id="id_cust" name="id_cust"  class="form-control" value="<?php echo $row2["id_cust"];  ?>" >  
+             <input type="hidden" id="id_cust" name="id_cust"  class="form-control" value="<?php echo html_esc($row2["id_cust"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

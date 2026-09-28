@@ -31,8 +31,8 @@ $url = "mat_detail_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -345,7 +345,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
                 <div class="form-group row">
                   <label class="control-label col-md-3">Material No. :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                  <input type="text" id="material_no" name="material_no" value="<?php if(isset($_POST['material_no'])) echo $_POST['material_no']; ?>" class="form-control" placeholder="Enter Material No." />
+                  <input type="text" id="material_no" name="material_no" value="<?php if(isset($_POST['material_no'])) echo html_esc($_POST['material_no']); ?>" class="form-control" placeholder="Enter Material No." />
                     <div class="form-control-feedback" ><?php echo $message_matno; ?></div>
                     </div>
                    
@@ -353,7 +353,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
                  <div class="form-group row">
                   <label class="control-label col-md-3">Material Description : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-           <input type="text" id="material_desc" name="material_desc" value="<?php if(isset($_POST['material_desc'])) echo $_POST['material_desc']; ?>" class="form-control" placeholder="Enter Material Description" />
+           <input type="text" id="material_desc" name="material_desc" value="<?php if(isset($_POST['material_desc'])) echo html_esc($_POST['material_desc']); ?>" class="form-control" placeholder="Enter Material Description" />
                    <div class="form-control-feedback" ><?php echo $message_matdesc; ?></div>
                     </div>
                 </div>
@@ -371,7 +371,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if(($row27["plant_code"]) == ($_POST['plant_code'])) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if(($row27["plant_code"]) == ($_POST['plant_code'])) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -392,7 +392,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
 	 while($row48 = mysqli_fetch_array($result48)) 
 	  { 
 	?>  
-          <option value="<?php echo $row48["id"]; ?>"<?php if(($row48["id"]) == $_POST['mat_type']) echo "selected"; ?> > <?php echo stripslashes($row48["mtype_name"]); ?></option>
+          <option value="<?php echo html_esc($row48["id"]); ?>"<?php if(($row48["id"]) == $_POST['mat_type']) echo "selected"; ?> > <?php echo stripslashes($row48["mtype_name"]); ?></option>
   <?php   }  ?>
   
           </select> <div class="form-control-feedback" ><?php echo $message_mtype; ?></div>
@@ -414,7 +414,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               while($row_line = mysqli_fetch_array($result_line)) {
         
               ?>
-         <option value="<?php echo $row_line["id_work"]; ?>" <?php if($row_line["id_work"] == $_POST["prod_line"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo $row_line["wc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_line["id_work"]); ?>" <?php if($row_line["id_work"] == $_POST["prod_line"]) echo "selected"; ?>> <?php echo stripslashes($row_line["id_work"]); ?> - <?php echo html_esc($row_line["wc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -425,7 +425,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               <div class="form-group row">
                   <label class="control-label col-md-3">Material of Group : </label>
                     <div class="col-md-8">
-   <input type="text" id="material_group" name="material_group" value="<?php if(isset($_POST['material_group'])) echo $_POST['material_group'];  ?> " class="form-control"/>
+   <input type="text" id="material_group" name="material_group" value="<?php if(isset($_POST['material_group'])) echo html_esc($_POST['material_group']);  ?> " class="form-control"/>
          </div>  
          </div>
              <div class="form-group row">
@@ -442,7 +442,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
 		 while($row_unit = mysqli_fetch_array($result_unit)) {
 		 ?>
 				   <!--RETAIN VALUE-->
-	   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"] == $_POST["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+	   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"] == $_POST["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
 				   <?php }
              
 	 
@@ -459,7 +459,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               <div class="form-group row">
                   <label class="control-label col-md-3">VClass: <font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-             <input type="text" id="Vclass" name="Vclass" value="<?php if(isset($_POST['Vclass'])) echo $_POST['Vclass']; ?>" class="form-control"/>
+             <input type="text" id="Vclass" name="Vclass" value="<?php if(isset($_POST['Vclass'])) echo html_esc($_POST['Vclass']); ?>" class="form-control"/>
                   <div class="form-control-feedback" ><?php echo $message_vclass; ?></div>
                 </div>
               </div>
@@ -479,7 +479,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
 	 while($row88 = mysqli_fetch_array($result88)) 
 	  { 
 	?>  
-          <option value="<?php echo $row88["id_model"]; ?>" <?php if($row88["id_model"] == ($_POST["model_code"])) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
+          <option value="<?php echo html_esc($row88["id_model"]); ?>" <?php if($row88["id_model"] == ($_POST["model_code"])) echo "selected"; ?>> <?php echo stripslashes($row88["model_code"]); ?> - <?php echo stripslashes($row88["model_desc"]); ?></option>
   <?php   }  ?>
   
           </select>  <div class="form-control-feedback" ><?php echo $message_model; ?></div></div>          
@@ -505,7 +505,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               while($row_cat = mysqli_fetch_array($result_cat)) {
         
               ?>
-         <option value="<?php echo $row_cat["stamp_ind"]; ?>" <?php if($row_cat["stamp_ind"] == $_POST["category_mat"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo $row_cat["stamp_desc"]; ?></option>
+         <option value="<?php echo html_esc($row_cat["stamp_ind"]); ?>" <?php if($row_cat["stamp_ind"] == $_POST["category_mat"]) echo "selected"; ?>> <?php echo stripslashes($row_cat["stamp_ind"]); ?> - <?php echo html_esc($row_cat["stamp_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -517,25 +517,25 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
              <div class="form-group row">
                   <label class="control-label col-md-3">Standard Package : </label>
                     <div class="col-md-8">     
-               <input type="text" id="std_packaging" name="std_packaging"  value="<?php if(isset($_POST['std_packaging'])) echo $_POST['std_packaging'];  ?> " class="form-control"/>
+               <input type="text" id="std_packaging" name="std_packaging"  value="<?php if(isset($_POST['std_packaging'])) echo html_esc($_POST['std_packaging']);  ?> " class="form-control"/>
                </div></div>
                
              <div class="form-group row">
                   <label class="control-label col-md-3">Type Package : </label>
                     <div class="col-md-8">     
-               <input type="text" id="type_package" name="type_package" value="<?php if(isset($_POST['type_package'])) echo $_POST['type_package'];  ?>" class="form-control"/>
+               <input type="text" id="type_package" name="type_package" value="<?php if(isset($_POST['type_package'])) echo html_esc($_POST['type_package']);  ?>" class="form-control"/>
                </div></div>  
                 <div class="form-group row">
                   <label class="control-label col-md-3">Part Side : </label>
                     <div class="col-md-8">     
-              <input type="text" id="part_side" name="part_side" value="<?php if(isset($_POST['material_group'])) echo $_POST['material_group'];  ?><?php echo $row_con["part_side"];  ?>" class="form-control"/>
+              <input type="text" id="part_side" name="part_side" value="<?php if(isset($_POST['material_group'])) echo html_esc($_POST['material_group']);  ?><?php echo html_esc($row_con["part_side"]);  ?>" class="form-control"/>
                </div></div>    
                
                
                  <div class="form-group row">
                   <label class="control-label col-md-3">Back No. : </label>
                     <div class="col-md-8">     
-            <input type="text" id="back_no" name="back_no" value="<?php if(isset($_POST['material_group'])) echo $_POST['material_group'];  ?><?php echo $row_con["back_no"];  ?>" class="form-control"/>
+            <input type="text" id="back_no" name="back_no" value="<?php if(isset($_POST['material_group'])) echo html_esc($_POST['material_group']);  ?><?php echo html_esc($row_con["back_no"]);  ?>" class="form-control"/>
                </div></div>    
                
                  <div class="form-group row">
@@ -551,7 +551,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["sloc_code"]; ?>" <?php if($row57["sloc_code"] == $_POST["sloc"]) echo "selected"; ?>> <?php echo stripslashes($row57["sloc_code"]); ?> - <?php echo $row57["sloc_desc"]; ?></option>
+         <option value="<?php echo html_esc($row57["sloc_code"]); ?>" <?php if($row57["sloc_code"] == $_POST["sloc"]) echo "selected"; ?>> <?php echo stripslashes($row57["sloc_code"]); ?> - <?php echo html_esc($row57["sloc_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -562,23 +562,23 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
                  <div class="form-group row">
                   <label class="control-label col-md-3">Size Dim : </label>
                     <div class="col-md-8">     
-              <input type="text" id="size_dim" name="size_dim" value="<?php if(isset($_POST['size_dim'])) echo $_POST['size_dim'];  ?>" class="form-control"/>
+              <input type="text" id="size_dim" name="size_dim" value="<?php if(isset($_POST['size_dim'])) echo html_esc($_POST['size_dim']);  ?>" class="form-control"/>
                </div></div> 
                
                <div class="form-group row">
                   <label class="control-label col-md-3">Customer Part No. : </label>
                     <div class="col-md-8">     
-              <input type="text" id="cust_part_no" name="cust_part_no" value="<?php if(isset($_POST['cust_part_no'])) echo $_POST['cust_part_no'];  ?>" class="form-control"/>
+              <input type="text" id="cust_part_no" name="cust_part_no" value="<?php if(isset($_POST['cust_part_no'])) echo html_esc($_POST['cust_part_no']);  ?>" class="form-control"/>
                </div></div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Customer Part Name : </label>
                     <div class="col-md-8">     
-              <input type="text" id="material_desc_cust" name="material_desc_cust" value="<?php if(isset($_POST['material_desc_cust'])) echo $_POST['material_desc_cust'];  ?>" class="form-control"/>
+              <input type="text" id="material_desc_cust" name="material_desc_cust" value="<?php if(isset($_POST['material_desc_cust'])) echo html_esc($_POST['material_desc_cust']);  ?>" class="form-control"/>
                </div></div>    
                <div class="form-group row">
                   <label class="control-label col-md-3">Production Part No. : </label>
                     <div class="col-md-8">     
-              <input type="text" id="prod_part_no" name="prod_part_no" value="<?php if(isset($_POST['prod_part_no'])) echo $_POST['prod_part_no'];  ?>" class="form-control"/>
+              <input type="text" id="prod_part_no" name="prod_part_no" value="<?php if(isset($_POST['prod_part_no'])) echo html_esc($_POST['prod_part_no']);  ?>" class="form-control"/>
                </div></div>    
                
                <div class="form-group row">
@@ -594,7 +594,7 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
               while($row_ven = mysqli_fetch_array($result_ven)) {
         
               ?>
-         <option value="<?php echo $row_ven["vendor_code"]; ?>" <?php if($row_ven["vendor_code"] == $_POST["vendor_id"]) echo "selected"; ?>> <?php echo stripslashes($row_ven["vendor_code"]); ?> - <?php echo $row_ven["vendor_name"]; ?></option>
+         <option value="<?php echo html_esc($row_ven["vendor_code"]); ?>" <?php if($row_ven["vendor_code"] == $_POST["vendor_id"]) echo "selected"; ?>> <?php echo stripslashes($row_ven["vendor_code"]); ?> - <?php echo html_esc($row_ven["vendor_name"]); ?></option>
           <?php
            }  ?>
                             
@@ -607,37 +607,37 @@ $row_mod_dtl = mysqli_fetch_array($result_mod_dtl);
                <div class="form-group row">
                   <label class="control-label col-md-3">Material Group : </label>
                     <div class="col-md-8">     
-              <input type="text" id="mat_group" name="mat_group" value="<?php if(isset($_POST['mat_group'])) echo $_POST['mat_group'];  ?>" class="form-control"/>
+              <input type="text" id="mat_group" name="mat_group" value="<?php if(isset($_POST['mat_group'])) echo html_esc($_POST['mat_group']);  ?>" class="form-control"/>
                </div></div>    
                
                 
                 <div class="form-group row">
                   <label class="control-label col-md-3">Account Group : </label>
                     <div class="col-md-8">     
-              <input type="text" id="acc_group" name="acc_group" value="<?php if(isset($_POST['acc_group'])) echo $_POST['acc_group'];  ?>" class="form-control"/>
+              <input type="text" id="acc_group" name="acc_group" value="<?php if(isset($_POST['acc_group'])) echo html_esc($_POST['acc_group']);  ?>" class="form-control"/>
                </div></div>    
                
                <div class="form-group row">
                   <label class="control-label col-md-3">PP Log No. : </label>
                     <div class="col-md-8">     
-              <input type="text" id="pp_log_no" name="pp_log_no" value="<?php if(isset($_POST['pp_log_no'])) echo $_POST['pp_log_no'];  ?>" class="form-control"/>
+              <input type="text" id="pp_log_no" name="pp_log_no" value="<?php if(isset($_POST['pp_log_no'])) echo html_esc($_POST['pp_log_no']);  ?>" class="form-control"/>
                </div></div>    
                
                
                <div class="form-group row">
                   <label class="control-label col-md-3">PP Log Description : </label>
                     <div class="col-md-8">     
-              <input type="text" id="pp_log_desc" name="pp_log_desc" value="<?php if(isset($_POST['pp_log_desc'])) echo $_POST['pp_log_desc'];  ?>" class="form-control"/>
+              <input type="text" id="pp_log_desc" name="pp_log_desc" value="<?php if(isset($_POST['pp_log_desc'])) echo html_esc($_POST['pp_log_desc']);  ?>" class="form-control"/>
                </div></div>  
                  <div class="form-group row">
                   <label class="control-label col-md-3">Customer Code : </label>
                     <div class="col-md-8">     
-              <input type="text" id="cust_code" name="cust_code" value="<?php if(isset($_POST['cust_code'])) echo $_POST['cust_code'];  ?>" class="form-control"/>
+              <input type="text" id="cust_code" name="cust_code" value="<?php if(isset($_POST['cust_code'])) echo html_esc($_POST['cust_code']);  ?>" class="form-control"/>
                </div></div>    
                  <div class="form-group row">
                   <label class="control-label col-md-3">Customer Name : </label>
                     <div class="col-md-8">     
-              <input type="text" id="cust_name" name="cust_name" value="<?php if(isset($_POST['cust_name'])) echo $_POST['cust_name'];  ?>" class="form-control"/>
+              <input type="text" id="cust_name" name="cust_name" value="<?php if(isset($_POST['cust_name'])) echo html_esc($_POST['cust_name']);  ?>" class="form-control"/>
                </div></div>      
               
               

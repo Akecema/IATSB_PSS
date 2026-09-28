@@ -53,3 +53,11 @@ if (!function_exists('sql_esc')) {
         return preg_match('/^-?\d+(\.\d+)?$/', trim((string)$v)) ? trim((string)$v) : '0';
     }
 }
+
+// Output escaping for values echoed into HTML (DB rows, request and session data).
+if (!function_exists('html_esc')) {
+    function html_esc($v): string
+    {
+        return htmlspecialchars((string)$v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    }
+}

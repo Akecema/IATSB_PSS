@@ -19,7 +19,7 @@ $result59 = mysqli_query($dbc,$query59);
 ?>
 
    			<div id="work_div"> 
-              <select name="work_center" id="work_center" class="form-control" onChange="getMaterial('<?php echo $plant_code; ?>','<?php echo $material_type; ?>','<?php echo $model_code; ?>','<?php echo $stamp_ind; ?>',this.value)">
+              <select name="work_center" id="work_center" class="form-control" onChange="getMaterial('<?php echo html_esc($plant_code); ?>','<?php echo html_esc($material_type); ?>','<?php echo html_esc($model_code); ?>','<?php echo html_esc($stamp_ind); ?>',this.value)">
               <option value="NULL" placeholder="Select Section/Line"> -- Select Section/Line --</option>
           
 	<?php
@@ -28,7 +28,7 @@ $result59 = mysqli_query($dbc,$query59);
 		
 	
     ?>
-      <option value="<?php echo $row59["prod_line"]; ?>" > <?php echo $row59["prod_line"]; ?> </option>
+      <option value="<?php echo html_esc($row59["prod_line"]); ?>" > <?php echo html_esc($row59["prod_line"]); ?> </option>
     
     <?php     }
     

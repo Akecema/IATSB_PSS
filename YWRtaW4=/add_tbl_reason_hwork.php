@@ -32,8 +32,8 @@ $url = "reason_hwork_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -165,7 +165,7 @@ if (isset($message))
                 <div class="form-group row">
                   <label class="control-label col-md-3">Reason Handwork  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="rhwork_desc" type="text" class="form-control" id="rhwork_desc" size="20" maxlength="20" value="<?php if(isset($_POST['rhwork_desc'])) echo $_POST['rhwork_desc']; ?>"  placeholder="Enter Reason Handwork" />
+                  <input name="rhwork_desc" type="text" class="form-control" id="rhwork_desc" size="20" maxlength="20" value="<?php if(isset($_POST['rhwork_desc'])) echo html_esc($_POST['rhwork_desc']); ?>"  placeholder="Enter Reason Handwork" />
                    <div class="form-control-feedback" ><?php echo $message_rdesc; ?></div>
                     </div>
                 </div>

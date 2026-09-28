@@ -25,13 +25,13 @@ $result_type = mysqli_query($dbc,$query_type);
 				   ?>
                      <?php if($_POST["con_bfhwork"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_type["id_type"]; ?>"<?php if($row_type["id_proc"] == $proc_reject) echo "selected"; ?>> <?php echo $row_type["type_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_type["id_type"]); ?>"<?php if($row_type["id_proc"] == $proc_reject) echo "selected"; ?>> <?php echo html_esc($row_type["type_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_type["id_type"]; ?>"> <?php echo $row_type["type_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_type["id_type"]); ?>"> <?php echo html_esc($row_type["type_desc"]); ?></option>
                   <?php
 				    }  // else
 				  

@@ -44,8 +44,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -235,12 +235,12 @@ th {
    while($row2 = mysqli_fetch_array($rs))
    {
       ?> <tr class="item">
-            <td>&nbsp;<?php  echo $row2["id_ath"]; ?></td>
-            <td>&nbsp;<?php  echo $row2["username"]; ?></td>
-            <td>&nbsp;<?php  echo $row2["vendor_id"]; ?></td>
+            <td>&nbsp;<?php  echo html_esc($row2["id_ath"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row2["username"]); ?></td>
+            <td>&nbsp;<?php  echo html_esc($row2["vendor_id"]); ?></td>
             <td>
             <div align="center">
-                 <a href="#myNoteAth<?php echo $row2["id_ath"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteAth<?php echo html_esc($row2["id_ath"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "vendor-user_edit.php";   ?>

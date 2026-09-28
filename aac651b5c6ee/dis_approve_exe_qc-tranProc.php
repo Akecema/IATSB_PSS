@@ -154,8 +154,8 @@ $rst_sta29 = mysqli_fetch_array($sta_res29);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -293,7 +293,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -308,7 +308,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                  <tr>
@@ -318,7 +318,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
                <tr>
@@ -334,7 +334,7 @@ div.dataTables_wrapper {
 				    { 
 				   
 				   ?>
-                <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                 
                 
                 
@@ -579,14 +579,14 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["plant_cd"]; ?></td>
-                <td width="150"><?php echo $row["doc_dis"]; ?></td>
-                <td width="100"><?php echo $row["R"]; ?></td> 
-                <td width="80"><?php echo $row["work_center"]; ?></td>
+                <td width="80"><?php echo html_esc($row["plant_cd"]); ?></td>
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td>
                 <td width="80"><?php echo $sta_dis; ?></td>
                 <td width="100"><?php if($row["status_disposal"] == $rst_sta29["status_desc"]) { ?> 
 
-              <!--  <a href="#myNoteApprv<?php echo $row["doc_dis"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-check-square" aria-hidden="true"></i> Approval</a> -->
+              <!--  <a href="#myNoteApprv<?php echo html_esc($row["doc_dis"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-check-square" aria-hidden="true"></i> Approval</a> -->
               
                        <!--------------------------modal------------------------->
           <?php   if($row["status_part"] == "PR") 
@@ -600,11 +600,11 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
 			      if($data_setup4["bil_table"] == "4")
                    {  		
 					?>
-  <a href="display_apprv_dis-HEXEQC-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
+  <a href="display_apprv_dis-HEXEQC-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
 			  <?php  }elseif($data_setup4["bil_table"] == "5")
 			      {
 				 ?>
-  <a href="display_apprv_dis-HEXEQC2-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
+  <a href="display_apprv_dis-HEXEQC2-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
  			  
 	<?php		  }else{  }//$data_setup4
 					 
@@ -618,11 +618,11 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
 			      if($data_setup4["bil_table"] == "4")
                    {  		
 					?>
-  <a href="display_apprv_dis-HEXEQC-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
+  <a href="display_apprv_dis-HEXEQC-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
 			  <?php  }elseif($data_setup4["bil_table"] == "5")
 			      {
 				 ?>
-  <a href="display_apprv_dis-HEXEQC2-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
+  <a href="display_apprv_dis-HEXEQC2-prd-stm.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>     
  			  
 	<?php		  }else{  }//$data_setup4
 					 
@@ -639,13 +639,13 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
                    {  		  
 					 
 						 ?>
-  <a href="display_apprv_dis-HEXEQC-prd.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  
+  <a href="display_apprv_dis-HEXEQC-prd.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  
                
                <?php  }elseif($data_setup3["bil_table"] == "5")
 			      {
 				 ?>
                
-  <a href="display_apprv_dis-HEXEQC2-prd.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  
+  <a href="display_apprv_dis-HEXEQC2-prd.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  
                <?php }else{  }//$data_setup3
 					 
 					 
@@ -661,10 +661,10 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
 					   
 					   
 					   ?>
-   <a href="display_apprv_dis-HEXEQC-prdEng.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
+   <a href="display_apprv_dis-HEXEQC-prdEng.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
 					    <?php }elseif($data_setup7["bil_table"] == "5"){  ?>
                         
-   <a href="display_apprv_dis-HEXEQC2-prdEng.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
+   <a href="display_apprv_dis-HEXEQC2-prdEng.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
                         
 					
 					<?php
@@ -683,12 +683,12 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
 		           
 				     ?>
                    
-  <a href="display_apprv_dis-HEXEQC-rcv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
+  <a href="display_apprv_dis-HEXEQC-rcv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
 					
 					<?php  }elseif($data_setup6["bil_table"] == "5")
 			      {
 				 ?>
-  <a href="display_apprv_dis-HEXEQC2-rcv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
+  <a href="display_apprv_dis-HEXEQC2-rcv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>  	
 					 <?php }else{  }//$data_setup6   ?>
 					
 					<?php
@@ -702,12 +702,12 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
                    {  
 				  
 						?>	
-    <a href="display_apprv_dis-HEXEQC-dlv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                       	
+    <a href="display_apprv_dis-HEXEQC-dlv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                       	
 						<?php  }elseif($data_setup6["bil_table"] == "5")
 			      {
 				 ?>
 					
-    <a href="display_apprv_dis-HEXEQC2-dlv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                       	
+    <a href="display_apprv_dis-HEXEQC2-dlv.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                       	
 					 <?php }else{  }//$data_setup6   ?>
                      
 					<?php 
@@ -719,11 +719,11 @@ $num_rowsDis = mysqli_num_rows($rsDis);   //how many material are there?
 			    if($data_setup5["bil_table"] == "4")
                    {  		  
 					  ?>	
-    <a href="display_apprv_dis-HEXEQC-qc.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                     		
+    <a href="display_apprv_dis-HEXEQC-qc.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                     		
 			<?php  }elseif($data_setup5["bil_table"] == "5")
                    {
 					?>   
-    <a href="display_apprv_dis-HEXEQC2-qc.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                     		
+    <a href="display_apprv_dis-HEXEQC2-qc.php?buidT=<?php echo base64_encode($row["doc_dis"]);  ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>" ><i class="fa fa-check-circle" aria-hidden="true"></i>Approval</a>                     		
 			<?php	}else{ } // end $data_setup5 
 				   
 				   ?>

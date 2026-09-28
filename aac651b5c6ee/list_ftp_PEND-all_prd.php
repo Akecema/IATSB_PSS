@@ -90,8 +90,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -273,7 +273,7 @@ if(is_dir($dir)){
 		while($row_rsAA = mysqli_fetch_array($rsAA)){
 		
 		?>
-		<i class="fa fa-folder-open"></i> <?php echo $row_rsAA["file_name"]; ?>
+		<i class="fa fa-folder-open"></i> <?php echo html_esc($row_rsAA["file_name"]); ?>
 
 
    <?php		
@@ -308,14 +308,14 @@ if(is_dir($dir)){
   <table class="table">
  <tbody>
   <tr> 
-    <td width="15%"><?php echo $row_rs["file_name"]; ?></td>
-    <td width="15%"><?php echo $row_rs["plan_no"]; ?></td>
-    <td width="10%"><?php echo $row_whn["bflush_no"]; ?></td>
-    <td width="20%"><?php echo $row_rs["material_no"]; ?></td>
+    <td width="15%"><?php echo html_esc($row_rs["file_name"]); ?></td>
+    <td width="15%"><?php echo html_esc($row_rs["plan_no"]); ?></td>
+    <td width="10%"><?php echo html_esc($row_whn["bflush_no"]); ?></td>
+    <td width="20%"><?php echo html_esc($row_rs["material_no"]); ?></td>
     <td width="10%"><?php echo intval($row_rs["qty_ftp"]); ?></td>
-    <td width="5%"><?php echo $row_mat_type["BUn"]; ?></td>
-    <td width="10%"><?php echo $row_whn["R3"];  ?></td>
-    <td width="5%"><?php echo $row_whn["time_posting"];  ?></td>
+    <td width="5%"><?php echo html_esc($row_mat_type["BUn"]); ?></td>
+    <td width="10%"><?php echo html_esc($row_whn["R3"]);  ?></td>
+    <td width="5%"><?php echo html_esc($row_whn["time_posting"]);  ?></td>
   </tr>
   </tbody>
 </table>
@@ -338,7 +338,7 @@ if(is_dir($dir)){
 		while($row_rsBB = mysqli_fetch_array($rsBB)){
 		
 		?>
-		<i class="fa fa-folder-open"></i> <?php echo $row_rsBB["file_name"]; ?>
+		<i class="fa fa-folder-open"></i> <?php echo html_esc($row_rsBB["file_name"]); ?>
 
 
    <?php		
@@ -373,14 +373,14 @@ if(is_dir($dir)){
   <table class="table">
  <tbody>
   <tr> 
-    <td width="15%"><?php echo $row_rsB["file_name"]; ?></td>
-    <td width="15%"><?php echo $row_rsB["plan_no"]; ?></td>
-    <td width="10%"><?php echo $row_whnB["bflush_no"]; ?></td>
-    <td width="20%"><?php echo $row_rsB["material_no"]; ?></td>
+    <td width="15%"><?php echo html_esc($row_rsB["file_name"]); ?></td>
+    <td width="15%"><?php echo html_esc($row_rsB["plan_no"]); ?></td>
+    <td width="10%"><?php echo html_esc($row_whnB["bflush_no"]); ?></td>
+    <td width="20%"><?php echo html_esc($row_rsB["material_no"]); ?></td>
     <td width="10%"><?php echo intval($row_rsB["qty_ftp"]); ?></td>
-    <td width="5%"><?php echo $row_mat_typeB["BUn"]; ?></td>
-    <td width="10%"><?php echo $row_whnB["R3"];  ?></td>
-    <td width="5%"><?php echo $row_whnB["time_posting"];  ?></td>
+    <td width="5%"><?php echo html_esc($row_mat_typeB["BUn"]); ?></td>
+    <td width="10%"><?php echo html_esc($row_whnB["R3"]);  ?></td>
+    <td width="5%"><?php echo html_esc($row_whnB["time_posting"]);  ?></td>
   </tr>
   </tbody>
 </table>

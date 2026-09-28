@@ -29,9 +29,9 @@ $resultF =mysqli_query($dbc,$queryF);
                     
                     if($_POST['submit9'] == true){ ?>
                        <!--RETAIN VALUE-->
-                      <option value="<?php echo $rowF["id_defect"]; ?>" <?php if($rowF["id_defect"]==$_GET["id_defect"]) echo "selected"; ?>> <?php echo stripslashes($rowF["id_defect"]),' - ',stripslashes($rowF["defect_desc"]); ?></option>
+                      <option value="<?php echo html_esc($rowF["id_defect"]); ?>" <?php if($rowF["id_defect"]==$_GET["id_defect"]) echo "selected"; ?>> <?php echo stripslashes($rowF["id_defect"]),' - ',stripslashes($rowF["defect_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $rowF["id_defect"]; ?>" > <?php echo stripslashes($rowF["id_defect"]),' - ',stripslashes($rowF["defect_desc"]); ?></option>
+                       <option value="<?php echo html_esc($rowF["id_defect"]); ?>" > <?php echo stripslashes($rowF["id_defect"]),' - ',stripslashes($rowF["defect_desc"]); ?></option>
                        <?php } ?>
                       
               <?php    }

@@ -20,16 +20,16 @@ $result42 =mysqli_query($dbc,$query42);
 ?>
 
 <div id="catm_div">  
-<select name="stamp_ind" id="stamp_ind" class="form-control" onChange="getMaterial('<?php echo $plant_code; ?>','<?php echo $material_type; ?>','<?php echo $model_code; ?>',this.value)" >
+<select name="stamp_ind" id="stamp_ind" class="form-control" onChange="getMaterial('<?php echo html_esc($plant_code); ?>','<?php echo html_esc($material_type); ?>','<?php echo html_esc($model_code); ?>',this.value)" >
    <option value="NULL" placeholder="Select Category"> -- Select Category --</option>
 <?php
                 while($row42=mysqli_fetch_array($result42)) 
 			      {
 					  if($_POST['submit3'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row42["stamp_ind"]; ?>" <?php if($row42["stamp_ind"]==$_POST["stamp_ind"]) echo "selected"; ?>> <?php echo stripslashes($row42["stamp_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row42["stamp_ind"]); ?>" <?php if($row42["stamp_ind"]==$_POST["stamp_ind"]) echo "selected"; ?>> <?php echo stripslashes($row42["stamp_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row42["stamp_ind"]; ?>" > <?php echo stripslashes($row42["stamp_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row42["stamp_ind"]); ?>" > <?php echo stripslashes($row42["stamp_desc"]); ?></option>
                        <?php } ?>
 	
               <?php    }

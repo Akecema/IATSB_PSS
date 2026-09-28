@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteWork<?php echo $row2["id_cat"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteWork<?php echo html_esc($row2["id_cat"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -124,23 +124,23 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
    <tr>
     <td width="191">Category Code </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="stamp_ind" name="stamp_ind" readonly value="<?php  echo $row_ven["stamp_ind"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="stamp_ind" name="stamp_ind" readonly value="<?php  echo html_esc($row_ven["stamp_ind"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Category Description </td>
     <td width="28">:</td>
-    <td><input type="text" id="stamp_desc" name="stamp_desc" readonly value="<?php echo $row_ven["stamp_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="stamp_desc" name="stamp_desc" readonly value="<?php echo html_esc($row_ven["stamp_desc"]); ?>" class="form-control"/></td>
     </tr>
     <tr>
     <td>Plant</td>
     <td>:</td>
-    <td><input type="text" id="plant_code" name="search_term" readonly value="<?php echo $row_ven["plant_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="plant_code" name="search_term" readonly value="<?php echo html_esc($row_ven["plant_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
     <td>Status Account <br>(Y = Active, N = In Active)</td>
     <td>:</td>
-    <td><input type="text" id="status_stamp" name="status_stamp" readonly value="<?php echo $row_ven["status_stamp"].'='.$sta_acc;	?>" class="form-control"/>
+    <td><input type="text" id="status_stamp" name="status_stamp" readonly value="<?php echo html_esc($row_ven["status_stamp"]).'='.$sta_acc;	?>" class="form-control"/>
      </td>
     </tr>
    

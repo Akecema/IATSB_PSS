@@ -32,8 +32,8 @@ $url = "setup_maintain_add.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+   <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,7 +139,7 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	
 	 if ($num > 0) {
 	 
-	 echo '<div align="center">There are currently  '. $num_rows[0].' record(s).</div>';
+	 echo '<div align="center">There are currently  '. html_esc($num_rows[0]).' record(s).</div>';
 	 }
 	
 
@@ -178,11 +178,11 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	 
       ?> <tr>
             <td width="30"><?php echo $no; ?></td>
-            <td><a href="#"><?php echo $row["title_desc"]; ?></a></td>
-            <td width="150"><?php echo $row[2]; ?></td>
-            <td width="200" height="28"><?php  echo $row[4]; ?></td>
+            <td><a href="#"><?php echo html_esc($row["title_desc"]); ?></a></td>
+            <td width="150"><?php echo html_esc($row[2]); ?></td>
+            <td width="200" height="28"><?php  echo html_esc($row[4]); ?></td>
             <td width="100"><font color="#FF0000"><?php echo $sts; ?></font></td>
-            <td><?php echo $row[7]; ?></td>
+            <td><?php echo html_esc($row[7]); ?></td>
          </tr>
           <?php 
 		  

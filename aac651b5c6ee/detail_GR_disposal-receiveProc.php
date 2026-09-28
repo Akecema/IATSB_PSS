@@ -352,7 +352,7 @@ exit();
 	*/
 		   
 		//	echo $part4;  echo "<br>"; 
-		 echo $string[$i]; echo "</br>";
+		 echo html_esc($string[$i]); echo "</br>";
 		/* echo $string2[$i]; echo "</br>";
 		 echo $string3[$i]; echo "</br>";
 		 echo $string4[$i]; echo "</br>";

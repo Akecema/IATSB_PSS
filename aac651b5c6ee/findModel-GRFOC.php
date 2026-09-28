@@ -20,7 +20,7 @@ $result41 =mysqli_query($dbc,$query41);
 
 
 <div id="model_div">
-  <select name="model_code" id="model_code" class="form-control" onChange="getCategory('<?php echo $vendor_code; ?>','<?php echo $material_type; ?>',this.value)" >
+  <select name="model_code" id="model_code" class="form-control" onChange="getCategory('<?php echo html_esc($vendor_code); ?>','<?php echo html_esc($material_type); ?>',this.value)" >
    <option value="NULL" placeholder="Select Model"> -- Select Model --</option>
 <?php
                 while($row41=mysqli_fetch_array($result41)) 
@@ -39,9 +39,9 @@ $result41 =mysqli_query($dbc,$query41);
 					  
 					  if($_POST['submit3'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["model_code"]; ?>" <?php if($row41["model_code"]==$_POST["model_code"]) echo "selected"; ?>> <?php echo stripslashes($row_mdl["model_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["model_code"]); ?>" <?php if($row41["model_code"]==$_POST["model_code"]) echo "selected"; ?>> <?php echo stripslashes($row_mdl["model_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row41["model_code"]; ?>" > <?php echo stripslashes($row_mdl["model_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["model_code"]); ?>" > <?php echo stripslashes($row_mdl["model_desc"]); ?></option>
                        <?php } ?>
 	
               <?php    }

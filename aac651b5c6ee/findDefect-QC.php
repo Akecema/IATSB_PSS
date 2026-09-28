@@ -14,7 +14,7 @@ $result4w = mysqli_query($dbc,$query4w);
                 while($row4w = mysqli_fetch_array($result4w)) 
 			      {
 					  ?>
-<option value="<?php echo $row4w["id_defect"]; ?>"><?php echo $row4w["defect_desc"]; ?></option>
+<option value="<?php echo html_esc($row4w["id_defect"]); ?>"><?php echo html_esc($row4w["defect_desc"]); ?></option>
 <?php   }  ?>
 
 </select>

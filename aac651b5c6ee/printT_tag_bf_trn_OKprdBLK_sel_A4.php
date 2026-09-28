@@ -77,8 +77,8 @@ $buid = base64_decode($_GET["buid"]);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Material Doc. No <?php echo $buid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Material Doc. No <?php echo $buid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -318,15 +318,15 @@ echo "</table></center>";
       </tr>
     <tr>
       <td colspan="2">Material Doc. No.</td>
-      <td width="14%"><span class="style1"><?php echo $row["bflush_no"];  ?></span></td>
+      <td width="14%"><span class="style1"><?php echo html_esc($row["bflush_no"]);  ?></span></td>
       <td width="19%"><span class="style8">Production Date</span></td>
-      <td width="17%"><div align="center"><span class="style1"> <?php echo $row["R"];  ?></span></div></td>
+      <td width="17%"><div align="center"><span class="style1"> <?php echo html_esc($row["R"]);  ?></span></div></td>
     </tr>
     <tr>
       <td colspan="2"><span class="style8">Planned Order No.</span></td>
-      <td><span class="style1"><?php echo $row["plan_no"];  ?></span></td>
+      <td><span class="style1"><?php echo html_esc($row["plan_no"]);  ?></span></td>
       <td>Slip No. </td>
-      <td><div align="center"><span class="style1"> <?php echo $row["slip_no"];  ?> of <?php echo $row["total_slip"];  ?> </span></div></td>
+      <td><div align="center"><span class="style1"> <?php echo html_esc($row["slip_no"]);  ?> of <?php echo html_esc($row["total_slip"]);  ?> </span></div></td>
     </tr>
     <tr>
       <td width="12%"><div align="center"><span class="style4">MODEL</span></div></td>
@@ -334,16 +334,16 @@ echo "</table></center>";
       <td colspan="5"><div align="center"><span class="style4">PART NAME</span></div></td>
       </tr>
     <tr>
-      <td>&nbsp;<div align="center"><span class="style77"><?php echo $row["model_code"];  ?></span></div></td>
-      <td colspan="2">&nbsp;<div align="center"><span class="style77"><?php echo $row["material_no"];     ?></span></div></td>
-      <td colspan="5">&nbsp;<div align="center"><span class="style77"><?php echo $row["material_desc"];  ?></span></div></td>
+      <td>&nbsp;<div align="center"><span class="style77"><?php echo html_esc($row["model_code"]);  ?></span></div></td>
+      <td colspan="2">&nbsp;<div align="center"><span class="style77"><?php echo html_esc($row["material_no"]);     ?></span></div></td>
+      <td colspan="5">&nbsp;<div align="center"><span class="style77"><?php echo html_esc($row["material_desc"]);  ?></span></div></td>
       </tr>
     <tr>
       <td colspan="4"><div align="center"><span class="style4">SPEC / MATERIAL SIZE</span></div></td>
       <td colspan="4"><div align="center"><span class="style4">QUANTITY</span></div></td>
       </tr>
     <tr>
-      <td colspan="4">&nbsp;<div align="center"><span class="style77"><?php echo $row_info3["size_dim"];  ?></span></div></td>
+      <td colspan="4">&nbsp;<div align="center"><span class="style77"><?php echo html_esc($row_info3["size_dim"]);  ?></span></div></td>
       <td colspan="4">&nbsp;<div align="center"><span class="style77"><?php echo intval($row["tag_qty"]);  ?></span></div></td>
       </tr>
     <tr>

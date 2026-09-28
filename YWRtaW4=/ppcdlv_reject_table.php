@@ -33,8 +33,8 @@ $url = "ppcdlv_reject_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -168,7 +168,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Delivery Process Reject Desc. : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="proc_desc" type="text" class="form-control" id="proc_desc" size="20" maxlength="40" value="<?php if(isset($_POST['proc_desc'])) echo $_POST['proc_desc']; ?>"  placeholder="Enter Receiving Process Reject Description" />
+                  <input name="proc_desc" type="text" class="form-control" id="proc_desc" size="20" maxlength="40" value="<?php if(isset($_POST['proc_desc'])) echo html_esc($_POST['proc_desc']); ?>"  placeholder="Enter Receiving Process Reject Description" />
                    <div class="form-control-feedback" ><?php echo $message_rejdesc; ?></div>
                     </div>
                 </div>

@@ -107,8 +107,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -737,7 +737,7 @@ while($row = mysqli_fetch_array($result_tag))
 			
 				  echo "<script>";
 				  echo "alert('ERROR! Please Scan Kanban QR Code. Planning not exist');";
-				  echo "window.location='confirm_backflushProc.php?uid2=$uid2'";
+				  echo "window.location='confirm_backflushProc.php?uid2=".html_esc($uid2)."'";
 				  echo "</script>";
 				  exit(); //quit the script
 			 
@@ -1058,7 +1058,7 @@ while($row = mysqli_fetch_array($result_tag))
 			
 				  echo "<script>";
 				  echo "alert('ERROR! Please Scan Kanban QR Code. Planning not exist');";
-				  echo "window.location='confirm_backflushProc.php?uid2=$uid2'";
+				  echo "window.location='confirm_backflushProc.php?uid2=".html_esc($uid2)."'";
 				  echo "</script>";
 				  exit(); //quit the script
 			 
@@ -1106,7 +1106,7 @@ if (isset($message))
 		
 		  
 		  ?>        
-        <form name="myform" method="post" action="confirm_backflushProc.php?uid2=<?php echo $uid2; ?>">
+        <form name="myform" method="post" action="confirm_backflushProc.php?uid2=<?php echo html_esc($uid2); ?>">
         <table width="100%" border="0" cellpadding="2">
         <tr>
        <td width="52%" ><p>&nbsp;</p></td>
@@ -1144,14 +1144,14 @@ if (isset($message))
                     
                 
                 ?>
-                  <option value="<?php echo $row39["material_no"]; ?>" >(<?php echo $row39["back_no"]; ?>)&nbsp;<?php echo $row39["material_no"]; ?> - <?php echo $row39["material_desc"]; ?> </option>
+                  <option value="<?php echo html_esc($row39["material_no"]); ?>" >(<?php echo html_esc($row39["back_no"]); ?>)&nbsp;<?php echo html_esc($row39["material_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?> </option>
                 
                 <?php     }
                 
                 ?>
             </select>
           
-            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php echo $data_scan["back_no"]; ?>" />  
+            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php echo html_esc($data_scan["back_no"]); ?>" />  
             <?php    }else{
 				
 				
@@ -1169,7 +1169,7 @@ if (isset($message))
                     
                 
                 ?>
-                  <option value="<?php echo $row39A["material_no"]; ?>" >(<?php echo $row39A["back_no"]; ?>)&nbsp;<?php echo $row39A["material_no"]; ?> - <?php echo $row39A["material_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row39A["material_no"]); ?>" >(<?php echo html_esc($row39A["back_no"]); ?>)&nbsp;<?php echo html_esc($row39A["material_no"]); ?> - <?php echo html_esc($row39A["material_desc"]); ?></option>
                 
                 <?php     }
                 
@@ -1190,7 +1190,7 @@ if (isset($message))
                      <td width="14%">Posting Date</td>
                      <td width="2%">:</td>
                      <td colspan="2"> 
-                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> 
+                       <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> 
                      </td>
                     </tr>
                      <tr>
@@ -1200,7 +1200,7 @@ if (isset($message))
                        <?php if($_POST["con_bfok"] == true)
 		{  
 		?>
-                       <option value="<?php echo $_POST["time1"]; ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time1"]); ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1217,7 +1217,7 @@ if (isset($message))
                        <?php if($_POST["con_bfok"] == true)  
 		{  
 		?>
-                       <option value="<?php echo $_POST["time2"]; ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time2"]); ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1233,7 +1233,7 @@ if (isset($message))
                    <tr>
                      <td>Enter OK Quantity</td>
                      <td>:</td>
-                     <td colspan="2"><input name="qty_actual" type="number" min="1" value="<?php if(isset($_POST["qty_actual"])) { echo $_POST["qty_actual"]; } ?>" class="form-control"/><div class="form-control-feedback" ><?php echo $message_qok; ?></div></td>
+                     <td colspan="2"><input name="qty_actual" type="number" min="1" value="<?php if(isset($_POST["qty_actual"])) { echo html_esc($_POST["qty_actual"]); } ?>" class="form-control"/><div class="form-control-feedback" ><?php echo $message_qok; ?></div></td>
                       </tr>  
                   
                   </table></td>

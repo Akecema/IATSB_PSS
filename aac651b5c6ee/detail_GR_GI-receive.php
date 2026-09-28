@@ -103,8 +103,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -451,7 +451,7 @@ $result_db = mysqli_query($dbc,$query_db) or die (mysqli_error());
              {
 			 
 			echo "<script>";
-			echo "window.location='detail_GR_GI-receive.php?scan_doc=$number&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&material_no=$material_no'";
+			echo "window.location='detail_GR_GI-receive.php?scan_doc=$number&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=$plant_code&&material_no=$material_no'";
             echo "</script>";
             exit(); //quit the script
 			 
@@ -786,7 +786,7 @@ exit();
              <tr>
                 <th>Barcode : &nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1.Goods Receipt Tag" data-html="true" data-placement="left"></i></th>
                 <th colspan="3">
-     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo $_POST['barcode_ref']; ?>" class="form-control" autofocus/>
+     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo html_esc($_POST['barcode_ref']); ?>" class="form-control" autofocus/>
                </th>
               </tr>
               <tr>
@@ -802,7 +802,7 @@ exit();
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -862,7 +862,7 @@ exit();
          
                  <tr>
               <th>Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -895,7 +895,7 @@ exit();
                             while($row41=mysqli_fetch_array($result41)) 
                               {
                                 ?>
-                                   <option value="<?php echo $row41["id_work"]; ?>" > <?php echo stripslashes($row41["id_work"]),' - ',stripslashes($row41["wc_desc"]); ?></option>
+                                   <option value="<?php echo html_esc($row41["id_work"]); ?>" > <?php echo stripslashes($row41["id_work"]),' - ',stripslashes($row41["wc_desc"]); ?></option>
                                  
                 
                           <?php    }
@@ -932,14 +932,14 @@ exit();
 	  
       ?>
                 <tr class="item">
-                <td width="50"><a href="delete_gis_item.php?scan_doc=<?php echo $row["scan_doc"]; ?>&&p_id=<?php echo $row["id_scan_gis"]; ?>&&plant_code=<?php echo $row["plant_code"]; ?>&&date1=<?php echo $row["posting_date"]; ?>&&shift_ops=<?php echo $row["scan_shift"]; ?>&&work_center=<?php echo $row["work_center"]; ?>&&material_no=<?php echo $row["material_no"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
-                <td width="50"><?php echo $no4; ?><input name="id_gis[<?php echo $row["id_scan_gis"]; ?>]" type="hidden" value="<?php echo $row["id_scan_gis"]; ?>">
-                <input name="item_no[<?php echo $row["id_scan_gis"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="350"><?php echo $row["material_desc"]; ?></td>
-                <td width="200"> <input name="scan_qty[<?php echo $row["id_scan_gis"]; ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo $_POST["scan_qty"][($row["id_scan_gis"])]; } ?>" id="scan_qty" class="form-control form-control-sm">
+                <td width="50"><a href="delete_gis_item.php?scan_doc=<?php echo html_esc($row["scan_doc"]); ?>&&p_id=<?php echo html_esc($row["id_scan_gis"]); ?>&&plant_code=<?php echo html_esc($row["plant_code"]); ?>&&date1=<?php echo html_esc($row["posting_date"]); ?>&&shift_ops=<?php echo html_esc($row["scan_shift"]); ?>&&work_center=<?php echo html_esc($row["work_center"]); ?>&&material_no=<?php echo html_esc($row["material_no"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
+                <td width="50"><?php echo $no4; ?><input name="id_gis[<?php echo html_esc($row["id_scan_gis"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan_gis"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_scan_gis"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="350"><?php echo html_esc($row["material_desc"]); ?></td>
+                <td width="200"> <input name="scan_qty[<?php echo html_esc($row["id_scan_gis"]); ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo html_esc($_POST["scan_qty"][($row["id_scan_gis"])]); } ?>" id="scan_qty" class="form-control form-control-sm">
                  </td>
-                <td width="100"><?php echo $row["scan_uom"]; ?>  <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>"></td> 
+                <td width="100"><?php echo html_esc($row["scan_uom"]); ?>  <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>"></td> 
                
                 </tr>
                  

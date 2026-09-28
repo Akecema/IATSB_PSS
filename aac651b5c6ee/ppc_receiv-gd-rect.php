@@ -93,8 +93,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -973,7 +973,7 @@ exit();
              <tr>
                 <th>Scan QR Code : <font color="#FF0000">*</font>&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1. Delivery Order Number" data-html="true" data-placement="left"></i></th>
                 <th colspan="2">
-          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo $_POST['pps_ref']; } ?>" class="form-control" autofocus/>
+          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo html_esc($_POST['pps_ref']); } ?>" class="form-control" autofocus/>
             
           &nbsp;&nbsp;<small>Eg: Delivery Order No. </small>
           
@@ -1032,21 +1032,21 @@ exit();
             </tr>
           <tr>
           <th>PO No. : </th>
-          <th colspan="2"><input class="form-control" id="po_no" type="text" name="po_no" readonly value="<?php echo $row_vend["po_no"]; ?>"/></th>
+          <th colspan="2"><input class="form-control" id="po_no" type="text" name="po_no" readonly value="<?php echo html_esc($row_vend["po_no"]); ?>"/></th>
             </tr>
              <tr>
                 <th>Delivery Order No. : <font color="#FF0000">*</font></th>
                 <td colspan="2">
-                <input class="form-control" id="dlv_ord_no" type="text" placeholder="Enter Delivery Order No." name="dlv_ord_no"  readonly value="<?php echo $row_vend["dlv_ord_no"];   ?>"/> 
+                <input class="form-control" id="dlv_ord_no" type="text" placeholder="Enter Delivery Order No." name="dlv_ord_no"  readonly value="<?php echo html_esc($row_vend["dlv_ord_no"]);   ?>"/> 
             	</td>
             </tr> 
             <tr>
             	<th>Posting Date : </th>
-            	<td colspan="2"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="PSSDate" value="<?php if(isset($_POST['PSSDate'])){ echo $_POST['PSSDate']; }else{ echo $fmt_curr_date; } ?>"></td>
+            	<td colspan="2"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="PSSDate" value="<?php if(isset($_POST['PSSDate'])){ echo html_esc($_POST['PSSDate']); }else{ echo $fmt_curr_date; } ?>"></td>
             </tr>
             <tr>
                 <th>Vendor : </th>
-                <th colspan="2"><input class="form-control" id="vendor_id" type="text" name="vendor_id" readonly value="<?php echo $row_vend["vc_code"]. ' - ' .$row5a["vendor_name"]; ?>"/></th>
+                <th colspan="2"><input class="form-control" id="vendor_id" type="text" name="vendor_id" readonly value="<?php echo html_esc($row_vend["vc_code"]). ' - ' .html_esc($row5a["vendor_name"]); ?>"/></th>
             </tr>
             <tr>
             <th>Shift :</th>
@@ -1139,20 +1139,20 @@ exit();
                    
                 <tr> 
                 <td width="5%" align="center">
-                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id_scan"]; ?>" class="form-check" checked></td>
+                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id_scan"]); ?>" class="form-check" checked></td>
                 
-                <td width="50"><?php echo $no4; ?><input name="id_scan[<?php echo $row["id_scan"]; ?>]" type="hidden" value="<?php echo $row["id_scan"]; ?>">
-                <input name="item_no[<?php echo $row["id_scan"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="350"><?php echo $row["material_desc"]; ?></td>
+                <td width="50"><?php echo $no4; ?><input name="id_scan[<?php echo html_esc($row["id_scan"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_scan"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="350"><?php echo html_esc($row["material_desc"]); ?></td>
                 <td width="100"> <?php echo intval($row["kanban_order"]); ?></td>
                  <td width="100"> <?php echo intval($tot_gr_qty); ?>
                  <?php if(($tot_gr_qty) > $row["qty_dlv"]) { ?><div class="form-control-feedback" ><?php echo $msg; ?></div><?php } ?>
                  
                  </td>
-                <td width="150"><input name="gr_qty[<?php echo $row["id_scan"]; ?>]" id="gr_qty" value="<?php echo intval($gr_qty_new); ?>" type="number" class="form-control form-control-sm" <?php if(intval($gr_qty_new) == 0) { ?> disabled <?php  }  ?>></td>
-                <td width="80"><?php echo $row["scan_uom"]; ?></td> 
-                <td width="150"><input name="std_package[<?php echo $row["id_scan"]; ?>]" type="text" value="<?php echo $row["std_package"]; ?>" id="std_package" class="form-control form-control-sm"> <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>"> </td>
+                <td width="150"><input name="gr_qty[<?php echo html_esc($row["id_scan"]); ?>]" id="gr_qty" value="<?php echo intval($gr_qty_new); ?>" type="number" class="form-control form-control-sm" <?php if(intval($gr_qty_new) == 0) { ?> disabled <?php  }  ?>></td>
+                <td width="80"><?php echo html_esc($row["scan_uom"]); ?></td> 
+                <td width="150"><input name="std_package[<?php echo html_esc($row["id_scan"]); ?>]" type="text" value="<?php echo html_esc($row["std_package"]); ?>" id="std_package" class="form-control form-control-sm"> <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>"> </td>
          
                 </tr>
                  

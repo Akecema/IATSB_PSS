@@ -111,8 +111,8 @@ $rst_sta29 = mysqli_fetch_array($sta_res29);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -495,7 +495,7 @@ $data_rcv .= $row_infoA["plant_code"].";".$row_infoA["ref_doc_dis"].";".$row_inf
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteDisplayA<?php echo $row["doc_dis"]; ?><?php echo $row["reject_source"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteDisplayA<?php echo html_esc($row["doc_dis"]); ?><?php echo html_esc($row["reject_source"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -524,20 +524,20 @@ $data_rcv .= $row_infoA["plant_code"].";".$row_infoA["ref_doc_dis"].";".$row_inf
     <td valign="top">&nbsp;<h5><font color="#999999"><b>DISPOSAL FORM</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $row["plant_cd"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($row["plant_cd"]);   ?></div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Document No. :  </b><?php echo $row["doc_dis"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($row["doc_dis"]);   ?></div></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Date :  </b><?php echo $data_bb["T3"];   ?></div></td>  
+    <td><div align="left"><b>Date :  </b><?php echo html_esc($data_bb["T3"]);   ?></div></td>  
   
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Shift :  </b><?php echo $row["shift_posting"];   ?></div></td>
+    <td><div align="left"><b>Shift :  </b><?php echo html_esc($row["shift_posting"]);   ?></div></td>
   </tr>
         </table>
 
@@ -652,17 +652,17 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><?php echo $noA; ?></td>
-    <td width="250"><b><?php echo $row2["material_no"]; ?></b><br><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["model_code"]; ?></td>
+    <td width="250"><b><?php echo html_esc($row2["material_no"]); ?></b><br><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["model_code"]); ?></td>
     <td><?php echo intval($row2["qty_qc"]); ?></td>
-    <td><?php echo $row2["UOM_unit"]; ?></td>
-    <td><?php echo $row2["work_center"]; ?></td>
-    <td><?php echo $row2["ploc_prod_reject"]; ?></td>
-    <td><?php echo $data_proc["proc_desc"]; ?></td>
-    <td><?php echo $data_type["type_desc"]; ?></td>
-    <td><?php echo $data_reason["defect_desc"]; ?></td>
-    <td><?php echo $row2["reason_reject"]; ?></td>
-    <td width="250"><?php echo $row2["remarks"]; ?></td>
+    <td><?php echo html_esc($row2["UOM_unit"]); ?></td>
+    <td><?php echo html_esc($row2["work_center"]); ?></td>
+    <td><?php echo html_esc($row2["ploc_prod_reject"]); ?></td>
+    <td><?php echo html_esc($data_proc["proc_desc"]); ?></td>
+    <td><?php echo html_esc($data_type["type_desc"]); ?></td>
+    <td><?php echo html_esc($data_reason["defect_desc"]); ?></td>
+    <td><?php echo html_esc($row2["reason_reject"]); ?></td>
+    <td width="250"><?php echo html_esc($row2["remarks"]); ?></td>
   </tr>
   
  <?php 
@@ -677,11 +677,11 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
      <div class="modal-footer pull-left">
      <!-- <input name="cancel_btn" type="submit"  class="btn btn-success btn-sm" value="BACK" />-->
-       <input name="uid6" type="hidden" value="<?php echo $row["doc_dis"]; ?> ">    
-       <input name="date1" type="hidden" value="<?php echo $_GET["date1"]; ?>"> 
-       <input name="date2" type="hidden" value="<?php echo $_GET["date2"]; ?>"> 
+       <input name="uid6" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?> ">    
+       <input name="date1" type="hidden" value="<?php echo html_esc($_GET["date1"]); ?>"> 
+       <input name="date2" type="hidden" value="<?php echo html_esc($_GET["date2"]); ?>"> 
        <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
-       <input name="trans_opt" type="hidden" value="<?php echo $row["reject_source"]; ?>"> 
+       <input name="trans_opt" type="hidden" value="<?php echo html_esc($row["reject_source"]); ?>"> 
      
        <input name="canC_DISbtn" type="submit"  class="btn btn-danger btn-sm" value="CANCEL" onClick="return confirm('Are you sure to cancel this transaction?');"/>
       </div> 

@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteCon<?php echo $row2["id_mat"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteCon<?php echo html_esc($row2["id_mat"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -124,160 +124,160 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
    <tr>
     <td width="191">Material No. </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_con["material_no"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_con["material_no"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Material  Description</td>
     <td width="28">:</td>
-    <td><input type="text" id="material_desc" name="material_desc" readonly value="<?php echo $row_con["material_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="material_desc" name="material_desc" readonly value="<?php echo html_esc($row_con["material_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Plant Code</td>
     <td>:</td>
-    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo $row_con["plant_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo html_esc($row_con["plant_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Material Type</td>
     <td>:</td>
-    <td><input type="text" id="mat_type" name="mat_type" readonly value="<?php echo $row_con["mat_type"];  ?> - <?php echo  $res_vmat_type["mtype_name"]; ?>" class="form-control"/>
+    <td><input type="text" id="mat_type" name="mat_type" readonly value="<?php echo html_esc($row_con["mat_type"]);  ?> - <?php echo  html_esc($res_vmat_type["mtype_name"]); ?>" class="form-control"/>
      </td>
     </tr>
   <tr>
     <td>Line</td>
     <td>:</td>
-    <td><input type="text" id="prod_line" name="prod_line" readonly value="<?php echo $row_con["prod_line"];  ?>" class="form-control"/>
+    <td><input type="text" id="prod_line" name="prod_line" readonly value="<?php echo html_esc($row_con["prod_line"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Material of Group</td>
     <td>:</td>
-    <td><input type="text" id="material_group" name="material_group" readonly value="<?php echo $row_con["material_group"];  ?> " class="form-control"/>
+    <td><input type="text" id="material_group" name="material_group" readonly value="<?php echo html_esc($row_con["material_group"]);  ?> " class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>BUn</td>
     <td>:</td>
-   <td><input type="text" id="BUn" name="BUn" readonly value="<?php echo $row_con["BUn"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="BUn" name="BUn" readonly value="<?php echo html_esc($row_con["BUn"]);  ?>" class="form-control"/> </td>
     </tr>
     <tr>
      <td>VClass</td>
     <td>:</td>
-    <td><input type="text" id="Vclass" name="Vclass" readonly value="<?php echo $row_con["Vclass"];  ?>" class="form-control"/>
+    <td><input type="text" id="Vclass" name="Vclass" readonly value="<?php echo html_esc($row_con["Vclass"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Model Code</td>
     <td>:</td>
-    <td><input type="text" id="model_code" name="model_code" readonly value="<?php echo $res_model_cd["model_code"];  ?> - <?php echo $res_model_cd["model_desc"];  ?>" class="form-control"/>
+    <td><input type="text" id="model_code" name="model_code" readonly value="<?php echo html_esc($res_model_cd["model_code"]);  ?> - <?php echo html_esc($res_model_cd["model_desc"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Category Material</td>
     <td>:</td>
-    <td><input type="text" id="category_mat" name="category_mat" readonly value="<?php echo $row_con["category_mat"];  ?> - <?php echo $res_cat_mat["stamp_desc"]; ?>" class="form-control"/>
+    <td><input type="text" id="category_mat" name="category_mat" readonly value="<?php echo html_esc($row_con["category_mat"]);  ?> - <?php echo html_esc($res_cat_mat["stamp_desc"]); ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Standard Package</td>
     <td>:</td>
-    <td><input type="text" id="std_packaging" name="std_packaging" readonly value="<?php echo $row_con["std_packaging"];  ?> " class="form-control"/>
+    <td><input type="text" id="std_packaging" name="std_packaging" readonly value="<?php echo html_esc($row_con["std_packaging"]);  ?> " class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Type Package</td>
     <td>:</td>
-    <td><input type="text" id="type_package" name="type_package" readonly value="<?php echo $row_con["type_package"];  ?>" class="form-control"/>
+    <td><input type="text" id="type_package" name="type_package" readonly value="<?php echo html_esc($row_con["type_package"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Part Side</td>
     <td>:</td>
-    <td><input type="text" id="part_side" name="part_side" readonly value="<?php echo $row_con["part_side"];  ?>" class="form-control"/>
+    <td><input type="text" id="part_side" name="part_side" readonly value="<?php echo html_esc($row_con["part_side"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
      <td>Back No.</td>
     <td>:</td>
-    <td><input type="text" id="back_no" name="back_no"  readonly value="<?php echo $row_con["back_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="back_no" name="back_no"  readonly value="<?php echo html_esc($row_con["back_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Storage Location</td>
     <td>:</td>
-    <td><input type="text" id="sloc" name="sloc" readonly value="<?php echo $row_con["sloc"];  ?>" class="form-control"/>
+    <td><input type="text" id="sloc" name="sloc" readonly value="<?php echo html_esc($row_con["sloc"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Size Dim</td>
     <td>:</td>
-    <td><input type="text" id="size_dim" name="sloc" readonly value="<?php echo $row_con["size_dim"];  ?>" class="form-control"/>
+    <td><input type="text" id="size_dim" name="sloc" readonly value="<?php echo html_esc($row_con["size_dim"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Customer Part No.</td>
     <td>:</td>
-    <td><input type="text" id="cust_part_no" name="cust_part_no" readonly value="<?php echo $row_con["cust_part_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_part_no" name="cust_part_no" readonly value="<?php echo html_esc($row_con["cust_part_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Customer Part Name</td>
     <td>:</td>
-    <td><input type="text" id="material_desc_cust" name="material_desc_cust" readonly value="<?php echo $row_con["material_desc_cust"];  ?>" class="form-control"/>
+    <td><input type="text" id="material_desc_cust" name="material_desc_cust" readonly value="<?php echo html_esc($row_con["material_desc_cust"]);  ?>" class="form-control"/>
      </td>
     </tr>
     <tr>
      <td>Production Part No.</td>
     <td>:</td>
-    <td><input type="text" id="prod_part_no" name="prod_part_no" readonly value="<?php echo $row_con["prod_part_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="prod_part_no" name="prod_part_no" readonly value="<?php echo html_esc($row_con["prod_part_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Vendor Code</td>
     <td>:</td>
-    <td><input type="text" id="vendor_id" name="vendor_id" readonly value="<?php echo $row_con["vendor_id"];  ?>" class="form-control"/>
+    <td><input type="text" id="vendor_id" name="vendor_id" readonly value="<?php echo html_esc($row_con["vendor_id"]);  ?>" class="form-control"/>
      </td>
     </tr> 
     <tr>
      <td>Vendor Name</td>
     <td>:</td>
-    <td><input type="text" id="vendor_desc" name="vendor_desc" readonly value="<?php echo $row_con["vendor_desc"];  ?>" class="form-control"/>
+    <td><input type="text" id="vendor_desc" name="vendor_desc" readonly value="<?php echo html_esc($row_con["vendor_desc"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Material Group</td>
     <td>:</td>
-    <td><input type="text" id="mat_group" name="mat_group" readonly value="<?php echo $row_con["mat_group"];  ?>" class="form-control"/>
+    <td><input type="text" id="mat_group" name="mat_group" readonly value="<?php echo html_esc($row_con["mat_group"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Account Group</td>
     <td>:</td>
-    <td><input type="text" id="acc_group" name="acc_group" readonly value="<?php echo $row_con["acc_group"];  ?>" class="form-control"/>
+    <td><input type="text" id="acc_group" name="acc_group" readonly value="<?php echo html_esc($row_con["acc_group"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>PP Log No.</td>
     <td>:</td>
-    <td><input type="text" id="pp_log_no" name="pp_log_no" readonly value="<?php echo $row_con["pp_log_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="pp_log_no" name="pp_log_no" readonly value="<?php echo html_esc($row_con["pp_log_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>PP Log Description</td>
     <td>:</td>
-    <td><input type="text" id="pp_log_desc" name="pp_log_desc" readonly value="<?php echo $row_con["pp_log_desc"];  ?>" class="form-control"/>
+    <td><input type="text" id="pp_log_desc" name="pp_log_desc" readonly value="<?php echo html_esc($row_con["pp_log_desc"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Customer Code</td>
     <td>:</td>
-    <td><input type="text" id="cust_code" name="cust_code" readonly value="<?php echo $row_con["cust_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_code" name="cust_code" readonly value="<?php echo html_esc($row_con["cust_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
      <td>Customer Name</td>
     <td>:</td>
-    <td><input type="text" id="cust_name" name="cust_name" readonly value="<?php echo $row_con["cust_name"];  ?>" class="form-control"/>
+    <td><input type="text" id="cust_name" name="cust_name" readonly value="<?php echo html_esc($row_con["cust_name"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
@@ -297,7 +297,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 	
 	
 	?>
-    <input type="text" id="status_BOM" name="status_BOM" readonly value="<?php echo $row_con["status_BOM"]. '-'.$sta;  ?>" class="form-control" /></td>
+    <input type="text" id="status_BOM" name="status_BOM" readonly value="<?php echo html_esc($row_con["status_BOM"]). '-'.$sta;  ?>" class="form-control" /></td>
     </tr>
       <tr>
     <td>Status FOC [ Y = Active ; N = Inactive ]</td>
@@ -316,7 +316,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 	
 	
 	?>
-    <input type="text" id="status_foc" name="status_foc" readonly value="<?php echo $row_con["status_foc"]. '-'.$stafoc;  ?>" class="form-control" /></td>
+    <input type="text" id="status_foc" name="status_foc" readonly value="<?php echo html_esc($row_con["status_foc"]). '-'.$stafoc;  ?>" class="form-control" /></td>
     </tr>
       <tr>
     <td>Status Spare Part [ Y = Active ; N = Inactive ]</td>
@@ -335,7 +335,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 	
 	
 	?>
-    <input type="text" id="status_sp" name="status_sp" readonly value="<?php echo $row_con["status_sp"]. '-'.$stasp;  ?>" class="form-control" /></td>
+    <input type="text" id="status_sp" name="status_sp" readonly value="<?php echo html_esc($row_con["status_sp"]). '-'.$stasp;  ?>" class="form-control" /></td>
     </tr>
    </table>                         
        </div> <!-- card -->

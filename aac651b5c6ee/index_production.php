@@ -144,8 +144,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -177,7 +177,7 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
     <script type="text/javascript">
 jQuery(document).ready(function ($) {
     $.fancybox({
-        href: "backjob_initial_pass.php?username=<?php echo $username; ?>",
+        href: "backjob_initial_pass.php?username=<?php echo html_esc($username); ?>",
         type: "iframe" // <-- whatever content image, inline, swf, etc
     });
 }); // ready
@@ -193,7 +193,7 @@ jQuery(document).ready(function ($) {
     <script type="text/javascript">
 jQuery(document).ready(function ($) {
     $.fancybox({
-        href: "backjob_reminder_pass.php?username=<?php echo $username; ?>",
+        href: "backjob_reminder_pass.php?username=<?php echo html_esc($username); ?>",
         type: "iframe" // <-- whatever content image, inline, swf, etc
     });
 }); // ready
@@ -403,7 +403,7 @@ $num_can_req = mysqli_num_rows($rs_can_req);   //how many material are there?
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="widget-small info coloured-icon"><i class="icon fa fa-thumbs-o-up fa-3x"></i>
-              <a href="dis_approve_qc-tranProc-aprv.php?plant_code=<?php echo $info["plant_code"];  ?>&&date1=<?php echo $date_startApr; ?>&&date2=<?php echo $date_end;  ?>&&work_center=NULL&&status_disposal=Approved" title="Approved Disposal"> <div class="info">
+              <a href="dis_approve_qc-tranProc-aprv.php?plant_code=<?php echo html_esc($info["plant_code"]);  ?>&&date1=<?php echo $date_startApr; ?>&&date2=<?php echo $date_end;  ?>&&work_center=NULL&&status_disposal=Approved" title="Approved Disposal"> <div class="info">
               <h4>Approved</h4>
               <p><span class="badge badge-pill badge-primary float-right"><?php echo $num_disposal_req; ?></span></p>
             </div></a>

@@ -32,8 +32,8 @@ $url = "add_cust_dtl_account.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -298,14 +298,14 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Customer Code  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                   <input name="id_cust" type="text" id="id_cust" size="20" maxlength="8" value="<?php if(isset($_POST['id_cust'])) echo $_POST['id_cust']; ?>" class="form-control" placeholder="Enter Customer Code" />
+                   <input name="id_cust" type="text" id="id_cust" size="20" maxlength="8" value="<?php if(isset($_POST['id_cust'])) echo html_esc($_POST['id_cust']); ?>" class="form-control" placeholder="Enter Customer Code" />
                    <div class="form-control-feedback" ><?php echo $message_ccode; ?></div>
                     </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Customer Name  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                   <input name="cust_desc" type="text" id="cust_desc" size="20" value="<?php if(isset($_POST['cust_desc'])) echo $_POST['cust_desc']; ?>" class="form-control" placeholder="Enter Customer Name" />
+                   <input name="cust_desc" type="text" id="cust_desc" size="20" value="<?php if(isset($_POST['cust_desc'])) echo html_esc($_POST['cust_desc']); ?>" class="form-control" placeholder="Enter Customer Name" />
                    <div class="form-control-feedback" ><?php echo $message_cname; ?></div>
                     </div>
                 </div>
@@ -324,7 +324,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row17 = mysqli_fetch_array($result17)) {
         
               ?>
-         <option value="<?php echo $row17["customer_code"]; ?>" > <?php echo stripslashes($row17["customer_code"]); ?> </option>
+         <option value="<?php echo html_esc($row17["customer_code"]); ?>" > <?php echo stripslashes($row17["customer_code"]); ?> </option>
           <?php
            }  ?>
                             
@@ -336,68 +336,68 @@ echo '<div class="alert alert-error">', $message, '</div>';
                  <div class="form-group row">
                   <label class="control-label col-md-3">Address No. 1  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-           <input name="add_no1" type="text" class="form-control" id="add_no1" size="20" value="<?php if(isset($_POST['add_no1'])) echo $_POST['add_no1']; ?>" placeholder="Enter Address No. 1" />
+           <input name="add_no1" type="text" class="form-control" id="add_no1" size="20" value="<?php if(isset($_POST['add_no1'])) echo html_esc($_POST['add_no1']); ?>" placeholder="Enter Address No. 1" />
                    <div class="form-control-feedback" ><?php echo $message_add1; ?></div>
                     </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Address No.2  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-           <input name="add_no2" type="text" class="form-control" id="add_no2" size="20" value="<?php if(isset($_POST['add_no2'])) echo $_POST['add_no2']; ?>" placeholder="Enter Address No. 2" />
+           <input name="add_no2" type="text" class="form-control" id="add_no2" size="20" value="<?php if(isset($_POST['add_no2'])) echo html_esc($_POST['add_no2']); ?>" placeholder="Enter Address No. 2" />
                    <div class="form-control-feedback" ><?php echo $message_add2; ?></div>
                     </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">Postcode  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-            <input name="post_code" type="text" class="form-control" id="post_code" size="20" maxlength="15" value="<?php if(isset($_POST['post_code'])) echo $_POST['post_code']; ?>" placeholder="Enter Postcode"/>
+            <input name="post_code" type="text" class="form-control" id="post_code" size="20" maxlength="15" value="<?php if(isset($_POST['post_code'])) echo html_esc($_POST['post_code']); ?>" placeholder="Enter Postcode"/>
                    <div class="form-control-feedback" ><?php echo $message_pcode; ?></div>
                     </div>
                 </div>
                 <div class="form-group row">
                   <label class="control-label col-md-3">City  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-             <input name="post_city" type="text" class="form-control" id="post_city" size="20" value="<?php if(isset($_POST['post_city'])) echo $_POST['post_city']; ?>" placeholder="Enter City"/>
+             <input name="post_city" type="text" class="form-control" id="post_city" size="20" value="<?php if(isset($_POST['post_city'])) echo html_esc($_POST['post_city']); ?>" placeholder="Enter City"/>
                    <div class="form-control-feedback" ><?php echo $message_ct; ?></div>
                     </div>
                 </div> 
                     <div class="form-group row">
                   <label class="control-label col-md-3">Region  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-              <input name="post_region" type="text" class="form-control" id="post_region" size="20" value="<?php if(isset($_POST['post_region'])) echo $_POST['post_region']; ?>" placeholder="Enter Region"/>
+              <input name="post_region" type="text" class="form-control" id="post_region" size="20" value="<?php if(isset($_POST['post_region'])) echo html_esc($_POST['post_region']); ?>" placeholder="Enter Region"/>
                    <div class="form-control-feedback" ><?php echo $message_reg; ?></div>
                     </div>
                 </div> 
                   <div class="form-group row">
                   <label class="control-label col-md-3">Country  : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-             <input name="post_country" type="text" class="form-control" id="post_country" size="20" value="<?php if(isset($_POST['post_country'])) echo $_POST['post_country']; ?>" placeholder="Enter Country"/>
+             <input name="post_country" type="text" class="form-control" id="post_country" size="20" value="<?php if(isset($_POST['post_country'])) echo html_esc($_POST['post_country']); ?>" placeholder="Enter Country"/>
                    <div class="form-control-feedback" ><?php echo $message_country; ?></div>
                     </div>
                 </div> 
                   <div class="form-group row">
                   <label class="control-label col-md-3">Phone No.  : </label>
                    <div class="col-md-8">
-             <input name="tphone" type="text" class="form-control" id="tphone" size="20" maxlength="15" value="<?php if(isset($_POST['tphone'])) echo $_POST['tphone']; ?>" placeholder="Enter Phone No."/>
+             <input name="tphone" type="text" class="form-control" id="tphone" size="20" maxlength="15" value="<?php if(isset($_POST['tphone'])) echo html_esc($_POST['tphone']); ?>" placeholder="Enter Phone No."/>
                   
                     </div>
                 </div> 
                   <div class="form-group row">
                   <label class="control-label col-md-3">Fax No.  : </label>
                    <div class="col-md-8">
-           <input name="fax_no" type="text" class="form-control" id="fax_no" size="20" maxlength="15" value="<?php if(isset($_POST['fax_no'])) echo $_POST['fax_no']; ?>" placeholder="Enter Fax No."/>
+           <input name="fax_no" type="text" class="form-control" id="fax_no" size="20" maxlength="15" value="<?php if(isset($_POST['fax_no'])) echo html_esc($_POST['fax_no']); ?>" placeholder="Enter Fax No."/>
                     </div>
                 </div> 
                   <div class="form-group row">
                   <label class="control-label col-md-3">Payment Menthod : </label>
                    <div class="col-md-8">
-           <input name="payment_method" type="text" class="form-control" id="payment_method" size="20" maxlength="15" value="<?php if(isset($_POST['payment_method'])) echo $_POST['payment_method']; ?>" placeholder="Enter Payment Method"/>
+           <input name="payment_method" type="text" class="form-control" id="payment_method" size="20" maxlength="15" value="<?php if(isset($_POST['payment_method'])) echo html_esc($_POST['payment_method']); ?>" placeholder="Enter Payment Method"/>
                     </div>
                 </div> 
                   <div class="form-group row">
                   <label class="control-label col-md-3">Term Payment : </label>
                    <div class="col-md-8">
-      <input name="term_payment" type="text" class="form-control" id="term_payment" size="20" maxlength="15" value="<?php if(isset($_POST['term_payment'])) echo $_POST['term_payment']; ?>" placeholder="Enter Term Payment"/>
+      <input name="term_payment" type="text" class="form-control" id="term_payment" size="20" maxlength="15" value="<?php if(isset($_POST['term_payment'])) echo html_esc($_POST['term_payment']); ?>" placeholder="Enter Term Payment"/>
                 </div>
                 </div>
                  <div class="form-group row">
@@ -435,7 +435,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -458,7 +458,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["country_code"]; ?>" > <?php echo stripslashes($row57["country_code"]); ?> - <?php echo $row57["country_text"]; ?></option>
+         <option value="<?php echo html_esc($row57["country_code"]); ?>" > <?php echo stripslashes($row57["country_code"]); ?> - <?php echo html_esc($row57["country_text"]); ?></option>
           <?php
            }  ?>
                             
@@ -470,7 +470,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                <div class="form-group row">
                 <label class="control-label col-md-3">Short Name : </label>
                    <div class="col-md-8">
-                <input name="cust_sname" type="text" class="form-control" id="cust_sname" size="30" maxlength="30" value="<?php if(isset($_POST['cust_sname'])) echo $_POST['cust_sname']; ?>" placeholder="Enter Short Name"/>
+                <input name="cust_sname" type="text" class="form-control" id="cust_sname" size="30" maxlength="30" value="<?php if(isset($_POST['cust_sname'])) echo html_esc($_POST['cust_sname']); ?>" placeholder="Enter Short Name"/>
                     </div>
                 </div> 
                <div class="form-group row">

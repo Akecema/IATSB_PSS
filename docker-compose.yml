@@ -12,6 +12,7 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME:-pss_prjt_iatsb_db}
       APP_DEBUG: ${APP_DEBUG:-false}
+      FORCE_HTTPS: ${FORCE_HTTPS:-false}
     volumes:
       - .:/var/www/html
     depends_on:

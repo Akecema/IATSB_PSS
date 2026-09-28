@@ -46,8 +46,8 @@ $url = "add_cust_dtl_account.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -239,15 +239,15 @@ th {
    {
 
       ?> <tr class="item">
-                <td><div align="center"><?php  echo $row2["id_cust"]; ?></div></td>
-                <td>&nbsp;<?php  echo $row2["cust_desc"]; ?></td>
-                <td><?php  echo $row2["cust_ID"]; ?></td>
-                <td><div align="center"><?php echo $row2["status_cust"]; ?></div></td>
-                <td><div align="center"><?php echo $row2["plant_code"]; ?></div></td>
+                <td><div align="center"><?php  echo html_esc($row2["id_cust"]); ?></div></td>
+                <td>&nbsp;<?php  echo html_esc($row2["cust_desc"]); ?></td>
+                <td><?php  echo html_esc($row2["cust_ID"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["status_cust"]); ?></div></td>
+                <td><div align="center"><?php echo html_esc($row2["plant_code"]); ?></div></td>
                 <td>
                 
                 <div align="center">
-                 <a href="#myNoteVendor<?php echo $row2["id_cust"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
+                 <a href="#myNoteVendor<?php echo html_esc($row2["id_cust"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "cust_account_view.php";   ?>
@@ -256,7 +256,7 @@ th {
                 
                 <td>
                 <div align="center">
-                 <a href="#myNoteEditCust<?php echo $row2["id_cust"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteEditCust<?php echo html_esc($row2["id_cust"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "customer_account_edit.php";   ?>

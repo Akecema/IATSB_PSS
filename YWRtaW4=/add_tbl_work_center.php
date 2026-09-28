@@ -32,8 +32,8 @@ $url = "work_center_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -240,7 +240,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Work Center :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                 <input name="id_work" type="text" id="id_work" size="20" maxlength="20" value="<?php if(isset($_POST['id_work'])) echo $_POST['id_work']; ?>" class="form-control" placeholder="Enter Work Center" />      
+                 <input name="id_work" type="text" id="id_work" size="20" maxlength="20" value="<?php if(isset($_POST['id_work'])) echo html_esc($_POST['id_work']); ?>" class="form-control" placeholder="Enter Work Center" />      
                     <div class="form-control-feedback" ><?php echo $message_idwork; ?></div>
                     </div>
                    
@@ -248,7 +248,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                  <div class="form-group row">
                   <label class="control-label col-md-3">Work Center Description : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="wc_desc" type="text" class="form-control" id="wc_desc" size="20" maxlength="100" value="<?php if(isset($_POST['wc_desc'])) echo $_POST['wc_desc']; ?>"  placeholder="Enter Work Center Description" />
+                  <input name="wc_desc" type="text" class="form-control" id="wc_desc" size="20" maxlength="100" value="<?php if(isset($_POST['wc_desc'])) echo html_esc($_POST['wc_desc']); ?>"  placeholder="Enter Work Center Description" />
                    <div class="form-control-feedback" ><?php echo $message_wcd; ?></div>
                     </div>
                 </div>
@@ -266,7 +266,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -278,14 +278,14 @@ echo '<div class="alert alert-error">', $message, '</div>';
               <div class="form-group row">
                   <label class="control-label col-md-3">Cost Center :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                     <input name="cost_center" type="text" class="form-control" placeholder="Enter Cost Center"id="cost_center" size="20" maxlength="20" value="<?php if(isset($_POST['cost_center'])) echo $_POST['cost_center']; ?>" />
+                     <input name="cost_center" type="text" class="form-control" placeholder="Enter Cost Center"id="cost_center" size="20" maxlength="20" value="<?php if(isset($_POST['cost_center'])) echo html_esc($_POST['cost_center']); ?>" />
                      <div class="form-control-feedback" ><?php echo $message_cc; ?></div>
                 </div>
               </div>
                <div class="form-group row">
                   <label class="control-label col-md-3">Cost Center Description : <font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                <input name="cc_desc" type="text" class="form-control" id="cc_desc" size="55" maxlength="100" value="<?php if(isset($_POST['cc_desc'])) echo $_POST['cc_desc']; ?>" placeholder="Enter Cost Center Description"/>
+                <input name="cc_desc" type="text" class="form-control" id="cc_desc" size="55" maxlength="100" value="<?php if(isset($_POST['cc_desc'])) echo html_esc($_POST['cc_desc']); ?>" placeholder="Enter Cost Center Description"/>
                   <div class="form-control-feedback" ><?php echo $message_ccd; ?></div>
                 </div>
               </div>
@@ -304,9 +304,9 @@ echo '<div class="alert alert-error">', $message, '</div>';
 	
 	          if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row3["factory_id"]; ?>" <?php if($row3["factory_id"]==$_POST["id_factory"]) echo "selected"; ?>> <?php echo $row3["factory_desc"]; ?></option>
+               <option value="<?php echo html_esc($row3["factory_id"]); ?>" <?php if($row3["factory_id"]==$_POST["id_factory"]) echo "selected"; ?>> <?php echo html_esc($row3["factory_desc"]); ?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row3["factory_id"]; ?>" > <?php echo stripslashes($row3["factory_desc"]); ?></option>
+               <option value="<?php echo html_esc($row3["factory_id"]); ?>" > <?php echo stripslashes($row3["factory_desc"]); ?></option>
                <?php } ?>
                <?php
 							}
@@ -334,9 +334,9 @@ echo '<div class="alert alert-error">', $message, '</div>';
 	
 	          if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row4["desc_level"]; ?>" <?php if($row4["id_level"]==$_POST["dept_acc"]) echo "selected"; ?>> <?php echo $row4["desc_level"]; ?></option>
+               <option value="<?php echo html_esc($row4["desc_level"]); ?>" <?php if($row4["id_level"]==$_POST["dept_acc"]) echo "selected"; ?>> <?php echo html_esc($row4["desc_level"]); ?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row4["desc_level"]; ?>" > <?php echo stripslashes($row4["desc_level"]); ?></option>
+               <option value="<?php echo html_esc($row4["desc_level"]); ?>" > <?php echo stripslashes($row4["desc_level"]); ?></option>
                <?php } ?>
                <?php
 							}
@@ -373,7 +373,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               <div class="form-group row">
                   <label class="control-label col-md-3">Model Description : <font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                <input name="wc_desc2" type="text" class="form-control" id="wc_desc2" size="55" maxlength="100" value="<?php if(isset($_POST['wc_desc2'])) echo $_POST['wc_desc2']; ?>" placeholder="Enter Model Description"/>
+                <input name="wc_desc2" type="text" class="form-control" id="wc_desc2" size="55" maxlength="100" value="<?php if(isset($_POST['wc_desc2'])) echo html_esc($_POST['wc_desc2']); ?>" placeholder="Enter Model Description"/>
                   <div class="form-control-feedback" ><?php echo $message_wcdesc2; ?></div>
                 </div>
               </div>

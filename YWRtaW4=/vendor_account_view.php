@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteVendor<?php echo $row2["vendor_code"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteVendor<?php echo html_esc($row2["vendor_code"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -152,117 +152,117 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
    <tr>
     <td width="191">Vendor Code </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="vendor_code" name="id_reason_wastage" readonly value="<?php  echo $row_ven["vendor_code"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="vendor_code" name="id_reason_wastage" readonly value="<?php  echo html_esc($row_ven["vendor_code"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Vendor Name </td>
     <td width="28">:</td>
-    <td><input type="text" id="vendor_name" name="vendor_name" readonly value="<?php echo $row_ven["vendor_name"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="vendor_name" name="vendor_name" readonly value="<?php echo html_esc($row_ven["vendor_name"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Search Term</td>
     <td>:</td>
-    <td><input type="text" id="search_term" name="search_term" readonly value="<?php echo $row_ven["search_term"];  ?>" class="form-control"/>
+    <td><input type="text" id="search_term" name="search_term" readonly value="<?php echo html_esc($row_ven["search_term"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Address No. 1</td>
     <td>:</td>
-    <td><input type="text" id="add_no1" name="add_no1" readonly value="<?php echo $row_ven["add_no1"];  ?>" class="form-control"/>
+    <td><input type="text" id="add_no1" name="add_no1" readonly value="<?php echo html_esc($row_ven["add_no1"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Address No. 2</td>
     <td>:</td>
-    <td><input type="text" id="add_no2" name="add_no2" readonly value="<?php echo $row_ven["add_no2"];  ?>" class="form-control"/>
+    <td><input type="text" id="add_no2" name="add_no2" readonly value="<?php echo html_esc($row_ven["add_no2"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Postcode</td>
     <td>:</td>
-    <td><input type="text" id="post_code" name="post_code" readonly value="<?php echo $row_ven["post_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="post_code" name="post_code" readonly value="<?php echo html_esc($row_ven["post_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>City</td>
     <td>:</td>
-    <td><input type="text" id="post_city" name="post_city" readonly value="<?php echo $row_ven["post_city"];  ?>" class="form-control"/>
+    <td><input type="text" id="post_city" name="post_city" readonly value="<?php echo html_esc($row_ven["post_city"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Region</td>
     <td>:</td>
-    <td><input type="text" id="post_region" name="post_region" readonly value="<?php echo $row_ven["post_region"];  ?>" class="form-control"/>
+    <td><input type="text" id="post_region" name="post_region" readonly value="<?php echo html_esc($row_ven["post_region"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Country</td>
     <td>:</td>
-    <td><input type="text" id="post_country" name="post_country" readonly value="<?php echo $row_ven["post_country"];  ?>" class="form-control"/>
+    <td><input type="text" id="post_country" name="post_country" readonly value="<?php echo html_esc($row_ven["post_country"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Phone</td>
     <td>:</td>
-    <td><input type="text" id="tphone" name="tphone" readonly value="<?php echo $row_ven["tphone"];  ?>" class="form-control"/>
+    <td><input type="text" id="tphone" name="tphone" readonly value="<?php echo html_esc($row_ven["tphone"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Fax</td>
     <td>:</td>
-    <td><input type="text" id="fax_no" name="fax_no" readonly value="<?php echo $row_ven["fax_no"];  ?>" class="form-control"/>
+    <td><input type="text" id="fax_no" name="fax_no" readonly value="<?php echo html_esc($row_ven["fax_no"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Payment Method</td>
     <td>:</td>
-    <td><input type="text" id="payment_method" name="payment_method" readonly value="<?php echo $row_ven["payment_method"];  ?>" class="form-control"/>
+    <td><input type="text" id="payment_method" name="payment_method" readonly value="<?php echo html_esc($row_ven["payment_method"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Term Payment</td>
     <td>:</td>
-    <td><input type="text" id="term_payment" name="term_payment" readonly value="<?php echo $row_ven["term_payment"];  ?>" class="form-control"/>
+    <td><input type="text" id="term_payment" name="term_payment" readonly value="<?php echo html_esc($row_ven["term_payment"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>User Created</td>
     <td>:</td>
-    <td><input type="text" id="user_create" name="user_create" readonly value="<?php echo $data_create["user_fullname"];  ?>" class="form-control"/>
+    <td><input type="text" id="user_create" name="user_create" readonly value="<?php echo html_esc($data_create["user_fullname"]);  ?>" class="form-control"/>
      </td>
     </tr>  <tr>
     <td>Date Created</td>
     <td>:</td>
-    <td><input type="text" id="date_create" name="date_create" readonly value="<?php echo $row_ven["date_create"];  ?>" class="form-control"/>
+    <td><input type="text" id="date_create" name="date_create" readonly value="<?php echo html_esc($row_ven["date_create"]);  ?>" class="form-control"/>
      </td>
     </tr>  <tr>
     <td>User Updated</td>
     <td>:</td>
-    <td><input type="text" id="user_update" name="user_update" readonly value="<?php echo $data_update["user_fullname"];  ?>" class="form-control"/>
+    <td><input type="text" id="user_update" name="user_update" readonly value="<?php echo html_esc($data_update["user_fullname"]);  ?>" class="form-control"/>
      </td>
     </tr>  
     <tr>
     <td>Date Updated</td>
     <td>:</td>
-    <td><input type="text" id="date_update" name="date_update" readonly value="<?php echo $row_ven["date_update"];  ?>" class="form-control"/>
+    <td><input type="text" id="date_update" name="date_update" readonly value="<?php echo html_esc($row_ven["date_update"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Status Account <br>(Y = Active, N = In Active)</td>
     <td>:</td>
-    <td><input type="text" id="status_acc" name="status_acc" readonly value="<?php echo $row_ven["status_acc"].'='.$sta_acc;	?>" class="form-control"/>
+    <td><input type="text" id="status_acc" name="status_acc" readonly value="<?php echo html_esc($row_ven["status_acc"]).'='.$sta_acc;	?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Status Subcont <br> (Y = YES, N = NO)</td>
     <td>:</td>
-    <td><input type="text" id="status_subcont" name="status_subcont" readonly value="<?php echo $row_ven["status_subcont"].'='.$sta_sub;	?>" class="form-control"/>
+    <td><input type="text" id="status_subcont" name="status_subcont" readonly value="<?php echo html_esc($row_ven["status_subcont"]).'='.$sta_sub;	?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Status FOC <br> (Y = YES, N = NO)</td>
     <td>:</td>
-    <td><input type="text" id="status_foc" name="status_foc" readonly value="<?php echo $row_ven["status_foc"].'='.$sta_foc;	?>" class="form-control"/>
+    <td><input type="text" id="status_foc" name="status_foc" readonly value="<?php echo html_esc($row_ven["status_foc"]).'='.$sta_foc;	?>" class="form-control"/>
      </td>
     </tr>
      </table>                         

@@ -108,8 +108,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -872,7 +872,7 @@ exit();
              <tr>
                 <th>Barcode : &nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1. Goods Return Advise" data-html="true" data-placement="left"></i></th>
                 <th colspan="3">
-     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo $_POST['barcode_ref']; ?>" class="form-control" autofocus/>
+     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo html_esc($_POST['barcode_ref']); ?>" class="form-control" autofocus/>
                </th>
               </tr>
               <tr>
@@ -888,7 +888,7 @@ exit();
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -952,7 +952,7 @@ exit();
             </tr>
                <tr>
               <th>Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -1001,16 +1001,16 @@ exit();
 		
       ?>
                 <tr class="item">
-                <!--<td width="30"><a href="delete_trans-mat_item.php?scan_doc=<?php echo $row["scan_doc"]; ?>&&p_id=<?php echo $row["id_scan_tm"]; ?>&&plant_code=<?php echo $row["plant_code"]; ?>&&date1=<?php echo $row["posting_date"]; ?>&&shift_ops=<?php echo $row["scan_shift"]; ?>&&model_code=<?php echo $row["model_code"]; ?>&&material_no=<?php echo $row["material_no"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>-->
-                <td width="30"><?php echo $no4; ?><input name="id_tm[<?php echo $row["id_scan_tm"]; ?>]" type="hidden" value="<?php echo $row["id_scan_tm"]; ?>">
-                <input name="item_no[<?php echo $row["id_scan_tm"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="150"><?php echo $row["material_no"]; ?></td>
-                <td width="250"><?php echo $row["material_desc"]; ?></td>
-                <td width="150"><?php echo $row["material_no2"]; ?>  <input name="material_no2[<?php echo $row["id_scan_tm"]; ?>]" type="hidden" value="<?php echo $row["material_no2"]; ?>"></td>
-                <td width="250"><?php echo  $row["material_desc2"]; ?> <input name="material_desc2[<?php echo $row["id_scan_tm"]; ?>]" type="hidden" value="<?php echo $row["material_desc2"]; ?>"></td>
-                <td width="150"> <input name="scan_qty[<?php echo $row["id_scan_tm"]; ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo $_POST["scan_qty"][($row["id_scan_tm"])]; }else{ if($row["scan_qty"] != '0.000') { echo intval($row["scan_qty"]);   }       } ?>" id="scan_qty" class="form-control form-control-sm">
+                <!--<td width="30"><a href="delete_trans-mat_item.php?scan_doc=<?php echo html_esc($row["scan_doc"]); ?>&&p_id=<?php echo html_esc($row["id_scan_tm"]); ?>&&plant_code=<?php echo html_esc($row["plant_code"]); ?>&&date1=<?php echo html_esc($row["posting_date"]); ?>&&shift_ops=<?php echo html_esc($row["scan_shift"]); ?>&&model_code=<?php echo html_esc($row["model_code"]); ?>&&material_no=<?php echo html_esc($row["material_no"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>-->
+                <td width="30"><?php echo $no4; ?><input name="id_tm[<?php echo html_esc($row["id_scan_tm"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan_tm"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_scan_tm"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row["material_desc"]); ?></td>
+                <td width="150"><?php echo html_esc($row["material_no2"]); ?>  <input name="material_no2[<?php echo html_esc($row["id_scan_tm"]); ?>]" type="hidden" value="<?php echo html_esc($row["material_no2"]); ?>"></td>
+                <td width="250"><?php echo  html_esc($row["material_desc2"]); ?> <input name="material_desc2[<?php echo html_esc($row["id_scan_tm"]); ?>]" type="hidden" value="<?php echo html_esc($row["material_desc2"]); ?>"></td>
+                <td width="150"> <input name="scan_qty[<?php echo html_esc($row["id_scan_tm"]); ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo html_esc($_POST["scan_qty"][($row["id_scan_tm"])]); }else{ if($row["scan_qty"] != '0.000') { echo intval($row["scan_qty"]);   }       } ?>" id="scan_qty" class="form-control form-control-sm">
                  </td>
-                <td width="80"><?php echo $row["scan_uom"]; ?>  <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>"></td> 
+                <td width="80"><?php echo html_esc($row["scan_uom"]); ?>  <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>"></td> 
                 </tr>
                  
           <?php 

@@ -73,8 +73,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -182,7 +182,7 @@ page-break-before: always ;
 
 		   echo "<script>";
 		   echo "alert('Your transaction has been processed successfully');";
-		   echo "window.location='display_pps_month_reprint2.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&material_no=$material_no&&shift_ops=$shift_ops&&name_file=$name_file'";
+		   echo "window.location='display_pps_month_reprint2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."&&shift_ops=".html_esc($shift_ops)."&&name_file=".html_esc($name_file)."'";
 		   //echo "window.location='ftp_bflush_SAP_cancel.php?uid=$uid&&buid=$ref'";
 	       echo "</script>"; 
 		   exit(); //quit the script
@@ -192,7 +192,7 @@ page-break-before: always ;
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteRelease<?php echo $row["id"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteRelease<?php echo html_esc($row["id"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -213,7 +213,7 @@ page-break-before: always ;
 	   ?>
                  
         <div class="content mt-12"><h3>Are you sure?</h3><br>
-        <h5>Release Planned Order : <?php echo $data_pps_dtl["plan_no"]; ?></h5>
+        <h5>Release Planned Order : <?php echo html_esc($data_pps_dtl["plan_no"]); ?></h5>
    
   <?php
   
@@ -330,15 +330,15 @@ $db_rs2 = mysqli_fetch_array($rs2);
 
     <form name="frmSearch" id="frmSearch" method="post" action="<?php //echo $_SERVER['PHP_SELF']; ?>" class="needs-validation"  novalidate>
     
-       <input name="id" type="hidden" value="<?php echo $row["id"]; ?> "> 
-       <input name="uid" type="hidden" value="<?php echo $row["upload_id"]; ?> ">    
+       <input name="id" type="hidden" value="<?php echo html_esc($row["id"]); ?> "> 
+       <input name="uid" type="hidden" value="<?php echo html_esc($row["upload_id"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $date1_final; ?> "> 
        <input name="date2" type="hidden" value="<?php echo $date2_final; ?> "> 
-       <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
-       <input name="work_center" type="hidden" value="<?php echo $work_center; ?>"> 
-       <input name="material_no" type="hidden" value="<?php echo $material_no; ?>"> 
-       <input name="shift_ops" type="hidden" value="<?php echo $shift_ops; ?>"> 
-       <input name="name_file" type="hidden" value="<?php echo $name_file; ?>">  
+       <input name="plant_code" type="hidden" value="<?php echo html_esc($plant_code); ?>">  
+       <input name="work_center" type="hidden" value="<?php echo html_esc($work_center); ?>"> 
+       <input name="material_no" type="hidden" value="<?php echo html_esc($material_no); ?>"> 
+       <input name="shift_ops" type="hidden" value="<?php echo html_esc($shift_ops); ?>"> 
+       <input name="name_file" type="hidden" value="<?php echo html_esc($name_file); ?>">  
   
       
      <div class="modal-footer pull-left">

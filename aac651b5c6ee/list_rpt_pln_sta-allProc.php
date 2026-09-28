@@ -105,8 +105,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -238,7 +238,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
              </tr>
              <tr>
@@ -248,7 +248,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
             <th>Plant : <font color="#FF0000">*</font></th>
@@ -263,7 +263,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -281,7 +281,7 @@ div.dataTables_wrapper {
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                  <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                   <?php
                   }
                     ?>
@@ -300,10 +300,10 @@ div.dataTables_wrapper {
                 <th>
      <select name="status_pps" id="status_pps" class="form-control">
      <option value="NULL" placeholder="Select Status"> -- Select Status -- </option>
-     <option value="<?php echo $rst_sta["status_desc"]; ?>" <?php if($rst_sta["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo $rst_sta["status_desc"]; ?></option>
-     <option value="<?php echo $rst_sta2["status_desc"]; ?>" <?php if($rst_sta2["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo $rst_sta2["status_desc"]; ?></option>
-     <option value="<?php echo $rst_sta7["status_desc"]; ?>" <?php if($rst_sta7["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo $rst_sta7["status_desc"]; ?></option>
-    <option value="<?php echo $rst_sta13["status_desc"]; ?>" <?php if($rst_sta13["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo $rst_sta13["status_desc"]; ?></option>
+     <option value="<?php echo html_esc($rst_sta["status_desc"]); ?>" <?php if($rst_sta["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta["status_desc"]); ?></option>
+     <option value="<?php echo html_esc($rst_sta2["status_desc"]); ?>" <?php if($rst_sta2["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta2["status_desc"]); ?></option>
+     <option value="<?php echo html_esc($rst_sta7["status_desc"]); ?>" <?php if($rst_sta7["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta7["status_desc"]); ?></option>
+    <option value="<?php echo html_esc($rst_sta13["status_desc"]); ?>" <?php if($rst_sta13["status_desc"] == ($_GET["status_pps"])) { ?> selected="selected"<?php } ?>><?php echo html_esc($rst_sta13["status_desc"]); ?></option>
                
                  </select>    
                 </th>
@@ -412,7 +412,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
             <tr>
                 <td width="1%">&nbsp;</td> 
                 <td width="85%">&nbsp;</td> 
-                  <td width="7%"><a href="list_rpt_pln_sta-all_dLoad.php?plant_code=<?php echo $plant_code; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>&&material_no=<?php echo $material_no; ?>&&status_pps=<?php echo $status_pps; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+                  <td width="7%"><a href="list_rpt_pln_sta-all_dLoad.php?plant_code=<?php echo html_esc($plant_code); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>&&material_no=<?php echo html_esc($material_no); ?>&&status_pps=<?php echo html_esc($status_pps); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
                  <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
               </tr>
             </table> 
@@ -535,35 +535,35 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="150"><?php echo $row["plan_no"]; ?></td> 
-                <td width="100"><?php echo $row["T"]; ?></td>  
+                <td width="150"><?php echo html_esc($row["plan_no"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["T"]); ?></td>  
                 <td width="100"><?php echo intval($row["qty_plan"]); ?></td>
-                <td width="80"><?php echo $row["material_type"]; ?></td>
+                <td width="80"><?php echo html_esc($row["material_type"]); ?></td>
                 <td width="80"><?php echo $model_name; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
                <!-- <td width="80"><?php //echo $row["plant_code"]; ?></td>-->
                 <td width="80"><?php echo $model_name2; ?></td> 
                 <td width="150"><?php 
 				
 				while($data_bfOK = mysqli_fetch_array($result_bfOK))
 				{
-				 if($data_bfOK > 0 ){ echo $data_bfOK["RR"]; echo "<br>"; }
+				 if($data_bfOK > 0 ){ echo html_esc($data_bfOK["RR"]); echo "<br>"; }
 				 
 				} // end while bfOK
 				 
 				 while($data_bfNG = mysqli_fetch_array($result_bfNG))
 				 {
-				 if($data_bfNG > 0 ){ echo $data_bfNG["RR"]; echo "<br>"; }
+				 if($data_bfNG > 0 ){ echo html_esc($data_bfNG["RR"]); echo "<br>"; }
 				 } // end while bfNG
 				 
 				 while($data_bfPEND = mysqli_fetch_array($result_bfPEND))
 				 {
-				 if($data_bfPEND > 0 ){ echo $data_bfPEND["RR"]; echo "<br>"; }
+				 if($data_bfPEND > 0 ){ echo html_esc($data_bfPEND["RR"]); echo "<br>"; }
 				 } // end while bfPEND
 				 
 				 while($data_bfHWORK = mysqli_fetch_array($result_bfHWORK))
 				 {
-				 if($data_bfHWORK > 0 ){ echo $data_bfHWORK["RR"]; echo "<br>";  }
+				 if($data_bfHWORK > 0 ){ echo html_esc($data_bfHWORK["RR"]); echo "<br>";  }
 				 } // end while bfHWORK
 				 
 				 
@@ -571,28 +571,28 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
                 <td width="150"><?php 
 				while($data_bfOK2 = mysqli_fetch_array($result_bfOK2))
 				{
-				 if($data_bfOK2 > 0 ){ echo $data_bfOK2["time_posting"]; echo "<br>"; } 
+				 if($data_bfOK2 > 0 ){ echo html_esc($data_bfOK2["time_posting"]); echo "<br>"; } 
 				} // end while bfOK
 				
 				 while($data_bfNG2 = mysqli_fetch_array($result_bfNG2))
 				 { 
-				 if($data_bfNG2 > 0 ){ echo $data_bfNG2["time_posting"];  echo "<br>"; }
+				 if($data_bfNG2 > 0 ){ echo html_esc($data_bfNG2["time_posting"]);  echo "<br>"; }
 				 } // end while bfNG
 				 
 				 while($data_bfPEND2 = mysqli_fetch_array($result_bfPEND2))
 				 {
-				 if($data_bfPEND2 > 0 ){ echo $data_bfPEND2["time_posting"]; echo "<br>"; }
+				 if($data_bfPEND2 > 0 ){ echo html_esc($data_bfPEND2["time_posting"]); echo "<br>"; }
 				 } // end while bfPEND
 				 
 				 while($data_bfHWORK2 = mysqli_fetch_array($result_bfHWORK2))
 				 {
-				 if($data_bfHWORK2 > 0 ){ echo $data_bfHWORK2["time_posting"]; echo "<br>"; }
+				 if($data_bfHWORK2 > 0 ){ echo html_esc($data_bfHWORK2["time_posting"]); echo "<br>"; }
 				 } // end while bfHWORK
 				
 				
 				?></td>
-               <td width="200">&nbsp;<?php echo $row["remark_closed_plan"]; ?></td>
-               <td width="100"><?php echo $row["status_pps"]; ?> </td>
+               <td width="200">&nbsp;<?php echo html_esc($row["remark_closed_plan"]); ?></td>
+               <td width="100"><?php echo html_esc($row["status_pps"]); ?> </td>
                </tr>
              
                  

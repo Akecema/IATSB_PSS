@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -183,7 +183,7 @@ if (empty($_POST['status_proc']) || ($_POST['status_proc'] == "NULL"))
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteSlocQC<?php echo $row2["id_proc"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteSlocQC<?php echo html_esc($row2["id_proc"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -211,7 +211,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
    <tr>
     <td width="191">Production Process Reject Desc. <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="proc_desc" name="proc_desc" value="<?php  echo $row_was["proc_desc"]; ?>" class="form-control" required><div class="invalid-feedback">Please enter Process Reject.</div></td>
+    <td width="971"><input type="text" id="proc_desc" name="proc_desc" value="<?php  echo html_esc($row_was["proc_desc"]); ?>" class="form-control" required><div class="invalid-feedback">Please enter Process Reject.</div></td>
     </tr>
   <tr>
     <td>Status Production <font color="#FF0000">*</font></td>
@@ -246,7 +246,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_proc" name="id_proc"  class="form-control" value="<?php echo $row2["id_proc"];  ?>" >  
+             <input type="hidden" id="id_proc" name="id_proc"  class="form-control" value="<?php echo html_esc($row2["id_proc"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

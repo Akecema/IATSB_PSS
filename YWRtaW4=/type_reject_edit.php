@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,7 +174,7 @@ if (empty($_POST['status_type']))
 } 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_type"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_type"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -202,12 +202,12 @@ $row_type= mysqli_fetch_array($result_type);   //how many records are there?
    <tr>
     <td width="191">ID Type of Reject </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_type" name="id_type" readonly value="<?php  echo $row_type["id_type"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_type" name="id_type" readonly value="<?php  echo html_esc($row_type["id_type"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Type Reject Desc <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="type_desc" name="type_desc" value="<?php echo $row_type["type_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter type reject description.</div>
+    <td><input type="text" id="type_desc" name="type_desc" value="<?php echo html_esc($row_type["type_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter type reject description.</div>
    </td>
    </tr>
   <tr>
@@ -234,7 +234,7 @@ $row_type= mysqli_fetch_array($result_type);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_type" name="id_type"  class="form-control" value="<?php echo $row2["id_type"];  ?>" >  
+             <input type="hidden" id="id_type" name="id_type"  class="form-control" value="<?php echo html_esc($row2["id_type"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

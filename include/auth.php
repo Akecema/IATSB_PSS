@@ -23,6 +23,23 @@ function verify_password(string $plain, string $stored): bool
     return hash_equals(strtolower($stored), md5($plain));
 }
 
+// Replaces a legacy md5 hash with bcrypt after a successful login (both tables hold a copy).
+// Returns the hash now stored, which the remember-me cookie must carry.
+function upgrade_password_hash(mysqli $dbc, string $username, string $plain, string $stored): string
+{
+    if (!password_needs_rehash($stored, PASSWORD_DEFAULT) && str_starts_with($stored, '$2y$')) {
+        return $stored;
+    }
+    $new = password_hash($plain, PASSWORD_DEFAULT);
+    foreach (['user_detail', 'login_detail'] as $table) {
+        $stmt = $dbc->prepare("UPDATE {$table} SET password = ? WHERE username = ?");
+        $stmt->bind_param('ss', $new, $username);
+        $stmt->execute();
+        $stmt->close();
+    }
+    return $new;
+}
+
 function count_recent_failed_logins(mysqli $dbc, string $username, string $ip): int
 {
     $sql = "SELECT COUNT(*) FROM failed_login AS FL, user_detail AS UL

@@ -165,8 +165,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <html lang="en">
 
 <head>
-	<meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-	<title><?php echo $data_setup["title_desc"]; ?></title>
+	<meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+	<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -826,19 +826,19 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 												<tr>
 													<td>&nbsp;</td>
 													<td>
-														<div align="left"><b>Purchase Order No. : </b><?php echo $data_bb["po_no"];   ?></div>
+														<div align="left"><b>Purchase Order No. : </b><?php echo html_esc($data_bb["po_no"]);   ?></div>
 													</td>
 												</tr>
 												<tr>
 													<td>&nbsp;</td>
 													<td>
-														<div align="left"><b>Vendor Name : </b><?php echo $data_vend["vendor_name"];  ?></div>
+														<div align="left"><b>Vendor Name : </b><?php echo html_esc($data_vend["vendor_name"]);  ?></div>
 													</td>
 												</tr>
 												<tr>
 													<td>&nbsp;</td>
 													<td>
-														<div align="left"><b>Model : </b><?php echo $data_bb["model_cd"];  ?></div>
+														<div align="left"><b>Model : </b><?php echo html_esc($data_bb["model_cd"]);  ?></div>
 													</td>
 												</tr>
 											</table>
@@ -846,17 +846,17 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 											<table width="98%" border="0" cellspacing="2" cellpadding="0" class="table-borderless">
 												<tr>
 													<td width="44%">DI Kanban Date :</td>
-													<td colspan="3"><?php echo $data_bb["T3"]; ?>
+													<td colspan="3"><?php echo html_esc($data_bb["T3"]); ?>
 													</td>
 												</tr>
 												<tr>
 													<td width="44%">DI Kanban Time :<br> <br></td>
-													<td colspan="3"><?php echo $data_bb["time_dlv"];  ?> <br> <br>
+													<td colspan="3"><?php echo html_esc($data_bb["time_dlv"]);  ?> <br> <br>
 												</tr>
 												<tr>
 													<td width="44%">Delivery Date :</td>
 													<td colspan="3"> <input class="form-control" id="PSS5Date" type="text" placeholder="Select Date" name="date5" value="<?php if (isset($_POST['date5'])) {
-																																												echo $_POST['date5'];
+																																												echo html_esc($_POST['date5']);
 																																											} else {
 																																												echo $fmt_curr_date;
 																																											} ?>" required />
@@ -869,7 +869,7 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 
 															if ($_POST["apprv_btnDO"] == true) {
 															?>
-																<option value="<?php echo $_POST["time1"]; ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
+																<option value="<?php echo html_esc($_POST["time1"]); ?>"><?php echo sprintf('%02d', $_POST["time1"]);	 ?></option>
 															<?php
 															} else {
 
@@ -889,7 +889,7 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 													<td width="26%"><select name="time2" id="time2" class="form-control form-control-sm" required>
 															<?php if ($_POST["apprv_btnDO"] == true) {
 															?>
-																<option value="<?php echo $_POST["time2"]; ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
+																<option value="<?php echo html_esc($_POST["time2"]); ?>"><?php echo sprintf('%02d', $_POST["time2"]);	 ?></option>
 															<?php
 															} else {
 															?>
@@ -904,7 +904,7 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 												</tr>
 												<tr>
 													<td>Vendor DO No. :</td>
-													<td colspan="3"><input name="supp_do" type="text" id="supp_do" value="<?php if (isset($_POST['supp_do'])) {	echo $_POST["supp_do"];	} ?>" class="form-control form-control-sm" required />
+													<td colspan="3"><input name="supp_do" type="text" id="supp_do" value="<?php if (isset($_POST['supp_do'])) {	echo html_esc($_POST["supp_do"]);	} ?>" class="form-control form-control-sm" required />
 													</td>
 												</tr>
 											</table>
@@ -974,10 +974,10 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 										?>
 											<tr>
 
-												<td width="30"><input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row2["id"]; ?>" class="form-check" onChange="getNotice2('<?php echo $row2['id'] ?>',event)" checked>
+												<td width="30"><input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row2["id"]); ?>" class="form-check" onChange="getNotice2('<?php echo html_esc($row2['id']) ?>',event)" checked>
 
 													<div>
-														<input type="text" value="true" id="check2[<?php echo $row2["id"]; ?>]" hidden>
+														<input type="text" value="true" id="check2[<?php echo html_esc($row2["id"]); ?>]" hidden>
 													</div>
 
 												</td>
@@ -985,20 +985,20 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 													<div align="center"><?php echo $noA; ?></div>
 												</td>
 												<td width="150">
-													<div align="center"><?php echo $row2["back_no"]; ?></div>
+													<div align="center"><?php echo html_esc($row2["back_no"]); ?></div>
 												</td>
-												<td width="200"><?php echo $row2["material_no"]; ?></td>
-												<td width="300"><?php echo $row2["material_desc"]; ?></td>
+												<td width="200"><?php echo html_esc($row2["material_no"]); ?></td>
+												<td width="300"><?php echo html_esc($row2["material_desc"]); ?></td>
 												<td width="100">
-													<div align="center"><?php echo $row2["kanban_order"]; ?></div>
+													<div align="center"><?php echo html_esc($row2["kanban_order"]); ?></div>
 												</td>
 												<td width="100">
 													<div align="center"> <?php echo $tot_di_qty; ?> </div>
 												</td>
 												<td width="150">
 													<input type="text" value="" id="check" hidden>
-													<input name="qty_dlv[<?php echo $row2["id"]; ?>]" id="qty_dlv[<?php echo $row2["id"]; ?>]" type="number" onChange="getNotice('<?php echo $row2['id']; ?>',event)" value="<?php if (isset($_POST['qty_dlv'])) {
-																																																									echo $_POST["qty_dlv"][($row2["id"])];
+													<input name="qty_dlv[<?php echo html_esc($row2["id"]); ?>]" id="qty_dlv[<?php echo html_esc($row2["id"]); ?>]" type="number" onChange="getNotice('<?php echo html_esc($row2['id']); ?>',event)" value="<?php if (isset($_POST['qty_dlv'])) {
+																																																									echo html_esc($_POST["qty_dlv"][($row2["id"])]);
 																																																								} else {
 																																																									if ($pend_qty < 0.000) {
 																																																										echo "0";
@@ -1008,19 +1008,19 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 																																																								} ?>" class="form-control form-control-sm" max="<?php echo $pend_qty; ?>" required />
 													<?php if (($tot_di_qty) > $row2["kanban_order"]) { ?><div class="form-control-feedback"><?php echo $msg; ?></div><?php } ?>
 												</td>
-												<td width="150"><input name="std_packageA[<?php echo $row2["id"]; ?>]" type="text" id="std_packageA" value="<?php if (isset($_POST['std_packageA'])) {
-																																								echo $_POST["std_packageA"][($row2["id"])];
+												<td width="150"><input name="std_packageA[<?php echo html_esc($row2["id"]); ?>]" type="text" id="std_packageA" value="<?php if (isset($_POST['std_packageA'])) {
+																																								echo html_esc($_POST["std_packageA"][($row2["id"])]);
 																																							} else {
-																																								echo $row2["std_package"];
+																																								echo html_esc($row2["std_package"]);
 																																							} ?>" class="form-control form-control-sm" required />
 												</td>
 												<td width="100">
-													<div align="center"><?php echo $row2["uom_dlv"]; ?></div>
+													<div align="center"><?php echo html_esc($row2["uom_dlv"]); ?></div>
 												</td>
-												<td width="250"><input name="supp_part_no[<?php echo $row2["id"]; ?>]" type="text" id="supp_part_no" value="<?php if (isset($_POST['supp_part_no'])) {
-																																								echo $_POST["supp_part_no"][($row2["id"])];
+												<td width="250"><input name="supp_part_no[<?php echo html_esc($row2["id"]); ?>]" type="text" id="supp_part_no" value="<?php if (isset($_POST['supp_part_no'])) {
+																																								echo html_esc($_POST["supp_part_no"][($row2["id"])]);
 																																							} else {
-																																								echo $row2["supp_part_no"];
+																																								echo html_esc($row2["supp_part_no"]);
 																																							} ?>" class="form-control form-control-sm" required />
 												</td>
 

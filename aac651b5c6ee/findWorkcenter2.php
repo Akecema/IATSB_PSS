@@ -22,7 +22,7 @@ $result4 =mysqli_query($dbc,$query4);
 <?php
                 while($row4=mysqli_fetch_array($result4)) 
 			      {
-                  echo'<option value="',$row4["id_work"],'">',stripslashes($row4["id_work"]),' - ',stripslashes($row4["wc_desc"]),'</option>';
+                  echo'<option value="',html_esc($row4["id_work"]),'">',stripslashes($row4["id_work"]),' - ',stripslashes($row4["wc_desc"]),'</option>';
                   }
 				  
 				  ?>

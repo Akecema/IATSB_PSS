@@ -87,8 +87,8 @@ $buid = base64_decode($_GET["buid"]);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Document No <?php echo $buid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Document No <?php echo $buid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -323,7 +323,7 @@ body
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Date :  </b><?php echo $data_bb["T3"];   ?></div></td>  
+    <td><div align="left"><b>Date :  </b><?php echo html_esc($data_bb["T3"]);   ?></div></td>  
   
   </tr>
   <tr>
@@ -399,16 +399,16 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><div align="center"><?php echo $noA; ?></div></td>
-    <td width="250"><b><?php echo $row2["material_no"]; ?></b><br><?php echo $row2["material_desc"]; ?></td>
-    <td><div align="center"><?php echo $row2["model_code"]; ?></div></td>
+    <td width="250"><b><?php echo html_esc($row2["material_no"]); ?></b><br><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><div align="center"><?php echo html_esc($row2["model_code"]); ?></div></td>
     <td><?php echo intval($qty_new); ?></td>
-    <td><?php echo $row2["UOM_unit"]; ?></td>
-    <td><div align="center"><?php echo $row2["work_center"]; ?></div></td>
-    <td><div align="center"><?php echo $row2["ploc_prod_reject"]; ?></div></td>
-    <td><?php echo $data_type["type_desc"]; ?></td>
-    <td><?php echo $data_reason["defect_desc"]; ?></td>
-    <td><?php echo $data_reason["id_reason"]; ?></td>
-    <td width="250"><?php echo $row2["remarks"]; ?></td>  
+    <td><?php echo html_esc($row2["UOM_unit"]); ?></td>
+    <td><div align="center"><?php echo html_esc($row2["work_center"]); ?></div></td>
+    <td><div align="center"><?php echo html_esc($row2["ploc_prod_reject"]); ?></div></td>
+    <td><?php echo html_esc($data_type["type_desc"]); ?></td>
+    <td><?php echo html_esc($data_reason["defect_desc"]); ?></td>
+    <td><?php echo html_esc($data_reason["id_reason"]); ?></td>
+    <td width="250"><?php echo html_esc($row2["remarks"]); ?></td>  
   </tr>
   
  <?php 
@@ -435,16 +435,16 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
                      <th width="20%"><div align="center">Approved by</div></th>
                    </tr>
                     <tr>
-                     <td><div align="center"><p><b><?php  echo $data_prepare["user_fullname"];   ?></b>
-                     <br><?php echo $data_bb["T3"];   ?></p></div></td>
-                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by"]) != "") { echo $data_appr["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["approved_by"]) != "") {  echo $data_bb["T9"]; } ?></p></div></td> 
-                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by2"]) != "") { echo $data_appr2["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["approved_by2"]) != "") {  echo $data_bb["T19"]; } ?></p></div></td> 
-                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by3"]) != "") { echo $data_appr3["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["approved_by3"]) != "") {  echo $data_bb["T29"]; } ?></p></div></td>
-                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by4"]) != "") { echo $data_appr4["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["approved_by4"]) != "") {  echo $data_bb["T39"]; } ?></p></div></td>
+                     <td><div align="center"><p><b><?php  echo html_esc($data_prepare["user_fullname"]);   ?></b>
+                     <br><?php echo html_esc($data_bb["T3"]);   ?></p></div></td>
+                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by"]) != "") { echo html_esc($data_appr["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["approved_by"]) != "") {  echo html_esc($data_bb["T9"]); } ?></p></div></td> 
+                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by2"]) != "") { echo html_esc($data_appr2["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["approved_by2"]) != "") {  echo html_esc($data_bb["T19"]); } ?></p></div></td> 
+                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by3"]) != "") { echo html_esc($data_appr3["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["approved_by3"]) != "") {  echo html_esc($data_bb["T29"]); } ?></p></div></td>
+                     <td><div align="center"><p><b><?php  if(($data_bb["approved_by4"]) != "") { echo html_esc($data_appr4["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["approved_by4"]) != "") {  echo html_esc($data_bb["T39"]); } ?></p></div></td>
                    </tr>
                    <tr>
                      <td><div align="center">Requestor</div></td>
@@ -465,19 +465,19 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
                    </tr>
                     <tr> 
                      <td width="15%"><b>HOD :</b></td>
-                     <td width="25%"><?php if(($data_bb["approved_by"]) != "") {  echo $data_bb["remark_approved"]; }else{ ?>
+                     <td width="25%"><?php if(($data_bb["approved_by"]) != "") {  echo html_esc($data_bb["remark_approved"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
                      <td width="15%"><b>HOD QC :</b></td>
-                     <td width="25%"><?php if(($data_bb["approved_by3"]) != "") {  echo $data_bb["remark_approved3"]; }else{ ?>
+                     <td width="25%"><?php if(($data_bb["approved_by3"]) != "") {  echo html_esc($data_bb["remark_approved3"]); }else{ ?>
                      _______________________________________________<?php }  ?>
                      </td>
                    </tr>
                     <tr> 
                      <td width="15%"><b>QC Engineering/Executive :</b></td>
-                     <td width="25%"><?php if(($data_bb["approved_by2"]) != "") {  echo $data_bb["remark_approved2"]; }else{ ?>
+                     <td width="25%"><?php if(($data_bb["approved_by2"]) != "") {  echo html_esc($data_bb["remark_approved2"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
                      <td width="15%"><b>COO :</b></td>
-                     <td width="25%"><?php if(($data_bb["approved_by4"]) != "") {  echo $data_bb["remark_approved4"]; }else{ ?>
+                     <td width="25%"><?php if(($data_bb["approved_by4"]) != "") {  echo html_esc($data_bb["remark_approved4"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
                    </tr>
                   </table>    </td>

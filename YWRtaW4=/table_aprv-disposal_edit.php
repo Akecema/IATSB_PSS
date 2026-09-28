@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -179,7 +179,7 @@ if (empty($_POST['apprv_name2']))
 } 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEditM<?php echo $row["id_apprv"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">   
+  <div class="modal fade" id="myNoteEditM<?php echo html_esc($row["id_apprv"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">   
         <!-- <div class="modal-dialog" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;" > -->     
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -221,17 +221,17 @@ $row_modA = mysqli_fetch_array($result_modA);   //how many records are there?
    <tr>
     <td width="191">ID</td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_apprv" name="id_apprv" readonly value="<?php  echo $row_modA["id_apprv"]; ?>" class="form-control" ></td>
+    <td width="971"><input type="text" id="id_apprv" name="id_apprv" readonly value="<?php  echo html_esc($row_modA["id_apprv"]); ?>" class="form-control" ></td>
     </tr>
      <tr>
     <td width="191">Initial Approval </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="apprv_name" name="apprv_name" value="<?php  echo $row_modA["apprv_name"]; ?>" class="form-control" required><div class="invalid-feedback">Please enter Initial Approval.</div></td>
+    <td width="971"><input type="text" id="apprv_name" name="apprv_name" value="<?php  echo html_esc($row_modA["apprv_name"]); ?>" class="form-control" required><div class="invalid-feedback">Please enter Initial Approval.</div></td>
     </tr>
   <tr>
     <td>Initial Approval2 <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="apprv_name2" name="apprv_name2" value="<?php echo $row_modA["apprv_name2"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter Initial Approval2.</div></td>
+    <td><input type="text" id="apprv_name2" name="apprv_name2" value="<?php echo html_esc($row_modA["apprv_name2"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter Initial Approval2.</div></td>
     </tr>
    
     <tr>
@@ -253,7 +253,7 @@ $row_modA = mysqli_fetch_array($result_modA);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="code_aprv" name="code_aprv"  class="form-control" value="<?php echo $row["id_apprv"];  ?>" >  
+             <input type="hidden" id="code_aprv" name="code_aprv"  class="form-control" value="<?php echo html_esc($row["id_apprv"]);  ?>" >  
              <input name="submit91" type="submit" id="submit91" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

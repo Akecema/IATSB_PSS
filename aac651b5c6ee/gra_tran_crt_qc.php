@@ -100,8 +100,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -464,7 +464,7 @@ $result_db = mysqli_query($dbc,$query_db) or die (mysqli_error());
              {
 			 
 			echo "<script>";
-			echo "window.location='gra_tran_crt_qc.php?scan_doc=$number&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
+			echo "window.location='gra_tran_crt_qc.php?scan_doc=$number&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
             echo "</script>";
             exit(); //quit the script
 			 
@@ -911,7 +911,7 @@ exit();
              <tr>
                 <th>Barcode : &nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1.Goods Receipt Tag <br> 2.Panel Slip <br> 3.Finished Goods Tag " data-html="true" data-placement="left"></i></th>
                 <th colspan="3">
-     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo $_POST['barcode_ref']; ?>" class="form-control" autofocus/>
+     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo html_esc($_POST['barcode_ref']); ?>" class="form-control" autofocus/>
                </th>
               </tr>
               <tr>
@@ -927,7 +927,7 @@ exit();
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -1026,14 +1026,14 @@ exit();
            while($row6 = mysqli_fetch_array($result6)) {
         
               ?>
-       <option value="<?php echo $row6["vendor_code"]; ?>" > <?php echo stripslashes($row6["vendor_code"]); ?> - <?php echo $row6["vendor_name"]; ?></option>
+       <option value="<?php echo html_esc($row6["vendor_code"]); ?>" > <?php echo stripslashes($row6["vendor_code"]); ?> - <?php echo html_esc($row6["vendor_name"]); ?></option>
                       <?php
            }  ?>
                     </select><div class="form-control-feedback" > <?php echo $message_vdr; ?></div> </th>
               </tr>
                  <tr>
               <th>Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -1083,23 +1083,23 @@ exit();
 		
       ?>
                 <tr class="item">
-                <td width="30"><a href="delete_gra_item.php?scan_doc=<?php echo $row["scan_doc"]; ?>&&p_id=<?php echo $row["id_scan_gra"]; ?>&&barcode_ref=<?php echo $row["barcode_ref"]; ?>&&plant_code=<?php echo $row["plant_code"]; ?>&&model_code=<?php echo $row["model_code"]; ?>&&material_type=<?php echo $row["material_type"]; ?>&&stamp_ind=<?php echo $row["stamp_ind"]; ?>&&material_no=<?php echo $row["material_no"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
-                <td width="30"><?php echo $no4; ?><input name="id_gra[<?php echo $row["id_scan_gra"]; ?>]" type="hidden" value="<?php echo $row["id_scan_gra"]; ?>">
-                <input name="item_no[<?php echo $row["id_scan_gra"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="150"><?php echo $row["material_no"]; ?></td>
-                <td width="250"><?php echo $row["material_desc"]; ?></td>
-                <td width="150"> <input name="scan_qty[<?php echo $row["id_scan_gra"]; ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo $_POST["scan_qty"][($row["id_scan_gra"])]; }else{ if($row["scan_qty"] != '0.000') { echo (intval($row["scan_qty"])); } } ?>" id="scan_qty" class="form-control form-control-sm" required>
+                <td width="30"><a href="delete_gra_item.php?scan_doc=<?php echo html_esc($row["scan_doc"]); ?>&&p_id=<?php echo html_esc($row["id_scan_gra"]); ?>&&barcode_ref=<?php echo html_esc($row["barcode_ref"]); ?>&&plant_code=<?php echo html_esc($row["plant_code"]); ?>&&model_code=<?php echo html_esc($row["model_code"]); ?>&&material_type=<?php echo html_esc($row["material_type"]); ?>&&stamp_ind=<?php echo html_esc($row["stamp_ind"]); ?>&&material_no=<?php echo html_esc($row["material_no"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></td>
+                <td width="30"><?php echo $no4; ?><input name="id_gra[<?php echo html_esc($row["id_scan_gra"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan_gra"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_scan_gra"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row["material_desc"]); ?></td>
+                <td width="150"> <input name="scan_qty[<?php echo html_esc($row["id_scan_gra"]); ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo html_esc($_POST["scan_qty"][($row["id_scan_gra"])]); }else{ if($row["scan_qty"] != '0.000') { echo (intval($row["scan_qty"])); } } ?>" id="scan_qty" class="form-control form-control-sm" required>
                  </td>
-                <td width="80"><?php echo $row["scan_uom"]; ?></td> 
+                <td width="80"><?php echo html_esc($row["scan_uom"]); ?></td> 
                 <td width="200">
-               <input name="bar_gr[<?php echo $row["id_scan_gra"]; ?>]" type="text" id="bar_gr" maxlength="200" value="<?php if(isset($_POST['bar_gr'])){ echo $_POST["bar_gr"][($row["id_scan_gra"])]; }else{ echo $row["doc_no"]; } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)"/>
+               <input name="bar_gr[<?php echo html_esc($row["id_scan_gra"]); ?>]" type="text" id="bar_gr" maxlength="200" value="<?php if(isset($_POST['bar_gr'])){ echo html_esc($_POST["bar_gr"][($row["id_scan_gra"])]); }else{ echo html_esc($row["doc_no"]); } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)"/>
                 </td>
                  <td width="200">
-               <input name="dlv_ord_no[<?php echo $row["id_scan_gra"]; ?>]" type="text" id="dlv_ord_no" maxlength="200" value="<?php if(isset($_POST['dlv_ord_no'])){ echo $_POST["dlv_ord_no"][($row["id_scan_gra"])]; }else{ echo $row["dlv_ord_no"]; } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)"/>
+               <input name="dlv_ord_no[<?php echo html_esc($row["id_scan_gra"]); ?>]" type="text" id="dlv_ord_no" maxlength="200" value="<?php if(isset($_POST['dlv_ord_no'])){ echo html_esc($_POST["dlv_ord_no"][($row["id_scan_gra"])]); }else{ echo html_esc($row["dlv_ord_no"]); } ?>" class="form-control form-control-sm" onkeypress="return /[a-zA-Z0-9- ()]/i.test(event.key)"/>
                 </td>
                 <td width="300">
-                <textarea name="remark_gra[<?php echo $row["id_scan_gra"]; ?>]" id="bar_gr" rows="2" cols="10" maxlength="250" class="form-control form-control-sm" onkeypress="return /[A-Za-z0-9&. /()-_ ]/i.test(event.key)"><?php if(isset($_POST['remark_gra'])){ echo $_POST["remark_gra"][($row["id_scan_gra"])]; } ?></textarea>
-               <input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>"> </td>
+                <textarea name="remark_gra[<?php echo html_esc($row["id_scan_gra"]); ?>]" id="bar_gr" rows="2" cols="10" maxlength="250" class="form-control form-control-sm" onkeypress="return /[A-Za-z0-9&. /()-_ ]/i.test(event.key)"><?php if(isset($_POST['remark_gra'])){ echo html_esc($_POST["remark_gra"][($row["id_scan_gra"])]); } ?></textarea>
+               <input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>"> </td>
                 </tr>
                  
           <?php 

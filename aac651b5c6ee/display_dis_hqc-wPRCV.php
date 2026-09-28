@@ -123,8 +123,8 @@ $rst_sta29 = mysqli_fetch_array($sta_res29);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -267,7 +267,7 @@ page-break-before: always ;
    
    
 ?>
-  <div class="modal fade printable autoprint" id="myNoteDisplayDIS<?php echo $row["doc_dis"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteDisplayDIS<?php echo html_esc($row["doc_dis"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content modlDisplay">
                             <div class="modal-header">
@@ -341,12 +341,12 @@ page-break-before: always ;
   <tr>
     <td><div align="left"><b>DEPARTMENT :  </b> PPC [RECEIVING]</div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Document No. :  </b><?php echo $row["doc_dis"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($row["doc_dis"]);   ?></div></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Date :  </b><?php echo $data_bb["T3"];   ?></div></td>  
+    <td><div align="left"><b>Date :  </b><?php echo html_esc($data_bb["T3"]);   ?></div></td>  
   
   </tr>
   <tr>
@@ -474,17 +474,17 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
    <tr>
     <td><div align="center"><?php echo $noA; ?></div></td>
-    <td width="250"><b><?php echo $row2["material_no"]; ?></b><br><?php echo $row2["material_desc"]; ?></td>
-    <td><div align="center"><?php echo $row2["model_code"]; ?></div></td>
+    <td width="250"><b><?php echo html_esc($row2["material_no"]); ?></b><br><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><div align="center"><?php echo html_esc($row2["model_code"]); ?></div></td>
     <td><?php echo intval($qty_new); ?></td>
-    <td><?php echo $row2["UOM_unit"]; ?></td>
-    <td><div align="center"><?php echo $row2["work_center"]; ?></div></td>
-    <td><div align="center"><?php echo $row2["ploc_prod_reject"]; ?></div></td>
-    <td><?php echo $data_proc["proc_desc"]; ?></td>
-    <td><?php echo $data_type["type_desc"]; ?></td>
-    <td><?php echo $data_reason["defect_desc"]; ?></td>
-    <td><?php echo $row2["reason_reject"]; ?></td>
-    <td width="250"><?php echo $row2["remarks"]; ?></td>  
+    <td><?php echo html_esc($row2["UOM_unit"]); ?></td>
+    <td><div align="center"><?php echo html_esc($row2["work_center"]); ?></div></td>
+    <td><div align="center"><?php echo html_esc($row2["ploc_prod_reject"]); ?></div></td>
+    <td><?php echo html_esc($data_proc["proc_desc"]); ?></td>
+    <td><?php echo html_esc($data_type["type_desc"]); ?></td>
+    <td><?php echo html_esc($data_reason["defect_desc"]); ?></td>
+    <td><?php echo html_esc($row2["reason_reject"]); ?></td>
+    <td width="250"><?php echo html_esc($row2["remarks"]); ?></td>  
   </tr>
   
  <?php 
@@ -507,20 +507,20 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
                      <th width="10%"><div align="center" class="style7">Approved by</div></th>
                    </tr>
                      <tr>
-                     <td><div align="center" class="style7"><p><b><?php  echo $data_prepare["user_fullname"];   ?></b>
-                     <br><?php echo $data_bb["T3"];   ?></p></div></td>
-                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by"]) != "") && (($data_bb["status_approved"]) == $rst_sta3["status_desc"])) { echo $data_appr["user_fullname"];  }  ?></b>
-                     <br><?php if((($data_bb["approved_by"]) != "") && (($data_bb["status_approved"]) == $rst_sta3["status_desc"])) {  echo $data_bb["T9"]; } ?></p></div></td> 
-                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by2"]) != "") && (($data_bb["status_approved2"]) == $rst_sta3["status_desc"])) { echo $data_appr2["user_fullname"];  }  ?></b>
-                     <br><?php if((($data_bb["approved_by2"]) != "") && (($data_bb["status_approved2"]) == $rst_sta3["status_desc"])) {  echo $data_bb["T19"]; } ?></p></div></td> 
-                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by3"]) != "") && (($data_bb["status_approved3"]) == $rst_sta3["status_desc"])){ echo $data_appr3["user_fullname"];  }  ?></b>
-                     <br><?php if((($data_bb["approved_by3"]) != "") && (($data_bb["status_approved3"]) == $rst_sta3["status_desc"])) {  echo $data_bb["T29"]; } ?></p></div></td>
+                     <td><div align="center" class="style7"><p><b><?php  echo html_esc($data_prepare["user_fullname"]);   ?></b>
+                     <br><?php echo html_esc($data_bb["T3"]);   ?></p></div></td>
+                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by"]) != "") && (($data_bb["status_approved"]) == $rst_sta3["status_desc"])) { echo html_esc($data_appr["user_fullname"]);  }  ?></b>
+                     <br><?php if((($data_bb["approved_by"]) != "") && (($data_bb["status_approved"]) == $rst_sta3["status_desc"])) {  echo html_esc($data_bb["T9"]); } ?></p></div></td> 
+                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by2"]) != "") && (($data_bb["status_approved2"]) == $rst_sta3["status_desc"])) { echo html_esc($data_appr2["user_fullname"]);  }  ?></b>
+                     <br><?php if((($data_bb["approved_by2"]) != "") && (($data_bb["status_approved2"]) == $rst_sta3["status_desc"])) {  echo html_esc($data_bb["T19"]); } ?></p></div></td> 
+                     <td><div align="center" class="style7"><p><b><?php  if((($data_bb["approved_by3"]) != "") && (($data_bb["status_approved3"]) == $rst_sta3["status_desc"])){ echo html_esc($data_appr3["user_fullname"]);  }  ?></b>
+                     <br><?php if((($data_bb["approved_by3"]) != "") && (($data_bb["status_approved3"]) == $rst_sta3["status_desc"])) {  echo html_esc($data_bb["T29"]); } ?></p></div></td>
                    </tr>
                    <tr>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv2["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv5["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv6["apprv_name"]; ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv2["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv5["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv6["apprv_name"]); ?></div></td>
                    </tr>
                  </table></div>
              
@@ -535,14 +535,14 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
                      <th colspan="4"><div class="style18">COMMENT</div></th>
                    </tr>
                     <tr> 
-                     <td width="20%"><div class="style7"><?php echo $rst_apprv2["apprv_name2"]; ?>:</div></td>
-                     <td width="25%"><textarea name="remark_approved" id="remark_approved" rows="2" cols="30" readonly><?php if(($data_bb["approved_by"]) != "") {  echo $data_bb["remark_approved"]; } ?></textarea> </td>
-                     <td width="20%"><div class="style7"><?php echo $rst_apprv5["apprv_name2"]; ?>:</div></td>
-                     <td width="25%"><textarea name="remark_approved2" id="remark_approved2" rows="2" cols="30" readonly><?php if(($data_bb["approved_by2"]) != "") {  echo $data_bb["remark_approved2"]; } ?></textarea></td>
+                     <td width="20%"><div class="style7"><?php echo html_esc($rst_apprv2["apprv_name2"]); ?>:</div></td>
+                     <td width="25%"><textarea name="remark_approved" id="remark_approved" rows="2" cols="30" readonly><?php if(($data_bb["approved_by"]) != "") {  echo html_esc($data_bb["remark_approved"]); } ?></textarea> </td>
+                     <td width="20%"><div class="style7"><?php echo html_esc($rst_apprv5["apprv_name2"]); ?>:</div></td>
+                     <td width="25%"><textarea name="remark_approved2" id="remark_approved2" rows="2" cols="30" readonly><?php if(($data_bb["approved_by2"]) != "") {  echo html_esc($data_bb["remark_approved2"]); } ?></textarea></td>
                    </tr>
                     <tr>
-                    <td width="20%"><div class="style7"><?php echo $rst_apprv6["apprv_name2"]; ?>:</div></td>
-                     <td width="25%"><textarea name="remark_approved3" id="remark_approved3" rows="2" cols="30" readonly><?php if(($data_bb["approved_by3"]) != "") {  echo $data_bb["remark_approved3"]; } ?></textarea> </td>
+                    <td width="20%"><div class="style7"><?php echo html_esc($rst_apprv6["apprv_name2"]); ?>:</div></td>
+                     <td width="25%"><textarea name="remark_approved3" id="remark_approved3" rows="2" cols="30" readonly><?php if(($data_bb["approved_by3"]) != "") {  echo html_esc($data_bb["remark_approved3"]); } ?></textarea> </td>
                      <td width="20%">&nbsp;</td>
                      <td width="25%">&nbsp;</td>
                    </tr>
@@ -557,7 +557,7 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
                   
       <div class="modal-footer">
       
-       <input name="uid3" type="hidden" value="<?php echo $row["doc_dis"]; ?>">    
+       <input name="uid3" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>">    
        <input name="date1" type="hidden" value="<?php echo $dateF; ?>"> 
        <input name="date2" type="hidden" value="<?php echo $dateT; ?>"> 
        <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">

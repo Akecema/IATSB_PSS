@@ -33,8 +33,8 @@ $url = "add_user.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -176,7 +176,7 @@ $vendor_id = $_POST["vendor_id"];
   
                    while($row2_g = mysqli_fetch_array($result2_g)) 
 			      {
-                  echo'<option value="',$row2_g["staff_ID"],'">',stripslashes($row2_g["staff_ID"]),' - ',stripslashes($row2_g["user_fullname"]),'</option>';
+                  echo'<option value="',html_esc($row2_g["staff_ID"]),'">',stripslashes($row2_g["staff_ID"]),' - ',stripslashes($row2_g["user_fullname"]),'</option>';
                   }
 				?>
     </select>
@@ -196,7 +196,7 @@ $vendor_id = $_POST["vendor_id"];
   
                    while($row_g = mysqli_fetch_array($result_g)) 
 			      {
-                  echo'<option value="',$row_g["vendor_code"],'">',stripslashes($row_g["vendor_code"]),' - ',stripslashes($row_g["vendor_name"]),'</option>';
+                  echo'<option value="',html_esc($row_g["vendor_code"]),'">',stripslashes($row_g["vendor_code"]),' - ',stripslashes($row_g["vendor_name"]),'</option>';
                   }
 				?>
     </select>
