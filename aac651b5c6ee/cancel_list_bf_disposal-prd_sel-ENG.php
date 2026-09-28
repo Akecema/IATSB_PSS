@@ -1,8 +1,8 @@
 <?php
     date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_list_bf_disposal-prdProc2.php"; 
@@ -26,8 +26,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -291,8 +291,8 @@ page-break-before: always ;
      
      // ---------update cancel Disposal and revert to original table--------------------------
        
-      $query_cancelGR1 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref21)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-      $result_cancelGR1 = mysqli_query($dbc,$query_cancelGR1);
+      $query_cancelGR1 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref21, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+      $result_cancelGR1 = db_query($dbc, $query_cancelGR1);
       
        
         

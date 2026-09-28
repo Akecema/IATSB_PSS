@@ -24,8 +24,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 	
 $url = "dash_brdppc3.php"; 
@@ -121,8 +121,8 @@ $rst_sta19 = mysqli_fetch_array($sta_res19);
 
 	<?php
     
-    $query_sql = "SELECT * FROM login_detail WHERE username = '".sql_esc($username)."' and status = 'AC'";
-    $result_sql = mysqli_query($dbc,$query_sql);
+    $query_sql = new PreparedSql("SELECT * FROM login_detail WHERE username = ? and status = 'AC'", [$username]);
+    $result_sql = db_query($dbc, $query_sql);
     $info = mysqli_fetch_array($result_sql);
     
     

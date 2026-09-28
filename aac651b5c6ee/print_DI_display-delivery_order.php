@@ -17,8 +17,8 @@ exit();
 
 $url = "print_tag-dikanban.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 	
 $today = getdate();
@@ -307,14 +307,14 @@ $buid2 = base64_decode($_GET["buid2"]);
 	 
 	 //-----get cvendor  ----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vc_code"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend) or die (mysqli_error($dbc));
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vc_code"]]);
+	 $result_vend = db_query($dbc, $query_vend) or die (mysqli_error($dbc));
 	 $data_vend = mysqli_fetch_array($result_vend);
 	 
 	  //-----get model  ----
 	 
-	 $query_model = "SELECT * FROM model_detail WHERE model_code = '".sql_esc($data_bb["model_cd"])."'";
-	 $result_model = mysqli_query($dbc,$query_model);
+	 $query_model = new PreparedSql("SELECT * FROM model_detail WHERE model_code = ?", [$data_bb["model_cd"]]);
+	 $result_model = db_query($dbc, $query_model);
 	 $data_model = mysqli_fetch_array($result_model);
 	 
 	 

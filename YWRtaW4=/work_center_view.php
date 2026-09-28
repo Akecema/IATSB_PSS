@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "work_center_table.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -99,8 +99,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
        </div>
    <?php
 
-$query_work = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row2["id_work"])."'";
-$result_work = mysqli_query($dbc,$query_work);   //run the query.
+$query_work = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$row2["id_work"]]);
+$result_work = db_query($dbc, $query_work);   //run the query.
 $row_work = mysqli_fetch_array($result_work);   //how many records are there?
 
     

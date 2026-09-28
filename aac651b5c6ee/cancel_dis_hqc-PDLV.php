@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "canC_hqc_disposal4-prdProc2.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -268,8 +268,8 @@ page-break-before: always ;
    
     //--------- Disposal Delivery detail ------------
 	 
-	   $query_info5 = "SELECT * FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid5)."' AND status_disposal = '".sql_esc($rst_sta3["status_desc"])."'";
-	   $result_info5 = mysqli_query($dbc,$query_info5);
+	   $query_info5 = new PreparedSql("SELECT * FROM disposal_detail_prd_all WHERE doc_dis = ? AND status_disposal = ?", [$uid5, $rst_sta3["status_desc"]]);
+	   $result_info5 = db_query($dbc, $query_info5);
 	  
 	  while($data_info5 = mysqli_fetch_array($result_info5))
 	  
@@ -286,8 +286,8 @@ page-break-before: always ;
 	$result_cancelGR = mysqli_query($dbc,$query_cancelGR);
 	
 	
-	   $query_infoB1 = "SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid5)."' AND id = '".sql_esc($data_info5["id"])."' AND status_disposal = '".sql_esc($rst_sta4["status_desc"])."'";
-	   $result_infoB1 = mysqli_query($dbc,$query_infoB1);
+	   $query_infoB1 = new PreparedSql("SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = ? AND id = ? AND status_disposal = ?", [$uid5, $data_info5["id"], $rst_sta4["status_desc"]]);
+	   $result_infoB1 = db_query($dbc, $query_infoB1);
 	   $row_infoB1 = mysqli_fetch_array($result_infoB1);
 	  
 	 // echo $row_infoB["id_disposal"];	
@@ -314,8 +314,8 @@ $result_ins_dis1 = mysqli_query($dbc,$query_ins_dis1);
 	  $filen_rcv = "DP".$ref2; 
 		   
 		   //-----prepared by------
-		 $query_prepw = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_infoB["user_cancel"])."'";
-		 $result_prepw = mysqli_query($dbc,$query_prepw);
+		 $query_prepw = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_infoB["user_cancel"]]);
+		 $result_prepw = db_query($dbc, $query_prepw);
 		 $data_prepw = mysqli_fetch_array($result_prepw);
 		
 		

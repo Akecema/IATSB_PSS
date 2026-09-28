@@ -85,8 +85,8 @@ if(isset($_POST['e_tcid']))
 		 for($g=0; $g<$st; $g++)
 	{		
 
-     	$query_info2 = "SELECT * FROM pps_detail WHERE id = '".sql_esc($trc_id[$g])."'";
-		$result_info2 = mysqli_query($dbc,$query_info2);
+     	$query_info2 = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$trc_id[$g]]);
+		$result_info2 = db_query($dbc, $query_info2);
 		$row_info2 = mysqli_fetch_array($result_info2);
 
 		

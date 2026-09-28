@@ -12,8 +12,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------	
 
 
-$query41 = "SELECT * FROM model_detail_tbl WHERE material_type = '".sql_esc($mat_type)."' AND plant_code = '".sql_esc($plant_code)."' AND status_model = 'Y' ORDER BY id_model ASC";
-$result41 =mysqli_query($dbc,$query41);
+$query41 = new PreparedSql("SELECT * FROM model_detail_tbl WHERE material_type = ? AND plant_code = ? AND status_model = 'Y' ORDER BY id_model ASC", [$mat_type, $plant_code]);
+$result41 =db_query($dbc, $query41);
 
 ?>
 

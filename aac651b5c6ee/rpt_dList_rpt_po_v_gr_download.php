@@ -343,8 +343,8 @@ if($data_sql3["ord_uom"] == 'PCS')
 	 
 	 //----get vendor detail -----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_sql3["vendor_id"])."' AND status_acc = 'Y'";
-	 $result_vend = mysqli_query($dbc,$query_vend); 
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$data_sql3["vendor_id"]]);
+	 $result_vend = db_query($dbc, $query_vend); 
 	 $data_vend = mysqli_fetch_array($result_vend);
 		 
 		echo '<tr height="35">';

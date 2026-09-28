@@ -16,8 +16,8 @@ exit();
 
 $url = "canC_gra_aftran_qcProc.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 include 'apprv_func_list.php';
 	
@@ -288,14 +288,14 @@ body
 	 
 	   //-----user canccellation-----------
 	 
-	 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["user_cancel"])."'"; 
-	 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+	 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["user_cancel"]]); 
+	 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
      $data_u_can = mysqli_fetch_array($rs_u_can);
 	 
 	 //----get vendor detail -----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vendor_no"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend); 
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vendor_no"]]);
+	 $result_vend = db_query($dbc, $query_vend); 
 	 $data_vend = mysqli_fetch_array($result_vend);
 	 
 	 

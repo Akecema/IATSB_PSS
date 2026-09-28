@@ -52,8 +52,8 @@ if(isset($_POST['e_tcid']))
 		
 		//insert table pps_detail_close
 		
-		$query_info = "SELECT * FROM pps_detail WHERE id = '".sql_esc($trc_id[$i])."'";
-		$result_info = mysqli_query($dbc,$query_info);
+		$query_info = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$trc_id[$i]]);
+		$result_info = db_query($dbc, $query_info);
 		$row_info = mysqli_fetch_array($result_info);
 		
 		

@@ -49,8 +49,8 @@ $num_setup4 = mysqli_num_rows($rs_setup4);   //how many material are there?
 $data_setup4 = mysqli_fetch_array($rs_setup4);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "detail_aprv_bf_disposal-prd-assy.php";
@@ -605,13 +605,13 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
    {
 	
  //---type of reject
- $query_type = "SELECT * FROM type_reject_detail_prd WHERE id_type = '".sql_esc($row["type_reject"])."' AND status_type = 'Y' ORDER BY id_type ASC";
- $result_type = mysqli_query($dbc,$query_type);
+ $query_type = new PreparedSql("SELECT * FROM type_reject_detail_prd WHERE id_type = ? AND status_type = 'Y' ORDER BY id_type ASC", [$row["type_reject"]]);
+ $result_type = db_query($dbc, $query_type);
  $row_type = mysqli_fetch_array($result_type); 
  
   //---defect
- $query_defect = "SELECT * FROM type_defect_detail_prd WHERE id_defect = '".sql_esc($row["type_defect"])."' AND status_defect = 'Y' ORDER BY id_defect ASC";
- $result_defect = mysqli_query($dbc,$query_defect);
+ $query_defect = new PreparedSql("SELECT * FROM type_defect_detail_prd WHERE id_defect = ? AND status_defect = 'Y' ORDER BY id_defect ASC", [$row["type_defect"]]);
+ $result_defect = db_query($dbc, $query_defect);
  $row_defect = mysqli_fetch_array($result_defect); 
  
 
@@ -684,20 +684,20 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	
 	 //----get proc of reject -----
   
-       $query_procA = "SELECT * FROM proc_reject_detail_prd WHERE id_proc = '".sql_esc($data_info_dis["proc_reject"])."'";
-	   $rst_procA = mysqli_query($dbc,$query_procA);
+       $query_procA = new PreparedSql("SELECT * FROM proc_reject_detail_prd WHERE id_proc = ?", [$data_info_dis["proc_reject"]]);
+	   $rst_procA = db_query($dbc, $query_procA);
        $data_procA = mysqli_fetch_array($rst_procA); 
       
      //----get type of reject -----
   
-       $query_typeA = "SELECT * FROM type_reject_detail_prd WHERE id_type = '".sql_esc($data_info_dis["type_reject"])."'";
-	   $rst_typeA = mysqli_query($dbc,$query_typeA);
+       $query_typeA = new PreparedSql("SELECT * FROM type_reject_detail_prd WHERE id_type = ?", [$data_info_dis["type_reject"]]);
+	   $rst_typeA = db_query($dbc, $query_typeA);
        $data_typeA = mysqli_fetch_array($rst_typeA);
   
   
      //----get reason of defect ------
-       $query_reasonA = "SELECT * FROM type_defect_detail_prd WHERE id_defect = '".sql_esc($data_info_dis["type_defect"])."'";
-	   $rst_reasonA = mysqli_query($dbc,$query_reasonA);
+       $query_reasonA = new PreparedSql("SELECT * FROM type_defect_detail_prd WHERE id_defect = ?", [$data_info_dis["type_defect"]]);
+	   $rst_reasonA = db_query($dbc, $query_reasonA);
        $data_reasonA = mysqli_fetch_array($rst_reasonA);
   
   

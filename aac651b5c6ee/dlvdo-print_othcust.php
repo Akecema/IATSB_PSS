@@ -38,8 +38,8 @@ $filename = $data_setup["logo_comp"].'.'.$extension[1];
 		
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 
 $url = "prt_do_tran-dlv.php";
@@ -300,8 +300,8 @@ $result_plant = mysqli_query($dbc,$query_plant);
 $data_plant = mysqli_fetch_array($result_plant); 
 
 //-------get address customer-----
-$query_vendor = "SELECT * FROM cust_detail WHERE id_cust = '".sql_esc($db_rs["ship_point"])."'";
-$result_vendor = mysqli_query($dbc,$query_vendor);
+$query_vendor = new PreparedSql("SELECT * FROM cust_detail WHERE id_cust = ?", [$db_rs["ship_point"]]);
+$result_vendor = db_query($dbc, $query_vendor);
 $data_vendor = mysqli_fetch_array($result_vendor); 
 
 //1st row header	
@@ -362,8 +362,8 @@ while($row = mysqli_fetch_array($result_by_group))
    
 
 	//-------get issued detail----
-	$query_issue = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["prepared_by"])."'";
-	$result_issue = mysqli_query($dbc,$query_issue);
+	$query_issue = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["prepared_by"]]);
+	$result_issue = db_query($dbc, $query_issue);
 	$data_issue = mysqli_fetch_array($result_issue);	
 	
 	$no = sprintf('%04d',$no);  // item no

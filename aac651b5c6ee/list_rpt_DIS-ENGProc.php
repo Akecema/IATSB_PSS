@@ -23,15 +23,15 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	include 'apprv_func_list.php';  
 	
 //--------function user --------------------------
-$query_fuct = "SELECT * FROM  function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$rs_fuct = mysqli_query($dbc,$query_fuct);   //run the query.
+$query_fuct = new PreparedSql("SELECT * FROM  function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$rs_fuct = db_query($dbc, $query_fuct);   //run the query.
 $num_fuct = mysqli_num_rows($rs_fuct);   //how many material are there?
 $data_fuct = mysqli_fetch_array($rs_fuct);
 //----------------------------------------------------
@@ -502,8 +502,8 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	
 	 //-----user canccellation-----------
 		 
-		 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_cancel"])."'"; 
-		 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+		 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_cancel"]]); 
+		 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
 		 $data_u_can = mysqli_fetch_array($rs_u_can);
 	
 	 //---type of reject

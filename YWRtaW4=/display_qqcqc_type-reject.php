@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 
    $url = "qqcqc_reject_table.php"; 
@@ -241,8 +241,8 @@ th {
    {
 	
 	//---detail process --------
-	$query_dtl = "SELECT * FROM proc_reject_detail_qqc WHERE id_proc = '".sql_esc($row2["id_proc"])."'";
-    $rs_dtl = mysqli_query($dbc,$query_dtl);   //run the query.
+	$query_dtl = new PreparedSql("SELECT * FROM proc_reject_detail_qqc WHERE id_proc = ?", [$row2["id_proc"]]);
+    $rs_dtl = db_query($dbc, $query_dtl);   //run the query.
 	$row2_dtl = mysqli_fetch_array($rs_dtl);  
 	   
       ?> <tr class="item">

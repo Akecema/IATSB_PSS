@@ -16,8 +16,8 @@ exit();
 
 $url = "can_prog_aftrn-posting.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 	
 $today = getdate();
@@ -288,8 +288,8 @@ body
 	 
 	 //-----user canccellation-----------
 	 
-	 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["user_cancel"])."'"; 
-	 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+	 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["user_cancel"]]); 
+	 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
      $data_u_can = mysqli_fetch_array($rs_u_can);
 	 
 

@@ -23,8 +23,8 @@ $extension = explode('.', $data_setup["logo_name"]);
 $filename = $data_setup["logo_comp"].'.'.$extension[1];
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
     
 //CR status (New)
@@ -134,8 +134,8 @@ if(isset($_POST['material_doc_gen'])){
     $data_bb = mysqli_fetch_array($rs_bb);
 	 
     //------------plant code detail -------------
-    $query_plant = "SELECT * FROM plant_detail WHERE plant_code = '".sql_esc($data_bb["plant_code"])."'";
-    $result_plant = mysqli_query($dbc,$query_plant);
+    $query_plant = new PreparedSql("SELECT * FROM plant_detail WHERE plant_code = ?", [$data_bb["plant_code"]]);
+    $result_plant = db_query($dbc, $query_plant);
     $data_plant = mysqli_fetch_array($result_plant);
 
     $html  = '<form name="frmSearch" id="frmSearch" method="post" action=""';

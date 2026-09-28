@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 
 ?>
@@ -184,7 +184,7 @@ $message = NULL; // create an empty new variable.
 				
 				//----------------------------------------------	
 			       $query2 = "UPDATE user_detail set password = '".sql_esc($newpass)."', user_update = '".sql_esc($row["username"])."', date_update = NOW() where username='".sql_esc($row["username"])."'";
-				  $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+				  $result2 = db_query($dbc, $query2) or die (mysqli_error());
 				  
 				  if(mysqli_affected_rows($dbc) == 1) { //If it ran ok
 				  
@@ -222,8 +222,8 @@ $message = NULL; // create an empty new variable.
 			
 			//--------------------------------calculation date for expiry date after change password-----------------------
 					
-				   $query_dtl = "SELECT * FROM login_detail WHERE username = '".sql_esc($row["username"])."'";
-                   $result_dtl = mysqli_query($dbc,$query_dtl);
+				   $query_dtl = new PreparedSql("SELECT * FROM login_detail WHERE username = ?", [$row["username"]]);
+                   $result_dtl = db_query($dbc, $query_dtl);
 				   $row_dtl = mysqli_fetch_array($result_dtl);
 					
 					 //------range date for new value ----------------------------

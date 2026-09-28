@@ -261,20 +261,20 @@ while ($list = mysqli_fetch_array($result2)) {
 	 
 	 //----------table material ------
 	 
-  $query_q2A = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($list["material_no"])."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A);
+  $query_q2A = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$list["material_no"]]);
+  $result_q2A = db_query($dbc, $query_q2A);
   $ans3A = mysqli_fetch_array($result_q2A);
   
   //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3A["model_code"])."' AND material_type = '".sql_esc($ans3A["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3A["model_code"], $ans3A["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3A["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3A["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
 	 
    $qty_total_pend = 0.000;
@@ -341,8 +341,8 @@ while ($list = mysqli_fetch_array($result2)) {
 	 
 	  //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($list["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$list["work_center"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")

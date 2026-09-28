@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 
 $url = "detail_pps_month_reprint.php"; 
@@ -203,14 +203,14 @@ while($dt_pps = mysqli_fetch_array($result_pps))
 		
 		//---------get user upload -------------
 		
-		$query_upld = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($dtprt_HDR["user_upload"])."'";
-		$result_upld = mysqli_query($dbc,$query_upld);
+		$query_upld = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$dtprt_HDR["user_upload"]]);
+		$result_upld = db_query($dbc, $query_upld);
         $data_upld = mysqli_fetch_array($result_upld);	
 		
 		//---------get user released -------------
 		
-		$query_rels = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($dtprt_HDR["user_update"])."'";
-		$result_rels = mysqli_query($dbc,$query_rels);
+		$query_rels = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$dtprt_HDR["user_update"]]);
+		$result_rels = db_query($dbc, $query_rels);
         $data_rels = mysqli_fetch_array($result_rels);	
 		
         $name_aprv = "Wan Amer Faisal Wan Omar";

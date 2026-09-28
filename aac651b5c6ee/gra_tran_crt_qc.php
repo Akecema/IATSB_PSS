@@ -32,8 +32,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "gra_tran_crt_qc.php"; 
@@ -366,21 +366,21 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   if($_POST["barcode_ref"] != "")
 { 			
 				   
-  $query_q2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2 = mysqli_query($dbc,$query_q2) or die (mysqli_error());
+  $query_q2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1]);
+  $result_q2 = db_query($dbc, $query_q2) or die (mysqli_error());
   $ans3 = mysqli_fetch_array($result_q2);
   
   //---------detail material_type_tbl (material_type) ----
   
-  $query_mtype2 = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3["mat_type"])."'";
-  $result_mtype2 = mysqli_query($dbc,$query_mtype2) or die (mysqli_error());
+  $query_mtype2 = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3["mat_type"]]);
+  $result_mtype2 = db_query($dbc, $query_mtype2) or die (mysqli_error());
   $d_mtype2 = mysqli_fetch_array($result_mtype2);
   
   
   //---------detail model_detail_tbl(model_code) ---
   
-  $query_mcode2 = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3["model_code"])."'";
-  $result_mcode2 = mysqli_query($dbc,$query_mcode2) or die (mysqli_error());
+  $query_mcode2 = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$ans3["model_code"]]);
+  $result_mcode2 = db_query($dbc, $query_mcode2) or die (mysqli_error());
   $d_mcode2 = mysqli_fetch_array($result_mcode2);
   
   
@@ -406,21 +406,21 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   
 }
   
-  $query_q22 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q22 = mysqli_query($dbc,$query_q22) or die (mysqli_error());
+  $query_q22 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q22 = db_query($dbc, $query_q22) or die (mysqli_error());
   $ans22 = mysqli_fetch_array($result_q22);
   
   //---------detail material_type_tbl (material_type) ----
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($material_type)."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype) or die (mysqli_error());
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$material_type]);
+  $result_mtype = db_query($dbc, $query_mtype) or die (mysqli_error());
   $d_mtype = mysqli_fetch_array($result_mtype);
   
   
   //---------detail model_detail_tbl(model_code) ---
   
-  $query_mcode = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($model_code)."'";
-  $result_mcode = mysqli_query($dbc,$query_mcode) or die (mysqli_error());
+  $query_mcode = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$model_code]);
+  $result_mcode = db_query($dbc, $query_mcode) or die (mysqli_error());
   $d_mcode = mysqli_fetch_array($result_mcode);
 				   
  $strH = substr($part4,4,3);
@@ -816,8 +816,8 @@ exit();
    
    {
         //-----prepared by------
-		 $query_prep = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_rcv_ftp["user_generate_gra"])."'";
-		 $result_prep = mysqli_query($dbc,$query_prep) or die (mysqli_error());
+		 $query_prep = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_rcv_ftp["user_generate_gra"]]);
+		 $result_prep = db_query($dbc, $query_prep) or die (mysqli_error());
 		 $data_prep = mysqli_fetch_array($result_prep);
 		 
 		 //----quantity-----

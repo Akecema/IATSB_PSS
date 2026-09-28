@@ -259,8 +259,8 @@ echo '</table>';
    {
 	    
 	      //----vendor detail ------
-				   $query_vcode = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_sql3["vc_code"])."' AND status_acc = 'Y'";
-                   $result_vcode = mysqli_query($dbc,$query_vcode);
+				   $query_vcode = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$data_sql3["vc_code"]]);
+                   $result_vcode = db_query($dbc, $query_vcode);
                    $row_vcode = mysqli_fetch_array($result_vcode);	
 				   
 		 //----print tag detail -----

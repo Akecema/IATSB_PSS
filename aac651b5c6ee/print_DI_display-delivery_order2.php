@@ -17,8 +17,8 @@ exit();
 
 $url = "print_tag-dikanban.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 	
 $today = getdate();
@@ -254,14 +254,14 @@ $buid2 = base64_decode($_GET["buid2"]);
 	 
 	 //-----get cvendor  ----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vc_code"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend) or die (mysqli_error());
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vc_code"]]);
+	 $result_vend = db_query($dbc, $query_vend) or die (mysqli_error());
 	 $data_vend = mysqli_fetch_array($result_vend);
 	 
 	  //-----get model  ----
 	 
-	 $query_model = "SELECT * FROM model_detail WHERE model_code = '".sql_esc($data_bb["model_cd"])."'";
-	 $result_model = mysqli_query($dbc,$query_model);
+	 $query_model = new PreparedSql("SELECT * FROM model_detail WHERE model_code = ?", [$data_bb["model_cd"]]);
+	 $result_model = db_query($dbc, $query_model);
 	 $data_model = mysqli_fetch_array($result_model);
 	 
 	 
@@ -561,8 +561,8 @@ while($rowA = mysqli_fetch_array($result_pps))
   $i = $rowcount;
 	
 	//----------display material header
-	$query_info3 = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($rowA["material_no"])."'";
-	$result_info3 = mysqli_query($dbc,$query_info3);
+	$query_info3 = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$rowA["material_no"]]);
+	$result_info3 = db_query($dbc, $query_info3);
 	$row_info3 = mysqli_fetch_array($result_info3);
 
 
@@ -614,8 +614,8 @@ while($rowA = mysqli_fetch_array($result_pps))
 	while ($data = mysqli_fetch_array($hasil))
 	{
 	
-		$query_sloc = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data["material_no"])."'";
-		$result_sloc = mysqli_query($dbc,$query_sloc);
+		$query_sloc = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data["material_no"]]);
+		$result_sloc = db_query($dbc, $query_sloc);
 		$data_sloc = mysqli_fetch_array($result_sloc);
 	
 	$total_slip_no = ($rowA["slip_no"].' of '.$rowA["total_slip"]);

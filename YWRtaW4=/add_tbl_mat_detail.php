@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 $url = "mat_detail_table.php"; 
@@ -298,8 +298,8 @@ $status_sp = $_POST['status_sp'];
 
 //----vendor detail ----
 
-$query_ven_dtl = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($vendor_id)."' AND status_acc = 'Y'";
-$result_ven_dtl = mysqli_query($dbc,$query_ven_dtl);
+$query_ven_dtl = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$vendor_id]);
+$result_ven_dtl = db_query($dbc, $query_ven_dtl);
 $row_ven_dtl = mysqli_fetch_array($result_ven_dtl);
 
 //--- model detail ---

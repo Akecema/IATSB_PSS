@@ -10,8 +10,8 @@ $currentdate = (date("Y-m-d"));
 
 set_time_limit(0);
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 
 // Check, if username session is NOT set then this page will jump to login page
@@ -40,8 +40,8 @@ $get_userID = $_GET['usrId'];
 include "get-user-details.php";
 
 /* menu authorization */
-$query_ath_all = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($get_userID)."'";
-$result_ath_all = mysqli_query($dbc,$query_ath_all);  
+$query_ath_all = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$get_userID]);
+$result_ath_all = db_query($dbc, $query_ath_all);  
 $row_ath_all = mysqli_fetch_array($result_ath_all); 	 
 
 include 'apprv_func_list.php';

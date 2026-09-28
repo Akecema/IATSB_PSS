@@ -40,8 +40,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "backflush_tran_Pend-confirm_rework.php"; 
@@ -664,8 +664,8 @@ $message = NULL; // create an empty new variable.
 	   
 	  //----------find posting log depend material type
 	  
-	  $query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_scan["material_no"])."'";
-      $result_mat_info = mysqli_query($dbc,$query_mat_info) or die (mysqli_error());
+	  $query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_scan["material_no"]]);
+      $result_mat_info = db_query($dbc, $query_mat_info) or die (mysqli_error());
       $data_mat_info = mysqli_fetch_array($result_mat_info);  
 	
 	
@@ -706,13 +706,13 @@ $message = NULL; // create an empty new variable.
 	  
 	  
 	  //-----UOM detail----
-	   $query_unit = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($data_scan["material_no"])."'";
-	   $result_unit = mysqli_query($dbc,$query_unit);
+	   $query_unit = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$data_scan["material_no"]]);
+	   $result_unit = db_query($dbc, $query_unit);
 	   $data_unit = mysqli_fetch_array($result_unit);
 	 
 	  //----------- find cost center --------------
-		$query_cs_cent = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_scan["work_center"])."'";
-		$result_cs_cent = mysqli_query($dbc,$query_cs_cent); 
+		$query_cs_cent = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_scan["work_center"]]);
+		$result_cs_cent = db_query($dbc, $query_cs_cent); 
 		$row_cs_cent = mysqli_fetch_array($result_cs_cent);
 	  
 	  
@@ -812,8 +812,8 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 	  
 	  //----detail standard packaging [ambil dari table mat_master_header]
 	  
-	   $query_pack = "SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_pack = mysqli_query($dbc,$query_pack);
+	   $query_pack = new PreparedSql("SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_pack = db_query($dbc, $query_pack);
 	   $data_pack = mysqli_fetch_array($result_pack);
 	   
 	   
@@ -1062,8 +1062,8 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 	  
 	  //----detail standard packaging [ambil dari table mat_master_header]
 	  
-	   $query_pack = "SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_pack = mysqli_query($dbc,$query_pack);
+	   $query_pack = new PreparedSql("SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_pack = db_query($dbc, $query_pack);
 	   $data_pack = mysqli_fetch_array($result_pack);
 		
 		
@@ -1393,8 +1393,8 @@ if (isset($message))
 		 
 		 //------------plant code detail -------------
 		 
-		 $query_plant = "SELECT * FROM plant_detail WHERE plant_code = '".sql_esc($data_scan["plant_code"])."'";
-		 $result_plant = mysqli_query($dbc,$query_plant);
+		 $query_plant = new PreparedSql("SELECT * FROM plant_detail WHERE plant_code = ?", [$data_scan["plant_code"]]);
+		 $result_plant = db_query($dbc, $query_plant);
 	     $data_plant = mysqli_fetch_array($result_plant);
 		  
 		  ?>        

@@ -24,13 +24,13 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 //--------function user --------------------------
-$query_fuct = "SELECT * FROM  function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$rs_fuct = mysqli_query($dbc,$query_fuct);   //run the query.
+$query_fuct = new PreparedSql("SELECT * FROM  function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$rs_fuct = db_query($dbc, $query_fuct);   //run the query.
 $num_fuct = mysqli_num_rows($rs_fuct);   //how many material are there?
 $data_fuct = mysqli_fetch_array($rs_fuct);
 //----------------------------------------------------	

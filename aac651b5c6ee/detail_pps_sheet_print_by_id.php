@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_pps_month_reprint.php"; 
@@ -282,8 +282,8 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
 	
 	//--------------get filename from table ftp_pps
  
- $query_ftp_pps = "SELECT * FROM ftp_pps WHERE upload_id = '".sql_esc($upload_id)."'";
- $result_ftp_pps = mysqli_query($dbc,$query_ftp_pps);
+ $query_ftp_pps = new PreparedSql("SELECT * FROM ftp_pps WHERE upload_id = ?", [$upload_id]);
+ $result_ftp_pps = db_query($dbc, $query_ftp_pps);
  $data_ftp_pps = mysqli_fetch_array($result_ftp_pps);  
  ?>
 

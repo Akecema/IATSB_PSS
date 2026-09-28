@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -358,7 +358,7 @@ if (isset($message))
   
   //Retrieve and display the available types
   $query2 = 'SELECT * FROM department';
-  $result2 = mysqli_query($dbc,$query2);
+  $result2 = db_query($dbc, $query2);
   
       while($row2 = mysqli_fetch_array($result2)) {
 

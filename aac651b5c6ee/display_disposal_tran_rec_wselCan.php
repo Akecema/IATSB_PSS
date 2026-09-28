@@ -1,8 +1,8 @@
 <?php
     date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "canC_disposal_tran-recProc.php"; 
@@ -37,8 +37,8 @@ $data_setup4 = mysqli_fetch_array($rs_setup4);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -266,45 +266,45 @@ page-break-before: always ;
      $data_bb = mysqli_fetch_array($rs_bb);	 
 	 
 	 //---work center----
-	 $query_line = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_bb["work_center"])."'";
-	 $rs_line = mysqli_query($dbc,$query_line);   //run the query.
+	 $query_line = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_bb["work_center"]]);
+	 $rs_line = db_query($dbc, $query_line);   //run the query.
      $data_line = mysqli_fetch_array($rs_line);	 
 	 
 	  //-----user canccellation-----------
 	 
-	 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_cancel"])."'"; 
-	 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+	 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_cancel"]]); 
+	 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
      $data_u_can = mysqli_fetch_array($rs_u_can);
 	 
 	 
 	 //---get user prepared by---
 	 
-	 $query_prepare = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["user_generate_dis"])."'";
-	 $result_prepare = mysqli_query($dbc,$query_prepare);
+	 $query_prepare = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["user_generate_dis"]]);
+	 $result_prepare = db_query($dbc, $query_prepare);
 	 $data_prepare = mysqli_fetch_array($result_prepare);
 	 
 	  //---get user approved by---
 	 
-	 $query_appr = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved1"])."'";
-	 $result_appr = mysqli_query($dbc,$query_appr);
+	 $query_appr = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved1"]]);
+	 $result_appr = db_query($dbc, $query_appr);
 	 $data_appr = mysqli_fetch_array($result_appr);
 	 
 	 //---get user approved2 by---
 	 
-	 $query_appr2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved2"])."'";
-	 $result_appr2 = mysqli_query($dbc,$query_appr2);
+	 $query_appr2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved2"]]);
+	 $result_appr2 = db_query($dbc, $query_appr2);
 	 $data_appr2 = mysqli_fetch_array($result_appr2);
 	 
 	  //---get user approved3 by---
 	 
-	 $query_appr3 = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved3"])."'";
-	 $result_appr3 = mysqli_query($dbc,$query_appr3);
+	 $query_appr3 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved3"]]);
+	 $result_appr3 = db_query($dbc, $query_appr3);
 	 $data_appr3 = mysqli_fetch_array($result_appr3);
 	 
 	 //---get user approved4 by---
 	 
-	 $query_appr4 = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved4"])."'";
-	 $result_appr4 = mysqli_query($dbc,$query_appr4);
+	 $query_appr4 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved4"]]);
+	 $result_appr4 = db_query($dbc, $query_appr4);
 	 $data_appr4 = mysqli_fetch_array($result_appr4);
 	 
 	   //-----plant code-----
@@ -446,20 +446,20 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 	   
 	  //-----get process ----
 	   
-	   $query_proc = "SELECT * FROM proc_reject_detail_ppcdlv WHERE id_proc = '".sql_esc($row2["proc_reject"])."'";
-	   $rst_proc = mysqli_query($dbc,$query_proc);
+	   $query_proc = new PreparedSql("SELECT * FROM proc_reject_detail_ppcdlv WHERE id_proc = ?", [$row2["proc_reject"]]);
+	   $rst_proc = db_query($dbc, $query_proc);
        $data_proc = mysqli_fetch_array($rst_proc);
 	   
   //----get type of reject -----
   
-       $query_type = "SELECT * FROM type_reject_detail_ppcdlv WHERE id_type = '".sql_esc($row2["type_reject"])."'";
-	   $rst_type = mysqli_query($dbc,$query_type);
+       $query_type = new PreparedSql("SELECT * FROM type_reject_detail_ppcdlv WHERE id_type = ?", [$row2["type_reject"]]);
+	   $rst_type = db_query($dbc, $query_type);
        $data_type = mysqli_fetch_array($rst_type);
   
   
   //----get defect/ reason of reject ------
-       $query_reason = "SELECT * FROM type_defect_detail_ppcdlv WHERE id_defect = '".sql_esc($row2["type_defect"])."'";
-	   $rst_reason = mysqli_query($dbc,$query_reason);
+       $query_reason = new PreparedSql("SELECT * FROM type_defect_detail_ppcdlv WHERE id_defect = ?", [$row2["type_defect"]]);
+	   $rst_reason = db_query($dbc, $query_reason);
        $data_reason = mysqli_fetch_array($rst_reason);
 	   
   

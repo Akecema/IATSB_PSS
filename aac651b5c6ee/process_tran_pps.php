@@ -198,8 +198,8 @@ $html.="</table>";
 			$tahun_plan = substr($row_db_pps["month_plan"],0,4);		
 			
 			 //---- check factory from work center -------// 
-			$query_convert = "SELECT * FROM work_center_detail as SR WHERE SR.id_work = '".sql_esc($row_db_pps["work_center"])."'";
-			$result_convert = mysqli_query($dbc,$query_convert); 
+			$query_convert = new PreparedSql("SELECT * FROM work_center_detail as SR WHERE SR.id_work = ?", [$row_db_pps["work_center"]]);
+			$result_convert = db_query($dbc, $query_convert); 
 			$row_convert = mysqli_fetch_array($result_convert);
 			
 			
@@ -270,14 +270,14 @@ $html.="</table>";
 		  //------------------------end delete upload table ftp_pps---------------------------------	
 		  
 		   //-------------------------------delete table pps_detail-------------------------------------
-		    $query_hsekeeping3 = "DELETE FROM pps_detail WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping3 =  mysqli_query($dbc,$query_hsekeeping3);
+		    $query_hsekeeping3 = new PreparedSql("DELETE FROM pps_detail WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping3 =  db_query($dbc, $query_hsekeeping3);
 	  
 		  //------------------------end delete upload table ftp_pps---------------------------------	
 			
 			//-------------------------------delete table pps_upload-------------------------------------
-		    $query_hsekeeping = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping =  mysqli_query($dbc,$query_hsekeeping);
+		    $query_hsekeeping = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping =  db_query($dbc, $query_hsekeeping);
 	  
 		  //------------------------end delete upload table pps-upload---------------------------------	
 		  
@@ -301,8 +301,8 @@ $html.="</table>";
 		   {
 			   
 		  //-------------------------------delete table pps_upload-------------------------------------
-		    $query_hsekeeping_f = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping_f =  mysqli_query($dbc,$query_hsekeeping_f);
+		    $query_hsekeeping_f = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping_f =  db_query($dbc, $query_hsekeeping_f);
 	  
 		  //------------------------end delete upload table pps-upload---------------------------------	   
 		   

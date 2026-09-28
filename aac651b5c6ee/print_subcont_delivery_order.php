@@ -30,8 +30,8 @@ $max = 15;
     $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
 	$num = mysqli_num_rows($result2);  
     
-	$query_vendor = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row_detail["vendor_no"])."'";
-	$result_vendor = mysqli_query($dbc,$query_vendor) or die (mysqli_error());
+	$query_vendor = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$row_detail["vendor_no"]]);
+	$result_vendor = db_query($dbc, $query_vendor) or die (mysqli_error());
 	$row_vendor = mysqli_fetch_array($result_vendor);
 	
 	
@@ -158,8 +158,8 @@ while($row = mysqli_fetch_array($result2))
 	$grd_totalN = intval($grd_total);
 	
 	
-	$query_model = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part_no)."'";
-	$result_model = mysqli_query($dbc,$query_model) or die (mysqli_error());
+	$query_model = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part_no]);
+	$result_model = db_query($dbc, $query_model) or die (mysqli_error());
 	$row_model = mysqli_fetch_array($result_model);
 
 	$model = $row_model["material_group"];

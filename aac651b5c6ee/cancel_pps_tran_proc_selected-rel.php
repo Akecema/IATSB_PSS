@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_pps_month_reprint.php"; 
@@ -16,8 +16,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -173,8 +173,8 @@ page-break-before: always ;
    
     //--------- pps detail ------------
 	 
-	   $query_pps = "SELECT * FROM pps_detail WHERE id = '".sql_esc($uid)."'";
-	   $result_pps = mysqli_query($dbc,$query_pps);
+	   $query_pps = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$uid]);
+	   $result_pps = db_query($dbc, $query_pps);
 	  
 	  while($data_pps = mysqli_fetch_array($result_pps))
 	  
@@ -249,12 +249,12 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 
 			 //convert 
 			
-			$query_convert = "SELECT * FROM work_center_detail as SR WHERE SR.id_work = '".sql_esc($_GET["work_center"])."'";
-			$result_convert = mysqli_query($dbc,$query_convert); 
+			$query_convert = new PreparedSql("SELECT * FROM work_center_detail as SR WHERE SR.id_work = ?", [$_GET["work_center"]]);
+			$result_convert = db_query($dbc, $query_convert); 
 			$row_convert = mysqli_fetch_array($result_convert);
 			
-			$query_convert2 = "SELECT * FROM ftp_pps WHERE file_name = '".sql_esc($_GET["name_file"])."'";
-			$result_convert2 = mysqli_query($dbc,$query_convert2); 
+			$query_convert2 = new PreparedSql("SELECT * FROM ftp_pps WHERE file_name = ?", [$_GET["name_file"]]);
+			$result_convert2 = db_query($dbc, $query_convert2); 
 			$row_convert2 = mysqli_fetch_array($result_convert2);
 			
 			//-------Count all results------------------------//
@@ -331,8 +331,8 @@ $db_rs2 = mysqli_fetch_array($rs2);
     <?php       
           //--------- pps detail ------------
 	 
-	   $query_pps_dtl = "SELECT * FROM pps_detail WHERE id = '".sql_esc($row["id"])."'";
-	   $result_pps_dtl = mysqli_query($dbc,$query_pps_dtl);   
+	   $query_pps_dtl = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$row["id"]]);
+	   $result_pps_dtl = db_query($dbc, $query_pps_dtl);   
 	   $data_pps_dtl = mysqli_fetch_array($result_pps_dtl);
 	   
 	   

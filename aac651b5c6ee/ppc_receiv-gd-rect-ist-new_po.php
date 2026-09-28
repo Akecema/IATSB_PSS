@@ -7,8 +7,8 @@ $Cdate = date ("l, j F Y ");
 $currentdate = (date("Y-m-d"));
 $fmt_curr_date = (date("d-m-Y"));
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 
 set_time_limit(0);
@@ -37,8 +37,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 
 $url = "ppc_receiv-gd-rect.php"; 
@@ -111,8 +111,8 @@ $row_vend = mysqli_fetch_array($result_vend);
 
 //-------check vendor detail ----------
 
-				  $query5a = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row_vend["vendor_id"])."'";
-				  $result5a = mysqli_query($dbc,$query5a);
+				  $query5a = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$row_vend["vendor_id"]]);
+				  $result5a = db_query($dbc, $query5a);
 			      $row5a = mysqli_fetch_array($result5a);
 
 ?>

@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "canC_gra_tran_qcProc.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -329,8 +329,8 @@ $result_data2a = mysqli_query($dbc,$query_data2a) or die (mysqli_error());
 	 
 	 //----get vendor detail -----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vendor_no"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend); 
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vendor_no"]]);
+	 $result_vend = db_query($dbc, $query_vend); 
 	 $data_vend = mysqli_fetch_array($result_vend);
 	 
 	 

@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2);
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2);
     $res = mysqli_fetch_array($result2);
 	
 $url = "confirm_backflush_tran_Pend-confirm.php"; 
@@ -261,8 +261,8 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8, $part9, $pa
   $result3 = mysqli_query($dbc,$query3);
   $row3 = mysqli_fetch_array($result3); 
 				   
-  $query_q2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2 = mysqli_query($dbc,$query_q2);
+  $query_q2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1]);
+  $result_q2 = db_query($dbc, $query_q2);
   $ans3 = mysqli_fetch_array($result_q2);
   
                  $ddP = substr($part5,0,2);
@@ -275,14 +275,14 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8, $part9, $pa
   
    //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3["model_code"])."' AND material_type = '".sql_esc($ans3["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3["model_code"], $ans3["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
     
   //checking base on qty backflush Handwork-------------

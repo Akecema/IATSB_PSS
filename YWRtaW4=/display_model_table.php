@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -254,8 +254,8 @@ th {
 
    while($row2 = mysqli_fetch_array($rs))
    {
-		$query_mat_type = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($row2["material_type"])."'";
-		$result_mat_type = mysqli_query($dbc,$query_mat_type) or die (mysqli_error($dbc));
+		$query_mat_type = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$row2["material_type"]]);
+		$result_mat_type = db_query($dbc, $query_mat_type) or die (mysqli_error($dbc));
         $data_mat_type = mysqli_fetch_array($result_mat_type);
 	
 	

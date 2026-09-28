@@ -1,8 +1,8 @@
 <?php
     date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_list_bf_disposal-prdProc2.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -236,8 +236,8 @@ page-break-before: always ;
    
     //--------- Disposal Production all detail ------------
 	 
-	   $query_info5 = "SELECT * FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	   $result_info5 = mysqli_query($dbc,$query_info5);
+	   $query_info5 = new PreparedSql("SELECT * FROM disposal_detail_prd_all WHERE doc_dis = ? AND status_disposal = ?", [$uid4, $rst_sta15["status_desc"]]);
+	   $result_info5 = db_query($dbc, $query_info5);
 	  
 	  while($data_info5 = mysqli_fetch_array($result_info5))
 	  

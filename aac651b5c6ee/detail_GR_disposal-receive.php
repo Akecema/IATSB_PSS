@@ -32,8 +32,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
     $url = "detail_GR_disposal-receive.php"; 
@@ -422,22 +422,22 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   if($_POST["barcode_ref"] != "")
 { 			
 				   
-  $query_q2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2 = mysqli_query($dbc,$query_q2) or die (mysqli_error($dbc));
+  $query_q2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1]);
+  $result_q2 = db_query($dbc, $query_q2) or die (mysqli_error($dbc));
   $ans3 = mysqli_fetch_array($result_q2);
   
   
   //---------detail material_type_tbl (material_type) ----
   
-  $query_mtype2 = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3["mat_type"])."'";
-  $result_mtype2 = mysqli_query($dbc,$query_mtype2) or die (mysqli_error($dbc));
+  $query_mtype2 = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3["mat_type"]]);
+  $result_mtype2 = db_query($dbc, $query_mtype2) or die (mysqli_error($dbc));
   $d_mtype2 = mysqli_fetch_array($result_mtype2);
   
   
   //---------detail model_detail_tbl(model_code) ---
   
-  $query_mcode2 = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3["model_code"])."'";
-  $result_mcode2 = mysqli_query($dbc,$query_mcode2) or die (mysqli_error($dbc));
+  $query_mcode2 = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$ans3["model_code"]]);
+  $result_mcode2 = db_query($dbc, $query_mcode2) or die (mysqli_error($dbc));
   $d_mcode2 = mysqli_fetch_array($result_mcode2);
   
   
@@ -464,22 +464,22 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   
 }
   
-  $query_q22 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q22 = mysqli_query($dbc,$query_q22) or die (mysqli_error($dbc));
+  $query_q22 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q22 = db_query($dbc, $query_q22) or die (mysqli_error($dbc));
   $ans22 = mysqli_fetch_array($result_q22);
 				   
 				   
   //---------detail material_type_tbl (material_type) ----
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($material_type)."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype) or die (mysqli_error($dbc));
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$material_type]);
+  $result_mtype = db_query($dbc, $query_mtype) or die (mysqli_error($dbc));
   $d_mtype = mysqli_fetch_array($result_mtype);
   
   
   //---------detail model_detail_tbl(model_code) ---
   
-  $query_mcode = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($model_code)."'";
-  $result_mcode = mysqli_query($dbc,$query_mcode) or die (mysqli_error($dbc));
+  $query_mcode = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$model_code]);
+  $result_mcode = db_query($dbc, $query_mcode) or die (mysqli_error($dbc));
   $d_mcode = mysqli_fetch_array($result_mcode);
   
 
@@ -861,8 +861,8 @@ exit();
 		 $row_info = mysqli_fetch_array($result_dtl_chk2);
 		
 	     //----get cost center ----
-		  $query_wctr = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($string6[$i])."'";
-		  $result_wctr = mysqli_query($dbc,$query_wctr);
+		  $query_wctr = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$string6[$i]]);
+		  $result_wctr = db_query($dbc, $query_wctr);
 		  $row_wctr = mysqli_fetch_array($result_wctr);
 		
 		//---------insert data at table gra_disposal_ppcrec_detail - status part = 'WS'
@@ -1160,8 +1160,8 @@ exit();
                 <select name="work_center[<?php echo html_esc($row["id_scan_dis"]); ?>]" id="work_center" class="form-control">
                 <option value="NULL" placeholder="Select Section"> -- Select Section --</option>
             <?php
-                 $query4 = "SELECT * FROM work_center_detail WHERE plant_code = '".sql_esc($row["plant_code"])."' ORDER BY id_work ASC";
-                 $result4 =mysqli_query($dbc,$query4);  
+                 $query4 = new PreparedSql("SELECT * FROM work_center_detail WHERE plant_code = ? ORDER BY id_work ASC", [$row["plant_code"]]);
+                 $result4 =db_query($dbc, $query4);  
 				 
 				 while($row4=mysqli_fetch_array($result4)) 
 			      {

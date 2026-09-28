@@ -47,8 +47,8 @@ if(isset($_POST["edt_btnMul"]))
 	
 		///---------------select info pss-detail-----------------
 		
-		$qty_upd_inf = "SELECT * FROM pps_detail WHERE id = '".sql_esc($tid[$i])."'";
-		$rst_qty_upd_inf = mysqli_query($dbc,$qty_upd_inf);  
+		$qty_upd_inf = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$tid[$i]]);
+		$rst_qty_upd_inf = db_query($dbc, $qty_upd_inf);  
 		$rowac = mysqli_fetch_array($rst_qty_upd_inf);
 	
 		$ddm = substr($rowac["date_plan"],8,2);

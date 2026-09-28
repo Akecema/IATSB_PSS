@@ -153,13 +153,13 @@ if(isset($_POST["action"]))
 	    $filen_rcv = "BF".$ref2; 
 		   
         //-----prepared by------
-        $query_prepw = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_infoB["user_cancel"])."'";
-        $result_prepw = mysqli_query($dbc,$query_prepw);
+        $query_prepw = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_infoB["user_cancel"]]);
+        $result_prepw = db_query($dbc, $query_prepw);
         $data_prepw = mysqli_fetch_array($result_prepw);
         
         //-----material_detail------
-        $query_mt_dtl = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($row_infoB["material_no"])."'";
-        $result_mt_dtl = mysqli_query($dbc,$query_mt_dtl);
+        $query_mt_dtl = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$row_infoB["material_no"]]);
+        $result_mt_dtl = db_query($dbc, $query_mt_dtl);
         $data_mt_dtl = mysqli_fetch_array($result_mt_dtl);
 		 
 	

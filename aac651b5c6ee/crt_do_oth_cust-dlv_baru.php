@@ -31,8 +31,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
    $url = "crt_do_oth_cust-dlv.php"; 
@@ -358,8 +358,8 @@ if($_POST["so_no"] != "")
 
  //-----------get info detail cust_detail
 
- $query_cust_info = "SELECT * FROM cust_detail WHERE id_cust = '".sql_esc($part2)."'";
- $result_cust_info = mysqli_query($dbc,$query_cust_info);  
+ $query_cust_info = new PreparedSql("SELECT * FROM cust_detail WHERE id_cust = ?", [$part2]);
+ $result_cust_info = db_query($dbc, $query_cust_info);  
  $rst_cust_info = mysqli_fetch_array($result_cust_info); 
  
  $curr_month = date('m', strtotime($currentdate));
@@ -382,8 +382,8 @@ while($rst_info_so2 = mysqli_fetch_array($result_info_so2))
 
 
 
-$query_all_donum = "SELECT * FROM scan_crt_donum WHERE id_DO = '".sql_esc($refC)."' AND status_acc = 'N'";
-$result_all_donum = mysqli_query($dbc,$query_all_donum);  
+$query_all_donum = new PreparedSql("SELECT * FROM scan_crt_donum WHERE id_DO = ? AND status_acc = 'N'", [$refC]);
+$result_all_donum = db_query($dbc, $query_all_donum);  
 $rst_all_donum  = mysqli_fetch_array($result_all_donum); 
 
 
@@ -391,8 +391,8 @@ if($rst_all_donum < 1 )
 {
 
 //Add the record scan update no
-$query_ref_othcust = "INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('','".sql_esc($refC)."','N','".sql_esc($username)."',NOW())";
-$result_ref_othcust = mysqli_query($dbc,$query_ref_othcust) or die (mysqli_error($dbc));  
+$query_ref_othcust = new PreparedSql("INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('',?,'N',?,NOW())", [$refC, $username]);
+$result_ref_othcust = db_query($dbc, $query_ref_othcust) or die (mysqli_error($dbc));  
 
  
 
@@ -548,8 +548,8 @@ $rst_custM  = mysqli_fetch_array($result_custM);
 
  } // end while
 
- $query_all_donum = "SELECT * FROM scan_crt_donum WHERE id_DO = '".sql_esc($refC)."' AND status_acc = 'N'";
- $result_all_donum = mysqli_query($dbc,$query_all_donum);  
+ $query_all_donum = new PreparedSql("SELECT * FROM scan_crt_donum WHERE id_DO = ? AND status_acc = 'N'", [$refC]);
+ $result_all_donum = db_query($dbc, $query_all_donum);  
  $rst_all_donum  = mysqli_fetch_array($result_all_donum); 
  
  
@@ -557,8 +557,8 @@ $rst_custM  = mysqli_fetch_array($result_custM);
  {
  
  //Add the record scan update no
- $query_ref_othcust = "INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('','".sql_esc($refC)."','N','".sql_esc($username)."',NOW())";
- $result_ref_othcust = mysqli_query($dbc,$query_ref_othcust) or die (mysqli_error($dbc));  
+ $query_ref_othcust = new PreparedSql("INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('',?,'N',?,NOW())", [$refC, $username]);
+ $result_ref_othcust = db_query($dbc, $query_ref_othcust) or die (mysqli_error($dbc));  
  
   
  
@@ -652,8 +652,8 @@ $rst_p2_detail  = mysqli_fetch_array($result_p2_detail);
 						
 				 
 		//infor table_material_cust
-		$query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1A)."'";
-		$result_mat = mysqli_query($dbc,$query_mat);  
+		$query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1A]);
+		$result_mat = db_query($dbc, $query_mat);  
 		$rst_mat  = mysqli_fetch_array($result_mat); 
 
 
@@ -768,8 +768,8 @@ $how_many = count($id);
 	          $dt_finalDO = ($yrs_do.'-'.$mth_do.'-'.$dy_do);
 			  
 			  //infor table_material_cust
-		$query_matE = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_all["material_no"])."'";
-		$result_matE = mysqli_query($dbc,$query_matE);  
+		$query_matE = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_all["material_no"]]);
+		$result_matE = db_query($dbc, $query_matE);  
 		$rst_matE  = mysqli_fetch_array($result_matE); 
 		 
 	  //-------insert table prt_do_perodua_tag
@@ -869,8 +869,8 @@ while($row_doc_generate = mysqli_fetch_array($result_doc_generate))
 		//-----uom----
 	  
 	  //infor table_material_cust
-		$query_matEE = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_all2["material_no"])."'";
-		$result_matEE = mysqli_query($dbc,$query_matEE);  
+		$query_matEE = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_all2["material_no"]]);
+		$result_matEE = db_query($dbc, $query_matEE);  
 		$rst_matEE  = mysqli_fetch_array($result_matEE); 	
 		
 			 //------update data dlv_ord_all_delivery -----------//

@@ -230,8 +230,8 @@ echo '</table>';
    {
 
 	   
-	   $query_mat2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_sql3["material_no"])."'";
-	   $result_mat2 = mysqli_query($dbc,$query_mat2);
+	   $query_mat2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_sql3["material_no"]]);
+	   $result_mat2 = db_query($dbc, $query_mat2);
        $row_mat2 = mysqli_fetch_array($result_mat2);
 	   
 	    

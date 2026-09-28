@@ -30,8 +30,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -299,8 +299,8 @@ $result_perodua = mysqli_query($dbc,$query_perodua) or die (mysqli_error($dbc));
 
 }
 
-$query_all_donum = "SELECT * FROM scan_crt_donum WHERE id_DO = '".sql_esc($ref)."' AND status_acc = 'N'";
-$result_all_donum = mysqli_query($dbc,$query_all_donum);  
+$query_all_donum = new PreparedSql("SELECT * FROM scan_crt_donum WHERE id_DO = ? AND status_acc = 'N'", [$ref]);
+$result_all_donum = db_query($dbc, $query_all_donum);  
 $rst_all_donum  = mysqli_fetch_array($result_all_donum); 
 
 
@@ -308,8 +308,8 @@ if($rst_all_donum < 1 )
 {
 
 //Add the record scan update no
-$query_ref_perodua = "INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('','".sql_esc($ref)."','N','".sql_esc($username)."',NOW())";
-$result_ref_perodua = mysqli_query($dbc,$query_ref_perodua) or die (mysqli_error($dbc));  
+$query_ref_perodua = new PreparedSql("INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('',?,'N',?,NOW())", [$ref, $username]);
+$result_ref_perodua = db_query($dbc, $query_ref_perodua) or die (mysqli_error($dbc));  
 
  
 
@@ -576,8 +576,8 @@ list($part1A, $part2A, $part3A, $part4A, $part5A, $part6A, $part7A, $part8A, $pa
    
    }
    
-   $query_all_donum = "SELECT * FROM scan_crt_donum WHERE id_DO = '".sql_esc($ref)."' AND status_acc = 'N'";
-   $result_all_donum = mysqli_query($dbc,$query_all_donum);  
+   $query_all_donum = new PreparedSql("SELECT * FROM scan_crt_donum WHERE id_DO = ? AND status_acc = 'N'", [$ref]);
+   $result_all_donum = db_query($dbc, $query_all_donum);  
    $rst_all_donum  = mysqli_fetch_array($result_all_donum); 
    
    
@@ -585,8 +585,8 @@ list($part1A, $part2A, $part3A, $part4A, $part5A, $part6A, $part7A, $part8A, $pa
    {
    
    //Add the record scan update no
-   $query_ref_perodua = "INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('','".sql_esc($ref)."','N','".sql_esc($username)."',NOW())";
-   $result_ref_perodua = mysqli_query($dbc,$query_ref_perodua) or die (mysqli_error($dbc));  
+   $query_ref_perodua = new PreparedSql("INSERT INTO scan_crt_donum(id,id_DO,status_acc,user_create,date_create) VALUES ('',?,'N',?,NOW())", [$ref, $username]);
+   $result_ref_perodua = db_query($dbc, $query_ref_perodua) or die (mysqli_error($dbc));  
    
     
    
@@ -678,8 +678,8 @@ $row_list = mysqli_fetch_array($result_po_list);
 						
 				 
 			//infor table_material_cust
-      $query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1A)."'";
-      $result_mat = mysqli_query($dbc,$query_mat);  
+      $query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1A]);
+      $result_mat = db_query($dbc, $query_mat);  
       $rst_mat  = mysqli_fetch_array($result_mat); 
 
 		//--update scan_p2_perodua1

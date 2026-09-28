@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "display_model_table.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -183,8 +183,8 @@ if (($_POST['services_part']) == "NULL")
   $services_part = $_POST['services_part'];
 	$material_type = $_POST['material_type'];
 	
-		  	  $query_search = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($id_model)."'";
-              $result_search = mysqli_query($dbc,$query_search);   //run the query.
+		  	  $query_search = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$id_model]);
+              $result_search = db_query($dbc, $query_search);   //run the query.
               $num_search = mysqli_num_rows($result_search);   //how many suppliers are there?
 			  
 			  if($num_search == 1) {
@@ -231,8 +231,8 @@ if (($_POST['services_part']) == "NULL")
        </div>
       <?php
 	 
-$query_modA = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($row2["id_model"])."'";
-$result_modA = mysqli_query($dbc,$query_modA);   //run the query.
+$query_modA = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$row2["id_model"]]);
+$result_modA = db_query($dbc, $query_modA);   //run the query.
 $row_modA = mysqli_fetch_array($result_modA);   //how many records are there?
      
    ?>

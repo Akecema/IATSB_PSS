@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -257,13 +257,13 @@ th {
     $rs_again = mysqli_query($dbc,$query_again);   //run the query.
     $row = mysqli_fetch_array($rs_again);
 	
-	$query_u = "SELECT * FROM user_detail WHERE user_no = '".sql_esc($row["user_create"])."'";
-	$result_u = mysqli_query($dbc,$query_u);   //run the query.
+	$query_u = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$row["user_create"]]);
+	$result_u = db_query($dbc, $query_u);   //run the query.
 	$data_u = mysqli_fetch_array($result_u);   //how many records are there?    
 
 
- 	$query3 = "SELECT * FROM factory_detail WHERE id_fac = '".sql_esc($row_scan["factory"])."'";
-    $result3 = mysqli_query($dbc,$query3);
+ 	$query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$row_scan["factory"]]);
+    $result3 = db_query($dbc, $query3);
 	$row3 = mysqli_fetch_array($result3);
 	
 

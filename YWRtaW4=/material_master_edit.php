@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2);
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2);
     $res = mysqli_fetch_array($result2);
 	
 	$url = "material_master_list.php"; 

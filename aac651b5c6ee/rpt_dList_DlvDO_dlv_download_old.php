@@ -306,8 +306,8 @@ echo '</table>';
 		
 		
 		///-------------table material iatsb for model --------
-		$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_sql3["material_no_sap"])."' AND status_BOM = 'Y'"; 
-	 	$result_mat_info = mysqli_query($dbc,$query_mat_info);
+		$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$data_sql3["material_no_sap"]]); 
+	 	$result_mat_info = db_query($dbc, $query_mat_info);
         $data_mat_info = mysqli_fetch_array($result_mat_info);
 		
 		///-----== get model ----------------

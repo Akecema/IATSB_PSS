@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 
 $url = "detail_pps_month_reprint.php"; 
@@ -104,7 +104,7 @@ while($row = mysqli_fetch_array($result))
 	$dtprt_HDR = mysqli_fetch_array($resprt_HDR);
 	
 	$query2 = "SELECT * FROM prt_sheet_pps_new_test where doc_generate='".sql_esc($row['doc_generate'])."' and work_center = '".sql_esc($row['work_center'])."' ";
-	$result2 = mysqli_query($dbc,$query2);
+	$result2 = db_query($dbc, $query2);
 	
 	$rows = 0;
 	$n = 5;

@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_pps_month_reprint.php"; 
@@ -254,20 +254,20 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
 	
 	//--------------get filename from table ftp_pps
  
- $query_ftp_pps = "SELECT * FROM ftp_pps WHERE upload_id = '".sql_esc($db_rs2["upload_id"])."'";
- $result_ftp_pps = mysqli_query($dbc,$query_ftp_pps);
+ $query_ftp_pps = new PreparedSql("SELECT * FROM ftp_pps WHERE upload_id = ?", [$db_rs2["upload_id"]]);
+ $result_ftp_pps = db_query($dbc, $query_ftp_pps);
  $data_ftp_pps = mysqli_fetch_array($result_ftp_pps);  
  
  //---------get user upload -------------
 		
-		$query_upld = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($db_rs2["user_upload"])."'";
-		$result_upld = mysqli_query($dbc,$query_upld);
+		$query_upld = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$db_rs2["user_upload"]]);
+		$result_upld = db_query($dbc, $query_upld);
         $data_upld = mysqli_fetch_array($result_upld);	
 		
 		//---------get user released -------------
 		
-		$query_rels = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($db_rs2["user_update"])."'";
-		$result_rels = mysqli_query($dbc,$query_rels);
+		$query_rels = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$db_rs2["user_update"]]);
+		$result_rels = db_query($dbc, $query_rels);
     $data_rels = mysqli_fetch_array($result_rels);	
 
         $query_plan_apprv = "SELECT * FROM function_apprv_pss_sht WHERE plant_code = '".sql_esc($db_rs2["plant_code"])."'";
@@ -415,8 +415,8 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
 	  }		
 	  
 	  	
-		$query_mat_h = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row3['material_no'])."'";
-        $result_mat_h = mysqli_query($dbc,$query_mat_h);
+		$query_mat_h = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row3['material_no']]);
+        $result_mat_h = db_query($dbc, $query_mat_h);
         $data_mat_h = mysqli_fetch_array($result_mat_h);
 	  
 	  

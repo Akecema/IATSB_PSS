@@ -24,8 +24,8 @@ exit();
 
 $url = "view_do_perd2-dlvProc2.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 	
 	
@@ -331,8 +331,8 @@ $result_pps = mysqli_query($dbc,$query_pps);
 		$dtcrt = $row_by_groupF["T5"];
       //-------get issued detail----
 	  
-	  $query_issueF = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_by_groupF["user_post"])."'";
-	  $result_issueF = mysqli_query($dbc,$query_issueF);
+	  $query_issueF = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_by_groupF["user_post"]]);
+	  $result_issueF = db_query($dbc, $query_issueF);
 	  $data_issueF = mysqli_fetch_array($result_issueF);	
 	  
 	  $ffff = $data_issueF["user_fullname"];
