@@ -1,0 +1,510 @@
+<?php
+error_reporting(E_ALL &~ E_NOTICE &~ E_DEPRECATED);
+session_start();
+$username = $_SESSION['username'];
+include __DIR__ . '/config.php';
+
+
+$Cdate = date ("l, j F Y ");
+$currentdate = (date("Y-m-d"));
+$fmt_curr_date = (date("d-m-Y"));
+$fmt_curr_time = (date("H:i:s"));
+$pick_curr_time = (date("H:i a"));
+$yearSkrg = (date("Y"));
+
+set_time_limit(0);
+
+// Check, if username session is NOT set then this page will jump to login page
+if ((!isset($_SESSION['username'])) && ($_SESSION['lvl_id'] != "2")) {
+header('Location: ../index.php');
+exit();
+}
+
+//--------setup website page --------------------------
+$query_setup = "SELECT * FROM sys_setup_maintain WHERE status_system = 'AC'";
+$rs_setup = mysqli_query($dbc,$query_setup);   //run the query.
+$num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
+$data_setup = mysqli_fetch_array($rs_setup);
+//----------------------------------------------------
+
+    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
+    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $res = mysqli_fetch_array($result2);
+
+    $url = "api_pdio_serendah.php";
+
+ //--------menu function ------------------------------
+
+$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
+$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$data_function = mysqli_fetch_array($result_function);   //how many records are there?
+//----------------------------------------------------
+   //CR status (New)
+$sta = "SELECT * from request_status WHERE status_id = '1'";
+$sta_res = mysqli_query($dbc,$sta);
+$rst_sta = mysqli_fetch_array($sta_res);
+
+//CR status (Released)
+$sta2 = "SELECT * from request_status WHERE status_id = '2'";
+$sta_res2 = mysqli_query($dbc,$sta2);
+$rst_sta2 = mysqli_fetch_array($sta_res2);
+
+//CR status (Approved)
+$sta3 = "SELECT * from request_status WHERE status_id = '3'";
+$sta_res3 = mysqli_query($dbc,$sta3);
+$rst_sta3 = mysqli_fetch_array($sta_res3);
+
+//CR status (Cancelled)
+$sta4 = "SELECT * from request_status WHERE status_id = '4'";
+$sta_res4 = mysqli_query($dbc,$sta4);
+$rst_sta4 = mysqli_fetch_array($sta_res4);
+
+//CR status (Rejected)
+$sta5 = "SELECT * from request_status WHERE status_id = '5'";
+$sta_res5 = mysqli_query($dbc,$sta5);
+$rst_sta5 = mysqli_fetch_array($sta_res5);
+
+//CR status (Draft)
+$sta6 = "SELECT * from request_status WHERE status_id = '6'";
+$sta_res6 = mysqli_query($dbc,$sta6);
+$rst_sta6 = mysqli_fetch_array($sta_res6);
+
+//CR status (In Progress)
+$sta7 = "SELECT * from request_status WHERE status_id = '7'";
+$sta_res7 = mysqli_query($dbc,$sta7);
+$rst_sta7 = mysqli_fetch_array($sta_res7);
+
+
+	?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
+    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!----sort table https://stackoverflow.com/questions/10683712/html-table-sort/51648529---->
+   <!-- <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>-->
+    <!--  <script src="https://www.w3schools.com/lib/w3.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+
+
+   <SCRIPT LANGUAGE="JavaScript">
+	function logout()
+	{
+	  if (confirm('Are you sure you want to logout?'))
+		location.href = "../logout.php";
+	}
+	</script>
+    <script language="javascript">
+	$('.datepicker').pickadate({
+weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+showMonthsShort: true
+})
+	</script>
+  <style>
+div.dataTables_wrapper {
+        width: 1200px;
+        margin: 0 auto;
+    }
+th {
+  cursor: pointer;
+ /* background-color: coral;*/
+}
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+</style>
+<style>
+.pagin {
+  display: inline-block;
+}
+
+.pagin a {
+  color: black;
+  float: left;
+  padding: 7px 10px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+}
+
+.pagin a.active {
+  background-color: #32A478;
+  color: white;
+  border: 1px solid #32A478;
+}
+
+.pagin a:hover:not(.active) {background-color: #ddd;}
+
+.pagin a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.pagin a:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+</style>
+  </head>
+  <body class="app sidebar-mini">
+    <!-- Navbar-->
+     <?php   include "top_modal_menu.php";   ?>
+
+
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+      <?php   include "left_prod_menu.php";   ?>
+
+    <main class="app-content">
+
+
+
+      <div class="app-title">
+      <div>
+          <h1><i class="fa fa-th-list"></i> Delivery</h1>
+          <p>View Upload PDIO (API)</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"> Delivery</li>
+          <li class="breadcrumb-item"><a href="view_API_serendah-dlv.php">View Upload PDIO (API)</a></li>
+        </ul>
+      </div>
+
+             <ul class="nav nav-tabs">
+                 <li class="nav-item"><a class="nav-link" href="ups_pdio_serendah.php">Upload PDIO</a></li>
+                 <li class="nav-item"><a class="nav-link"  href="view_pdio_serendah-dlv.php">View Upload PDIO</a></li>
+                 <li class="nav-item"><a class="nav-link"  href="api_pdio_serendah.php">Upload PDIO (API)</a></li>
+                 <li class="nav-item"><a class="nav-link active"  data-toggle="tab" href="view_API_serendah-dlv.php">View Upload PDIO (API)</a></li>
+
+              </ul>
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile"><h3 class="tile-title">View Upload PDIO (API)</h3>
+            <div class="tile-body">
+              <div class="table-responsive">
+          <?php
+
+		           $dateF = $_GET["date1"];
+			        $dateT = $_GET["date2"];
+              $cust_code = $_GET["cust_code"];
+			        $pdio_no = $_GET["pdio_no"];
+              $ship_point = $_GET['ship_point'];
+
+          //----get ship point extract string -----
+            $plant_dlv = substr($_GET['ship_point'],0,4);
+
+		  ?>
+
+
+            <form action="" method="get" name="frmSearch" id="frmSearch">
+            <table class="table table-bordered">
+            <tr>
+             <th width="31%">&nbsp;<div align="left"><font color="#FF0000">* Compulsory field</font></div></th>
+             <th width="69%" colspan="3">&nbsp;</th>
+            </tr>
+            <tr>
+            <th>Shipping Point : <font color="#FF0000">*</font></th>
+            <td colspan="2">
+           <input class="form-control" id="ship_point" type="text" placeholder="Enter Shipping Point" name="ship_point" value="<?php if(isset($_POST['ship_point'])){ echo $_POST['ship_point']; }else{ echo "3100 - SERENDAH";   } ?>" readonly />
+         <div class="form-control-feedback" ><?php echo $message_shippt; ?></div>
+	     </td>
+             </tr>
+             <tr>
+              <th>Customer : <font color="#FF0000">*</font></th>
+              <td colspan="2">
+                  <select name="cust_code" id="cust_code" class="form-control">
+                  <option value="NULL" placeholder="Select Customer"> -- Select Customer --</option>
+                  <?php
+
+	               $query19 = "SELECT * FROM cust_detail WHERE cust_ID = 'PERODUA' AND status_cust = 'Y' ORDER BY id_cust ASC";
+                   $result19 = mysqli_query($dbc,$query19);
+
+                   while($row19 = mysqli_fetch_array($result19))
+			      {
+				   ?>
+                     <option value="<?php echo $row19["id_cust"]; ?>" <?php if($row19["id_cust"] == $_GET["cust_code"]) echo "selected"; ?>> <?php echo $row19["id_cust"]; ?> - <?php echo $row19["cust_desc"]; ?></option>
+
+                  <?php
+                  }
+				?>
+              </select>
+              <div class="form-control-feedback" ><?php echo $message_cust; ?></div></td>
+              </tr>
+              <tr>
+
+                <th>Delivery Date from : <font color="#FF0000">*</font></th>
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" />
+                    </td></tr>
+               <tr>
+
+                <th>Delivery Date to :  <font color="#FF0000">*</font></th>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" /></td>
+              </tr>
+              <tr>
+                <th>PDIO Number : </th>
+                <th colspan="3">
+           <input class="form-control" id="pdio_no" type="text" placeholder="Enter PDIO Number" name="pdio_no" value="<?php if(isset($_GET['pdio_no'])){ echo $_GET['pdio_no']; } ?>" />
+
+               </th>
+              </tr>
+
+
+              <tr>
+                <th><input name="Submit2D" type="submit" class="btn btn-info" id="button" value="SEARCH" />
+
+                </th>
+                <th colspan="3">&nbsp;</th>
+              </tr>
+
+          </table>
+
+
+      <?php
+
+	   //-------Count all results------------------------//
+
+				 $where_sql = '';
+
+			     $ddF = substr($_GET["date1"],0,2);
+				 $mmF = substr($_GET["date1"],3,2);
+				 $yyF = substr($_GET["date1"],6,4);
+
+			     $date1_final = ($yyF.'-'.$mmF.'-'.$ddF);
+
+				 $ddF2 = substr($_GET["date2"],0,2);
+				 $mmF2 = substr($_GET["date2"],3,2);
+				 $yyF2 = substr($_GET["date2"],6,4);
+
+			     $date2_final = ($yyF2.'-'.$mmF2.'-'.$ddF2);
+
+           $plant_dlv = substr($ship_point,0,4);
+
+					//2. Ship Point
+                if (($ship_point == "NULL") || ($ship_point == "")){
+                    $wheresql_02 = ""; }
+                else {
+                    $wheresql_02 = " AND plant_code = '3100'"; }
+
+
+	       //1. cust Code
+                if (($cust_code == "") || ($cust_code == "NULL")){
+                    $wheresql_01 = ""; }
+                else {
+                    $wheresql_01 = " AND cust_code = '".sql_esc($cust_code)."'"; }
+
+
+
+		   // 3. dateF
+                if ($dateF == "0000-00-00" ){
+                    $wheresql_03 = ""; }
+                else {
+                    $wheresql_03 = " AND (DATE(dlv_date) >= '".sql_esc($date1_final)."')"; }
+
+
+          //4. DateT
+                if ($dateT == "0000-00-00" ){
+                    $wheresql_04 = ""; }
+                else {
+					$wheresql_04 = " AND (DATE(dlv_date) <= '".sql_esc($date2_final)."')"; }
+
+          //2. PDIO No.
+
+                if ($pdio_no == ""){
+                    $wheresql_05 = ""; }
+                else {
+                    $wheresql_05 = " AND pdio_no = '".sql_esc($pdio_no)."'"; }
+
+
+
+				// API-pulled rows are marked by file_name starting with "API_" -
+				// see insertPdioRow() in pdio_api_functions.php. This keeps this
+				// view scoped to API data only (view_pdio_serendah-dlv.php shows
+				// the Excel-upload equivalent, excluding these rows).
+				$where_sql =  $wheresql_02 .$wheresql_01 .$wheresql_03 .$wheresql_04 .$wheresql_05 . " AND file_name LIKE 'API_%'";
+
+
+	//********** END CONDITION **************
+
+
+
+
+   $query8GR = "SELECT COUNT(*) FROM dlv_pdio_generate WHERE mat_doc != '' AND (status_pdio = '".sql_esc($rst_sta3["status_desc"])."') ".$where_sql. " ORDER BY pdio_no ASC ";
+   $result8GR = mysqli_query($dbc,$query8GR);
+   $num_rowsGR = mysqli_num_rows($result8GR);
+
+
+$queryGR = "SELECT *, DATE_FORMAT(dlv_date,'%d-%m-%Y') as R,  DATE_FORMAT(prod_date,'%d-%m-%Y') as R2 FROM dlv_pdio_generate WHERE mat_doc != '' AND (status_pdio = '".sql_esc($rst_sta3["status_desc"])."') ".$where_sql. " ORDER BY pdio_no ASC ";
+$rsGR = mysqli_query($dbc,$queryGR);
+$num_rowsGR2 = mysqli_num_rows($rsGR);   //how many material are there?
+
+
+		 if ($num_rowsGR2 > 0) {
+
+      echo '<div align="center">There are currently  '. $num_rowsGR2.' record(s).</div>';
+
+    	?>
+            <table class="table">
+            <tr>
+                <td width="1%">&nbsp;</td>
+                <td width="85%">&nbsp;</td>
+                  <td width="7%"><a href="rpt_dList_pdio_serendah_download.php?ship_point=<?php echo $plant_dlv; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&cust_code=<?php echo $cust_code; ?>&&pdio_no=<?php echo $pdio_no; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+                 <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
+
+              </tr>
+            </table>
+
+                <table class="table table-hover table-bordered" id="example">
+               <thead>
+                <tr>
+                    <th>No</th>
+                    <th>PDIO No.</th>
+                    <th>Customer</th>
+                    <th>Delivery Category</th>
+                    <th>Production Date</th>
+                    <th>Delivery Date</th>
+                    <th>Trip No.</th>
+                    <th>Back No.</th>
+                    <th>Part No.</th>
+                    <th>Part Name</th>
+                    <th>Delivery Quantity</th>
+                     <th>Unit</th>
+                </tr>
+              </thead>
+              <tbody>
+           <?php
+
+   $counter = 1;
+   $no4 = 1;
+   $sta_out = "";
+   $no4A = 1;
+
+   while($row = mysqli_fetch_array($rsGR))
+   {
+
+
+      ?>
+
+                <tr>
+                <td width="30"><?php echo $no4; ?></td>
+                <td width="150"><?php echo $row["pdio_no"]; ?></td>
+                <td width="100"><div align="center"><?php echo $row["cust_code"]; ?></div></td>
+                <td width="100"><div align="center"><?php echo $row["dlv_category"]; ?></div></td>
+                <td width="150"><?php echo $row["R2"]; ?></td>
+                <td width="150"><?php echo $row["R"]; ?></td>
+                <td width="100"><div align="center"><?php echo $row["trip_no"]; ?></div></td>
+                <td width="100"><?php echo $row["back_no"]; ?></td>
+                <td width="200"><?php echo $row["material_no"]; ?></td>
+                <td width="350"><?php echo $row["material_desc"]; ?></td>
+                <td width="150"><div align="center"><?php if($row["pdio_qty"] < 0) { ?><span class="badge badge-pill badge-warning"><?php if($row["uom_pdio"] == 'KG') { echo $row["pdio_qty"]; }else{ echo (intval($row["pdio_qty"])); }?></span><?php }else{ ?><span class="badge badge-pill badge-info"> <?php if($row["uom_pdio"] == 'KG') { echo $row["pdio_qty"]; }else{ echo (intval($row["pdio_qty"])); }?></span> <?php } ?></div> </td>
+                <td width="150"><?php echo $row["uom_pdio"]; ?></td>
+                </tr>
+
+        <?php
+
+		  $no4++;
+		  $counter++; // menambah counter
+
+
+    }
+
+		  ?>
+
+
+ </tbody>
+</table>
+
+
+ <br>
+
+<?php
+
+   mysqli_free_result($rsGR);
+
+
+	}   // free up the resources
+   else
+  {
+?><center>
+<table width="800" cellspacing="0" class="textboxred">
+  <tr>
+    <td><div align="center"><font color="#FF0000"><strong>There are currently no record(s).</strong></font></div></td>
+  </tr>
+</table></center>
+</form>
+        <?php
+	   }
+?>
+
+
+
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Essential javascripts for application to work-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script type="text/javascript">$('#example').DataTable();</script> -->
+     <!-- Page specific javascripts-->
+    <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="js/plugins/select2.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dropzone.js"></script>
+
+     <script language="javascript">
+		  $(document).ready(function() {
+				$('#example').DataTable( {
+					"scrollX": true,
+			//		"lengthMenu": [[ -1], [ "All"]]
+				} );
+		} );
+	  </script>
+     <script type="text/javascript">
+
+       $('#PSSDate').datepicker({
+		defaultDate: new Date(),
+		format: "dd-mm-yyyy",
+      	autoclose: true,
+      	todayHighlight: true
+      });
+
+
+	   $('#PSSDate2').datepicker({
+		defaultDate: new Date(),
+      	format: "dd-mm-yyyy",
+      	autoclose: true,
+      	todayHighlight: true
+      });
+
+      $('#demoSelect').select2();
+    </script>
+
+  </body>
+</html>
