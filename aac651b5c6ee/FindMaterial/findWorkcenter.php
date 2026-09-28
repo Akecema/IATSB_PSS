@@ -14,7 +14,7 @@ $result4 =mysql_query($query4);
 <?php
                 while($row4=mysql_fetch_array($result4, MYSQL_NUM)) 
 			      {
-                  echo'<option value="',$row4[0],'">',stripslashes($row4[0]),' - ',stripslashes($row4[2]),'</option>';
+                  echo'<option value="',html_esc($row4[0]),'">',html_esc(stripslashes($row4[0])),' - ',html_esc(stripslashes($row4[2])),'</option>';
                   }
 				  
 				  ?>

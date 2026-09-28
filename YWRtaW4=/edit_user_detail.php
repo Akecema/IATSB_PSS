@@ -51,8 +51,8 @@ include 'apprv_func_list.php';
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -452,7 +452,7 @@ include 'apprv_func_list.php';
                     <div class="form-group row">
                         <label class="control-label col-md-2">Company Code</label>
                         <div class="col-md-4">
-                            <input class="form-control" type="text" value="<?php echo $vendor_no; ?>" disabled>
+                            <input class="form-control" type="text" value="<?php echo html_esc($vendor_no); ?>" disabled>
                         </div>
                     </div>
 
@@ -482,7 +482,7 @@ include 'apprv_func_list.php';
                                 while($row3 = mysqli_fetch_array($result3)) 
                                 {
                                 ?>
-                                <option value="<?php echo $row3["comp_code"]; ?>" <?php if($row3["comp_code"] == $usr_comp2) { echo "selected"; } ?>> <?php echo $row3["comp_code"]; ?> - <?php echo $row3["comp_name"]; ?></option>
+                                <option value="<?php echo html_esc($row3["comp_code"]); ?>" <?php if($row3["comp_code"] == $usr_comp2) { echo "selected"; } ?>> <?php echo html_esc($row3["comp_code"]); ?> - <?php echo html_esc($row3["comp_name"]); ?></option>
                                 <?php } ?>
                                 
                             </select>
@@ -501,7 +501,7 @@ include 'apprv_func_list.php';
                                 while($row4 = mysqli_fetch_array($result4)) 
                                 {
                                 ?>
-                                <option value="<?php echo $row4["id_dept"]; ?>" <?php if($row4["id_dept"] == $usr_dept2) { echo "selected"; } ?>> <?php echo $row4["dept_code"]; ?> - <?php echo $row4["dept_name"]; ?></option>
+                                <option value="<?php echo html_esc($row4["id_dept"]); ?>" <?php if($row4["id_dept"] == $usr_dept2) { echo "selected"; } ?>> <?php echo html_esc($row4["dept_code"]); ?> - <?php echo html_esc($row4["dept_name"]); ?></option>
                                 <?php } ?>
                                 
                             </select>
@@ -520,7 +520,7 @@ include 'apprv_func_list.php';
                                 while($row5 = mysqli_fetch_array($result5)) 
                                 {
                                 ?>
-                                <option value="<?php echo $row5["id_design"]; ?>" <?php if($row5["id_design"] == $usr_desg2) { echo "selected"; } ?>> <?php echo $row5["design"]; ?></option>
+                                <option value="<?php echo html_esc($row5["id_design"]); ?>" <?php if($row5["id_design"] == $usr_desg2) { echo "selected"; } ?>> <?php echo html_esc($row5["design"]); ?></option>
                                 <?php } ?>
                                 
                             </select>
@@ -567,7 +567,7 @@ include 'apprv_func_list.php';
                                 while($row6 = mysqli_fetch_array($result6)) 
                                 {
                                 ?>
-                                <option value="<?php echo $row6["id_level"]; ?>" <?php if($row6["id_level"] == $usr_level2) { echo "selected"; } ?>> <?php echo $row6["desc_level"]; ?></option>
+                                <option value="<?php echo html_esc($row6["id_level"]); ?>" <?php if($row6["id_level"] == $usr_level2) { echo "selected"; } ?>> <?php echo html_esc($row6["desc_level"]); ?></option>
                                 <?php } ?>
                                 
                             </select>
@@ -1495,11 +1495,11 @@ include 'apprv_func_list.php';
                 
                  <hr width="100%">           
                <!-- CEO --->
-               <p><b><?php echo $rst_apprv8["apprv_name2"]; ?></b></p>
+               <p><b><?php echo html_esc($rst_apprv8["apprv_name2"]); ?></b></p>
                
                <div class="toggle">
                   <label>
-                  <input type="checkbox" id="main_coo" name="main_coo" value="Y" <?php if($row_ath_all["main_coo"] == 'Y'){ ?> checked <?php  } ?>><span class="button-indecator"><?php echo $rst_apprv8["apprv_name2"]; ?> </span>
+                  <input type="checkbox" id="main_coo" name="main_coo" value="Y" <?php if($row_ath_all["main_coo"] == 'Y'){ ?> checked <?php  } ?>><span class="button-indecator"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?> </span>
                   </label>
                 </div>
              

@@ -90,8 +90,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -303,11 +303,11 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" ><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>		     </td>
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" ><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>		     </td>
             </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>"><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>"><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
            </tr>
             <tr>
                 <th>Process :</th>
@@ -333,7 +333,7 @@ th {
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["material_no"]; ?>" <?php if($row5["material_no"] == $_GET["material_no"]) echo "selected"; ?>>(<?php echo $row5["back_no"]; ?>)&nbsp;<?php echo $row5["material_no"]; ?> - <?php echo $row5["material_desc"]; ?> </option>
+                  <option value="<?php echo html_esc($row5["material_no"]); ?>" <?php if($row5["material_no"] == $_GET["material_no"]) echo "selected"; ?>>(<?php echo html_esc($row5["back_no"]); ?>)&nbsp;<?php echo html_esc($row5["material_no"]); ?> - <?php echo html_esc($row5["material_desc"]); ?> </option>
                   <?php
                   }
 				?> 
@@ -438,7 +438,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	         echo '<div align="center">There are currently  '. $num_rows.' record(s).</div>';
 			  		 	
 ?>
-                 <form name="myformG" method="post" action="display_pps_month_reprint2.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>">
+                 <form name="myformG" method="post" action="display_pps_month_reprint2.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>">
                 <!-- <table class="table table-hover table-bordered sortable fc-scroller dataTable">-->
                   <table class="table table-hover table-bordered" id="example">
                   <thead>
@@ -515,21 +515,21 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
              <tr>
                 <td width="30"><div align="center">
                 
-          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id"]; ?>" class="form-check">       
+          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id"]); ?>" class="form-check">       
                  <?php echo $no4; ?></div></td>
-                <td width="150"><?php echo $row["back_no"]; ?></td>
-                <td width="150"><?php echo $row["material_no"]; ?></td>
+                <td width="150"><?php echo html_esc($row["back_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
                 <td width="124" height="28"> 
                <!-- <a href="detail_pps_sheet_print_view.php?buid=<?php //echo base64_encode($row["id"]);  ?>"  target="_blank"></a>-->
-               <a href="#myNoteView<?php echo $row['id']; ?>" data-toggle="modal"  target="_parent"><b><?php echo $row["plan_no"]; ?>  </b><?php include "detail_pps_sheet_print_view.php";   ?></a>
+               <a href="#myNoteView<?php echo html_esc($row['id']); ?>" data-toggle="modal"  target="_parent"><b><?php echo html_esc($row["plan_no"]); ?>  </b><?php include "detail_pps_sheet_print_view.php";   ?></a>
                
                
               </td>
-                <td width="100"><?php echo $row["R"]; ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td>
                 <td width="50"><?php echo $star; ?></td>
                 <td width="80"><?php echo intval($row["qty_plan"]); ?></td>
                 <td width="100">
-                 <a href="#myNoteEdit<?php echo $row["id"]; ?>" data-toggle="modal"  target="_parent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</a> 
+                 <a href="#myNoteEdit<?php echo html_esc($row["id"]); ?>" data-toggle="modal"  target="_parent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "detail_pps_sheet_print_edt.php";   ?>
@@ -541,7 +541,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
                                 
               </td> 
                 <td width="100">
-                 <a href="#myNoteCancel<?php echo $row["id"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
+                 <a href="#myNoteCancel<?php echo html_esc($row["id"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "cancel_pps_tran_proc_selected.php";   ?>
@@ -570,7 +570,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
                <button type="button" name="btn_edtrecord" id="btn_edtrecord" class="btn btn-warning btn-sm">EDIT</button>
                
                
-               <form name="myformG" method="post" action="display-update.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>" >
+               <form name="myformG" method="post" action="display-update.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>" >
                <!-- Modal Multiple Edit-->
                <div class="modal fade" id="empModal" role="dialog">
                 <div class="modal-dialog modal-lg" role="document">
@@ -587,7 +587,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
             
                   <div class="modal-footer">
                     <input type="submit" value="SAVE" name="edt_btnMul" class="btn btn-success btn-sm" onClick="return confirm('Are you sure to edit this records?');">
-                    <input type="hidden" value="<?php echo $row["id"]; ?>"/>
+                    <input type="hidden" value="<?php echo html_esc($row["id"]); ?>"/>
                     
                    <button type="button" onClick="javascript:window.location.reload()" class="btn btn-danger btn-sm" data-dismiss="modal">BACK</button>
                    <!-- <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">BACK</button>-->
@@ -840,7 +840,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "pss-mth-release.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&username=<?php echo $username; ?>",
+			 url: "pss-mth-release.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&username=<?php echo html_esc($username); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -898,7 +898,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "pss-mth-delete-plan-ord.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&username=<?php echo $username; ?>",
+			 url: "pss-mth-delete-plan-ord.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&username=<?php echo html_esc($username); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -956,7 +956,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "detail_print-sel-release.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>",
+			 url: "detail_print-sel-release.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -1014,7 +1014,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "detail_print_edt-sel-new.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plan_category=<?php echo $plan_category; ?>&&material_no=<?php echo $material_no; ?>&&shift_ops=<?php echo $shift_ops; ?>",
+			 url: "detail_print_edt-sel-new.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plan_category=<?php echo html_esc($plan_category); ?>&&material_no=<?php echo html_esc($material_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid

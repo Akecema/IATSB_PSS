@@ -40,8 +40,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -286,16 +286,16 @@ $message = NULL; // create an empty new variable.
 	?>
                <tr> 
                  <td width="40"><?php  echo $counter; ?></td>
-                 <td width="60"><?php  echo $row["model_code"]; ?></td>
-                 <td width="73"><?php  echo $row["material_no"]; ?></td>
-                 <td width="122"><?php  echo $row["work_center"]; ?></td>
+                 <td width="60"><?php  echo html_esc($row["model_code"]); ?></td>
+                 <td width="73"><?php  echo html_esc($row["material_no"]); ?></td>
+                 <td width="122"><?php  echo html_esc($row["work_center"]); ?></td>
                  <td width="90"><div align="center"><?php  echo $sta; ?>&nbsp;</div></td>
-                 <td width="90"><div align="center"><?php  echo $row["seq_pps"]; ?>&nbsp;</div></td>
-                 <td width="63"><div align="center"><?php echo $row["qty_plan"]; ?></div></td>
-                 <td width="80"><div align="center"><?php echo $row["T"]; ?></div></td>
-                 <td width="80"><div align="center"><?php echo $row["status_pps"]; ?></div></td>
+                 <td width="90"><div align="center"><?php  echo html_esc($row["seq_pps"]); ?>&nbsp;</div></td>
+                 <td width="63"><div align="center"><?php echo html_esc($row["qty_plan"]); ?></div></td>
+                 <td width="80"><div align="center"><?php echo html_esc($row["T"]); ?></div></td>
+                 <td width="80"><div align="center"><?php echo html_esc($row["status_pps"]); ?></div></td>
                  <input type="hidden" name="plan_no[]" value="<?php echo $ref; ?>">
-                 <input type="hidden" name="id[]" value="<?php echo $row["id"]; ?>">
+                 <input type="hidden" name="id[]" value="<?php echo html_esc($row["id"]); ?>">
                  <?php 
 		  	  
 		     $counter++; // menambah counter 

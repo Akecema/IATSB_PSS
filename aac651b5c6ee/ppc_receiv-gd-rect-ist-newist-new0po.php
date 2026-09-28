@@ -326,7 +326,7 @@ if(isset($_POST['submitgr']))
 	$ref2 = base64_encode($matDoc);
 	
 	echo "<script>";
-	echo "alert('Material Document $matDoc posted.');";
+	echo "alert('Material Document ".html_esc($matDoc)." posted.');";
 	echo "window.open('detail_print_gd_receipt-tag.php?uid2=$ref2');";
 	echo "window.location='ppc_receiv-gd-rect_po.php';"; 
 	echo "</script>";

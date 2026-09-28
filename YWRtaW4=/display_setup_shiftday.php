@@ -32,8 +32,8 @@ $url = "display_setup_shiftday.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+   <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,7 +136,7 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	
 	 if ($num > 0) {
 	 
-	 echo '<div align="center">There are currently  '. $num_rows[0].' record(s).</div>';
+	 echo '<div align="center">There are currently  '. html_esc($num_rows[0]).' record(s).</div>';
 	 }
 
 ?>
@@ -164,12 +164,12 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	 
       ?> <tr>
             <td width="32"><?php echo $no; ?></td>
-            <td><?php echo $row["shift_cd"]; ?></td>
-            <td width="403"><?php echo $row["shift_desc"]; ?></td>
-            <td><?php echo $row["time_start"]; ?></td>
-            <td><?php echo $row["time_end"]; ?></td>
+            <td><?php echo html_esc($row["shift_cd"]); ?></td>
+            <td width="403"><?php echo html_esc($row["shift_desc"]); ?></td>
+            <td><?php echo html_esc($row["time_start"]); ?></td>
+            <td><?php echo html_esc($row["time_end"]); ?></td>
             <td>  <div align="center">
-                 <a href="#myNoteEditM<?php echo $row["id_shift"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteEditM<?php echo html_esc($row["id_shift"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "shift_day_edit.php";   ?>

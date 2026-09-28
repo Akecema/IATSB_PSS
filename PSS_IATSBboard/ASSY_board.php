@@ -112,7 +112,7 @@ $year = $today['year'];
 <html lang="en">
 <head>
    <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-   <title><?php echo $data_setup["title_desc"]; ?></title>
+   <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
    <link rel="shortcut icon" href="images/favicon.ico">
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
    <link rel="stylesheet" type="text/css" href="css/main.css">

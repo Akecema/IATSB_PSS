@@ -186,12 +186,12 @@ while($dt_pps = mysqli_fetch_array($result_pps))
           <tr>
             <td width="32%">Plant</td>
             <td width="4%">:</td>
-            <td width="64%"><?php echo $dtprt_HDR["plant_code"]; ?></td>
+            <td width="64%"><?php echo html_esc($dtprt_HDR["plant_code"]); ?></td>
           </tr>
           <tr>
             <td>Production Line</td>
             <td>:</td>
-            <td><?php echo $dtprt_HDR["work_center"]; ?></td>
+            <td><?php echo html_esc($dtprt_HDR["work_center"]); ?></td>
           </tr>
          </thead>
         </table>
@@ -205,12 +205,12 @@ while($dt_pps = mysqli_fetch_array($result_pps))
           <tr>
             <td width="42%">Month/Year</td>
             <td width="8%">:</td>
-            <td width="50%"><?php echo $dtprt_HDR["month_plan"]; ?>/ <?php echo $dtprt_HDR["year_plan"]; ?></td>
+            <td width="50%"><?php echo html_esc($dtprt_HDR["month_plan"]); ?>/ <?php echo html_esc($dtprt_HDR["year_plan"]); ?></td>
           </tr>
           <tr>
             <td width="42%">Date</td>
             <td width="8%">:</td>
-            <td width="50%"><?php echo $dtprt_HDR["H"]; ?></td>
+            <td width="50%"><?php echo html_esc($dtprt_HDR["H"]); ?></td>
           </tr>
           <tr>
             <td width="42%">Page</td>
@@ -306,17 +306,17 @@ while($dt_pps = mysqli_fetch_array($result_pps))
     
      <tr>
      	<tbody>
-            <td class="sheethed" width="3%"><?php echo $dtprt_pps['id']; ?></td>
-            <td class="sheethed" width="7%"><?php echo $dtprt_pps['model_code']; ?></td> 
-            <td class="sheethed" width="25%"><b><?php  echo $dtprt_pps["material_no"]; ?></b><br><?php echo $data_mat_h["material_desc"]; ?></td>
-            <td class="sheethed" width="10%" height="28"><?php echo $dtprt_pps["plan_no"]; ?></td>
-            <td class="sheethed" width="10%" height="28"><?php  echo $dtprt_pps["T"]; ?></td>
+            <td class="sheethed" width="3%"><?php echo html_esc($dtprt_pps['id']); ?></td>
+            <td class="sheethed" width="7%"><?php echo html_esc($dtprt_pps['model_code']); ?></td> 
+            <td class="sheethed" width="25%"><b><?php  echo html_esc($dtprt_pps["material_no"]); ?></b><br><?php echo html_esc($data_mat_h["material_desc"]); ?></td>
+            <td class="sheethed" width="10%" height="28"><?php echo html_esc($dtprt_pps["plan_no"]); ?></td>
+            <td class="sheethed" width="10%" height="28"><?php  echo html_esc($dtprt_pps["T"]); ?></td>
             <td class="sheethed" width="5%" height="28"><font color="#FF0000"><?php echo $sta; ?></font></td>
-            <td class="sheethed" width="5%"><?php echo $dtprt_pps["seq_pps"]; ?></td>
+            <td class="sheethed" width="5%"><?php echo html_esc($dtprt_pps["seq_pps"]); ?></td>
             <td class="sheethed" width="6%" height="28"><?php  echo intval($dtprt_pps["qty_plan"]); ?></td>
-            <td class="sheethed" width="6%" height="28"><font color="#FF0000"><?php echo $data_mat_h["BUn"]; ?></font></td>
+            <td class="sheethed" width="6%" height="28"><font color="#FF0000"><?php echo html_esc($data_mat_h["BUn"]); ?></font></td>
             <td class="sheethed" width="10%" height="28"></td>
-            <td class="sheethed" width="8%" height="28"><?php echo $dtprt_pps["status_pps"]; ?></td>
+            <td class="sheethed" width="8%" height="28"><?php echo html_esc($dtprt_pps["status_pps"]); ?></td>
             <td class="sheethed" width="13%" height="28"></td>
 		</tbody>
     </tr>  
@@ -344,7 +344,7 @@ while($dt_pps = mysqli_fetch_array($result_pps))
 
 
 <div class="prt-button">
-  <a href="pps-test2-prt.php?prtid=<?php echo $prtid;?>" type="button" name="btn_release" id="btn_release" target="_blank" class="btn btn-success btn-sm">Print this Page</a>
+  <a href="pps-test2-prt.php?prtid=<?php echo html_esc($prtid);?>" type="button" name="btn_release" id="btn_release" target="_blank" class="btn btn-success btn-sm">Print this Page</a>
 </div>
 
 

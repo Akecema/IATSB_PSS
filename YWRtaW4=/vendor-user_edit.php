@@ -58,8 +58,8 @@ $sta_res16 = mysqli_query($dbc,$sta16);
 $rst_sta16 = mysqli_fetch_array($sta_res16);
 
 	?>
- <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+ <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -147,7 +147,7 @@ $message = NULL; // create an empty new variable.
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteAth<?php echo $row2["id_ath"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteAth<?php echo html_esc($row2["id_ath"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -181,12 +181,12 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
     <tr>
     <td>User<font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="username1" name="username1" readonly value="<?php echo $row_was["username"]; ?>" class="form-control"  /><div class="invalid-feedback">Please enter username.</div></td>
+    <td><input type="text" id="username1" name="username1" readonly value="<?php echo html_esc($row_was["username"]); ?>" class="form-control"  /><div class="invalid-feedback">Please enter username.</div></td>
     </tr>
     <tr>
     <td>Vendor<font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="vendor_id" name="vendor_id" readonly value="<?php echo $row_was["vendor_id"]; ?>" class="form-control"  /><div class="invalid-feedback">Please select vendor.</div></td>
+    <td><input type="text" id="vendor_id" name="vendor_id" readonly value="<?php echo html_esc($row_was["vendor_id"]); ?>" class="form-control"  /><div class="invalid-feedback">Please select vendor.</div></td>
     </tr>
      <tr>
     <td>Status <font color="#FF0000">*</font></td>
@@ -210,7 +210,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_ath" name="id_ath"  class="form-control" value="<?php echo $row2["id_ath"];  ?>" >  
+             <input type="hidden" id="id_ath" name="id_ath"  class="form-control" value="<?php echo html_esc($row2["id_ath"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

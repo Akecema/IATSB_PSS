@@ -45,13 +45,13 @@ try {
     $totals = $result['totals'];
 
     foreach ($result['by_organization'] as $org => $s) {
-        echo "  $org: {$s['inserted']} inserted, {$s['updated']} updated, "
-            . "{$s['skipped_approved']} skipped (already Approved), {$s['skipped_duplicate']} skipped (duplicate).\n";
+        echo "  $org: ".html_esc($s['inserted'])." inserted, ".html_esc($s['updated'])." updated, "
+            . "".html_esc($s['skipped_approved'])." skipped (already Approved), ".html_esc($s['skipped_duplicate'])." skipped (duplicate).\n";
     }
 
-    echo "PDIO import for $targetDate - TOTAL: {$totals['inserted']} inserted, "
-        . "{$totals['updated']} updated, {$totals['skipped_approved']} skipped (already Approved), "
-        . "{$totals['skipped_duplicate']} skipped (duplicate in this API response).\n";
+    echo "PDIO import for $targetDate - TOTAL: ".html_esc($totals['inserted'])." inserted, "
+        . "".html_esc($totals['updated'])." updated, ".html_esc($totals['skipped_approved'])." skipped (already Approved), "
+        . "".html_esc($totals['skipped_duplicate'])." skipped (duplicate in this API response).\n";
 } catch (Throwable $e) {
     logPdioDebug('ERROR: ' . $e->getMessage());
     error_log('[PDIO API import] ' . $e->getMessage());

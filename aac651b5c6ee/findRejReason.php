@@ -17,7 +17,7 @@ $data_41 = mysqli_fetch_array($result41);
 ?>
 
 <div id="reason_div">
-<input class="form-control" id="reason_reject" type="text"  name="reason_reject" value="<?php if(isset($_POST['reason_reject'])){ echo $_POST['reason_reject']; }else { echo $data_41["id_reason"];  } ?>" />
+<input class="form-control" id="reason_reject" type="text"  name="reason_reject" value="<?php if(isset($_POST['reason_reject'])){ echo html_esc($_POST['reason_reject']); }else { echo html_esc($data_41["id_reason"]);  } ?>" />
 
 
  </div>

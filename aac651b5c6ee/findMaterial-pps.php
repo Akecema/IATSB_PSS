@@ -26,9 +26,9 @@ $result39 = mysqli_query($dbc,$query39);
     
       if($_POST['Submit2'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row39["material_no"];  ?>" <?php if($row39["material_no"]==$_POST["material_no"]) echo "selected"; ?>> <?php echo $row39["material_no"]; ?> - <?php echo $row39["material_desc"]; ?></option>
+                       <option value="<?php echo html_esc($row39["material_no"]);  ?>" <?php if($row39["material_no"]==$_POST["material_no"]) echo "selected"; ?>> <?php echo html_esc($row39["material_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row39["material_no"]; ?>" > <?php echo $row39["material_no"]; ?> - <?php echo $row39["material_desc"]; ?></option>
+                       <option value="<?php echo html_esc($row39["material_no"]); ?>" > <?php echo html_esc($row39["material_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?></option>
                        <?php } ?>
     
     <?php     }

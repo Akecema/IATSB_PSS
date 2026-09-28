@@ -62,7 +62,7 @@
 			while($selectRows = mysql_fetch_assoc($selectRes))
 			{
 	?>
-			<tr><td><?php echo $selectRows['ip'];?></td><td><?php echo $selectRows['userAdded'];?></td><td><?php echo $selectRows['dateAdded'];?></td><td><?php echo $selectRows['reason'];?></td><td><a href="editRule.php?id=<?php echo $selectRows['id']; ?>" class="btn btn-mini fancy-add" alt=""><i class="icon-edit"></i> EDIT</a></td><td><input type="checkbox" class="checkbox" name="selectDelete" id = "<?php echo $selectRows['id'];?>"/></td></tr>
+			<tr><td><?php echo html_esc($selectRows['ip']);?></td><td><?php echo html_esc($selectRows['userAdded']);?></td><td><?php echo html_esc($selectRows['dateAdded']);?></td><td><?php echo html_esc($selectRows['reason']);?></td><td><a href="editRule.php?id=<?php echo html_esc($selectRows['id']); ?>" class="btn btn-mini fancy-add" alt=""><i class="icon-edit"></i> EDIT</a></td><td><input type="checkbox" class="checkbox" name="selectDelete" id = "<?php echo html_esc($selectRows['id']);?>"/></td></tr>
 			
 	<?php 
 			}

@@ -114,8 +114,8 @@ $rst_sta28 = mysqli_fetch_array($sta_res28);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,18 +244,18 @@ div.dataTables_wrapper {
             <tr>
                 <th>Sales Order : </th>
                 <th colspan="3">
-           <input class="form-control" id="so_no" type="text" placeholder="Enter SO Number" name="so_no" value="<?php echo $_GET['so_no'];  ?>" />    
+           <input class="form-control" id="so_no" type="text" placeholder="Enter SO Number" name="so_no" value="<?php echo html_esc($_GET['so_no']);  ?>" />    
           <!--<div class="form-control-feedback" ><?php //echo $message_do; ?></div>-->
                </th>
               </tr>
                 <tr>
                 <th>Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" /> 
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" /> 
                     </td></tr>
                 <tr>
                 <th>Date to : <font color="#FF0000">*</font></th>
                 
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" /></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" /></td>
              
               </tr>
               <tr>
@@ -271,7 +271,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                      <option value="<?php echo $row27["id_cust"]; ?>" <?php if($row27["id_cust"] == $_GET["sold_no"]) echo "selected"; ?> > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo $row27["cust_desc"]; ?></option>
+                      <option value="<?php echo html_esc($row27["id_cust"]); ?>" <?php if($row27["id_cust"] == $_GET["sold_no"]) echo "selected"; ?> > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo html_esc($row27["cust_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -289,7 +289,7 @@ div.dataTables_wrapper {
               while($row37 = mysqli_fetch_array($result37)) {
         
               ?>
-         <option value="<?php echo $row37["id_cust"]; ?>" <?php if($row37["id_cust"] == $_GET["ship_no"]) echo "selected"; ?> > <?php echo stripslashes($row37["id_cust"]); ?> - <?php echo $row37["cust_desc"]; ?></option>
+         <option value="<?php echo html_esc($row37["id_cust"]); ?>" <?php if($row37["id_cust"] == $_GET["ship_no"]) echo "selected"; ?> > <?php echo stripslashes($row37["id_cust"]); ?> - <?php echo html_esc($row37["cust_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -308,7 +308,7 @@ div.dataTables_wrapper {
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-         <option value="<?php echo $row57["material_no"]; ?>" <?php if($row57["material_no"] == $_GET["cust_mat_no"]) echo "selected"; ?> > <?php echo stripslashes($row57["material_no"]); ?> - <?php echo $row57["material_desc"]; ?></option>
+         <option value="<?php echo html_esc($row57["material_no"]); ?>" <?php if($row57["material_no"] == $_GET["cust_mat_no"]) echo "selected"; ?> > <?php echo stripslashes($row57["material_no"]); ?> - <?php echo html_esc($row57["material_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -422,7 +422,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
     <tr>
     <td width="1%">&nbsp;</td> 
     <td width="85%">&nbsp;</td> 
-    <td width="7%"><a href="rpt_dList_soi_dlv_download.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&so_no=<?php echo $so_no; ?>&&cust_mat_no=<?php echo $cust_mat_no; ?>&&sold_no=<?php echo $sold_no; ?>&&ship_no=<?php echo $ship_no; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+    <td width="7%"><a href="rpt_dList_soi_dlv_download.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&so_no=<?php echo html_esc($so_no); ?>&&cust_mat_no=<?php echo html_esc($cust_mat_no); ?>&&sold_no=<?php echo html_esc($sold_no); ?>&&ship_no=<?php echo html_esc($ship_no); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
     <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
     </tr>
     </table> 
@@ -455,17 +455,17 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="100"><?php echo $row["so_no"]; ?></td>
-                <td width="80"><?php echo $row["item_no"]; ?></td>
-                <td width="100"><?php echo $row["material_no"]; ?></td>
-                <td width="100"><?php echo $row["cust_mat_no"]; ?></td>
-                <td width="100"><?php echo $row["sold_no"]; ?></td>
-                <td width="100"><?php echo $row["ship_no"]; ?></td>  
+                <td width="100"><?php echo html_esc($row["so_no"]); ?></td>
+                <td width="80"><?php echo html_esc($row["item_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["cust_mat_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["sold_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["ship_no"]); ?></td>  
                  <td width="100"><?php echo (intval($row["qty_upload"])); ?></td>  
-                <td width="100"><?php echo $row["R"]; ?></td> 
-                <td width="100"><?php echo $row["R2"]; ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["R2"]); ?></td>
               <!--  <td width="100">
-                 <a href="#myNoteDisplayDO<?php echo $row["id"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                 <a href="#myNoteDisplayDO<?php echo html_esc($row["id"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php  //  include "display_soi_all_dlv.php";   ?>

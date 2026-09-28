@@ -95,8 +95,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -211,7 +211,7 @@ page-break-before: always ;
    
  
  ?>
-  <div class="modal fade printable autoprint" id="myNoteDisplay<?php echo $row["purc_ord_no"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteDisplay<?php echo html_esc($row["purc_ord_no"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -251,18 +251,18 @@ page-break-before: always ;
     <td valign="top">&nbsp;<h5><font color="#999999"><b>DISPLAY PO vs GR (QUANTITY) </b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $row["plant_code"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($row["plant_code"]);   ?></div></td>
     <td>&nbsp;</td> 
     <td>&nbsp;</td>
    <tr> 
-    <td><div align="left"><b>Purchase Order No. :  </b><?php echo $row["purc_ord_no"];   ?></div></td>
+    <td><div align="left"><b>Purchase Order No. :  </b><?php echo html_esc($row["purc_ord_no"]);   ?></div></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td><div align="left"><b>Vendor : </b> <?php echo $row["vendor_id"];   ?> - <?php echo $data_vend["vendor_name"]; ?></div></td>
+    <td><div align="left"><b>Vendor : </b> <?php echo html_esc($row["vendor_id"]);   ?> - <?php echo html_esc($data_vend["vendor_name"]); ?></div></td>
     <td>&nbsp;</td>
-    <td><?php  if($data_bb["status_po"] == $rst_sta4["status_desc"]) {  ?><div align="left"><b>Cancelled By :  </b><?php echo $data_u_can["user_fullname"];  ?></div><?php    }   ?></td>
+    <td><?php  if($data_bb["status_po"] == $rst_sta4["status_desc"]) {  ?><div align="left"><b>Cancelled By :  </b><?php echo html_esc($data_u_can["user_fullname"]);  ?></div><?php    }   ?></td>
   </tr>
   </table>
 
@@ -408,13 +408,13 @@ $Grd_total_new_bal = (($row2["po_qty"] ) - ($tot_gr_qtyB));
   ?>
   <tr>
     <td><?php echo $no; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["model_gr"]; ?></td>
-    <td><?php echo $row2["po_qty"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["model_gr"]); ?></td>
+    <td><?php echo html_esc($row2["po_qty"]); ?></td>
     <td><?php echo number_format($tot_gr_qtyB,3); ?></td>
     <td><?php echo number_format($Grd_total_new_bal,3); ?></td>
-    <td><?php echo $row2["ord_uom"]; ?></td>
+    <td><?php echo html_esc($row2["ord_uom"]); ?></td>
   </tr>
   
  <?php 
@@ -428,9 +428,9 @@ $Grd_total_new_bal = (($row2["po_qty"] ) - ($tot_gr_qtyB));
 </table>
 
      <div class="modal-footer pull-left">
-        <input name="uid6" type="hidden" value="<?php echo $row["purc_ord_no"]; ?> ">    
-       <input name="date1" type="hidden" value="<?php echo $_GET["date1"]; ?>"> 
-       <input name="date2" type="hidden" value="<?php echo $_GET["date2"]; ?>">
+        <input name="uid6" type="hidden" value="<?php echo html_esc($row["purc_ord_no"]); ?> ">    
+       <input name="date1" type="hidden" value="<?php echo html_esc($_GET["date1"]); ?>"> 
+       <input name="date2" type="hidden" value="<?php echo html_esc($_GET["date2"]); ?>">
        <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
        <input name="vendor_no" type="hidden" value="<?php echo $vendor_no; ?>">  
        <input name="prt_btnGD" type="submit"  class="btn btn-warning btn-sm" value="PRINT"/>

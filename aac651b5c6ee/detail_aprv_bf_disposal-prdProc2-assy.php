@@ -162,8 +162,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -391,7 +391,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -410,7 +410,7 @@ div.dataTables_wrapper {
 				    { 
 				   
 				   ?>
-                <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                 
                 
                 
@@ -636,13 +636,13 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	   
       ?>
                 <tr>
-                <td width="30"> <div align="center"><?php echo $no4; ?><br> <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id"]; ?>" class="form-check"> 
-                  <input type="hidden" name="gid[<?php echo $row["id"]; ?>]" value="<?php echo $row["id"]; ?>" />                  
-                  <input name="id_item[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["doc_dis"]; ?>"></div> </td>   
+                <td width="30"> <div align="center"><?php echo $no4; ?><br> <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id"]); ?>" class="form-check"> 
+                  <input type="hidden" name="gid[<?php echo html_esc($row["id"]); ?>]" value="<?php echo html_esc($row["id"]); ?>" />                  
+                  <input name="id_item[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>"></div> </td>   
                 <td width="150">
 		<p>
   <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-   <i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;<?php echo $row["doc_dis"]; ?>
+   <i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;<?php echo html_esc($row["doc_dis"]); ?>
   </a>
                 
        <?php
@@ -705,18 +705,18 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-                Part No. :<font color="#FF0000"><?php echo $data_info_dis["material_no"]; ?></font>
-                Model :<?php echo $data_info_dis["model_code"]; ?><br>
+                Part No. :<font color="#FF0000"><?php echo html_esc($data_info_dis["material_no"]); ?></font>
+                Model :<?php echo html_esc($data_info_dis["model_code"]); ?><br>
                 Quantity :<?php echo intval($qty_newA); ?><br>
-                Type of Reject :<?php echo $data_typeA["type_desc"]; ?><br>
-                Defectives :<?php echo $data_reasonA["defect_desc"]; ?><br>
-                Reasons :<?php echo $data_info_dis["reason_reject"]; ?><br>
-                Remark :<?php echo $data_info_dis["remarks"]; ?><br>
+                Type of Reject :<?php echo html_esc($data_typeA["type_desc"]); ?><br>
+                Defectives :<?php echo html_esc($data_reasonA["defect_desc"]); ?><br>
+                Reasons :<?php echo html_esc($data_info_dis["reason_reject"]); ?><br>
+                Remark :<?php echo html_esc($data_info_dis["remarks"]); ?><br>
   </div>
 </div><?php } ?>          
                 
                </td> 
-                <td width="80"><?php echo $row["work_center"]; ?></td>
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td>
                 <td width="80"><?php echo $status_new; ?></td> 
                 <td width="100">
              <?php   //----check setup setting disposal approval [prod stm]	----

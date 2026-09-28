@@ -82,9 +82,9 @@ while($row = mysqli_fetch_array($result))
 <?php } ?>
 
 <tr>
-    <td><?php echo $row['id_pps_dtl']; ?></td>
-    <td><?php echo $row['plan_no']; ?></td> 
-    <td><?php echo $row['work_center']; ?></td>
+    <td><?php echo html_esc($row['id_pps_dtl']); ?></td>
+    <td><?php echo html_esc($row['plan_no']); ?></td> 
+    <td><?php echo html_esc($row['work_center']); ?></td>
 </tr>
 <?php $rows++; } ?>
 </tbody>

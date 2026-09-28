@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -212,7 +212,7 @@ if (empty($_POST['con_status']) || ($_POST['con_status'] == "NULL"))
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_con"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_con"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -240,24 +240,24 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
    <tr>
     <td width="191">Material No. <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_con["material_no"]; ?>" class="form-control" required /></td>
+    <td width="971"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_con["material_no"]); ?>" class="form-control" required /></td>
     </tr>
   <tr>
     <td>Material Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="mat_desc" name="mat_desc" value="<?php echo $row_con["mat_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter material description.</div></td>
+    <td><input type="text" id="mat_desc" name="mat_desc" value="<?php echo html_esc($row_con["mat_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter material description.</div></td>
     </tr>
   <tr>
     <td>Plant Code <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="plant" name="plant" value="<?php echo $row_con["plant"];  ?>" class="form-control" required />
+    <td><input type="text" id="plant" name="plant" value="<?php echo html_esc($row_con["plant"]);  ?>" class="form-control" required />
      <div class="invalid-feedback">Please enter plant code.</div>
      </td>
     </tr>
   <tr>
     <td>Cost Center <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="cost_center" name="cost_center"  value="<?php echo $row_con["cost_center"];  ?>" class="form-control" required /><div class="invalid-feedback">Please enter cost center.</div>
+    <td><input type="text" id="cost_center" name="cost_center"  value="<?php echo html_esc($row_con["cost_center"]);  ?>" class="form-control" required /><div class="invalid-feedback">Please enter cost center.</div>
      </td>
     </tr>
       <tr>
@@ -275,7 +275,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 		 while($row_unit = mysqli_fetch_array($result_unit)) {
 		 ?>
 				   <!--RETAIN VALUE-->
-	   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"] == $row_con["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+	   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"] == $row_con["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
 				   <?php }
              
 	 
@@ -309,7 +309,7 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_con" name="id_con"  class="form-control" value="<?php echo $row2["id_con"];  ?>" >  
+             <input type="hidden" id="id_con" name="id_con"  class="form-control" value="<?php echo html_esc($row2["id_con"]);  ?>" >  
              <input name="Submit19" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

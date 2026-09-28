@@ -85,8 +85,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -309,15 +309,15 @@ else
 		 ?>
        <!-- <tr>-->
           <td width="60" height="28"><?php  //echo $no; ?><?php  //echo $row3["id"]; ?><?php echo $id; ?></td>
-          <td width="60" height="28"><?php  echo $row3["model_code"]; ?></td>
-          <!--<td width="384"><b><?php  echo $row3["material_no"]; ?></b><br><?php  echo $data_mat_h["material_desc"]; ?></td>
-          <td width="151" height="28"><div align="center"><?php echo $row3["plan_no"]; ?></div></td>
-          <td width="93" height="28"><?php  echo $row3["T"]; ?></td>
+          <td width="60" height="28"><?php  echo html_esc($row3["model_code"]); ?></td>
+          <!--<td width="384"><b><?php  echo html_esc($row3["material_no"]); ?></b><br><?php  echo html_esc($data_mat_h["material_desc"]); ?></td>
+          <td width="151" height="28"><div align="center"><?php echo html_esc($row3["plan_no"]); ?></div></td>
+          <td width="93" height="28"><?php  echo html_esc($row3["T"]); ?></td>
           <td width="46" height="28"><div align="center"><font color="#FF0000"><?php echo $sta; ?></font></div></td>
-          <td width="46"><div align="center"><?php echo $row3["seq_pps"]; ?></div></td>
+          <td width="46"><div align="center"><?php echo html_esc($row3["seq_pps"]); ?></div></td>
           <td width="69" height="28"><div align="center"><?php  echo intval($row3["qty_plan"]); ?></div></td>
           <td width="55" height="28"><div align="center"><font color="#FF0000">
-            <?php  echo $data_mat_h["BUn"]; ?>   </font></div></td>
+            <?php  echo html_esc($data_mat_h["BUn"]); ?>   </font></div></td>
           <td width="90" height="28">--><!-- <div align="left">-->
        <?php
 
@@ -335,7 +335,7 @@ echo $barcodeobj->getBarcodeSVGcode(3.0, 3.0, 'black');*/
 
 ?>
                   <!--</div></td>-->
-          <!--<td width="44"><?php  echo $row3["status_pps"]; ?></td>
+          <!--<td width="44"><?php  echo html_esc($row3["status_pps"]); ?></td>
           <td width="140">&nbsp;</td>-->
           </tr>
         <?php 
@@ -407,8 +407,8 @@ echo $barcodeobj->getBarcodeSVGcode(3.0, 3.0, 'black');*/
   
   
   <tr>
-    <td><?php echo $dt_bac_prt_pps2['id']; ?></td>
-    <td><?php echo $dt_bac_prt_pps2['work_center']; ?></td>
+    <td><?php echo html_esc($dt_bac_prt_pps2['id']); ?></td>
+    <td><?php echo html_esc($dt_bac_prt_pps2['work_center']); ?></td>
   </tr>
   <?php
   }
@@ -425,7 +425,7 @@ echo $barcodeobj->getBarcodeSVGcode(3.0, 3.0, 'black');*/
 <p>&nbsp;</p>
 <div class="modal-footer">  
               
-              <input type="hidden" name="upload_id" value="<?php echo $row["upload_id"]; ?>">
+              <input type="hidden" name="upload_id" value="<?php echo html_esc($row["upload_id"]); ?>">
           <!--    <input type="button" id="btnprint" value="Print this Page" onclick="print_page()" class="btn btn-success btn-sm"/>-->
 
               

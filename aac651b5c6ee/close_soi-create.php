@@ -89,8 +89,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -347,7 +347,7 @@ th {
              <tr>
                 <th>Sales Order Number : <font color="#FF0000">*</font></th>
                 <th colspan="2">
-           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo $_POST['so_no']; } ?>" />    
+           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo html_esc($_POST['so_no']); } ?>" />    
           <div class="form-control-feedback" ><?php echo $message_soi; ?></div> <div class="form-control-feedback" ><?php echo $message_soi2; ?></div>
             <!-- <div id="result"></div>-->
                </th>
@@ -365,7 +365,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                      <option value="<?php echo $row27["id_cust"]; ?>" > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo $row27["cust_desc"]; ?></option>
+                      <option value="<?php echo html_esc($row27["id_cust"]); ?>" > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo html_esc($row27["cust_desc"]); ?></option>
                       <?php
            }  ?>
                     </select><div class="form-control-feedback" ><?php echo $message_shipto; ?></div>
@@ -373,7 +373,7 @@ th {
              </tr>
              <tr>
                 <th>Closing Date : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> 
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> 
                     <div class="form-control-feedback" ><?php echo $message_psdt; ?></div></td>
                     </tr>
               

@@ -18,16 +18,16 @@ $result68 =mysqli_query($dbc,$query68);
 
 
 <div id="mtype_div">
-  <select name="material_type" id="material_type" class="form-control" onChange="getModel('<?php echo $plant_code; ?>',this.value)" >
+  <select name="material_type" id="material_type" class="form-control" onChange="getModel('<?php echo html_esc($plant_code); ?>',this.value)" >
    <option value="NULL" placeholder="Select Type"> -- Select Type --</option>
 <?php
                 while($row68=mysqli_fetch_array($result68)) 
 			      {
 					  if($_POST['submit3'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row68["id"]; ?>" <?php if($row68["id"]==$_POST["material_type"]) echo "selected"; ?>> <?php echo stripslashes($row68["mtype_name"]); ?></option>
+                       <option value="<?php echo html_esc($row68["id"]); ?>" <?php if($row68["id"]==$_POST["material_type"]) echo "selected"; ?>> <?php echo stripslashes($row68["mtype_name"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row68["id"]; ?>" > <?php echo stripslashes($row68["mtype_name"]); ?></option>
+                       <option value="<?php echo html_esc($row68["id"]); ?>" > <?php echo stripslashes($row68["mtype_name"]); ?></option>
                        <?php } ?>
 	
               <?php    }

@@ -73,8 +73,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -172,7 +172,7 @@ page-break-before: always ;
   </head>
     <body class="app sidebar-mini">
 
-  <div class="modal fade printable autoprint" id="myNoteMat<?php echo $row2["temp_mrin"]; ?><?php echo $row2["prod_order"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteMat<?php echo html_esc($row2["temp_mrin"]); ?><?php echo html_esc($row2["prod_order"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -218,26 +218,26 @@ page-break-before: always ;
         <tr>
           <th>MRIN No</th>
           <th>:</th>
-          <th><?php echo $row2["temp_mrin"]; ?></th>
+          <th><?php echo html_esc($row2["temp_mrin"]); ?></th>
           <th>Factory</th>
           <th>:</th>
-          <th><?php echo $data_2["factory"];  ?></th>
+          <th><?php echo html_esc($data_2["factory"]);  ?></th>
         </tr>
         <tr>
           <th>Date &amp; Time</th>
           <th>:</th>
-          <th><?php echo $data_2["R2"]; ?>&nbsp;<?php echo $data_2["time_posting"]; ?></th>
+          <th><?php echo html_esc($data_2["R2"]); ?>&nbsp;<?php echo html_esc($data_2["time_posting"]); ?></th>
           <th>Required Date &amp; Time</th>
           <th>:</th>
-          <th><?php echo $data_2["R"]; ?>&nbsp;<?php echo $data_2["time_mrin"]; ?></th>
+          <th><?php echo html_esc($data_2["R"]); ?>&nbsp;<?php echo html_esc($data_2["time_mrin"]); ?></th>
         </tr>
         <tr>
           <th>Requested by</th>
           <th>:</th>
-          <th><?php echo $row_k["user_fullname"]; ?></th>
+          <th><?php echo html_esc($row_k["user_fullname"]); ?></th>
           <th>Prepared by (PPC)</th>
           <th>:</th>
-          <th><?php echo $row_k2["user_fullname"]; ?></th>
+          <th><?php echo html_esc($row_k2["user_fullname"]); ?></th>
         </tr>
       </table>
       <br>  
@@ -304,15 +304,15 @@ page-break-before: always ;
 		 ?>
 
                 <tr>
-                <td><?php  echo $row4_p["bill_component"]; ?></td>
-                <td><?php  echo $row4_p["material_desc_c"]; ?></td>
-                <td><div align="center"><?php echo $row_u["bom_oum"]; ?></div></td>
-                <td><div align="center"><?php echo $row_scan["prod_order"]; ?></div></td>
-                <td><?php  echo $row4_p["material"]; ?></td>
-                <td><div align="center"><font color="#FF0000"><?php echo $row1_p["work_center"]; ?></font></div></td>
+                <td><?php  echo html_esc($row4_p["bill_component"]); ?></td>
+                <td><?php  echo html_esc($row4_p["material_desc_c"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row_u["bom_oum"]); ?></div></td>
+                <td><div align="center"><?php echo html_esc($row_scan["prod_order"]); ?></div></td>
+                <td><?php  echo html_esc($row4_p["material"]); ?></td>
+                <td><div align="center"><font color="#FF0000"><?php echo html_esc($row1_p["work_center"]); ?></font></div></td>
                 <td><div align="center"><?php echo $sta; ?></div></td>
-                <td><div align="center"><font color="#FF0000"><?php echo $row4_p["isloc"]; ?></font></div></td>
-                <td><div align="right"><?php echo $row_u["bom_qty"]; ?>&nbsp;</div></td>
+                <td><div align="center"><font color="#FF0000"><?php echo html_esc($row4_p["isloc"]); ?></font></div></td>
+                <td><div align="right"><?php echo html_esc($row_u["bom_qty"]); ?>&nbsp;</div></td>
                 <td>
                  <div align="right">
 	                <?php 
@@ -326,7 +326,7 @@ page-break-before: always ;
 					
 	while($row_tp = mysqli_fetch_assoc($result_tp))
    {
-	echo $row_tp["TOT"]; 
+	echo html_esc($row_tp["TOT"]); 
 	
 	$tp_quantity = $row_tp["TOT"]; 
 	
@@ -398,7 +398,7 @@ page-break-before: always ;
   <tr>
     <th width="13%" height="40"><div align="right">Reason</div></th>
     <th width="3%" height="40">:</th>
-    <td width="84%" height="40"><?php echo $row_reason_tbl["reason_desc_cancel"].' - ' . $row_display_reason["reason_cancel2"]; ?></td>
+    <td width="84%" height="40"><?php echo html_esc($row_reason_tbl["reason_desc_cancel"]).' - ' . html_esc($row_display_reason["reason_cancel2"]); ?></td>
   </tr>
 </table>
 <?php
@@ -420,7 +420,7 @@ page-break-before: always ;
   <tr>
     <th width="13%" height="40"><div align="right">Reason</div></th>
     <th width="3%" height="40">:</th>
-    <td width="84%" height="40"><?php echo $row_reason_tbl2["reason_desc"].' - ' . $row_display_reason2["reason_close2"]; ?></td>
+    <td width="84%" height="40"><?php echo html_esc($row_reason_tbl2["reason_desc"]).' - ' . html_esc($row_display_reason2["reason_close2"]); ?></td>
   </tr>
 </table>
 <?php

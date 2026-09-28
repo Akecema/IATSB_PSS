@@ -25,7 +25,7 @@ $row42 = mysqli_fetch_array($result42);
 
 <div id="vendordiv">
 
-<input class="form-control" id="vendor_id" type="text" placeholder="Enter Delivery Order No." name="vendor_id" value="<?php if(isset($_POST['vendor_id'])){ echo $_POST['vendor_id']; } else { echo $row41["vendor_id"]. ' - ' .$row42["vendor_name"]; } ?>" />
+<input class="form-control" id="vendor_id" type="text" placeholder="Enter Delivery Order No." name="vendor_id" value="<?php if(isset($_POST['vendor_id'])){ echo html_esc($_POST['vendor_id']); } else { echo html_esc($row41["vendor_id"]). ' - ' .html_esc($row42["vendor_name"]); } ?>" />
 
 
 <!--echo $row41["vendor_id"]. '-' .$row42["vendor_name"];  -->

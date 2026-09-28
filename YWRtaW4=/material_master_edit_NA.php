@@ -54,8 +54,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,7 +100,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
   <body class="app sidebar-mini">
 
  
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_hdr"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_hdr"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -270,44 +270,44 @@ if (isset($message))
    <tr>
     <td width="28%">Material No.</td>
     <td width="3%">:</td>
-    <td width="69%"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo $row_mat["material_no"]; ?>" class="form-control"></td>
+    <td width="69%"><input type="text" id="material_no" name="material_no" readonly value="<?php  echo html_esc($row_mat["material_no"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Material Description <font color="#FF0000">*</font></td>
     <td width="28">:</td> 
-    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo $row_mat["material_desc"]; ?>" class="form-control" disabled/></td>
+    <td><input type="text" id="material_desc" name="material_desc" value="<?php echo html_esc($row_mat["material_desc"]); ?>" class="form-control" disabled/></td>
     </tr>
   <tr>
     <td>Material Type <font color="#FF0000">*</font></td>
     <td>:</td>
-    <td><input type="text" id="material_type" name="material_type" value="<?php echo $row_mat["material_type"];  ?>" class="form-control" disabled/>
+    <td><input type="text" id="material_type" name="material_type" value="<?php echo html_esc($row_mat["material_type"]);  ?>" class="form-control" disabled/>
      </td>
     </tr>
   <tr>
     <td>Material Group</td>
     <td>:</td>
-    <td><input type="text" id="material_group" name="material_group"  value="<?php echo $row_mat["material_group"];  ?>" class="form-control" disabled/>
+    <td><input type="text" id="material_group" name="material_group"  value="<?php echo html_esc($row_mat["material_group"]);  ?>" class="form-control" disabled/>
      </td>
     </tr>
       <tr>
     <td>Plant <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="plant" name="plant" value="<?php echo $row_mat["plant"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="plant" name="plant" value="<?php echo html_esc($row_mat["plant"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>BOM <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="bom" name="bom" value="<?php echo $row_mat["bom"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="bom" name="bom" value="<?php echo html_esc($row_mat["bom"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Alternative BOM</td>
     <td>:</td>
-   <td><input type="text" id="alternative_bom" name="alternative_bom" value="<?php echo $row_mat["alternative_bom"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="alternative_bom" name="alternative_bom" value="<?php echo html_esc($row_mat["alternative_bom"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>BOM Usage</td>
     <td>:</td>
-   <td><input type="text" id="bom_usage" name="bom_usage" value="<?php echo $row_mat["bom_usage"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="bom_usage" name="bom_usage" value="<?php echo html_esc($row_mat["bom_usage"]);  ?>" class="form-control" disabled/> </td>
     </tr>
     <tr>
     <td>UOM</td>
@@ -325,7 +325,7 @@ if (isset($message))
 		 while($row_unit = mysqli_fetch_array($result_unit)) {
 		 ?>
 				   <!--RETAIN VALUE-->
-	   <option value="<?php echo $row_unit["UOM"]; ?>" <?php if($row_unit["UOM"] == $row_mat["BUn"]) echo "selected"; ?>> <?php echo $row_unit["UOM"]; ?></option>
+	   <option value="<?php echo html_esc($row_unit["UOM"]); ?>" <?php if($row_unit["UOM"] == $row_mat["BUn"]) echo "selected"; ?>> <?php echo html_esc($row_unit["UOM"]); ?></option>
 				   <?php }
              
 	 
@@ -340,40 +340,40 @@ if (isset($message))
     <td>:</td>
    <td>
    <!--<input class="form-control" id="demoDate" type="text" placeholder="Select Date" value="<?php //echo $row_mat["date_create"]; ?>">-->
-   <input type="date" name="date1" class="form-control input-xlarge datepicker" value="<?php echo $row_mat["date_create"]; ?>" disabled >
+   <input type="date" name="date1" class="form-control input-xlarge datepicker" value="<?php echo html_esc($row_mat["date_create"]); ?>" disabled >
    </td>
    </tr>
     <tr>
     <td>Date BOM Created </td>
     <td>:</td>
    <td>
-   <input type="date" name="date2" class="form-control input-xlarge datepicker" value="<?php echo $row_mat["date_bom_create"]; ?>" disabled >
+   <input type="date" name="date2" class="form-control input-xlarge datepicker" value="<?php echo html_esc($row_mat["date_bom_create"]); ?>" disabled >
    </td>
    </tr>
         <tr>
     <td>Standard Packaging <font color="#FF0000">*</font></td>
     <td>:</td>
-   <td><input type="text" id="std_package" name="std_package" value="<?php echo $row_mat["std_package"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="std_package" name="std_package" value="<?php echo html_esc($row_mat["std_package"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Type of package</td>
     <td>:</td>
-   <td><input type="text" id="type_package" name="type_package" value="<?php echo $row_mat["type_package"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="type_package" name="type_package" value="<?php echo html_esc($row_mat["type_package"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Location Deliver</td>
     <td>:</td>
-   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo $row_mat["location_deliver"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="location_deliver" name="location_deliver" value="<?php echo html_esc($row_mat["location_deliver"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Station Deliver</td>
     <td>:</td>
-   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo $row_mat["station_deliver"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="station_deliver" name="station_deliver" value="<?php echo html_esc($row_mat["station_deliver"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Received Point</td>
     <td>:</td>
-   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo $row_mat["rcv_point"];  ?>" class="form-control" disabled/> </td>
+   <td><input type="text" id="rcv_point" name="rcv_point" value="<?php echo html_esc($row_mat["rcv_point"]);  ?>" class="form-control" disabled/> </td>
     </tr>
      <tr>
     <td>Part of Side <font color="#FF0000">*</font></td>
@@ -422,54 +422,54 @@ if (isset($message))
                  <td width="28%">Component <font color="#FF0000">*</font></td>
                  <td width="3%" height="25">:</td>
                  <td width="69%" height="25">
-                   <input name="bill_component[<?php echo $i; ?>]" type="text" id="bill_component" size="20" maxlength="8" readonly value="<?php echo $row_9["bill_component"];   ?>" class="form-control" />
+                   <input name="bill_component[<?php echo $i; ?>]" type="text" id="bill_component" size="20" maxlength="8" readonly value="<?php echo html_esc($row_9["bill_component"]);   ?>" class="form-control" />
                  </td>
                </tr>
                <tr>
                  <td>Component Description <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="material_desc_c[<?php echo $i; ?>]" type="text"  class="form-control" id="material_desc_c" size="55" maxlength="100" value="<?php echo $row_9["material_desc_c"]; ?>" disabled />
+                   <input name="material_desc_c[<?php echo $i; ?>]" type="text"  class="form-control" id="material_desc_c" size="55" maxlength="100" value="<?php echo html_esc($row_9["material_desc_c"]); ?>" disabled />
                 </td>
                </tr>
                         <tr>
                  <td>Material Type <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-         <input name="mat_type_c[<?php echo $i; ?>]" type="text"  class="form-control" id="mat_type_c" size="20" maxlength="20" value="<?php echo $row_9["material_type"]; ?>" disabled/>
+         <input name="mat_type_c[<?php echo $i; ?>]" type="text"  class="form-control" id="mat_type_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["material_type"]); ?>" disabled/>
                  </td>
                </tr>
                
                <tr>
                  <td>Material Group</td>
                  <td>:</td>
-                 <td><input name="matl_group[<?php echo $i; ?>]" type="text"  class="form-control" id="matl_group" size="20" maxlength="20" value="<?php echo $row_9["matl_group"]; ?>" disabled/></td>
+                 <td><input name="matl_group[<?php echo $i; ?>]" type="text"  class="form-control" id="matl_group" size="20" maxlength="20" value="<?php echo html_esc($row_9["matl_group"]); ?>" disabled/></td>
                </tr>
       
                <tr>
                  <td>Plant <font color="#FF0000">*</font></td>
                  <td>:</td>
-                 <td><input name="plant_c[<?php echo $i; ?>]" type="text" class="form-control" id="plant_c" size="20" maxlength="20" value="<?php echo $row_9["plant"]; ?>" disabled />
+                 <td><input name="plant_c[<?php echo $i; ?>]" type="text" class="form-control" id="plant_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["plant"]); ?>" disabled />
                </td>
                </tr>
                <tr>
                  <td>BOM <font color="#FF0000">*</font></td>
                  <td>:</td>
-                 <td><input name="bom_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_c" size="20" maxlength="20" value="<?php echo $row_9["bom"]; ?>" disabled/>
+                 <td><input name="bom_c[<?php echo $i; ?>]" type="text" class="form-control" id="bom_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["bom"]); ?>" disabled/>
                 </td>
                </tr>
                <tr>
                  <td>Alternative BOM</td>
                  <td>:</td>
                  <td>
-         <input name="alternative_bom_c[<?php echo $i; ?>]" type="text"  class="form-control" id="alternative_bom_c" size="20" maxlength="20" value="<?php echo $row_9["alternative_bom"]; ?>" disabled/>
+         <input name="alternative_bom_c[<?php echo $i; ?>]" type="text"  class="form-control" id="alternative_bom_c" size="20" maxlength="20" value="<?php echo html_esc($row_9["alternative_bom"]); ?>" disabled/>
                  </td>
                </tr>
                <tr>
                  <td>Consumption <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td>
-                   <input name="consumption[<?php echo $i; ?>]" type="text" class="form-control" id="consumption" size="20" maxlength="20" value="<?php echo $row_9["consumption"]; ?>" disabled/>
+                   <input name="consumption[<?php echo $i; ?>]" type="text" class="form-control" id="consumption" size="20" maxlength="20" value="<?php echo html_esc($row_9["consumption"]); ?>" disabled/>
                 </td>
                </tr>
                <tr>
@@ -493,35 +493,35 @@ if (isset($message))
 	?>
          </select>      -->  
                  
-                   <input name="comp_unit[<?php echo $i; ?>]" type="text" class="form-control" id="comp_unit" size="20" maxlength="20" value="<?php echo $row_9["comp_unit"]; ?>" disabled/>
+                   <input name="comp_unit[<?php echo $i; ?>]" type="text" class="form-control" id="comp_unit" size="20" maxlength="20" value="<?php echo html_esc($row_9["comp_unit"]); ?>" disabled/>
                  </td>
                </tr>
                     <tr>
                  <td>SLoc</td>
                  <td>:</td>
                  <td>
-                   <input name="sloc[<?php echo $i; ?>]" type="text" class="form-control" id="sloc" size="20" maxlength="20" value="<?php echo $row_9["sloc"]; ?>" disabled/>
+                   <input name="sloc[<?php echo $i; ?>]" type="text" class="form-control" id="sloc" size="20" maxlength="20" value="<?php echo html_esc($row_9["sloc"]); ?>" disabled/>
                  </td>
                </tr>
                  <tr>
                  <td>IsLoc</td>
                  <td>:</td>
                  <td>
-                   <input name="isloc[<?php echo $i; ?>]" type="text" class="form-control" id="isloc" size="20" maxlength="20" value="<?php echo $row_9["isloc"]; ?>" disabled/>
+                   <input name="isloc[<?php echo $i; ?>]" type="text" class="form-control" id="isloc" size="20" maxlength="20" value="<?php echo html_esc($row_9["isloc"]); ?>" disabled/>
                  </td>
                </tr>
                <tr>
                  <td>Valid From</td>
                  <td>:</td>
                  <td>
-              <input name="date3[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date3" size="20" maxlength="20" value="<?php echo $row_9["valid_from"]; ?>" disabled/>   
+              <input name="date3[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date3" size="20" maxlength="20" value="<?php echo html_esc($row_9["valid_from"]); ?>" disabled/>   
                 </td>
                </tr>
                <tr>
                  <td>Date BOM Created</td>
                  <td>:</td>
                  <td>
-                  <input name="date4[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date4" size="20" maxlength="20" value="<?php echo $row_9["date_create_bom"]; ?>" disabled />
+                  <input name="date4[<?php echo $i; ?>]" type="date" class="form-control input-xlarge datepicker" id="date4" size="20" maxlength="20" value="<?php echo html_esc($row_9["date_create_bom"]); ?>" disabled />
                </td>
                </tr>
                <?php
@@ -538,13 +538,13 @@ if (isset($message))
                  <td>Status BOM <font color="#FF0000">*</font></td>
                  <td>:</td>
                  <td> <select name="bom_status[<?php echo $i; ?>]"  class="form-control" required>
-                      <option value ="<?php  echo $row_9["bom_status"]; ?>" ><?php  echo $sts; ?></option>
+                      <option value ="<?php  echo html_esc($row_9["bom_status"]); ?>" ><?php  echo $sts; ?></option>
                       <option value="Y" class="title">Active</option>
                       <option value="N" class="title">Inactive</option>
                       </select></td>
                </tr>
                <tr>
-                 <td>&nbsp; <input type="hidden" name="id_dtl[<?php echo $i; ?>]" id="id_dtl" value="<?php echo $row_9["id_dtl"]; ?>"></td>
+                 <td>&nbsp; <input type="hidden" name="id_dtl[<?php echo $i; ?>]" id="id_dtl" value="<?php echo html_esc($row_9["id_dtl"]); ?>"></td>
                  <td>&nbsp;</td>
                  <td>&nbsp;</td>
                </tr>
@@ -571,7 +571,7 @@ if (isset($message))
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo $row2["id_hdr"];  ?>" >  
+             <input type="hidden" id="id_hdr" name="id_hdr"  class="form-control" value="<?php echo html_esc($row2["id_hdr"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
 			 <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

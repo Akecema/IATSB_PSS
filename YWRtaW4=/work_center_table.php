@@ -44,8 +44,8 @@ $url = "work_center_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-     <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+     <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -244,19 +244,19 @@ th {
    {
 		
       ?>        <tr class="item">
-                <td><div align="center"><?php  echo $row2["id_work"]; ?></div></td>
-                <td>&nbsp;<?php  echo $row2["wc_desc"]; ?></td>
-                <td><?php  echo $row2["plant_code"]; ?></td>
-                <td><div align="center"><?php echo $row2["cost_center"]; ?></div></td>
-                <td><div align="center"><?php echo $row2["dept_acc"]; ?></div></td>
+                <td><div align="center"><?php  echo html_esc($row2["id_work"]); ?></div></td>
+                <td>&nbsp;<?php  echo html_esc($row2["wc_desc"]); ?></td>
+                <td><?php  echo html_esc($row2["plant_code"]); ?></td>
+                <td><div align="center"><?php echo html_esc($row2["cost_center"]); ?></div></td>
+                <td><div align="center"><?php echo html_esc($row2["dept_acc"]); ?></div></td>
                 <td> <div align="center">
-                 <a href="#myNoteWork<?php echo $row2["id_work"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
+                 <a href="#myNoteWork<?php echo html_esc($row2["id_work"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "work_center_view.php";   ?>
                </div>
                 <td> <div align="center">
-             <a href="#myNoteEdit<?php echo $row2["id_work"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+             <a href="#myNoteEdit<?php echo html_esc($row2["id_work"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "work_center_edit.php";   ?>

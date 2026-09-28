@@ -28,7 +28,7 @@ include '../include/config.php';
 	 {
 			 
 			 echo "<script>";
-			 echo "window.location='prog_trn-posting.php?scan_doc=$scan_doc&&barcode_ref=$barcode_ref&&sloc_f=$sloc_f&&sloc_t=$sloc_t&&plant_code=$plant_code&&date1=$dateF&&shift_ops=$shift_ops&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
+			 echo "window.location='prog_trn-posting.php?scan_doc=".html_esc($scan_doc)."&&barcode_ref=".html_esc($barcode_ref)."&&sloc_f=".html_esc($sloc_f)."&&sloc_t=".html_esc($sloc_t)."&&plant_code=".html_esc($plant_code)."&&date1=".html_esc($dateF)."&&shift_ops=".html_esc($shift_ops)."&&model_code=".html_esc($model_code)."&&material_type=".html_esc($material_type)."&&stamp_ind=".html_esc($stamp_ind)."&&material_no=".html_esc($material_no)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

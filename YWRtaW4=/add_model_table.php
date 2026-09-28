@@ -33,8 +33,8 @@ $url = "add_model_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,7 +208,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Model Code :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                 <input name="model_name" type="text" id="model_name" size="20" value="<?php if(isset($_POST['model_name'])) echo $_POST['model_name']; ?>" class="form-control" placeholder="Enter Model Code" />      
+                 <input name="model_name" type="text" id="model_name" size="20" value="<?php if(isset($_POST['model_name'])) echo html_esc($_POST['model_name']); ?>" class="form-control" placeholder="Enter Model Code" />      
                     <div class="form-control-feedback" ><?php echo $message_mcode; ?></div>
                     </div>
                    
@@ -216,7 +216,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                  <div class="form-group row">
                   <label class="control-label col-md-3">Model Description : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="model_desc" type="text" class="form-control" id="model_desc" size="20" value="<?php if(isset($_POST['model_desc'])) echo $_POST['model_desc']; ?>"  placeholder="Enter Model Description" />
+                  <input name="model_desc" type="text" class="form-control" id="model_desc" size="20" value="<?php if(isset($_POST['model_desc'])) echo html_esc($_POST['model_desc']); ?>"  placeholder="Enter Model Description" />
                    <div class="form-control-feedback" ><?php echo $message_mdesc; ?></div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
               while($row29 = mysqli_fetch_array($result29)) {
         
               ?>
-                  <option value="<?php echo $row29["plant_code"]; ?>" <?php if(($row29["plant_code"]) == ($_POST["plant_code"])) echo "selected"; ?>> <?php echo $row29["plant_code"]; ?> - <?php echo $row29["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row29["plant_code"]); ?>" <?php if(($row29["plant_code"]) == ($_POST["plant_code"])) echo "selected"; ?>> <?php echo html_esc($row29["plant_code"]); ?> - <?php echo html_esc($row29["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -255,7 +255,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
 	 while($row48 = mysqli_fetch_array($result48)) 
 	  { 
 	?>  
-          <option value="<?php echo $row48["id"]; ?>"<?php if(($row48["id"]) == $_POST['mat_type']) echo "selected"; ?> > <?php echo stripslashes($row48["mtype_name"]); ?></option>
+          <option value="<?php echo html_esc($row48["id"]); ?>"<?php if(($row48["id"]) == $_POST['mat_type']) echo "selected"; ?> > <?php echo stripslashes($row48["mtype_name"]); ?></option>
   <?php   }  ?>
   
           </select> <div class="form-control-feedback" ><?php echo $message_mtype; ?></div>

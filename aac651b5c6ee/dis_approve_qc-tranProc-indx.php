@@ -181,8 +181,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -637,13 +637,13 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30">  
-                  <div align="center"><?php echo $no4; ?><br> <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id"]; ?>" class="form-check"> 
-                  <input type="hidden" name="gid[<?php echo $row["id"]; ?>]" value="<?php echo $row["id"]; ?>" />                  
-                  <input name="id_item[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["doc_dis"]; ?>"></div></td>  
+                  <div align="center"><?php echo $no4; ?><br> <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id"]); ?>" class="form-check"> 
+                  <input type="hidden" name="gid[<?php echo html_esc($row["id"]); ?>]" value="<?php echo html_esc($row["id"]); ?>" />                  
+                  <input name="id_item[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>"></div></td>  
                 
-                <td width="80"><?php echo $row["R"]; ?></td>
-                <td width="150"><?php echo $row["doc_dis"]; ?></td> 
-                <td width="80"><?php echo $row["work_center"]; ?></td>
+                <td width="80"><?php echo html_esc($row["R"]); ?></td>
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td>
                 <td width="80"><?php echo $sta_dis; ?></td> 
                 <td width="100">
            <?php if($row["status_disposal"] == ($rst_sta24["status_desc"])) { ?> 

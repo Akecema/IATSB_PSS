@@ -30,9 +30,9 @@ $result41 =mysqli_query($dbc,$query41);
 			      {
 					  if($_POST['Submit2'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["material_no"]; ?>" <?php if($row41["material_no"]==$_POST["material_no"]) echo "selected"; ?>>(<?php echo stripslashes($row41["back_no"]); ?>)&nbsp;<?php echo stripslashes($row41["material_no"]); ?> - <?php echo stripslashes($row41["material_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["material_no"]); ?>" <?php if($row41["material_no"]==$_POST["material_no"]) echo "selected"; ?>>(<?php echo stripslashes($row41["back_no"]); ?>)&nbsp;<?php echo stripslashes($row41["material_no"]); ?> - <?php echo stripslashes($row41["material_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row41["material_no"]; ?>" >(<?php echo stripslashes($row41["back_no"]); ?>)&nbsp;<?php echo stripslashes($row41["material_no"]); ?> - <?php echo stripslashes($row41["material_desc"]); ?> </option>
+                       <option value="<?php echo html_esc($row41["material_no"]); ?>" >(<?php echo stripslashes($row41["back_no"]); ?>)&nbsp;<?php echo stripslashes($row41["material_no"]); ?> - <?php echo stripslashes($row41["material_desc"]); ?> </option>
                        <?php } ?>
 	
               <?php    }

@@ -62,7 +62,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <html lang="en">
   <head>
     <meta name="description" content="PSS ITSB Online, Ingress Technologies Sdn. Bhd.,Ingress ">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteModel<?php echo $row2["id_model"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteModel<?php echo html_esc($row2["id_model"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -134,28 +134,28 @@ $row_mod = mysqli_fetch_array($result_mod);   //how many records are there?
    <tr>
     <td width="191">ID Model </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_model" name="id_model" readonly value="<?php  echo $row_mod["id_model"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_model" name="id_model" readonly value="<?php  echo html_esc($row_mod["id_model"]); ?>" class="form-control"></td>
     </tr>
     <tr>
     <td width="191">Model Code </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="model_code" name="model_code" readonly value="<?php  echo $row_mod["model_code"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="model_code" name="model_code" readonly value="<?php  echo html_esc($row_mod["model_code"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Model Description </td>
     <td width="28">:</td>
-    <td><input type="text" id="model_desc" name="model_desc" readonly value="<?php echo $row_mod["model_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="model_desc" name="model_desc" readonly value="<?php echo html_esc($row_mod["model_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Plant Code</td>
     <td>:</td>
-    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo $row_mod["plant_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo html_esc($row_mod["plant_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>
     <td>Material Type</td>
     <td>:</td>
-    <td><input type="text" id="material_type" name="material_type" readonly value="<?php echo $data_mat_type["mat_type_id"], ' - ' .$data_mat_type["mtype_name"];  ?>" class="form-control"/>
+    <td><input type="text" id="material_type" name="material_type" readonly value="<?php echo html_esc($data_mat_type["mat_type_id"]), ' - ' .html_esc($data_mat_type["mtype_name"]);  ?>" class="form-control"/>
      </td>
     </tr>
      <tr>

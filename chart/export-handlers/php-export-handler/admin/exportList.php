@@ -74,19 +74,19 @@
 			{
 	?>
 			<tr>
-			<td><?php echo $selectRows['ChartType']; ?></td>
-			<!--td><?php echo $selectRows['StreamType']; ?></td-->
-			<td><?php echo $selectRows['MetaBgColor']; ?></td> 
-			<td><?php echo $selectRows['MetaDomID']; ?></td>
-			<td><?php echo $selectRows['MetaWidth']; ?></td>
-			<td><?php echo $selectRows['MetaHeight']; ?></td>
-			<!--td><?php echo $selectRows['Params']; ?></td-->
-			<!--td><?php echo $selectRows['FileName']; ?></td-->
-			<td><?php echo $selectRows['SourceIP']; ?></td>
-			<!--td><?php echo $selectRows['SourceUseragent']; ?></td-->
-			<td><?php echo $selectRows['ExportDateTime']; ?></td>
-			<!--td><?php echo $selectRows['Referrer']; ?></td-->
-			<td><?php echo $selectRows['RemoteADDR']; ?></td>
+			<td><?php echo html_esc($selectRows['ChartType']); ?></td>
+			<!--td><?php echo html_esc($selectRows['StreamType']); ?></td-->
+			<td><?php echo html_esc($selectRows['MetaBgColor']); ?></td> 
+			<td><?php echo html_esc($selectRows['MetaDomID']); ?></td>
+			<td><?php echo html_esc($selectRows['MetaWidth']); ?></td>
+			<td><?php echo html_esc($selectRows['MetaHeight']); ?></td>
+			<!--td><?php echo html_esc($selectRows['Params']); ?></td-->
+			<!--td><?php echo html_esc($selectRows['FileName']); ?></td-->
+			<td><?php echo html_esc($selectRows['SourceIP']); ?></td>
+			<!--td><?php echo html_esc($selectRows['SourceUseragent']); ?></td-->
+			<td><?php echo html_esc($selectRows['ExportDateTime']); ?></td>
+			<!--td><?php echo html_esc($selectRows['Referrer']); ?></td-->
+			<td><?php echo html_esc($selectRows['RemoteADDR']); ?></td>
 			</tr>
 			
 	<?php 

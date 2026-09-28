@@ -45,8 +45,8 @@ $rst_sta2 = mysqli_fetch_array($sta_res2);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -208,7 +208,7 @@ $message = NULL; // create an empty new variable.
              <tr>
                 <th>DI/PDIO Number : </th>
                 <th colspan="2">
-           <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php if(isset($_POST['material_doc_gen'])){ echo $_POST['material_doc_gen']; } ?>" />    
+           <input class="form-control" id="material_doc_gen" type="text" placeholder="Enter DI/PDIO Number" name="material_doc_gen" value="<?php if(isset($_POST['material_doc_gen'])){ echo html_esc($_POST['material_doc_gen']); } ?>" />    
           <div class="form-control-feedback" ><?php //echo $message_do; ?></div>
            
                </th>
@@ -226,7 +226,7 @@ $message = NULL; // create an empty new variable.
               while($row17 = mysqli_fetch_array($result17)) {
         
               ?>
-         <option value="<?php echo $row17["id_cust"]; ?>" ><?php echo $row17["id_cust"]; ?> - <?php echo stripslashes($row17["cust_desc"]); ?> </option>
+         <option value="<?php echo html_esc($row17["id_cust"]); ?>" ><?php echo html_esc($row17["id_cust"]); ?> - <?php echo stripslashes($row17["cust_desc"]); ?> </option>
           <?php
            }  ?>
                             
@@ -237,12 +237,12 @@ $message = NULL; // create an empty new variable.
              </tr>
                <tr>
                 <th>Delivery Date from :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
                   
                     </td></tr>
                 <tr>
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
               </tr>
                
               <tr>

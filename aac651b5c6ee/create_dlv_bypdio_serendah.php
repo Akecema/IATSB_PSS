@@ -235,8 +235,8 @@ $rst_sta37 = mysqli_fetch_array($sta_res37);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -931,7 +931,7 @@ if(isset($_POST['submitCTA']))
             <tr>
                 <th>Sales Order : </th>
                 <th colspan="2">
-           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo $_POST['so_no']; } ?>" />    
+           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo html_esc($_POST['so_no']); } ?>" />    
 
             <!-- <div id="result"></div>-->
                </th>
@@ -939,7 +939,7 @@ if(isset($_POST['submitCTA']))
             <tr>
                 <th>Scan PDIO : <font color="#FF0000">*</font>&nbsp;&nbsp;<i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1. PDIO Number" data-html="true" data-placement="left"></i></th>
                 <th colspan="2">
-          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo $_POST['pps_ref']; } ?>" class="form-control" autofocus/>
+          <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) { echo html_esc($_POST['pps_ref']); } ?>" class="form-control" autofocus/>
             
           &nbsp;&nbsp;<small>Eg: PDIO No. </small>
           

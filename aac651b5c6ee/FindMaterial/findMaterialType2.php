@@ -18,7 +18,7 @@ $result9 = mysql_query($query9);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -52,7 +52,7 @@ $result9 = mysql_query($query9);
 		
 	
     ?>
-      <option value="<?php echo $row9["cost_center"]; ?>" > <?php echo $row9["cost_center"]; ?></option>
+      <option value="<?php echo html_esc($row9["cost_center"]); ?>" > <?php echo html_esc($row9["cost_center"]); ?></option>
     
     <?php     }
     

@@ -97,7 +97,7 @@ $rst_sta24 = mysqli_fetch_array($sta_res24);
 <html lang="en">
   <head>
     <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,7 +307,7 @@ $message = NULL; // create an empty new variable.
              <tr>
                 <th>DO Number : </th>
                 <th colspan="3">
-           <input class="form-control" id="do_no" type="text" placeholder="Enter DO Number" name="do_no" value="<?php if(isset($_POST['do_no'])){ echo $_POST['do_no']; } ?>" />    
+           <input class="form-control" id="do_no" type="text" placeholder="Enter DO Number" name="do_no" value="<?php if(isset($_POST['do_no'])){ echo html_esc($_POST['do_no']); } ?>" />    
                </th>
               </tr>
               <tr>
@@ -323,7 +323,7 @@ $message = NULL; // create an empty new variable.
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                      <option value="<?php echo $row27["id_cust"]; ?>" > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo $row27["cust_desc"]; ?></option>
+                      <option value="<?php echo html_esc($row27["id_cust"]); ?>" > <?php echo stripslashes($row27["id_cust"]); ?> - <?php echo html_esc($row27["cust_desc"]); ?></option>
                       <?php
            }  ?>
                     </select> <div class="form-control-feedback" ><?php echo $message_ship; ?></div>
@@ -332,12 +332,12 @@ $message = NULL; // create an empty new variable.
             
               <tr>
                 <th>Delivery Date from :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" /> <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
                     </td></tr>
                 <tr>
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
                 
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /><div class="form-control-feedback" ><?php echo $message_psdt2; ?></div></td>
              
               </tr>
               <tr>

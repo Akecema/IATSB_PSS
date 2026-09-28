@@ -149,8 +149,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -284,12 +284,12 @@ div.dataTables_wrapper {
   
       <div class="app-title">
         <div>
-           <h1><i class="fa fa-bar-chart"></i> <?php echo $rst_apprv8["apprv_name2"]; ?></h1>
+           <h1><i class="fa fa-bar-chart"></i> <?php echo html_esc($rst_apprv8["apprv_name2"]); ?></h1>
           <p>Pending Approval</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><?php echo $rst_apprv8["apprv_name2"]; ?></li>
+          <li class="breadcrumb-item"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?></li>
           <li class="breadcrumb-item"><a href="detail_aprv_coo_disposal4-prd.php">Pending Approval</a></li>
         </ul>
       </div> 
@@ -364,7 +364,7 @@ exit();
 	
 	
 	            echo "<script>";
-				echo "window.location='detail_aprv_coo_disposal4-prdProc2.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&status_disposal=$status_disposal';"; 
+				echo "window.location='detail_aprv_coo_disposal4-prdProc2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&status_disposal=".html_esc($status_disposal)."';"; 
 				echo "</script>";
 				//exit(); //quit the script
 	
@@ -589,13 +589,13 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30">  
-                <div align="center"><?php echo $no4; ?><br><input type="checkbox" name="cancel[]" value="<?php echo $row["doc_dis"]; ?>" <?=was_checked($row["doc_dis"],$a) ?> /><input type="hidden" name="Check_ctr" value="yes" 
+                <div align="center"><?php echo $no4; ?><br><input type="checkbox" name="cancel[]" value="<?php echo html_esc($row["doc_dis"]); ?>" <?=was_checked($row["doc_dis"],$a) ?> /><input type="hidden" name="Check_ctr" value="yes" 
 onClick="Check(document.myform.cancel)">
-                  <input type="hidden" name="gid[<?php echo $row["id"]; ?>]" value="<?php echo $row["id"]; ?>" />
-                  <input name="id_item[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["doc_dis"]; ?>"></div></td>  
-                 <td width="80"><?php echo $row["R"]; ?></td>
-                <td width="150"><?php echo $row["doc_dis"]; ?></td> 
-                <td width="80"><?php echo $row["work_center"]; ?></td>
+                  <input type="hidden" name="gid[<?php echo html_esc($row["id"]); ?>]" value="<?php echo html_esc($row["id"]); ?>" />
+                  <input name="id_item[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["doc_dis"]); ?>"></div></td>  
+                 <td width="80"><?php echo html_esc($row["R"]); ?></td>
+                <td width="150"><?php echo html_esc($row["doc_dis"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td>
                 <td width="80"><?php echo $status_new; ?></td> 
                 <td width="100">
                 

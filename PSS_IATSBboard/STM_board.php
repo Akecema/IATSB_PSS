@@ -111,7 +111,7 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <html lang="en">
 <head>
     <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <link rel="shortcut icon" href="images/favicon.ico">  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -400,9 +400,9 @@ while ($list = mysqli_fetch_array($result2)) {
 <table width="100%" border="1" cellpadding="0" cellspacing="0"  style="border:solid 1px #141414;">
   <tr>
     <td width="50" height="36"><div align="center"><font size="+1" color="#FFFF00"><?php echo $no; ?></font></div></td>
-    <td width="100"><div align="center"><font size="+1" color="#FFFF00"><?php echo $list["model_code"]; ?></font></div></td>
-    <td width="150"><div align="center"><font size="+1" color="#FFFF00"><?php echo $list["back_no"]; ?></font></div></td>
-    <td width="250"><div align="center"><font size="+1" color="#FFFF00"><?php echo $list["material_no"]; ?></font></div></td>
+    <td width="100"><div align="center"><font size="+1" color="#FFFF00"><?php echo html_esc($list["model_code"]); ?></font></div></td>
+    <td width="150"><div align="center"><font size="+1" color="#FFFF00"><?php echo html_esc($list["back_no"]); ?></font></div></td>
+    <td width="250"><div align="center"><font size="+1" color="#FFFF00"><?php echo html_esc($list["material_no"]); ?></font></div></td>
     <td width="100"><div align="center"><?php echo $msg_sta; ?></div></td>
     <td width="100"><div align="center"><font size="+1" color="#FFFF00"><?php echo (intval($list["qty_plan"])); ?>&nbsp;</font></div></td>
     <td width="100"><div align="center"><font size="+1" color="#FFFF00"><?php echo $qty_total_ok; ?></font></div></td>

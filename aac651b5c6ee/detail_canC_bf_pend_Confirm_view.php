@@ -73,8 +73,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -180,7 +180,7 @@ page-break-before: always ;
   </head>
   <body class="app sidebar-mini">
  
-  <div class="modal fade printable autoprint" id="myNoteView<?php echo $row["id"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteView<?php echo html_esc($row["id"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content custom">
                             <div class="modal-header">
@@ -274,7 +274,7 @@ $db_rs2 = mysqli_fetch_array($rs2);
   <!--  <div class="page"> -->
  
 
-      <form name="view_sheet" id="view_sheet" action="detail_canC_bf_pend_Confirm_view.php?plant_code=<?php echo $plant_code; ?>&&trans_opt=<?php echo $trans_opt; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&work_center=<?php echo $work_center; ?>&&material_no=<?php echo $material_no; ?>" method="post">
+      <form name="view_sheet" id="view_sheet" action="detail_canC_bf_pend_Confirm_view.php?plant_code=<?php echo html_esc($plant_code); ?>&&trans_opt=<?php echo html_esc($trans_opt); ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&work_center=<?php echo html_esc($work_center); ?>&&material_no=<?php echo html_esc($material_no); ?>" method="post">
      <table class="table-bordered" style="width:1000px">
       <thead>
         <tr bgcolor="#eeeeee">
@@ -369,28 +369,28 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
       ?>
        <tr>
         <td width="2%"><?php echo $no; ?></td>
-        <td width="3%"><?php echo $row_Mod["model_desc"]; ?></td>
-        <td width="3%"><?php echo $row2["back_no"]; ?></td>
-        <td width="10%"><?php echo $row2["material_no"]; ?></td>
-        <td width="10%"><?php echo $row2["bflush_no"]; ?></td>
-        <td width="150"><?php echo $row2["bflush_pending"]; ?></td> 
-        <td width="8%"><font color="#0000CC"><?php echo $row2["plan_no"]; ?></font></td>
-        <td width="100"><?php echo $row2["RT"]; ?></td> 
-        <td width="100"><?php echo $row2["time_posting"]; ?></td>   
+        <td width="3%"><?php echo html_esc($row_Mod["model_desc"]); ?></td>
+        <td width="3%"><?php echo html_esc($row2["back_no"]); ?></td>
+        <td width="10%"><?php echo html_esc($row2["material_no"]); ?></td>
+        <td width="10%"><?php echo html_esc($row2["bflush_no"]); ?></td>
+        <td width="150"><?php echo html_esc($row2["bflush_pending"]); ?></td> 
+        <td width="8%"><font color="#0000CC"><?php echo html_esc($row2["plan_no"]); ?></font></td>
+        <td width="100"><?php echo html_esc($row2["RT"]); ?></td> 
+        <td width="100"><?php echo html_esc($row2["time_posting"]); ?></td>   
         <td width="10%"><?php echo $model_name2A; ?></td>
         <td width="80"><?php echo $shift_dsA; ?></td>
         <td width="100"><?php echo intval($qty_output); ?></td>
-        <td width="100"><?php echo $row2["status_butn"]; ?></td>
+        <td width="100"><?php echo html_esc($row2["status_butn"]); ?></td>
 	 
       
-    <!--   <input name="tid[]" type="hidden" value="<?php echo $row2["id"]; ?> ">   -->
-       <input name="uid4" type="hidden" value="<?php echo $row2["id"]; ?> ">    
+    <!--   <input name="tid[]" type="hidden" value="<?php echo html_esc($row2["id"]); ?> ">   -->
+       <input name="uid4" type="hidden" value="<?php echo html_esc($row2["id"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $date1_final; ?> "> 
        <input name="date2" type="hidden" value="<?php echo $date2_final; ?> "> 
-       <input name="work_center" type="hidden" value="<?php echo $work_center; ?>">  
-       <input name="material_no" type="hidden" value="<?php echo $material_no; ?>"> 
-       <input name="trans_opt" type="hidden" value="<?php echo $trans_opt; ?>"> 
-       <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>"> 
+       <input name="work_center" type="hidden" value="<?php echo html_esc($work_center); ?>">  
+       <input name="material_no" type="hidden" value="<?php echo html_esc($material_no); ?>"> 
+       <input name="trans_opt" type="hidden" value="<?php echo html_esc($trans_opt); ?>"> 
+       <input name="plant_code" type="hidden" value="<?php echo html_esc($plant_code); ?>"> 
       </tr> 
       <?php 
 		  
@@ -405,7 +405,7 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
    
      <div class="modal-footer pull-left">
     
-     <input type="hidden" value="<?php echo $row["id"]; ?>"/>
+     <input type="hidden" value="<?php echo html_esc($row["id"]); ?>"/>
               
              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">BACK</button>
             </div> 

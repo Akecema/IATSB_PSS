@@ -159,8 +159,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -329,12 +329,12 @@ input[value="+ Add Item"]{
   <tr>
     <td><b>Purchase Order No. </b></td>
     <td>:</td>
-    <td><?php echo $data_bb["po_no"];   ?></td>
+    <td><?php echo html_esc($data_bb["po_no"]);   ?></td>
   </tr>
   <tr>
     <td><b>Vendor Name </b></td>
     <td>:</td>
-    <td><?php echo $data_vend["vendor_name"];  ?></td>
+    <td><?php echo html_esc($data_vend["vendor_name"]);  ?></td>
   </tr>
 </table>
 </td>
@@ -407,14 +407,14 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
    <tr>
     <td width="60"><div align="center"><?php echo $noA; ?></div></td>
-    <td width="150"><div align="center"><?php echo $row2["back_no"]; ?></div></td>
-    <td width="200"><?php echo $row2["material_no"]; ?></td>
-    <td width="300"><?php echo $row2["material_desc"]; ?></td>
-    <td width="100"><div align="center"><?php echo $row2["kanban_order"]; ?></div></td>
+    <td width="150"><div align="center"><?php echo html_esc($row2["back_no"]); ?></div></td>
+    <td width="200"><?php echo html_esc($row2["material_no"]); ?></td>
+    <td width="300"><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td width="100"><div align="center"><?php echo html_esc($row2["kanban_order"]); ?></div></td>
     <td width="100"><div align="center"> <?php echo $tot_di_qty; ?>	</div></td> 
     <td width="100"><div align="center"><?php echo intval($pend_qty);  ?></div> 
-   <td width="100"><div align="center"><?php echo $row2["std_package"]; ?></div>  </td>      
-    <td width="100"><div align="center"><?php echo $row2["uom_dlv"]; ?></div></td>
+   <td width="100"><div align="center"><?php echo html_esc($row2["std_package"]); ?></div>  </td>      
+    <td width="100"><div align="center"><?php echo html_esc($row2["uom_dlv"]); ?></div></td>
     </tr>
   
  <?php 
@@ -438,9 +438,9 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
      <div align="left">   
       
        <input name="uid2" type="hidden" value="<?php echo $buid2; ?>">  
-       <input name="date1" type="hidden" value="<?php echo $dateF; ?>">  
-       <input name="date2" type="hidden" value="<?php echo $dateT; ?>">  
-       <input name="vendor_code" type="hidden" value="<?php echo $vendor_code; ?>">    
+       <input name="date1" type="hidden" value="<?php echo html_esc($dateF); ?>">  
+       <input name="date2" type="hidden" value="<?php echo html_esc($dateT); ?>">  
+       <input name="vendor_code" type="hidden" value="<?php echo html_esc($vendor_code); ?>">    
       
      </div> 
      <div class="prt-button">

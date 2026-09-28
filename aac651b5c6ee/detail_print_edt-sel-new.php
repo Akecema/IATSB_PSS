@@ -112,7 +112,7 @@ if(isset($_POST['e_tcid']))
 
 				
 		echo "<script>"; 
-		echo "window.open('detail_pps_sheet_print_edt-selection.php?gid=$ref&&date1=$dateF&&date2=$dateT&&plan_category=$plan_category&&material_no=$material_no&&shift_ops=$shift_ops')"; 
+		echo "window.open('detail_pps_sheet_print_edt-selection.php?gid=$ref&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plan_category=".html_esc($plan_category)."&&material_no=".html_esc($material_no)."&&shift_ops=".html_esc($shift_ops)."')"; 
         echo "</script>";
 
 	

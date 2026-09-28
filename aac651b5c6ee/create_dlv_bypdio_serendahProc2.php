@@ -84,8 +84,8 @@ $rst_sta7 = mysqli_fetch_array($sta_res7);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -276,7 +276,7 @@ $rst_print_tag = mysqli_query($dbc,$query_print_tag);
 $ref2 = base64_encode($ref);
 
 echo "<script>";
-echo "window.open('detail_print-delivery_order2serendah.php?suid=$ref2&&so_no=$so_no&&pdio_no=$pdio_no');";
+echo "window.open('detail_print-delivery_order2serendah.php?suid=$ref2&&so_no=".html_esc($so_no)."&&pdio_no=".html_esc($pdio_no)."');";
 echo "window.location='create_dlv_bypdio_serendah.php'";
 echo "</script>";
 exit(); //quit the script
@@ -393,19 +393,19 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
   ?>   
                 <tr>
                 <td width="30"><div align="center">                
-          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id"]; ?>" class="form-check" >       
-         </div><!-- <input type="text" value="true" id="check2[<?php echo $row["id"]; ?>]" hidden></td> -->
-          <td width="60"><div align="center"><a href="delete_pdiosgchoh_item.php?scan_doc=<?php echo $row["scan_gen"]; ?>&&p_id=<?php echo $row["id"]; ?>&&pdio_no=<?php echo $row["pdio_no"]; ?>&&so_no=<?php echo $row["so_no"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></div></td>
+          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id"]); ?>" class="form-check" >       
+         </div><!-- <input type="text" value="true" id="check2[<?php echo html_esc($row["id"]); ?>]" hidden></td> -->
+          <td width="60"><div align="center"><a href="delete_pdiosgchoh_item.php?scan_doc=<?php echo html_esc($row["scan_gen"]); ?>&&p_id=<?php echo html_esc($row["id"]); ?>&&pdio_no=<?php echo html_esc($row["pdio_no"]); ?>&&so_no=<?php echo html_esc($row["so_no"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></div></td>
                 <!-- #endregion --> <td width="30"><div align="center"><?php echo $no4; ?> </div></td>
-                 <td width="100"><?php echo $row["trip_no"]; ?></td>
-                 <td width="100"><?php echo $row["back_no"]; ?></td>
-                 <td width="150"><?php echo $row["material_no"]; ?></td>
-                 <td width="124" height="28"><?php echo $row["material_desc"]; ?></td>
-                 <td width="120"><?php echo $row["R25"]; ?></td>
-                 <td width="120"><?php echo $row["R15"]; ?></td>
+                 <td width="100"><?php echo html_esc($row["trip_no"]); ?></td>
+                 <td width="100"><?php echo html_esc($row["back_no"]); ?></td>
+                 <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                 <td width="124" height="28"><?php echo html_esc($row["material_desc"]); ?></td>
+                 <td width="120"><?php echo html_esc($row["R25"]); ?></td>
+                 <td width="120"><?php echo html_esc($row["R15"]); ?></td>
                 <td width="150"><!-- <input type="text" value="" id="check" hidden> -->
-                <input name="qty_dlv[<?php echo $row["id"]; ?>]" id="qty_dlv[<?php echo $row["id"]; ?>]" type="number" value="<?php if (isset($_POST['qty_dlv'])) {
-																																																									echo $_POST["qty_dlv"][($row["id"])];
+                <input name="qty_dlv[<?php echo html_esc($row["id"]); ?>]" id="qty_dlv[<?php echo html_esc($row["id"]); ?>]" type="number" value="<?php if (isset($_POST['qty_dlv'])) {
+																																																									echo html_esc($_POST["qty_dlv"][($row["id"])]);
 																																																								} else {
 																																																									if ($bal_qty_new < 0.000) {
 																																																										echo "0";
@@ -423,9 +423,9 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
               </td>
                
                 
-                <td width="50"><?php echo $row["unit_soi"]; ?></td>
-                <td width="150"><?php echo $row["pdio_no"]; ?></td>
-                <td width="150"><?php echo $row["dlv_cat"]; ?></td>
+                <td width="50"><?php echo html_esc($row["unit_soi"]); ?></td>
+                <td width="150"><?php echo html_esc($row["pdio_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["dlv_cat"]); ?></td>
               
               
                </tr>
@@ -447,10 +447,10 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
           </table><table class="table">
   <tr>
     <td>&nbsp;
-               <input name="so_no" type="hidden" value="<?php echo $so_no; ?>">             
-               <input name="pdio_no" type="hidden" value="<?php echo $pdio_no; ?>">  
+               <input name="so_no" type="hidden" value="<?php echo html_esc($so_no); ?>">             
+               <input name="pdio_no" type="hidden" value="<?php echo html_esc($pdio_no); ?>">  
                <input name="ship_point" type="hidden" value="3100">
-               <input name="scan_doc" type="hidden" value="<?php echo $scan_doc; ?>">  
+               <input name="scan_doc" type="hidden" value="<?php echo html_esc($scan_doc); ?>">  
                <input name="submit4PDIO" type="submit" id="submit4PDIO" value="CREATE DO" class="btn btn-success btn-sm">
          
              <!--   <button type="button" name="btn_genDO" id="btn_genDO" class="btn btn-success btn-sm">CREATE DO</button> -->

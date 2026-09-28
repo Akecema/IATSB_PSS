@@ -87,7 +87,7 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <html lang="en">
   <head>
   <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -339,12 +339,12 @@ $result_mm3_insert = mysqli_query($dbc,$query_mm3_insert) or die (mysqli_error($
   
 		  ?>
        <tr>
-           <td>&nbsp;<?php echo $row2["temp_mrin"]; ?></td>
-           <td><div align="center"><?php echo $row2["factory"]; ?></div></td>
-           <td><div align="center"><?php echo $row2["id_work"]; ?></div></td>
-           <td><?php echo $row2["R"]; ?>&nbsp;</td>
-           <td><?php echo $row2["time_require"]; ?></td>
-           <td><?php echo $data_u["user_fullname"]; ?></td>
+           <td>&nbsp;<?php echo html_esc($row2["temp_mrin"]); ?></td>
+           <td><div align="center"><?php echo html_esc($row2["factory"]); ?></div></td>
+           <td><div align="center"><?php echo html_esc($row2["id_work"]); ?></div></td>
+           <td><?php echo html_esc($row2["R"]); ?>&nbsp;</td>
+           <td><?php echo html_esc($row2["time_require"]); ?></td>
+           <td><?php echo html_esc($data_u["user_fullname"]); ?></td>
           <td><div align="center">
     <?php   
 	   

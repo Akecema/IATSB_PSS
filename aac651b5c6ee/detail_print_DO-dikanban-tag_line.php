@@ -85,8 +85,8 @@ $data_tit = mysqli_fetch_array($result_pps_tit);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Material Doc. No <?php echo $data_tit["do_no"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Material Doc. No <?php echo html_esc($data_tit["do_no"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -370,23 +370,23 @@ echo "</table></center>";
   <tr>
     <td><b>Purchase Order No.</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["po_no"];   ?></td>
+    <td><?php echo html_esc($data_bb["po_no"]);   ?></td>
   </tr>
  
   <tr>
     <td><b>Delivery Instruction No.</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["DI_doc"];   ?></td>
+    <td><?php echo html_esc($data_bb["DI_doc"]);   ?></td>
   </tr>
   <tr>
     <td><b>Model</b></td>
     <td>:</td>
-    <td><?php echo $data_bb["model_cd"];   ?></td>
+    <td><?php echo html_esc($data_bb["model_cd"]);   ?></td>
   </tr>
   <tr>
     <td><b>Vendor Name</b></td>
     <td>:</td>
-    <td><?php echo $data_vend["vendor_name"];  ?></td>
+    <td><?php echo html_esc($data_vend["vendor_name"]);  ?></td>
   </tr> 
   <tr>
     <td>&nbsp;</td>
@@ -396,12 +396,12 @@ echo "</table></center>";
   <tr>
     <td>Delivery Date</td>
     <td>:</td>
-    <td><?php echo $data_bb["D3"];   ?></td>
+    <td><?php echo html_esc($data_bb["D3"]);   ?></td>
   </tr>
   <tr>
     <td>Delivery Time</td>
     <td>:</td>
-    <td><?php echo $data_bb["time_dlv"];   ?><?php //echo $data_bb["DT4"].'&nbsp;'.$waktu_dec;   ?></td>
+    <td><?php echo html_esc($data_bb["time_dlv"]);   ?><?php //echo $data_bb["DT4"].'&nbsp;'.$waktu_dec;   ?></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -513,14 +513,14 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
    
     <td width="60"><div align="center"><?php echo $noA; ?></div></td>
-    <td width="150"><div align="center"><?php echo $row2["back_no"]; ?></div></td>
-    <td width="200"><?php echo $row2["material_no"]; ?></td>
-    <td width="300"><?php echo $row2["material_desc"]; ?></td>
-    <td width="100"><div align="center"> <?php if($row2["qty_dlv"] > 0.000 ) { echo $row2["std_package"];  }else{  echo '0'; } ?>	</div></td> 
+    <td width="150"><div align="center"><?php echo html_esc($row2["back_no"]); ?></div></td>
+    <td width="200"><?php echo html_esc($row2["material_no"]); ?></td>
+    <td width="300"><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td width="100"><div align="center"> <?php if($row2["qty_dlv"] > 0.000 ) { echo html_esc($row2["std_package"]);  }else{  echo '0'; } ?>	</div></td> 
     <td width="100"><div align="center"><?php echo $tag_pack; ?></div></td>  
     <td width="100"><div align="center"><?php if($row2["qty_dlv"] > 0.000 ) { echo intval($row2["qty_dlv"]); }else{  echo '0'; } ?></div></td>
     <td width="100"><div align="center"> <?php echo $pend_qty; ?>	</div></td>   
-    <td width="100"><div align="center"><?php echo $row2["uom_dlv"]; ?></div></td>
+    <td width="100"><div align="center"><?php echo html_esc($row2["uom_dlv"]); ?></div></td>
     <td width="150"></td>
     </tr>
   
@@ -559,7 +559,7 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
 <table width="100%" border="1" cellspacing="1" cellpadding="1">
   <tr>
-    <td colspan="2"><span class="style1B"><div align="center"><?php echo $data_setup["title_desc"]; ?></div></span></td>
+    <td colspan="2"><span class="style1B"><div align="center"><?php echo html_esc($data_setup["title_desc"]); ?></div></span></td>
     <td colspan="2"><span class="style1B"><div align="center">VENDOR</div></span></td>
   </tr>
   <tr>
@@ -628,9 +628,9 @@ while($row = mysqli_fetch_array($result_pps))
     </tr>
    <tr>
     <td width="161" height="20">&nbsp;<span class="style8">Document No.</span></td>
-    <td width="196" height="20">&nbsp;<span class="style1"><?php echo $row["do_no"];  ?></span></td>
+    <td width="196" height="20">&nbsp;<span class="style1"><?php echo html_esc($row["do_no"]);  ?></span></td>
     <td width="124" height="20">&nbsp;<span class="style8">Purchase Order No.</span></td>
-    <td width="161" height="20">&nbsp;<span class="style1"> <?php echo $row["purc_ord_no"];  ?></span></td>
+    <td width="161" height="20">&nbsp;<span class="style1"> <?php echo html_esc($row["purc_ord_no"]);  ?></span></td>
     <td colspan="2" rowspan="4">&nbsp;
     
     <?php
@@ -701,32 +701,32 @@ echo "</table></center>";
    </tr>
    <tr>
      <td height="20">&nbsp;<span class="style8">Received Date</span></td>
-     <td height="20">&nbsp;<span class="style1"><?php echo $row["R"];  ?></span></td>
+     <td height="20">&nbsp;<span class="style1"><?php echo html_esc($row["R"]);  ?></span></td>
      <td height="20">&nbsp;<span class="style8">Received Time</span></td>
-     <td height="20">&nbsp;<span class="style1"><?php echo $row["time_dlv"];  ?></span></td>   
+     <td height="20">&nbsp;<span class="style1"><?php echo html_esc($row["time_dlv"]);  ?></span></td>   
    </tr>
     <tr>
     <td height="20">&nbsp;<span class="style8">Model</span></td>
-    <td colspan="3">&nbsp;<span class="style7"><?php echo $row["model_gr"];  ?></span></td>
+    <td colspan="3">&nbsp;<span class="style7"><?php echo html_esc($row["model_gr"]);  ?></span></td>
     </tr>
   <tr>
     <td height="20">&nbsp;<span class="style8">Part No.</span></td>
-    <td height="20" colspan="3" >&nbsp;<span class="style7"><?php echo $row["material_no"];     ?></span>
+    <td height="20" colspan="3" >&nbsp;<span class="style7"><?php echo html_esc($row["material_no"]);     ?></span>
       </td>
     <td width="105" height="25" >&nbsp;<span class="style8">Quantity</span></td>
     <td width="146">&nbsp;<span class="style7"><?php echo intval($row["tag_qty"]);  ?></span>&nbsp;</td>
   </tr>
   <tr>
     <td height="20">&nbsp;<span class="style8">Part Name</span></td>
-    <td colspan="3" >&nbsp;<span class="style7"><?php echo $row["material_desc"];  ?></span></td>
+    <td colspan="3" >&nbsp;<span class="style7"><?php echo html_esc($row["material_desc"]);  ?></span></td>
     <td>&nbsp;<span class="style8">UOM</span><span class="style8"></span></td>
-    <td>&nbsp;<span class="style7"><?php echo $row["ord_uom"];  ?></span></td>
+    <td>&nbsp;<span class="style7"><?php echo html_esc($row["ord_uom"]);  ?></span></td>
   </tr>
   <tr>
     <td height="40" rowspan="2">&nbsp;<span class="style8">Size/Dimensions</span></td>
     <td height="20" colspan="3" rowspan="2" >&nbsp;&nbsp;</td>
     <td>&nbsp;<span class="style8">Slip No.</span></td>
-    <td>&nbsp;<span class="style1"> <?php echo $row["slip_no"];  ?> of <?php echo $row["total_slip"];  ?> </span></td>
+    <td>&nbsp;<span class="style1"> <?php echo html_esc($row["slip_no"]);  ?> of <?php echo html_esc($row["total_slip"]);  ?> </span></td>
   </tr>
   <tr>
     <td>&nbsp;<span class="style8">Shift</span></td>

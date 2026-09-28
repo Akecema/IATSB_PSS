@@ -76,6 +76,22 @@ if (PHP_SAPI === 'cli') {
         });
     }
 
+    // Transport and browser hardening on every response (also HTML the pages echo themselves).
+    $https = !empty($_SERVER['HTTPS']) || strtolower((string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https';
+    if (!$https && getenv('FORCE_HTTPS') === 'true') {
+        header('Location: https://' . ($_SERVER['HTTP_HOST'] ?? '') . ($_SERVER['REQUEST_URI'] ?? '/'), true, 301);
+        exit;
+    }
+    header_remove('X-Powered-By');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: SAMEORIGIN');
+    header("Content-Security-Policy: frame-ancestors 'self'; base-uri 'self'; object-src 'none'");
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+    if ($https) {
+        header('Strict-Transport-Security: max-age=31536000');
+    }
+
     // Session cookie hardening for every request, public or not.
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_set_cookie_params([

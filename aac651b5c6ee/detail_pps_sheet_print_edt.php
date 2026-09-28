@@ -73,8 +73,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -324,7 +324,7 @@ page-break-before: always ;
 
 		   echo "<script>";
 		   echo "alert('Your transaction has been processed successfully');";
-		   echo "window.location='display_pps_month_reprint2.php?date1=$dateF&&date2=$dateT&&plan_category=$plan_category&&material_no=$material_no&&shift_ops=$shift_ops'";
+		   echo "window.location='display_pps_month_reprint2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plan_category=".html_esc($plan_category)."&&material_no=".html_esc($material_no)."&&shift_ops=".html_esc($shift_ops)."'";
 		   echo "</script>"; 
 		   exit(); //quit the script
 
@@ -332,7 +332,7 @@ page-break-before: always ;
 
  }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteEdit<?php echo $row["id"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteEdit<?php echo html_esc($row["id"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content custom">
                             <div class="modal-header">
@@ -506,14 +506,14 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
       ?>
        <tr>
         <td width="2%"><?php echo $no; ?></td>
-        <td width="3%"><?php echo  $row2["back_no"]; ?></td>
-        <td width="10%"><?php echo $row2["material_no"]; ?></td>
-         <td width="10%"><?php echo $row_matA["material_desc"]; ?></td>
-        <td width="8%"><font color="#0000CC"><?php echo $row2["plan_no"]; ?></font></td>
+        <td width="3%"><?php echo  html_esc($row2["back_no"]); ?></td>
+        <td width="10%"><?php echo html_esc($row2["material_no"]); ?></td>
+         <td width="10%"><?php echo html_esc($row_matA["material_desc"]); ?></td>
+        <td width="8%"><font color="#0000CC"><?php echo html_esc($row2["plan_no"]); ?></font></td>
         <td width="5%" bgcolor="#E8F6F3">
-        <input type="date" name="date_plan[]" class="input-xlarge datepicker" value="<?php echo $row2["date_plan"]; ?>" <?php if(isset($_POST["date_plan"][($row2["id"])])) { echo $_POST["date_plan"][($row2["id"])]; } ?>> </td>
+        <input type="date" name="date_plan[]" class="input-xlarge datepicker" value="<?php echo html_esc($row2["date_plan"]); ?>" <?php if(isset($_POST["date_plan"][($row2["id"])])) { echo html_esc($_POST["date_plan"][($row2["id"])]); } ?>> </td>
         
-    <!--    <td bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'date_plan','<?php echo $row2["id"]; ?>')" onClick="showEdit(this);"><?php echo $row2["date_plan"]; ?></td> -->
+    <!--    <td bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'date_plan','<?php echo html_esc($row2["id"]); ?>')" onClick="showEdit(this);"><?php echo html_esc($row2["date_plan"]); ?></td> -->
        <td width="10%"><?php echo $model_nameA; ?></td>
        <td width="8%" bgcolor="#E8F6F3">
             <select name="shift_ops2[]" id="shift_ops2" class="form-control">
@@ -524,15 +524,15 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
        </td>
     
      
-        <td width="5%" bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'qty_plan','<?php echo $row2["id"]; ?>')" onClick="showEdit(this);"><?php echo $row2["qty_plan"]; ?><?php //echo intval($row2["qty_plan"],0); ?></td>
+        <td width="5%" bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'qty_plan','<?php echo html_esc($row2["id"]); ?>')" onClick="showEdit(this);"><?php echo html_esc($row2["qty_plan"]); ?><?php //echo intval($row2["qty_plan"],0); ?></td>
       
-       <input name="tid[]" type="hidden" value="<?php echo $row2["id"]; ?> ">   
-       <input name="uid" type="hidden" value="<?php echo $row2["upload_id"]; ?> ">    
+       <input name="tid[]" type="hidden" value="<?php echo html_esc($row2["id"]); ?> ">   
+       <input name="uid" type="hidden" value="<?php echo html_esc($row2["upload_id"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $date1_final; ?> "> 
        <input name="date2" type="hidden" value="<?php echo $date2_final; ?> "> 
-       <input name="plan_category" type="hidden" value="<?php echo $plan_category; ?>">  
-       <input name="material_no" type="hidden" value="<?php echo $material_no; ?>"> 
-       <input name="shift_ops" type="hidden" value="<?php echo $shift_ops; ?>"> 
+       <input name="plan_category" type="hidden" value="<?php echo html_esc($plan_category); ?>">  
+       <input name="material_no" type="hidden" value="<?php echo html_esc($material_no); ?>"> 
+       <input name="shift_ops" type="hidden" value="<?php echo html_esc($shift_ops); ?>"> 
       </tr> 
       <?php 
 		  
@@ -547,7 +547,7 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
    
      <div class="modal-footer pull-left">
      <input type="submit" value="SAVE" name="edt_btn" class="btn btn-success btn-sm" onClick="return validateacv_s()">
-     <input type="hidden" value="<?php echo $row["id"]; ?>"/>
+     <input type="hidden" value="<?php echo html_esc($row["id"]); ?>"/>
               
              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">BACK</button>
             </div> 

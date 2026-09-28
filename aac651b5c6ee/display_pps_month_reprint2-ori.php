@@ -104,8 +104,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -241,12 +241,12 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
             </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>"></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>"></td>
          
            </tr>
             <tr>
@@ -261,7 +261,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select></th>
@@ -278,7 +278,7 @@ th {
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                  <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                   <?php
                   }
 				?>
@@ -303,7 +303,7 @@ th {
                    while($row9=mysqli_fetch_array($result9)) 
 			      {
 				   ?>
-                  <option value="<?php echo $row9["plan_no"]; ?>"<?php if($row9["plan_no"] == $_GET["plan_no"]) echo "selected"; ?>> <?php echo $row9["plan_no"]; ?></option>
+                  <option value="<?php echo html_esc($row9["plan_no"]); ?>"<?php if($row9["plan_no"] == $_GET["plan_no"]) echo "selected"; ?>> <?php echo html_esc($row9["plan_no"]); ?></option>
                   <?php
                   }
 				?>
@@ -320,7 +320,7 @@ th {
                    while($row19=mysqli_fetch_array($result19)) 
 			      {
 				   ?>
-                  <option value="<?php echo $row19["file_name"]; ?>" <?php if($row19["file_name"] == $_GET["name_file"]) echo "selected"; ?>> <?php echo $row19["file_name"]; ?></option>
+                  <option value="<?php echo html_esc($row19["file_name"]); ?>" <?php if($row19["file_name"] == $_GET["name_file"]) echo "selected"; ?>> <?php echo html_esc($row19["file_name"]); ?></option>
                   <?php
                   }
 				?>
@@ -436,7 +436,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	         echo '<div align="center">There are currently  '. $num_rows.' record(s).</div>';
 			  		 	
 ?>
-                 <form name="myformG" method="post" action="display_pps_month_reprint2.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&plan_no=<?php echo $plan_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&name_file=<?php echo $name_file; ?>">
+                 <form name="myformG" method="post" action="display_pps_month_reprint2.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>&&plan_no=<?php echo html_esc($plan_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&name_file=<?php echo html_esc($name_file); ?>">
                 <!-- <table class="table table-hover table-bordered sortable fc-scroller dataTable">-->
                   <table class="table table-hover table-bordered" id="example">
                   <thead>
@@ -489,20 +489,20 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
              <tr>
                 <td width="30"><div align="center">
                 
-          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id"]; ?>" class="form-check">       
+          <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id"]); ?>" class="form-check">       
                  <?php echo $no4; ?> </div></td>
                 
     
-                <td width="150"><?php echo $row["material_no"]; ?></td>
-                <td width="124" height="28"><?php echo $row["plan_no"]; ?></td>
-                <td width="100"><?php echo $row["R"]; ?></td>
-                <td width="80"><?php echo $row["plant_code"]; ?></td>
-                <td width="80"><?php echo $row["work_center"]; ?></td>
+                <td width="150"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="124" height="28"><?php echo html_esc($row["plan_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["R"]); ?></td>
+                <td width="80"><?php echo html_esc($row["plant_code"]); ?></td>
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td>
                 <td width="50"><?php echo $star; ?></td>
                 <td width="80"><?php echo intval($row["qty_plan"]); ?></td>
-                <td width="80"><?php echo $row["status_pps"]; ?></td>
+                <td width="80"><?php echo html_esc($row["status_pps"]); ?></td>
                 <td width="95">
-                 <a href="#myNoteRelease<?php echo $row["id"]; ?>" data-toggle="modal"  target="_parent" ><i class="fa fa-check-circle" aria-hidden="true"></i>Release</a>
+                 <a href="#myNoteRelease<?php echo html_esc($row["id"]); ?>" data-toggle="modal"  target="_parent" ><i class="fa fa-check-circle" aria-hidden="true"></i>Release</a>
                 
                  <!--<a id="demoSwal" href="#" ><i class="fa fa-check-circle" aria-hidden="true"></i>Release</a>
                  <input type="hidden" name="vid" id="vid" value="<?php //echo $row["id"]; ?>" >-->
@@ -512,7 +512,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
               
               </td> 
                <td width="100">
-                 <a href="#myNoteEdit<?php echo $row["id"]; ?>" data-toggle="modal"  target="_parent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</a> 
+                 <a href="#myNoteEdit<?php echo html_esc($row["id"]); ?>" data-toggle="modal"  target="_parent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "detail_pps_sheet_print_edt.php";   ?>
@@ -524,7 +524,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
                                 
               </td> 
                 <td width="100">
-                 <a href="#myNoteCancel<?php echo $row["id"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
+                 <a href="#myNoteCancel<?php echo html_esc($row["id"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "cancel_pps_tran_proc_selected.php";   ?>
@@ -546,13 +546,13 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
           </table>
           </table><table class="table">
   <tr>
-    <td>&nbsp; <input name="date1" type="hidden" value="<?php echo $_GET['date1']; ?> ">
-               <input name="date2" type="hidden" value="<?php echo $_GET['date2']; ?>">
-               <input name="plant_code" type="hidden" value="<?php echo  $plant_code; ?>">  
-               <input name="work_center" type="hidden" value="<?php echo  $work_center; ?>"> 
-               <input name="plan_no" type="hidden" value="<?php echo  $plan_no; ?>"> 
-               <input name="shift_ops" type="hidden" value="<?php echo  $shift_ops; ?>"> 
-               <input name="name_file" type="hidden" value="<?php echo  $name_file; ?>"> 
+    <td>&nbsp; <input name="date1" type="hidden" value="<?php echo html_esc($_GET['date1']); ?> ">
+               <input name="date2" type="hidden" value="<?php echo html_esc($_GET['date2']); ?>">
+               <input name="plant_code" type="hidden" value="<?php echo  html_esc($plant_code); ?>">  
+               <input name="work_center" type="hidden" value="<?php echo  html_esc($work_center); ?>"> 
+               <input name="plan_no" type="hidden" value="<?php echo  html_esc($plan_no); ?>"> 
+               <input name="shift_ops" type="hidden" value="<?php echo  html_esc($shift_ops); ?>"> 
+               <input name="name_file" type="hidden" value="<?php echo  html_esc($name_file); ?>"> 
                
                <button type="button" name="btn_release" id="btn_release" class="btn btn-success btn-sm">RELEASE</button>
                <button type="button" name="btn_deletd" id="btn_deletd" class="btn btn-danger btn-sm">DELETE PLANNED ORDER</button>
@@ -899,7 +899,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "pss-mth-release.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&plan_no=<?php echo $plan_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&name_file=<?php echo $name_file; ?>",
+			 url: "pss-mth-release.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>&&plan_no=<?php echo html_esc($plan_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&name_file=<?php echo html_esc($name_file); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -957,7 +957,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "pss-mth-delete-plan-ord.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&plan_no=<?php echo $plan_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&name_file=<?php echo $name_file; ?>",
+			 url: "pss-mth-delete-plan-ord.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>&&plan_no=<?php echo html_esc($plan_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&name_file=<?php echo html_esc($name_file); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -1015,7 +1015,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "detail_print-sel-new.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&plan_no=<?php echo $plan_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&name_file=<?php echo $name_file; ?>",
+			 url: "detail_print-sel-new.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>&&plan_no=<?php echo html_esc($plan_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&name_file=<?php echo html_esc($name_file); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid
@@ -1073,7 +1073,7 @@ $('#example').DataTable();
 		else
 		{
 			$.ajax({
-			 url: "detail_print_edt-sel-new.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&plan_no=<?php echo $plan_no; ?>&&shift_ops=<?php echo $shift_ops; ?>&&name_file=<?php echo $name_file; ?>",
+			 url: "detail_print_edt-sel-new.php?date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&plant_code=<?php echo html_esc($plant_code); ?>&&work_center=<?php echo html_esc($work_center); ?>&&plan_no=<?php echo html_esc($plan_no); ?>&&shift_ops=<?php echo html_esc($shift_ops); ?>&&name_file=<?php echo html_esc($name_file); ?>",
 			 type: "POST",
 			 data: {
 			 	e_tcid:e_tcid

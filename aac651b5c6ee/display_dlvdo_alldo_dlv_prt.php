@@ -102,8 +102,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -248,7 +248,7 @@ if(isset($_POST["printDO_btn"]))
 	
 	echo "<script>";
 	echo "window.open('dlvdo-print_othcust.php?buid=$buid2&&puid=$puid2&&duid=$duid2', '_blank');";
-	echo "window.location='prt_dlvdo_alldo-dlvProc.php?do_no=$do_no&&ship_to=$ship_point&&date1=$dateF&&date2=$dateT'";
+	echo "window.location='prt_dlvdo_alldo-dlvProc.php?do_no=".html_esc($do_no)."&&ship_to=".html_esc($ship_point)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."'";
 	echo "</script>";
 	exit(); //quit the script
 	
@@ -258,7 +258,7 @@ if(isset($_POST["printDO_btn"]))
 }// end submit
  
 ?>
-  <div class="modal fade printable autoprint" id="myNoteDisplayDO<?php echo $row["material_doc_gen"]; ?><?php echo $row["ship_point"]; ?><?php echo $row["status_part"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteDisplayDO<?php echo html_esc($row["material_doc_gen"]); ?><?php echo html_esc($row["ship_point"]); ?><?php echo html_esc($row["status_part"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content modlDisplay">
                             <div class="modal-header">
@@ -288,9 +288,9 @@ if(isset($_POST["printDO_btn"]))
     <td valign="top">&nbsp;<h5><font color="#999999"><b>PSS DELIVERY ORDER</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $row["plant_code"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($row["plant_code"]);   ?></div></td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>Document No. :  </b><?php echo $row["material_doc_gen"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($row["material_doc_gen"]);   ?></div></td>
   </tr>
    </table>
 
@@ -335,13 +335,13 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><?php echo $no; ?>&nbsp;&nbsp;<?php //echo $row2["id"]; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["T3"]; ?></td>
-    <td><?php echo $row2["T7"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["T3"]); ?></td>
+    <td><?php echo html_esc($row2["T7"]); ?></td>
     <td><?php echo intval($row2["qty_dlv"]); ?></td>
-    <td><?php echo $row2["cust_code"]; ?></td>
-    <td><?php echo $row2["ship_point"]; ?></td>
+    <td><?php echo html_esc($row2["cust_code"]); ?></td>
+    <td><?php echo html_esc($row2["ship_point"]); ?></td>
   </tr>
   
  <?php 
@@ -357,13 +357,13 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
  <br><br>
     
        
-      <input name="do_no"  type="hidden" id="do_no" value="<?php echo $do_no; ?>">
-      <input name="uid2" type="hidden" id="uid2" value="<?php echo $row["material_doc_gen"]; ?>">
-      <input name="ship_to" type="hidden" id="ship_to" value="<?php echo $_GET["ship_to"]; ?>">
-      <input name="date1"  type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2"  type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
-      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo $row["ship_point"]; ?>">
-      <input name="status_part" type="hidden" id="status_part" value="<?php echo $row["status_part"]; ?>">
+      <input name="do_no"  type="hidden" id="do_no" value="<?php echo html_esc($do_no); ?>">
+      <input name="uid2" type="hidden" id="uid2" value="<?php echo html_esc($row["material_doc_gen"]); ?>">
+      <input name="ship_to" type="hidden" id="ship_to" value="<?php echo html_esc($_GET["ship_to"]); ?>">
+      <input name="date1"  type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2"  type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
+      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo html_esc($row["ship_point"]); ?>">
+      <input name="status_part" type="hidden" id="status_part" value="<?php echo html_esc($row["status_part"]); ?>">
        
          <!-- <div class="modal-footer pull-left">-->
          <input name="printDO_btn" type="submit"  class="btn btn-success btn-sm" value="PRINT" />

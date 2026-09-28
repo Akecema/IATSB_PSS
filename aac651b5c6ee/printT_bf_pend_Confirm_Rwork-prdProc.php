@@ -100,8 +100,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -220,7 +220,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='printT_tag_bf_trn_OK-prdProc.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&trans_opt=$trans_opt'";
+            echo "window.location='printT_tag_bf_trn_OK-prdProc.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&trans_opt=".html_esc($trans_opt)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -229,7 +229,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='printT_tag_bf_trn_PEND-prdProc.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&trans_opt=$trans_opt'";
+            echo "window.location='printT_tag_bf_trn_PEND-prdProc.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&trans_opt=".html_esc($trans_opt)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -238,7 +238,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='printT_tag_bf_trn_HWOK-prdProc.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&trans_opt=$trans_opt'";
+            echo "window.location='printT_tag_bf_trn_HWOK-prdProc.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&trans_opt=".html_esc($trans_opt)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -248,7 +248,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='printT_bf_pend_Confirm-prdProc.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&trans_opt=$trans_opt'";
+            echo "window.location='printT_bf_pend_Confirm-prdProc.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&trans_opt=".html_esc($trans_opt)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -257,7 +257,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='printT_bf_pend_Confirm_Hwork-prdProc.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&trans_opt=$trans_opt'";
+            echo "window.location='printT_bf_pend_Confirm_Hwork-prdProc.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&trans_opt=".html_esc($trans_opt)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -298,7 +298,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
              </tr>
              <tr>
@@ -308,7 +308,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
             <th>Plant : </th>
@@ -323,7 +323,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -347,7 +347,7 @@ div.dataTables_wrapper {
               while($row57 = mysqli_fetch_array($result57)) {
         
               ?>
-               <option value="<?php echo $row57["plan_no"]; ?>" <?php if($row57["plan_no"] == $_GET["plan_no"]) echo "selected"; ?>> <?php echo stripslashes($row57["plan_no"]); ?> </option>
+               <option value="<?php echo html_esc($row57["plan_no"]); ?>" <?php if($row57["plan_no"] == $_GET["plan_no"]) echo "selected"; ?>> <?php echo stripslashes($row57["plan_no"]); ?> </option>
        
           <?php
            }  ?>
@@ -510,14 +510,14 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="80"><?php echo $row["model_code"]; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="150"><?php echo $row["plan_no"]; ?></td> 
-                <td width="150"><?php echo $row["bflush_pending"]; ?></td> 
-                <td width="150"><?php echo $row["bflush_rework"]; ?></td> 
-                <td width="100"><?php echo $row["R"]; ?></td> 
-                <td width="100"><?php echo $row["time_rw_posting"]; ?></td>
-                <td width="80"><?php echo $row["work_center"]; ?></td> 
+                <td width="80"><?php echo html_esc($row["model_code"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["plan_no"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["bflush_pending"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["bflush_rework"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["time_rw_posting"]); ?></td>
+                <td width="80"><?php echo html_esc($row["work_center"]); ?></td> 
                 <td width="80"><?php echo $shift_ds; ?></td>
                 <td width="100"><?php echo intval($row["qty_RW_OK"]); ?></td>
                 <td width="100">REWORK OK</td>

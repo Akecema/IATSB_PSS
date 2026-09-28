@@ -46,8 +46,8 @@ $url = "display_model_table.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -261,13 +261,13 @@ th {
 	
 	 
       ?> <tr class="item">
-                <td><div align="center"><?php  echo $row2["id_model"]; ?></div></td>
-                <td><div align="center"><?php  echo $row2["model_code"]; ?></div></td>
-                <td>&nbsp;<?php  echo $row2["model_desc"]; ?></td>
-                <td>&nbsp;<?php  echo $row2["plant_code"]; ?></td>
-                <td>&nbsp;<?php  echo $data_mat_type["mat_type_id"]; ?></td>
+                <td><div align="center"><?php  echo html_esc($row2["id_model"]); ?></div></td>
+                <td><div align="center"><?php  echo html_esc($row2["model_code"]); ?></div></td>
+                <td>&nbsp;<?php  echo html_esc($row2["model_desc"]); ?></td>
+                <td>&nbsp;<?php  echo html_esc($row2["plant_code"]); ?></td>
+                <td>&nbsp;<?php  echo html_esc($data_mat_type["mat_type_id"]); ?></td>
                 <td><div align="center">               
-                  <a href="#myNoteModel<?php echo $row2["id_model"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
+                  <a href="#myNoteModel<?php echo html_esc($row2["id_model"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/icon_view.jpg" width="16" height="16" alt="View">&nbsp;View</a>
                  
                     <!--------------------------modal------------------------->
           <?php    include "mat_model_view.php";   ?>
@@ -275,7 +275,7 @@ th {
           </div></td>
                 <td>
                 <div align="center">
-                 <a href="#myNoteEditM<?php echo $row2["id_model"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteEditM<?php echo html_esc($row2["id_model"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "mat_model_edit.php";   ?>

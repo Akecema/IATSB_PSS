@@ -17,7 +17,7 @@ include '../include/config.php';
 	 {
 			
 			 echo "<script>";
-			 echo "window.location='ups_pps_month-assy.php?scan_doc=$scan_doc'";
+			 echo "window.location='ups_pps_month-assy.php?scan_doc=".html_esc($scan_doc)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteWork<?php echo $row2["id_work"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteWork<?php echo html_esc($row2["id_work"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -129,49 +129,49 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
    <tr>
     <td width="191">Work Center </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_work" name="id_work" readonly value="<?php  echo $row_work["id_work"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_work" name="id_work" readonly value="<?php  echo html_esc($row_work["id_work"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Work Center Description</td>
     <td width="28">:</td>
-    <td><input type="text" id="wc_desc" name="wc_desc" readonly value="<?php echo $row_work["wc_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="wc_desc" name="wc_desc" readonly value="<?php echo html_esc($row_work["wc_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Plant Code</td>
     <td>:</td>
-    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo $row_work["plant_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo html_esc($row_work["plant_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
   <tr>
     <td>Cost Center</td>
     <td>:</td>
-    <td><input type="text" id="cost_center" name="cost_center" readonly value="<?php echo $row_work["cost_center"];  ?>" class="form-control"/>
+    <td><input type="text" id="cost_center" name="cost_center" readonly value="<?php echo html_esc($row_work["cost_center"]);  ?>" class="form-control"/>
      </td>
     </tr>
       <tr>
     <td>Cost Center Description</td>
     <td>:</td>
-   <td><input type="text" id="cc_desc" name="cc_desc" readonly value="<?php echo $row_work["cc_desc"];  ?>" class="form-control"/> </td>
+   <td><input type="text" id="cc_desc" name="cc_desc" readonly value="<?php echo html_esc($row_work["cc_desc"]);  ?>" class="form-control"/> </td>
     </tr>
      <tr>
     <td>Factory</td>
     <td>:</td>
-    <td><input type="text" id="id_factory" name="id_factory" readonly value="<?php echo $row_work["id_factory"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="id_factory" name="id_factory" readonly value="<?php echo html_esc($row_work["id_factory"]);  ?>" class="form-control" /></td>
     </tr>
     <tr>
     <td>Department Account</td>
     <td>:</td>
-    <td><input type="text" id="dept_acc" name="dept_acc" readonly value="<?php echo $row_work["dept_acc"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="dept_acc" name="dept_acc" readonly value="<?php echo html_esc($row_work["dept_acc"]);  ?>" class="form-control" /></td>
     </tr>
     <tr>
     <td>Status Account</td>
     <td>:</td>
-    <td><input type="text" id="status_wc" name="status_wc" readonly value="<?php echo $row_work["status_wc"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="status_wc" name="status_wc" readonly value="<?php echo html_esc($row_work["status_wc"]);  ?>" class="form-control" /></td>
     </tr>
     <tr>
     <td>Model Description</td>
     <td>:</td>
-    <td><input type="text" id="wc_desc2" name="wc_desc2" readonly value="<?php echo $row_work["wc_desc2"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="wc_desc2" name="wc_desc2" readonly value="<?php echo html_esc($row_work["wc_desc2"]);  ?>" class="form-control" /></td>
     </tr>
      <tr>
     <td>Category Material</td>

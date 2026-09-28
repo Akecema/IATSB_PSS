@@ -27,9 +27,9 @@ $result41 =mysqli_query($dbc,$query41);
 			      {
 					  if($_POST['Submit19'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["id_model"]; ?>" <?php if($row41["id_model"]==$_POST["model_code"]) echo "selected"; ?>><?php echo stripslashes($row41["model_code"]); ?> - <?php echo stripslashes($row41["model_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["id_model"]); ?>" <?php if($row41["id_model"]==$_POST["model_code"]) echo "selected"; ?>><?php echo stripslashes($row41["model_code"]); ?> - <?php echo stripslashes($row41["model_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row41["id_model"]; ?>" > <?php echo stripslashes($row41["model_code"]); ?> - <?php echo stripslashes($row41["model_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["id_model"]); ?>" > <?php echo stripslashes($row41["model_code"]); ?> - <?php echo stripslashes($row41["model_desc"]); ?></option>
                        <?php } ?>
 	
               <?php    }

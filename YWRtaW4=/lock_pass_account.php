@@ -146,7 +146,7 @@ if (isset($message))
 }
 } 
  ?>
-  <div class="modal fade" id="myNoteLockZA<?php echo $user_no; ?><?php echo $row["staff_ID"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteLockZA<?php echo html_esc($user_no); ?><?php echo html_esc($row["staff_ID"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -168,14 +168,14 @@ if (isset($message))
                  <td>Staff ID </td>
                  <td>:</td>
                  <td>
-                   <input name="user_id" type="text" id="user_id" size="20" maxlength="20" readonly value="<?php echo $row["staff_ID"]; ?>" class="form-control" />
+                   <input name="user_id" type="text" id="user_id" size="20" maxlength="20" readonly value="<?php echo html_esc($row["staff_ID"]); ?>" class="form-control" />
                  </td>
                </tr>
                  <tr>
                  <td height="25">Name </td>
                  <td height="25">:</td>
                  <td height="25">
-         <input name="user_fullname" type="text" class="form-control" id="user_fullname" size="55" maxlength="100" readonly value="<?php echo $row["user_fullname"]; ?>" />
+         <input name="user_fullname" type="text" class="form-control" id="user_fullname" size="55" maxlength="100" readonly value="<?php echo html_esc($row["user_fullname"]); ?>" />
                 </td>
                </tr>
                <?php
@@ -197,7 +197,7 @@ if (isset($message))
                 <tr>
                  <td>Date Lock Access</td>
                  <td>:</td>
-                 <td><?php  echo $row["date_failed"]; ?></td>
+                 <td><?php  echo html_esc($row["date_failed"]); ?></td>
                </tr>
                <tr>
                  <td>&nbsp;</td>
@@ -220,7 +220,7 @@ if (isset($message))
               <div class="modal-footer">   
                <input name="submitK" type="submit"  id="submitK" value="UPDATE" class="btn btn-info">  
                <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
-               <input type="hidden" name="user_no" id="user_no" value="<?php echo $row["user_no"]; ?>">  
+               <input type="hidden" name="user_no" id="user_no" value="<?php echo html_esc($row["user_no"]); ?>">  
              
             <!--  <input type="submit" name="submit2" value="Close" class="btn btn-success" />-->
              </div>  

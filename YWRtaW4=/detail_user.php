@@ -64,8 +64,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,7 +84,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteUser<?php echo $row["user_no"]; ?><?php echo $row["staff_ID"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteUser<?php echo html_esc($row["user_no"]); ?><?php echo html_esc($row["staff_ID"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -106,17 +106,17 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
    <tr>
     <td width="191">Company Code</td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="vendor_no" name="vendor_no" readonly value="<?php  echo $row[1]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="vendor_no" name="vendor_no" readonly value="<?php  echo html_esc($row[1]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Staff ID</td>
     <td width="28">:</td>
-    <td><input type="text" id="staff_ID" name="staff_ID" readonly value="<?php echo $row["staff_ID"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="staff_ID" name="staff_ID" readonly value="<?php echo html_esc($row["staff_ID"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Name</td>
     <td>:</td>
-    <td><input type="text" id="user_fullname" name="user_fullname" readonly value="<?php echo $row["user_fullname"];  ?>" class="form-control"/>
+    <td><input type="text" id="user_fullname" name="user_fullname" readonly value="<?php echo html_esc($row["user_fullname"]);  ?>" class="form-control"/>
      </td>
     </tr>
   <tr>
@@ -131,7 +131,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
   
 
 	?>
-      <input type="text" id="company" name="company" readonly value="<?php echo $row3["comp_code"]; ?> - <?php echo $row3["comp_name"]; ?>" class="form-control" /></td>
+      <input type="text" id="company" name="company" readonly value="<?php echo html_esc($row3["comp_code"]); ?> - <?php echo html_esc($row3["comp_name"]); ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Department</td>
@@ -145,7 +145,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 		
 	
 	?>
-      <input type="text" id="department" name="department" readonly value="<?php echo $row2["dept_name"];  ?>" class="form-control" /></td>
+      <input type="text" id="department" name="department" readonly value="<?php echo html_esc($row2["dept_name"]);  ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Designation</td>
@@ -159,27 +159,27 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
    
   
 
-	?>  <input type="text" id="designation" name="designation" readonly value="<?php echo $row2b[1];  ?>" class="form-control" /></td>
+	?>  <input type="text" id="designation" name="designation" readonly value="<?php echo html_esc($row2b[1]);  ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Telephone No. 1</td>
     <td>:</td>
-    <td><input type="text" id="user_telno1" name="user_telno1" readonly value="<?php echo $row["user_telno1"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="user_telno1" name="user_telno1" readonly value="<?php echo html_esc($row["user_telno1"]);  ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Telephone No. 2</td>
     <td>:</td>
-    <td><input type="text" id="user_telno2" name="user_telno2" readonly value="<?php echo $row["user_telno2"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="user_telno2" name="user_telno2" readonly value="<?php echo html_esc($row["user_telno2"]);  ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Fax No.</td>
     <td>:</td>
-    <td><input type="text" id="user_fax" name="user_fax" readonly value="<?php echo $row["user_fax"]; ?>" class="form-control" /></td>
+    <td><input type="text" id="user_fax" name="user_fax" readonly value="<?php echo html_esc($row["user_fax"]); ?>" class="form-control" /></td>
     </tr>
       <tr>
     <td>Email</td>
     <td>:</td>
-    <td><input type="text" id="user_email" name="user_email" readonly value="<?php echo $row["user_email"]; ?>" class="form-control" /></td>
+    <td><input type="text" id="user_email" name="user_email" readonly value="<?php echo html_esc($row["user_email"]); ?>" class="form-control" /></td>
     </tr>
     <tr>
     <td>Level</td>
@@ -192,7 +192,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
   $row4 = mysqli_fetch_array ($result4);
 	  
 	
-	?><input type="text" id="level_id" name="level_id" readonly value="<?php  echo $row4["desc_level"]; ?>" class="form-control" /></td>
+	?><input type="text" id="level_id" name="level_id" readonly value="<?php  echo html_esc($row4["desc_level"]); ?>" class="form-control" /></td>
     </tr>
       <tr>
     <td>Status User</td>
@@ -223,17 +223,17 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
      <tr>
     <td>User Created</td>
     <td>:</td>
-    <td><input type="text" id="user_created" name="user_created" readonly value="<?php echo $row["user_created"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="user_created" name="user_created" readonly value="<?php echo html_esc($row["user_created"]);  ?>" class="form-control" /></td>
     </tr>
   <tr>
     <td>Date Created</td>
     <td>:</td>
-    <td><input type="text" id="date_created" name="date_created" readonly value="<?php echo $row["date_created"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="date_created" name="date_created" readonly value="<?php echo html_esc($row["date_created"]);  ?>" class="form-control" /></td>
     </tr>
     <tr>
     <td width="191">Company Code</td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="vendor_no" name="vendor_no" readonly value="<?php  echo $row["vendor_no"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="vendor_no" name="vendor_no" readonly value="<?php  echo html_esc($row["vendor_no"]); ?>" class="form-control"></td>
     </tr>
     </table>
     </div>
@@ -1129,11 +1129,11 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
                   
                    <hr width="100%">           
                <!-- CEO  --->
-               <p><b><?php echo $rst_apprv8["apprv_name2"]; ?> </b></p>
+               <p><b><?php echo html_esc($rst_apprv8["apprv_name2"]); ?> </b></p>
                
                <div class="toggle">
                   <label>
-                  <input type="checkbox" id="main_coo" name="main_coo" disabled value="Y" <?php if($row_ath_all["main_coo"] == 'Y'){ ?> checked <?php  } ?>><span class="button-indecator"><?php echo $rst_apprv8["apprv_name2"]; ?> </span>
+                  <input type="checkbox" id="main_coo" name="main_coo" disabled value="Y" <?php if($row_ath_all["main_coo"] == 'Y'){ ?> checked <?php  } ?>><span class="button-indecator"><?php echo html_esc($rst_apprv8["apprv_name2"]); ?> </span>
                   </label>
                 </div>
              

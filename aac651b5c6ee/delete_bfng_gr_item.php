@@ -18,7 +18,7 @@ include '../include/config.php';
 	 {
 			 
 			 echo "<script>";
-			 echo "window.location='confirm_backflushProc_NG.php?uid2=$scan_doc'";
+			 echo "window.location='confirm_backflushProc_NG.php?uid2=".html_esc($scan_doc)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

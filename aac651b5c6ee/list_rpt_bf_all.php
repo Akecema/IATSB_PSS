@@ -80,8 +80,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -243,7 +243,7 @@ th {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='list_rpt_bf_OK-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='list_rpt_bf_OK-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -251,7 +251,7 @@ th {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='list_rpt_bf_NG-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='list_rpt_bf_NG-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -260,7 +260,7 @@ th {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='list_rpt_bf_PEND-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='list_rpt_bf_PEND-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -269,7 +269,7 @@ th {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='list_rpt_bf_HWOK-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='list_rpt_bf_HWOK-all.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -318,12 +318,12 @@ th {
             <tr>
             <th>Date From : <font color="#FF0000">*</font></th>
             <td>
-           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
 		     </td>
              </tr>
              <tr>
               <th>Date To : <font color="#FF0000">*</font></th>
-              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /></td>
+              <td><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /></td>
               </tr>
               <tr>
                 <th>Plant : <font color="#FF0000">*</font></th>
@@ -339,7 +339,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             

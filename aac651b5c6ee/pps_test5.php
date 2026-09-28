@@ -146,9 +146,9 @@ while($row = mysqli_fetch_array($result))
     
     <tbody>
     <tr>
-        <td><?php echo $row2['id_pps_dtl']; ?></td>
-        <td><?php echo $row2['plan_no']; ?></td> 
-        <td><?php echo $row2['work_center']; ?></td>
+        <td><?php echo html_esc($row2['id_pps_dtl']); ?></td>
+        <td><?php echo html_esc($row2['plan_no']); ?></td> 
+        <td><?php echo html_esc($row2['work_center']); ?></td>
     </tr>
     <?php $rows++;  }   ?>
     

@@ -104,8 +104,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -626,7 +626,7 @@ $result_ins_dis = mysqli_query($dbc,$query_ins_dis);
 			
 				  echo "<script>";
 				  echo "alert('ERROR! Please Scan Kanban QR Code. Planning not exist');";
-				  echo "window.location='confirm_backflushProc_NG.php?uid2=$uid2'";
+				  echo "window.location='confirm_backflushProc_NG.php?uid2=".html_esc($uid2)."'";
 				  echo "</script>";
 				  exit(); //quit the script
 			 
@@ -848,7 +848,7 @@ $result_ins_dis = mysqli_query($dbc,$query_ins_dis);
 			
 				  echo "<script>";
 				  echo "alert('ERROR! Please Scan Kanban QR Code. Planning not exist');";
-				  echo "window.location='confirm_backflushProc_NG.php?uid2=$uid2'";
+				  echo "window.location='confirm_backflushProc_NG.php?uid2=".html_esc($uid2)."'";
 				  echo "</script>";
 				  exit(); //quit the script
 			 
@@ -896,7 +896,7 @@ if (isset($message))
 	     $data_plant = mysqli_fetch_array($result_plant);
 		  
 		  ?>
-         <form name="myform" method="post" action="confirm_backflushProc_NG.php?uid2=<?php echo $uid2; ?>">        
+         <form name="myform" method="post" action="confirm_backflushProc_NG.php?uid2=<?php echo html_esc($uid2); ?>">        
           <table width="100%" border="0" cellpadding="2">
         <tr>
        <td width="52%" ><p>&nbsp;</p></td>
@@ -934,14 +934,14 @@ if (isset($message))
                     
                 
                 ?>
-                  <option value="<?php echo $row39["material_no"]; ?>" >(<?php echo $row39["back_no"]; ?>)&nbsp;<?php echo $row39["material_no"]; ?> - <?php echo $row39["material_desc"]; ?> </option>
+                  <option value="<?php echo html_esc($row39["material_no"]); ?>" >(<?php echo html_esc($row39["back_no"]); ?>)&nbsp;<?php echo html_esc($row39["material_no"]); ?> - <?php echo html_esc($row39["material_desc"]); ?> </option>
                 
                 <?php     }
                 
                 ?>
             </select>
           
-            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php echo $data_scan["back_no"]; ?>" />  
+            <input class="form-control" id="back_no" type="hidden"  name="back_no" value="<?php echo html_esc($data_scan["back_no"]); ?>" />  
             <?php    }else{
 				
 				
@@ -959,7 +959,7 @@ if (isset($message))
                     
                 
                 ?>
-                  <option value="<?php echo $row39A["material_no"]; ?>" >(<?php echo $row39A["back_no"]; ?>)&nbsp;<?php echo $row39A["material_no"]; ?> - <?php echo $row39A["material_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row39A["material_no"]); ?>" >(<?php echo html_esc($row39A["back_no"]); ?>)&nbsp;<?php echo html_esc($row39A["material_no"]); ?> - <?php echo html_esc($row39A["material_desc"]); ?></option>
                 
                 <?php     }
                 
@@ -980,7 +980,7 @@ if (isset($message))
                      <td width="14%">Posting Date</td>
                      <td width="2%">:</td>
                      <td colspan="2"> 
-                     <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" />
+                     <input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" />
                      </td>
                     </tr>
                      <tr>
@@ -990,7 +990,7 @@ if (isset($message))
                        <?php if($_POST["con_firmng"] == true)
 		{  
 		?>
-                       <option value="<?php echo $_POST["time3"]; ?>"><?php echo sprintf('%02d', $_POST["time3"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time3"]); ?>"><?php echo sprintf('%02d', $_POST["time3"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1007,7 +1007,7 @@ if (isset($message))
                        <?php if($_POST["con_firmng"] == true)  
 		{  
 		?>
-                       <option value="<?php echo $_POST["time4"]; ?>"><?php echo sprintf('%02d', $_POST["time4"]);	 ?></option>
+                       <option value="<?php echo html_esc($_POST["time4"]); ?>"><?php echo sprintf('%02d', $_POST["time4"]);	 ?></option>
                        <?php
 	 }else{
 	 ?>
@@ -1024,7 +1024,7 @@ if (isset($message))
                    <tr>
                      <td>Enter NG Quantity</td>
                      <td>:</td>
-                     <td colspan="5"><input name="qty_NG" type="number" min="1" value="<?php if(isset($_POST["qty_NG"])) { echo $_POST["qty_NG"]; } ?>"  class="form-control" /><div class="form-control-feedback" ><?php echo $message_qng; ?></div></td>
+                     <td colspan="5"><input name="qty_NG" type="number" min="1" value="<?php if(isset($_POST["qty_NG"])) { echo html_esc($_POST["qty_NG"]); } ?>"  class="form-control" /><div class="form-control-feedback" ><?php echo $message_qng; ?></div></td>
                      </tr>
                     <tr>
                      <td>Process of Reject</td>
@@ -1041,13 +1041,13 @@ if (isset($message))
 				   ?>
                      <?php if($_POST["con_firmng"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_proc["id_proc"]; ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo $row_proc["proc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"<?php if($row_proc["id_proc"] == $_POST["proc_reject"]) echo "selected"; ?>> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 				  
 				  ?> 
-                  <option value="<?php echo $row_proc["id_proc"]; ?>"> <?php echo $row_proc["proc_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"> <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                   <?php
 				    }  // else
 				  

@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -209,7 +209,7 @@ $status_stamp = $_POST['status_stamp'];
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_cat"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_cat"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -237,12 +237,12 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
    <tr>
     <td width="191">Category Code <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="stamp_ind" name="stamp_ind" readonly value="<?php  echo $row_was["stamp_ind"]; ?>" class="form-control" required><div class="invalid-feedback">Please enter Category Code.</div></td>
+    <td width="971"><input type="text" id="stamp_ind" name="stamp_ind" readonly value="<?php  echo html_esc($row_was["stamp_ind"]); ?>" class="form-control" required><div class="invalid-feedback">Please enter Category Code.</div></td>
     </tr>
     <tr>
     <td>Category Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="stamp_desc" name="stamp_desc" value="<?php echo $row_was["stamp_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter Category Description.</div></td>
+    <td><input type="text" id="stamp_desc" name="stamp_desc" value="<?php echo html_esc($row_was["stamp_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter Category Description.</div></td>
     </tr>
      <tr>
     <td>Plant <font color="#FF0000">*</font></td>
@@ -258,7 +258,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-         <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $row_was["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+         <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $row_was["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
           <?php
            }  ?>
                             
@@ -290,7 +290,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_cat" name="id_cat"  class="form-control" value="<?php echo $row2["id_cat"];  ?>" >  
+             <input type="hidden" id="id_cat" name="id_cat"  class="form-control" value="<?php echo html_esc($row2["id_cat"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

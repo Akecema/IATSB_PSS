@@ -21,7 +21,7 @@ include '../include/config.php';
 	 {
 			
 			 echo "<script>";
-			 echo "window.location='detail_GR_return-receive.php?scan_doc=$scan_doc&&pps_ref=$barcode_ref&&shift_ops=$shift_ops&&date1=$dateF'";
+			 echo "window.location='detail_GR_return-receive.php?scan_doc=".html_esc($scan_doc)."&&pps_ref=".html_esc($barcode_ref)."&&shift_ops=".html_esc($shift_ops)."&&date1=".html_esc($dateF)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

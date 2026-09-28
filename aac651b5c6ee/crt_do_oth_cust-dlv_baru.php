@@ -94,8 +94,8 @@ $rst_sta19 = mysqli_fetch_array($sta_res19);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1015,7 +1015,7 @@ exit();
              <tr>
                 <th>Sales Order : </th>
                 <th colspan="2">
-           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo $_POST['so_no']; }else{ if($_GET["so_no"] != '') { echo $_GET["so_no"]; }  }?>"  />    
+           <input class="form-control" id="so_no" type="text" placeholder="Enter Sales Order No." name="so_no" value="<?php if(isset($_POST['so_no'])){ echo html_esc($_POST['so_no']); }else{ if($_GET["so_no"] != '') { echo html_esc($_GET["so_no"]); }  }?>"  />    
           <div class="form-control-feedback" ><?php echo $message_so; ?></div>   
           <input name="submit8" type="submit" id="submit8" value="+ Scan Item" class="button"  />  
             <!-- <div id="result"></div>-->
@@ -1025,7 +1025,7 @@ exit();
              <tr>
               <th>IA QRCode: <font color="#FF0000">*</font></th>
               <td colspan="2">
-                 <input class="form-control" id="ia_barcode" type="text" placeholder="Enter IA QRCode" name="ia_barcode" value="<?php if(isset($_POST['ia_barcode'])){ echo $_POST['ia_barcode']; }else{ if($_GET["ia_barcode"] != '') { echo $_GET["ia_barcode"]; }  }  ?>"  autofocus required />
+                 <input class="form-control" id="ia_barcode" type="text" placeholder="Enter IA QRCode" name="ia_barcode" value="<?php if(isset($_POST['ia_barcode'])){ echo html_esc($_POST['ia_barcode']); }else{ if($_GET["ia_barcode"] != '') { echo html_esc($_GET["ia_barcode"]); }  }  ?>"  autofocus required />
               <div class="form-control-feedback" ><?php echo $message_iaqr; ?></div>
               <input class="form-control" id="so_noA" type="hidden"  name="so_noA" value="<?php echo $part1;  ?>" /> 
               <input name="submit10K" type="submit" id="submit10K" value="+ Scan Item" class="button"  /> </td>
@@ -1033,7 +1033,7 @@ exit();
              <tr>
             <th>Delivery Date: <font color="#FF0000">*</font></th>
             <td>
-           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ if($_GET["date1"] != '') { echo $_GET["date1"]; }else{ echo $fmt_curr_date; }  }  ?>" /><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
+           <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ if($_GET["date1"] != '') { echo html_esc($_GET["date1"]); }else{ echo $fmt_curr_date; }  }  ?>" /><div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
 		     </td>
              </tr>
              <tr>
@@ -1254,17 +1254,17 @@ exit();
 		
       ?>
                 <tr>
-                <td width="60"><div align="center"><a href="delete_do_othcust_itemSales.php?scan_gen=<?php echo $row["scan_gen"]; ?>&&so_no=<?php echo $row["so_no"]; ?>&&p_id=<?php echo $row["id"]; ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></div></td>
-                <td width="60"><?php echo $no4; ?><input name="id[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $row["id"]; ?>">
-                <input name="item_no[<?php echo $row["id"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="300"><?php echo $row["material_desc"]; ?></td> 
-                <td width="100"><?php echo $row["J"]; ?></td>
-                <td width="150"> <input name="qty_dlv[<?php echo $row["id"]; ?>]" type="number" min="1" value="<?php if(isset($_POST["qty_dlv"])) { echo $_POST["qty_dlv"][($row["id"])]; }else{   echo (intval($row["qty_dlv"]));  } ?>" id="qty_dlv" class="form-control form-control-sm">
+                <td width="60"><div align="center"><a href="delete_do_othcust_itemSales.php?scan_gen=<?php echo html_esc($row["scan_gen"]); ?>&&so_no=<?php echo html_esc($row["so_no"]); ?>&&p_id=<?php echo html_esc($row["id"]); ?>" onclick="return confirm('Are you sure you want to delete?')"><img src="../images/delete.png" alt="Remove Item"></a></div></td>
+                <td width="60"><?php echo $no4; ?><input name="id[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo html_esc($row["id"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="300"><?php echo html_esc($row["material_desc"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["J"]); ?></td>
+                <td width="150"> <input name="qty_dlv[<?php echo html_esc($row["id"]); ?>]" type="number" min="1" value="<?php if(isset($_POST["qty_dlv"])) { echo html_esc($_POST["qty_dlv"][($row["id"])]); }else{   echo (intval($row["qty_dlv"]));  } ?>" id="qty_dlv" class="form-control form-control-sm">
                  </td>
               
-                <td width="200"><?php echo $row["pdio_no"]; ?></td> 
-                <td width="250"><?php echo $row["tag_no"]; ?>   <input class="form-control" id="scan_gen" type="hidden"  name="scan_gen" value="<?php echo $row["scan_gen"];  ?>" /> </td> </tr>	
+                <td width="200"><?php echo html_esc($row["pdio_no"]); ?></td> 
+                <td width="250"><?php echo html_esc($row["tag_no"]); ?>   <input class="form-control" id="scan_gen" type="hidden"  name="scan_gen" value="<?php echo html_esc($row["scan_gen"]);  ?>" /> </td> </tr>	
                
                  
           <?php 

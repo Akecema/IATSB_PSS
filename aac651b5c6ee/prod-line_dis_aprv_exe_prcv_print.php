@@ -13,23 +13,23 @@
                      <th width="20%"><div align="center" class="style7">Approved by</div></th>
                    </tr>
                     <tr>
-                     <td><div align="center" class="style7"><p><b><?php  echo $data_prepare["user_fullname"];   ?></b>
-                     <br><?php echo $data_bb["T3"];   ?></p></div></td>
-                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved1"]) != "") { echo $data_appr["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["hod_approved1"]) != "") {  echo $data_bb["T9"]; } ?></p></div></td> 
-                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved2"]) != "") { echo $data_appr2["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["hod_approved2"]) != "") {  echo $data_bb["T19"]; } ?></p></div></td> 
-                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved3"]) != "") { echo $data_appr3["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["hod_approved3"]) != "") {  echo $data_bb["T29"]; } ?></p></div></td>
-                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved4"]) != "") { echo $data_appr4["user_fullname"];  }  ?></b>
-                     <br><?php if(($data_bb["hod_approved4"]) != "") {  echo $data_bb["T39"]; } ?></p></div></td>
+                     <td><div align="center" class="style7"><p><b><?php  echo html_esc($data_prepare["user_fullname"]);   ?></b>
+                     <br><?php echo html_esc($data_bb["T3"]);   ?></p></div></td>
+                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved1"]) != "") { echo html_esc($data_appr["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["hod_approved1"]) != "") {  echo html_esc($data_bb["T9"]); } ?></p></div></td> 
+                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved2"]) != "") { echo html_esc($data_appr2["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["hod_approved2"]) != "") {  echo html_esc($data_bb["T19"]); } ?></p></div></td> 
+                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved3"]) != "") { echo html_esc($data_appr3["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["hod_approved3"]) != "") {  echo html_esc($data_bb["T29"]); } ?></p></div></td>
+                     <td><div align="center" class="style7"><p><b><?php  if(($data_bb["hod_approved4"]) != "") { echo html_esc($data_appr4["user_fullname"]);  }  ?></b>
+                     <br><?php if(($data_bb["hod_approved4"]) != "") {  echo html_esc($data_bb["T39"]); } ?></p></div></td>
                    </tr>
                    <tr>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv2["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv5["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv6["apprv_name"]; ?></div></td>
-                     <td><div align="center" class="style7"><?php echo $rst_apprv8["apprv_name"]; ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv2["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv5["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv6["apprv_name"]); ?></div></td>
+                     <td><div align="center" class="style7"><?php echo html_esc($rst_apprv8["apprv_name"]); ?></div></td>
                    </tr>
                  </table>
     
@@ -42,20 +42,20 @@
                      <th colspan="4"><div class="style18">COMMENT</div></th>
                    </tr>
                     <tr> 
-                     <td width="15%"><b><?php echo $rst_apprv2["apprv_name2"]; ?> :</b></td>
-                     <td width="25%"><?php if(($data_bb["hod_approved1"]) != "") {  echo $data_bb["remark_approved1"]; }else{ ?>
+                     <td width="15%"><b><?php echo html_esc($rst_apprv2["apprv_name2"]); ?> :</b></td>
+                     <td width="25%"><?php if(($data_bb["hod_approved1"]) != "") {  echo html_esc($data_bb["remark_approved1"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
-                     <td width="15%"><b><?php echo $rst_apprv6["apprv_name2"]; ?> :</b></td>
-                     <td width="25%"><?php if(($data_bb["hod_approved3"]) != "") {  echo $data_bb["remark_approved3"]; }else{ ?>
+                     <td width="15%"><b><?php echo html_esc($rst_apprv6["apprv_name2"]); ?> :</b></td>
+                     <td width="25%"><?php if(($data_bb["hod_approved3"]) != "") {  echo html_esc($data_bb["remark_approved3"]); }else{ ?>
                      _______________________________________________<?php }  ?>
                      </td>
                    </tr>
                     <tr> 
-                     <td width="15%"><b><?php echo $rst_apprv5["apprv_name2"]; ?> :</b></td>
-                     <td width="25%"><?php if(($data_bb["hod_approved2"]) != "") {  echo $data_bb["remark_approved2"]; }else{ ?>
+                     <td width="15%"><b><?php echo html_esc($rst_apprv5["apprv_name2"]); ?> :</b></td>
+                     <td width="25%"><?php if(($data_bb["hod_approved2"]) != "") {  echo html_esc($data_bb["remark_approved2"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
-                     <td width="15%"><b><?php echo $rst_apprv8["apprv_name2"]; ?> :</b></td>
-                     <td width="25%"><?php if(($data_bb["hod_approved4"]) != "") {  echo $data_bb["remark_approved4"]; }else{ ?>
+                     <td width="15%"><b><?php echo html_esc($rst_apprv8["apprv_name2"]); ?> :</b></td>
+                     <td width="25%"><?php if(($data_bb["hod_approved4"]) != "") {  echo html_esc($data_bb["remark_approved4"]); }else{ ?>
                      _______________________________________________<?php }  ?></td>
                    </tr>
                   </table>    </td>

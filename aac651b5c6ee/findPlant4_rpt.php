@@ -24,7 +24,7 @@ $result41 = mysqli_query($dbc,$query41);
 			      {
 					  ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["id_work"]; ?>" ><?php echo stripslashes($row41["id_work"]),' - ',stripslashes($row41["wc_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["id_work"]); ?>" ><?php echo stripslashes($row41["id_work"]),' - ',stripslashes($row41["wc_desc"]); ?></option>
                        
 	
               <?php    }

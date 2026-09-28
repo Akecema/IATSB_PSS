@@ -26,7 +26,7 @@ include '../include/config.php';
 	 {
 			 
 			 echo "<script>";
-			 echo "window.location='detail_GR_disposal-receive.php?scan_doc=$scan_doc&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&shift_ops=$shift_ops&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
+			 echo "window.location='detail_GR_disposal-receive.php?scan_doc=".html_esc($scan_doc)."&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=".html_esc($plant_code)."&&shift_ops=".html_esc($shift_ops)."&&model_code=".html_esc($model_code)."&&material_type=".html_esc($material_type)."&&stamp_ind=".html_esc($stamp_ind)."&&material_no=".html_esc($material_no)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 

@@ -121,8 +121,8 @@ $rst_sta31 = mysqli_fetch_array($sta_res31);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -329,8 +329,8 @@ page-break-before: always ;
 				}
     
 		   echo "<script>";
-		   echo "alert('Return DO $uid4 Successfully Cancelled. Your cancellation number $ref3A');";
-		   echo "window.location='canC_return_dlvdo_alldo-dlvProc.php?do_no=$do_no&&ship_to=$ship_to&&date1=$dateF&&date2=$dateT&&date3=$dateA'";
+		   echo "alert('Return DO ".html_esc($uid4)." Successfully Cancelled. Your cancellation number $ref3A');";
+		   echo "window.location='canC_return_dlvdo_alldo-dlvProc.php?do_no=$do_no&&ship_to=$ship_to&&date1=$dateF&&date2=$dateT&&date3=".html_esc($dateA)."'";
 	       echo "</script>"; 
 		   exit(); //quit the script
 		
@@ -338,7 +338,7 @@ page-break-before: always ;
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteCancelRTNDO<?php echo $row["doc_no_return"]; ?><?php echo $row["ship_point"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteCancelRTNDO<?php echo html_esc($row["doc_no_return"]); ?><?php echo html_esc($row["ship_point"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -445,12 +445,12 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
       ?>
      
       <input name="do_no"  type="hidden" id="do_no" value="<?php echo $do_no; ?>">
-      <input name="uid4" type="hidden" id="uid4" value="<?php echo $row["doc_no_return"]; ?>">
-      <input name="ship_to" type="hidden" id="ship_to" value="<?php echo $_GET["ship_to"]; ?>">
-      <input name="date3"  type="hidden" id="date3" value="<?php echo $_GET["date3"]; ?>">
-      <input name="date1"  type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2"  type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
-      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo $row["ship_point"]; ?>"> 
+      <input name="uid4" type="hidden" id="uid4" value="<?php echo html_esc($row["doc_no_return"]); ?>">
+      <input name="ship_to" type="hidden" id="ship_to" value="<?php echo html_esc($_GET["ship_to"]); ?>">
+      <input name="date3"  type="hidden" id="date3" value="<?php echo html_esc($_GET["date3"]); ?>">
+      <input name="date1"  type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2"  type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
+      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo html_esc($row["ship_point"]); ?>"> 
   
       
       <?php 

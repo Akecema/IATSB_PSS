@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -176,7 +176,7 @@ if (empty($_POST['status_reject']))
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEdit<?php echo $row2["id_reject"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEdit<?php echo html_esc($row2["id_reject"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -204,12 +204,12 @@ $row_rej = mysqli_fetch_array($result_rej);   //how many records are there?
    <tr>
     <td width="191">ID Reason <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_reject" name="id_reject" readonly value="<?php  echo $row_rej["id_reject"]; ?>" class="form-control" required></td>
+    <td width="971"><input type="text" id="id_reject" name="id_reject" readonly value="<?php  echo html_esc($row_rej["id_reject"]); ?>" class="form-control" required></td>
     </tr>
   <tr>
     <td>Reason Reject Desc <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td><input type="text" id="reject_desc" name="reject_desc" value="<?php echo $row_rej["reject_desc"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter reason reject description.</div></td>
+    <td><input type="text" id="reject_desc" name="reject_desc" value="<?php echo html_esc($row_rej["reject_desc"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter reason reject description.</div></td>
     </tr>
   <tr>
     <td>Status <font color="#FF0000">*</font></td>
@@ -234,7 +234,7 @@ $row_rej = mysqli_fetch_array($result_rej);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_reject" name="id_reject"  class="form-control" value="<?php echo $row2["id_reject"];  ?>" >  
+             <input type="hidden" id="id_reject" name="id_reject"  class="form-control" value="<?php echo html_esc($row2["id_reject"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" >             
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

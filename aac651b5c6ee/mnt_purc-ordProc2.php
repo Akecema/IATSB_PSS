@@ -97,8 +97,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -235,7 +235,7 @@ th {
 
         
               ?>
-                  <option value="<?php echo $data_ath_vend2["vendor_id"]; ?>" <?php if($data_ath_vend2["vendor_id"] == $_GET["vendor_no"]) echo "selected"; ?>> <?php echo stripslashes($row27A["vendor_code"]); ?> - <?php echo $row27A["vendor_name"]; ?></option>
+                  <option value="<?php echo html_esc($data_ath_vend2["vendor_id"]); ?>" <?php if($data_ath_vend2["vendor_id"] == $_GET["vendor_no"]) echo "selected"; ?>> <?php echo stripslashes($row27A["vendor_code"]); ?> - <?php echo html_esc($row27A["vendor_name"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -258,7 +258,7 @@ th {
 		
         
               ?>
-                      <option value="<?php echo $data_mth["month_int"]; ?>" <?php if($data_mth["month_int"] == $_GET["month_po"]) echo "selected"; ?> > <?php echo stripslashes($data_mth["month_descp"]); ?></option>
+                      <option value="<?php echo html_esc($data_mth["month_int"]); ?>" <?php if($data_mth["month_int"] == $_GET["month_po"]) echo "selected"; ?> > <?php echo stripslashes($data_mth["month_descp"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -387,18 +387,18 @@ $num_rows = mysqli_num_rows($rs_pur);   //how many material are there?
       ?>
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
-                <td width="150"><?php echo $row["po_no"]; ?></td>
-                <td width="250"><?php echo $row_vcode["vendor_name"]; ?></td> 
-                <td width="100"><?php echo $data_mth_detail["month_descp"]; ?></td>
-                <td width="150"><?php echo $row["year_po"]; ?></td>
-                <td width="200"><?php echo $row["remark_upload"]; ?></td>
+                <td width="150"><?php echo html_esc($row["po_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row_vcode["vendor_name"]); ?></td> 
+                <td width="100"><?php echo html_esc($data_mth_detail["month_descp"]); ?></td>
+                <td width="150"><?php echo html_esc($row["year_po"]); ?></td>
+                <td width="200"><?php echo html_esc($row["remark_upload"]); ?></td>
                 <td width="150">
                
-                 <a href="edt-mtnpurc-ord.php?buid=<?php echo base64_encode($row["upload_id"]); ?>&&vendor_no=<?php echo $row["vendor_no"]; ?>&&month_po=<?php echo $month_po; ?>&&year_po=<?php echo $year_po; ?>" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>    
+                 <a href="edt-mtnpurc-ord.php?buid=<?php echo base64_encode($row["upload_id"]); ?>&&vendor_no=<?php echo html_esc($row["vendor_no"]); ?>&&month_po=<?php echo html_esc($month_po); ?>&&year_po=<?php echo html_esc($year_po); ?>" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a>    
             
                 
                 </td>
-                <td width="150"><a href="#myNoteCancelDIS<?php echo $row["upload_id"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
+                <td width="150"><a href="#myNoteCancelDIS<?php echo html_esc($row["upload_id"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-window-close" aria-hidden="true"></i>Delete</a> 
               <?php
 			  
 			  
@@ -408,7 +408,7 @@ $num_rows = mysqli_num_rows($rs_pur);   //how many material are there?
 			   ?>
                 </td>
                  <td width="150">
-                 <a href="../SA_upload/<?php echo $row["po_no"].".pdf"; ?>" target="_blank"><img src="../images/icon_view.jpg" width="16" height="16" alt="View PO">View</a>    
+                 <a href="../SA_upload/<?php echo html_esc($row["po_no"]).".pdf"; ?>" target="_blank"><img src="../images/icon_view.jpg" width="16" height="16" alt="View PO">View</a>    
                 </td>
                 </tr>
                  

@@ -122,8 +122,8 @@ $buid = base64_decode($_GET["buid"]);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Document No <?php echo $buid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Document No <?php echo $buid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -329,29 +329,29 @@ body
     <td valign="top">&nbsp;<h5><font color="#999999"><b>GOODS RETURN</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $data_bb["plant_code"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($data_bb["plant_code"]);   ?></div></td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>Document No. :  </b><?php echo $data_bb["doc_no_return"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($data_bb["doc_no_return"]);   ?></div></td>
    <tr> 
-    <td><div align="left"><b>Purchase Order No. :  </b><?php echo $data_bb["plan_no"];   ?></div></td>
+    <td><div align="left"><b>Purchase Order No. :  </b><?php echo html_esc($data_bb["plan_no"]);   ?></div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Date :  </b><?php echo $data_bb["T3"];   ?></div></td>
+    <td><div align="left"><b>Date :  </b><?php echo html_esc($data_bb["T3"]);   ?></div></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Delivery Order No. :  </b><?php echo $data_bb["doc_no"];   ?></div></td>
+    <td><div align="left"><b>Delivery Order No. :  </b><?php echo html_esc($data_bb["doc_no"]);   ?></div></td>
     <td>&nbsp;</td>
     <td><div align="left"><b>Shift :  </b><?php echo $shift_ds2;   ?></div></td>
   </tr>
    <tr>
-    <td><div align="left"><b>Vendor : </b> <?php echo $data_bb["vendor_no"];   ?> - <?php echo $data_vend["vendor_name"]; ?></div></td>
+    <td><div align="left"><b>Vendor : </b> <?php echo html_esc($data_bb["vendor_no"]);   ?> - <?php echo html_esc($data_vend["vendor_name"]); ?></div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>GRA No : </b> <?php echo $data_bb["doc_gra"];   ?></div></td>
+    <td><div align="left"><b>GRA No : </b> <?php echo html_esc($data_bb["doc_gra"]);   ?></div></td>
   </tr>
   <?php  if($data_bb["status_gra"] == $rst_sta4["status_desc"]) {  ?>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Cancelled By :  </b><?php echo $data_u_can["user_fullname"];  ?></div></td>
+    <td><div align="left"><b>Cancelled By :  </b><?php echo html_esc($data_u_can["user_fullname"]);  ?></div></td>
   </tr><?php }  ?>
   </table>
   
@@ -402,13 +402,13 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><?php echo $no; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["model_code"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["model_code"]); ?></td>
     <td><?php echo intval($row2["qty_gra"]); ?></td>
-    <td><?php echo $row2["uom_gra"]; ?></td>
-    <td><?php echo $row2["sloc_from"]; ?></td>
-    <td><?php echo $row2["remark_gra"]; ?></td>
+    <td><?php echo html_esc($row2["uom_gra"]); ?></td>
+    <td><?php echo html_esc($row2["sloc_from"]); ?></td>
+    <td><?php echo html_esc($row2["remark_gra"]); ?></td>
   </tr>
   
  <?php 

@@ -17,7 +17,7 @@ $result4 =mysql_query($query4);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -49,7 +49,7 @@ $result4 =mysql_query($query4);
 <?php
                 while($row4=mysql_fetch_array($result4, MYSQL_NUM)) 
 			      {
-                  echo'<option value="',$row4[0],'">',stripslashes($row4[0]),' - ',stripslashes($row4[2]),'</option>';
+                  echo'<option value="',html_esc($row4[0]),'">',html_esc(stripslashes($row4[0])),' - ',html_esc(stripslashes($row4[2])),'</option>';
 				  
 				  
                   }

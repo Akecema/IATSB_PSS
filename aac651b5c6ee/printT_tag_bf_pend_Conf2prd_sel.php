@@ -78,8 +78,8 @@ $buid = base64_decode($_GET["buid"]);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?> ">
-    <title><?php echo $data_setup["comp_code"]; ?> : Material Doc. No <?php echo $buid; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?> ">
+    <title><?php echo html_esc($data_setup["comp_code"]); ?> : Material Doc. No <?php echo $buid; ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -250,7 +250,7 @@ while($row = mysqli_fetch_array($result_pps))
       </tr>
     <tr>
       <td width="145">&nbsp;<span class="style8">Material Document No.</span></td>
-      <td width="288">&nbsp;<span class="style1"><?php echo $row["bflush_no"];  ?></span></td>
+      <td width="288">&nbsp;<span class="style1"><?php echo html_esc($row["bflush_no"]);  ?></span></td>
       <td colspan="2" rowspan="4">&nbsp;
        <?php
 
@@ -305,21 +305,21 @@ echo "</table></center>";
       </tr>
     <tr>
       <td>&nbsp;<span class="style8">Production Date</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["R"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["R"]);  ?></span></td>
       </tr>
     <tr>
       <td>&nbsp;<span class="style8">Production Time</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["posting_time"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["posting_time"]);  ?></span></td>
       </tr>
     <tr>
       <td>&nbsp;<span class="style8">Planned Order No.</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["plan_no"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["plan_no"]);  ?></span></td>
       </tr>
     <tr>
       <td>&nbsp;<span class="style8">Line</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["station_loc"];     ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["station_loc"]);     ?></span></td>
       <td width="117">&nbsp;<span class="style8">Part No.</span></td>
-      <td width="320"><div align="center"><span class="style7"><?php echo $row["material_no"];     ?></span></div></td>
+      <td width="320"><div align="center"><span class="style7"><?php echo html_esc($row["material_no"]);     ?></span></div></td>
     </tr>
     <tr>
       <td>&nbsp;<span class="style8">Shift</span></td>
@@ -327,25 +327,25 @@ echo "</table></center>";
       <?php if($row["shift_tag"] == "D/S"){ echo "Day"; }else{ echo "Night"; } ?>
     </span></td>
       <td>&nbsp;<span class="style8">Part Name</span></td>
-      <td><div align="center"><span class="style7"><?php echo $row["material_desc"];  ?></span></div></td>
+      <td><div align="center"><span class="style7"><?php echo html_esc($row["material_desc"]);  ?></span></div></td>
     </tr>
     <tr>
       <td>&nbsp;<span class="style8">SV/Leader</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["posting_by"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["posting_by"]);  ?></span></td>
       <td>&nbsp;<span class="style8">Model</span></td>
-      <td><div align="center"><span class="style7"><?php echo $row["model_code"];  ?></span></div></td>
+      <td><div align="center"><span class="style7"><?php echo html_esc($row["model_code"]);  ?></span></div></td>
     </tr>
     <tr>
       <td>&nbsp;<span class="style8">Pack Type</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["pack_type"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["pack_type"]);  ?></span></td>
       <td>&nbsp;<span class="style8">Quantity</span></td>
       <td><div align="center"><span class="style7"><?php echo intval($row["tag_qty"]);  ?></span></div></td>
     </tr>
     <tr>
       <td>&nbsp;<span class="style8">Pack No.</span></td>
-      <td>&nbsp;<span class="style1"><?php echo $row["pack_no"];  ?></span></td>
+      <td>&nbsp;<span class="style1"><?php echo html_esc($row["pack_no"]);  ?></span></td>
       <td>&nbsp;<span class="style8">Slip No.</span></td>
-      <td><div align="center"><span class="style1"> <?php echo $row["slip_no"];  ?> of <?php echo $row["total_slip"];  ?> </span></div></td>
+      <td><div align="center"><span class="style1"> <?php echo html_esc($row["slip_no"]);  ?> of <?php echo html_esc($row["total_slip"]);  ?> </span></div></td>
     </tr>
     </table>
      <table width="1000" border="1" cellspacing="0" cellpadding="0">

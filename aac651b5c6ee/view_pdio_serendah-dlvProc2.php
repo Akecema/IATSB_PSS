@@ -79,8 +79,8 @@ $rst_sta7 = mysqli_fetch_array($sta_res7);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -223,7 +223,7 @@ th {
             <tr>
             <th>Shipping Point : <font color="#FF0000">*</font></th>
             <td colspan="2">
-           <input class="form-control" id="ship_point" type="text" placeholder="Enter Shipping Point" name="ship_point" value="<?php if(isset($_POST['ship_point'])){ echo $_POST['ship_point']; }else{ echo "3100 - SERENDAH";   } ?>" readonly />
+           <input class="form-control" id="ship_point" type="text" placeholder="Enter Shipping Point" name="ship_point" value="<?php if(isset($_POST['ship_point'])){ echo html_esc($_POST['ship_point']); }else{ echo "3100 - SERENDAH";   } ?>" readonly />
          <div class="form-control-feedback" ><?php echo $message_shippt; ?></div>
 		     </td>
              </tr>
@@ -240,7 +240,7 @@ th {
                    while($row19 = mysqli_fetch_array($result19)) 
 			      {
 				   ?>
-                     <option value="<?php echo $row19["id_cust"]; ?>" <?php if($row19["id_cust"] == $_GET["cust_code"]) echo "selected"; ?>> <?php echo $row19["id_cust"]; ?> - <?php echo $row19["cust_desc"]; ?></option>
+                     <option value="<?php echo html_esc($row19["id_cust"]); ?>" <?php if($row19["id_cust"] == $_GET["cust_code"]) echo "selected"; ?>> <?php echo html_esc($row19["id_cust"]); ?> - <?php echo html_esc($row19["cust_desc"]); ?></option>
                 
                   <?php
                   }
@@ -251,17 +251,17 @@ th {
               <tr>
                    
                 <th>Delivery Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" />
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" />
                     </td></tr>
                <tr>
               
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" /></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" /></td>
               </tr>
               <tr>
                 <th>PDIO Number : </th>
                 <th colspan="3">
-           <input class="form-control" id="pdio_no" type="text" placeholder="Enter PDIO Number" name="pdio_no" value="<?php if(isset($_GET['pdio_no'])){ echo $_GET['pdio_no']; } ?>" />    
+           <input class="form-control" id="pdio_no" type="text" placeholder="Enter PDIO Number" name="pdio_no" value="<?php if(isset($_GET['pdio_no'])){ echo html_esc($_GET['pdio_no']); } ?>" />    
         
                </th>
               </tr>
@@ -361,7 +361,7 @@ $num_rowsGR2 = mysqli_num_rows($rsGR);   //how many material are there?
             <tr>
                 <td width="1%">&nbsp;</td> 
                 <td width="85%">&nbsp;</td> 
-                  <td width="7%"><a href="rpt_dList_pdio_serendah_download.php?ship_point=<?php echo $plant_dlv; ?>&&date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&cust_code=<?php echo $cust_code; ?>&&pdio_no=<?php echo $pdio_no; ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
+                  <td width="7%"><a href="rpt_dList_pdio_serendah_download.php?ship_point=<?php echo $plant_dlv; ?>&&date1=<?php echo html_esc($dateF); ?>&&date2=<?php echo html_esc($dateT); ?>&&cust_code=<?php echo html_esc($cust_code); ?>&&pdio_no=<?php echo html_esc($pdio_no); ?>" ><img src="../images/dload_excel.jpg" width="48" height="48" title="Download" /></a></td>
                  <td width="7%"><!--<img src="../images/print2.jpg" width="48" height="48" onClick="window.print()" title="Print"/>--></td>
                
               </tr>
@@ -399,16 +399,16 @@ $num_rowsGR2 = mysqli_num_rows($rsGR);   //how many material are there?
 
                 <tr>
                 <td width="30"><?php echo $no4; ?></td> 
-                <td width="150"><?php echo $row["pdio_no"]; ?></td>
-                <td width="100"><div align="center"><?php echo $row["dlv_category"]; ?></div></td>
-                <td width="150"><?php echo $row["R2"]; ?></td>
-                <td width="150"><?php echo $row["R"]; ?></td>
-                <td width="100"><div align="center"><?php echo $row["trip_no"]; ?></div></td>
-                <td width="100"><?php echo $row["back_no"]; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="350"><?php echo $row["material_desc"]; ?></td>
-                <td width="150"><div align="center"><?php if($row["pdio_qty"] < 0) { ?><span class="badge badge-pill badge-warning"><?php if($row["uom_pdio"] == 'KG') { echo $row["pdio_qty"]; }else{ echo (intval($row["pdio_qty"])); }?></span><?php }else{ ?><span class="badge badge-pill badge-info"> <?php if($row["uom_pdio"] == 'KG') { echo $row["pdio_qty"]; }else{ echo (intval($row["pdio_qty"])); }?></span> <?php } ?></div> </td>
-                <td width="150"><?php echo $row["uom_pdio"]; ?></td>              
+                <td width="150"><?php echo html_esc($row["pdio_no"]); ?></td>
+                <td width="100"><div align="center"><?php echo html_esc($row["dlv_category"]); ?></div></td>
+                <td width="150"><?php echo html_esc($row["R2"]); ?></td>
+                <td width="150"><?php echo html_esc($row["R"]); ?></td>
+                <td width="100"><div align="center"><?php echo html_esc($row["trip_no"]); ?></div></td>
+                <td width="100"><?php echo html_esc($row["back_no"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="350"><?php echo html_esc($row["material_desc"]); ?></td>
+                <td width="150"><div align="center"><?php if($row["pdio_qty"] < 0) { ?><span class="badge badge-pill badge-warning"><?php if($row["uom_pdio"] == 'KG') { echo html_esc($row["pdio_qty"]); }else{ echo (intval($row["pdio_qty"])); }?></span><?php }else{ ?><span class="badge badge-pill badge-info"> <?php if($row["uom_pdio"] == 'KG') { echo html_esc($row["pdio_qty"]); }else{ echo (intval($row["pdio_qty"])); }?></span> <?php } ?></div> </td>
+                <td width="150"><?php echo html_esc($row["uom_pdio"]); ?></td>              
                 </tr>
     
         <?php

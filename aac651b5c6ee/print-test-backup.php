@@ -92,8 +92,8 @@ $prtid = $_GET["id"];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -286,12 +286,12 @@ while($dt_pps = mysqli_fetch_array($result_pps))
           <tr>
             <td width="32%" class="titleHdr">Plant</td>
             <td width="4%" class="titleHdr">:</td>
-            <td width="64%" class="titleHdr"><?php echo $dtprt_HDR["plant_code"]; ?></td>
+            <td width="64%" class="titleHdr"><?php echo html_esc($dtprt_HDR["plant_code"]); ?></td>
           </tr>
           <tr>
             <td class="titleHdr">Production Line</td>
             <td class="titleHdr">:</td>
-            <td class="titleHdr"><?php echo $dtprt_HDR["work_center"]; ?></td>
+            <td class="titleHdr"><?php echo html_esc($dtprt_HDR["work_center"]); ?></td>
           </tr>
         </table>
         <!--/n header plant-->    
@@ -303,12 +303,12 @@ while($dt_pps = mysqli_fetch_array($result_pps))
           <tr>
             <td width="42%" class="titleHdr">Month/Year</td>
             <td width="8%" class="titleHdr">:</td>
-            <td width="50%" class="titleHdr"><?php echo $dtprt_HDR["month_plan"]; ?>/ <?php echo $dtprt_HDR["year_plan"]; ?></td>
+            <td width="50%" class="titleHdr"><?php echo html_esc($dtprt_HDR["month_plan"]); ?>/ <?php echo html_esc($dtprt_HDR["year_plan"]); ?></td>
           </tr>
           <tr>
             <td width="42%" class="titleHdr">Date</td>
             <td width="8%" class="titleHdr">:</td>
-            <td width="50%" class="titleHdr"><?php echo $dtprt_HDR["H"]; ?></td>
+            <td width="50%" class="titleHdr"><?php echo html_esc($dtprt_HDR["H"]); ?></td>
           </tr>
           <tr>
             <td width="42%" class="titleHdr">Page</td>
@@ -400,17 +400,17 @@ while($dt_pps = mysqli_fetch_array($result_pps))
      
     
      <tr>
-        <td class="sheethed" width="3%"><?php echo $dtprt_pps['id']; ?></td>
-        <td class="sheethed" width="7%"><?php echo $dtprt_pps['model_code']; ?></td> 
-        <td class="sheethed" width="25%"><b><?php  echo $dtprt_pps["material_no"]; ?></b><br><?php echo $data_mat_h["material_desc"]; ?></td>
-        <td class="sheethed" width="10%" height="28"><?php echo $dtprt_pps["plan_no"]; ?></td>
-        <td class="sheethed" width="10%" height="28"><?php  echo $dtprt_pps["T"]; ?></td>
+        <td class="sheethed" width="3%"><?php echo html_esc($dtprt_pps['id']); ?></td>
+        <td class="sheethed" width="7%"><?php echo html_esc($dtprt_pps['model_code']); ?></td> 
+        <td class="sheethed" width="25%"><b><?php  echo html_esc($dtprt_pps["material_no"]); ?></b><br><?php echo html_esc($data_mat_h["material_desc"]); ?></td>
+        <td class="sheethed" width="10%" height="28"><?php echo html_esc($dtprt_pps["plan_no"]); ?></td>
+        <td class="sheethed" width="10%" height="28"><?php  echo html_esc($dtprt_pps["T"]); ?></td>
         <td class="sheethed" width="5%" height="28"><font color="#FF0000"><?php echo $sta; ?></font></td>
-        <td class="sheethed" width="5%"><?php echo $dtprt_pps["seq_pps"]; ?></td>
+        <td class="sheethed" width="5%"><?php echo html_esc($dtprt_pps["seq_pps"]); ?></td>
         <td class="sheethed" width="6%" height="28"><?php  echo intval($dtprt_pps["qty_plan"]); ?></td>
-        <td class="sheethed" width="6%" height="28"><font color="#FF0000"><?php echo $data_mat_h["BUn"]; ?></font></td>
+        <td class="sheethed" width="6%" height="28"><font color="#FF0000"><?php echo html_esc($data_mat_h["BUn"]); ?></font></td>
         <td class="sheethed" width="10%" height="28"></td>
-        <td class="sheethed" width="8%" height="28"><?php echo $dtprt_pps["status_pps"]; ?></td>
+        <td class="sheethed" width="8%" height="28"><?php echo html_esc($dtprt_pps["status_pps"]); ?></td>
         <td class="sheethed" width="13%" height="28"></td>
     </tr>  
     <?php } //n while loop record ?>

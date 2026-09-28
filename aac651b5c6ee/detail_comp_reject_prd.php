@@ -110,8 +110,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -565,7 +565,7 @@ $result_db = mysqli_query($dbc,$query_db) or die (mysqli_error($dbc));
              {
 			 
 			echo "<script>";
-			echo "window.location='detail_comp_reject_prd.php?scan_doc=$number&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&work_center=$work_center&&material_no=$material_no'";
+			echo "window.location='detail_comp_reject_prd.php?scan_doc=$number&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&work_center=$work_center&&material_no=$material_no'";
             echo "</script>";
             exit(); //quit the script
 			 
@@ -963,7 +963,7 @@ exit();
              <tr>
                 <th>Scan Kanban QR Code : <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" title="1. Kanban Tag" data-html="true" data-placement="left"></i></th>
                 <th colspan="3">
-     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo $_POST['barcode_ref']; ?>" class="form-control" autofocus/>
+     <input name="barcode_ref" type="text" id="barcode_ref" maxlength="200" value="<?php if(isset($_POST['barcode_ref'])) echo html_esc($_POST['barcode_ref']); ?>" class="form-control" autofocus/>
                </th>
               </tr>
               <tr>
@@ -979,7 +979,7 @@ exit();
            while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-       <option value="<?php echo $row27["plant_code"]; ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+       <option value="<?php echo html_esc($row27["plant_code"]); ?>" > <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                       <?php
            }  ?>
                     </select>
@@ -1095,7 +1095,7 @@ exit();
 					  
 				   ?>
                
-                    <option value="<?php echo $row_proc["id_proc"]; ?>"<?php if($row_proc["id_proc"] == "1") echo "selected"; ?>>  <?php echo $row_proc["proc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_proc["id_proc"]); ?>"<?php if($row_proc["id_proc"] == "1") echo "selected"; ?>>  <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                      
                <?php   
 				  
@@ -1111,7 +1111,7 @@ exit();
               
                  <tr>
               <th>Posting Date :  <font color="#FF0000">*</font></th>
-              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+              <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div>
               </td>
               </tr>
@@ -1166,14 +1166,14 @@ exit();
 		   {
 			   ?>
 			    <tr>
-                <td width="30"><input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id_scan_dis"]; ?>" class="form-check"></td>
-                <td width="30"><?php echo $no4; ?><input name="idd[]" type="hidden" value="<?php echo $row["id_scan_dis"]; ?>">
-                <input name="item_no[<?php echo $row["id_scan_dis"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="100"><?php echo $row["bill_component"]; ?></td>
-                <td width="200"><?php echo $row["material_desc_c"]; ?></td>
-				<td width="100"><?php if($row["scan_uom"] == 'KG'){ ?> <input name="scan_qty[<?php echo $row["id_scan_dis"]; ?>]" type="number" step="0.001" min="0.001" value="<?php if(isset($_POST["scan_qty"])) { echo $_POST["scan_qty"][($row["id_scan_dis"])]; }else{ echo $row["scan_qty"];  } ?> " id="scan_qty" class="form-control form-control-sm">  <?php }else{ ?><input name="scan_qty[<?php echo $row["id_scan_dis"]; ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo $_POST["scan_qty"][($row["id_scan_dis"])]; }else{ echo $row["scan_qty"];  } ?> " id="scan_qty" class="form-control form-control-sm"><?php } ?>
+                <td width="30"><input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id_scan_dis"]); ?>" class="form-check"></td>
+                <td width="30"><?php echo $no4; ?><input name="idd[]" type="hidden" value="<?php echo html_esc($row["id_scan_dis"]); ?>">
+                <input name="item_no[<?php echo html_esc($row["id_scan_dis"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="100"><?php echo html_esc($row["bill_component"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_desc_c"]); ?></td>
+				<td width="100"><?php if($row["scan_uom"] == 'KG'){ ?> <input name="scan_qty[<?php echo html_esc($row["id_scan_dis"]); ?>]" type="number" step="0.001" min="0.001" value="<?php if(isset($_POST["scan_qty"])) { echo html_esc($_POST["scan_qty"][($row["id_scan_dis"])]); }else{ echo html_esc($row["scan_qty"]);  } ?> " id="scan_qty" class="form-control form-control-sm">  <?php }else{ ?><input name="scan_qty[<?php echo html_esc($row["id_scan_dis"]); ?>]" type="number" min="1" value="<?php if(isset($_POST["scan_qty"])) { echo html_esc($_POST["scan_qty"][($row["id_scan_dis"])]); }else{ echo html_esc($row["scan_qty"]);  } ?> " id="scan_qty" class="form-control form-control-sm"><?php } ?>
                  </td>
-                <td width="100"><?php echo $row["scan_uom"]; ?><input name="plant_code2" type="hidden" value="<?php echo $row["plant_code"]; ?>"></td> 
+                <td width="100"><?php echo html_esc($row["scan_uom"]); ?><input name="plant_code2" type="hidden" value="<?php echo html_esc($row["plant_code"]); ?>"></td> 
                 
                
              <td width="350">
@@ -1189,13 +1189,13 @@ exit();
        ?>
        <?php if($_POST["submit4"] == true)  
 		         {   ?>
-                    <option value="<?php echo $row_type["id_type"]; ?>"<?php if($row_type["id_type"] == $_POST["type_reject"][($row["id_scan_dis"])]) echo "selected"; ?>>  <?php echo $row_proc["proc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_type["id_type"]); ?>"<?php if($row_type["id_type"] == $_POST["type_reject"][($row["id_scan_dis"])]) echo "selected"; ?>>  <?php echo html_esc($row_proc["proc_desc"]); ?></option>
                      
                   <?php
 				 }else{
 					 
 					 ?>
-      <option value="<?php echo $row_type["id_type"]; ?>"> <?php echo $row_type["type_desc"]; ?></option>
+      <option value="<?php echo html_esc($row_type["id_type"]); ?>"> <?php echo html_esc($row_type["type_desc"]); ?></option>
       <?php
 				 }//end else
 	    
@@ -1213,12 +1213,12 @@ exit();
                  </td>
                  <td width="400">
               
-           <input class="total form-control" id="reason_reject" type="text" name="reason_reject[<?php echo $row["id_scan_dis"]; ?>]" value="<?php  if(isset($_POST['reason_reject'])){ echo $_POST["reason_reject"][($row["id_scan_dis"])]; }else{  echo "Out of Standard"; } ?>" >   
+           <input class="total form-control" id="reason_reject" type="text" name="reason_reject[<?php echo html_esc($row["id_scan_dis"]); ?>]" value="<?php  if(isset($_POST['reason_reject'])){ echo html_esc($_POST["reason_reject"][($row["id_scan_dis"])]); }else{  echo "Out of Standard"; } ?>" >   
            
                 </td>
              
                  <td width="400">
-                <textarea name="remark_dis[<?php echo $row["id_scan_dis"]; ?>]" id="remark_dis" rows="2" cols="10" maxlength="250" class="form-control" ><?php if(isset($_POST['remark_dis'])){ echo $_POST["remark_dis"][($row["id_scan_dis"])]; } ?></textarea>
+                <textarea name="remark_dis[<?php echo html_esc($row["id_scan_dis"]); ?>]" id="remark_dis" rows="2" cols="10" maxlength="250" class="form-control" ><?php if(isset($_POST['remark_dis'])){ echo html_esc($_POST["remark_dis"][($row["id_scan_dis"])]); } ?></textarea>
                 </td>
                 
             
@@ -1232,10 +1232,10 @@ exit();
 	 
 		        <tr bgcolor="#CCCCCC">
                 <td width="30">&nbsp;</td>
-                <td width="30"><?php echo $no4; ?><!--<input name="idd[<?php echo $row["id_scan_dis"]; ?>]" type="hidden" value="<?php echo $row["id_scan_dis"]; ?>">-->
-                <input name="item_no[<?php echo $row["id_scan_dis"]; ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
-                <td width="100"><?php echo $row["bill_component"]; ?></td>
-                <td width="200"><?php echo $row["material_desc_c"]; ?></td>
+                <td width="30"><?php echo $no4; ?><!--<input name="idd[<?php echo html_esc($row["id_scan_dis"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan_dis"]); ?>">-->
+                <input name="item_no[<?php echo html_esc($row["id_scan_dis"]); ?>]" type="hidden" value="<?php echo $no4; ?>"></td>
+                <td width="100"><?php echo html_esc($row["bill_component"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_desc_c"]); ?></td>
                 <td width="100">&nbsp;</td>
                 <td width="100">&nbsp;</td> 
                 <td width="350">&nbsp; </td> 

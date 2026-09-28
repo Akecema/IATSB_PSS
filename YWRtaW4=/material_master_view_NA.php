@@ -62,7 +62,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <html lang="en">
   <head>
   <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteMat<?php echo $row2["id_hdr"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteMat<?php echo html_esc($row2["id_hdr"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -119,13 +119,13 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
        </tr>
        <tr bgcolor="#FFFFFF">
          <td height="35"><?php echo $no; ?></td>
-         <td height="35"><?php echo $data_scan["material_no"]; ?></td>
-         <td height="35"><?php echo $data_scan["material_desc"]; ?></td>
-         <td><?php echo $data_scan["material_type"]; ?></td>
-         <td><?php echo $data_scan["BUn"]; ?></td>
-         <td><?php echo $data_scan["plant"]; ?></td>
-         <td><?php echo $data_scan["bom"]; ?></td>
-         <td><?php echo $data_scan["R2"]; ?></td>
+         <td height="35"><?php echo html_esc($data_scan["material_no"]); ?></td>
+         <td height="35"><?php echo html_esc($data_scan["material_desc"]); ?></td>
+         <td><?php echo html_esc($data_scan["material_type"]); ?></td>
+         <td><?php echo html_esc($data_scan["BUn"]); ?></td>
+         <td><?php echo html_esc($data_scan["plant"]); ?></td>
+         <td><?php echo html_esc($data_scan["bom"]); ?></td>
+         <td><?php echo html_esc($data_scan["R2"]); ?></td>
        </tr>
     </table>
     
@@ -165,15 +165,15 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
               
                <tr>
                  <td><?php echo $no2; ?></td>
-                 <td><?php echo $row["bill_component"];   ?></td>
-                 <td><?php echo $row["material_desc_c"];   ?></td>
-                 <td><?php echo $row["R"];   ?></td>
-                 <td><?php echo $row["sloc"];   ?></td>
-                 <td><?php echo $row["isloc"];   ?></td>
-                 <td><?php echo $row["material_type"];   ?></td>
-                 <td><?php echo $row["comp_unit"];   ?></td>
-                 <td><?php echo $row["consumption"];   ?></td> 
-                 <input name="id_dtl[<?php echo $i; ?>]" type="hidden" value="<?php echo $row["id_dtl"]; ?>">
+                 <td><?php echo html_esc($row["bill_component"]);   ?></td>
+                 <td><?php echo html_esc($row["material_desc_c"]);   ?></td>
+                 <td><?php echo html_esc($row["R"]);   ?></td>
+                 <td><?php echo html_esc($row["sloc"]);   ?></td>
+                 <td><?php echo html_esc($row["isloc"]);   ?></td>
+                 <td><?php echo html_esc($row["material_type"]);   ?></td>
+                 <td><?php echo html_esc($row["comp_unit"]);   ?></td>
+                 <td><?php echo html_esc($row["consumption"]);   ?></td> 
+                 <input name="id_dtl[<?php echo $i; ?>]" type="hidden" value="<?php echo html_esc($row["id_dtl"]); ?>">
                  <input name="id_hdr" type="hidden" value="<?php echo $id_hdr; ?>">
                </tr>
 		<?php

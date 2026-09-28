@@ -31,7 +31,7 @@ $url = "reason_wastage_table.php";
 <html lang="en">
   <head>
     <meta name="description" content="PSS ITSB Online, Ingress Technologies Sdn. Bhd.,Ingress ">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,7 +150,7 @@ echo '<div class="alert alert-error">', $message, '</div>';
                 <div class="form-group row">
                   <label class="control-label col-md-3">Reason Wastage Desc. : <font color="#FF0000"><b> *</b></font></label>
                    <div class="col-md-8">
-                  <input name="reason_wastage_desc" type="text" class="form-control" id="reason_wastage_desc" size="20" maxlength="20" value="<?php if(isset($_POST['reason_wastage_desc'])) echo $_POST['reason_wastage_desc']; ?>"  placeholder="Enter Reason Wastage Description" />
+                  <input name="reason_wastage_desc" type="text" class="form-control" id="reason_wastage_desc" size="20" maxlength="20" value="<?php if(isset($_POST['reason_wastage_desc'])) echo html_esc($_POST['reason_wastage_desc']); ?>"  placeholder="Enter Reason Wastage Description" />
                    <div class="form-control-feedback" ><?php echo $message_wasdesc; ?></div>
                     </div>
                 </div>

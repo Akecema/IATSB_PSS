@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteRej<?php echo $row2["id_reject"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteRej<?php echo html_esc($row2["id_reject"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -109,17 +109,17 @@ $row_rej = mysqli_fetch_array($result_rej);   //how many records are there?
    <tr>
     <td width="191">ID Reason Reject </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="id_reject" name="id_reject" readonly value="<?php  echo $row_rej["id_reject"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="id_reject" name="id_reject" readonly value="<?php  echo html_esc($row_rej["id_reject"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Reason Reject Description</td>
     <td width="28">:</td>
-    <td><input type="text" id="reject_desc" name="reject_desc" readonly value="<?php echo $row_rej["reject_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="reject_desc" name="reject_desc" readonly value="<?php echo html_esc($row_rej["reject_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Status of Reject</td>
     <td>:</td>
-    <td><input type="text" id="status_reject" name="status_reject" readonly value="<?php echo $row_rej["status_reject"];  ?>" class="form-control"/>
+    <td><input type="text" id="status_reject" name="status_reject" readonly value="<?php echo html_esc($row_rej["status_reject"]);  ?>" class="form-control"/>
      </td>
     </tr>
      </table>                         

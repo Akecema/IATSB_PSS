@@ -108,7 +108,7 @@ exit();
 					   {
 	                    echo "<script>";
 						echo "alert('Please select Shift.');";
-					    echo "window.location='detail_comp_reject_prd.php?scan_doc=$scan_no&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
+					    echo "window.location='detail_comp_reject_prd.php?scan_doc=$scan_no&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=".html_esc($plant_code)."&&model_code=".html_esc($model_code)."&&material_type=".html_esc($material_type)."&&stamp_ind=".html_esc($stamp_ind)."&&material_no=".html_esc($material_no)."'";
 						echo "</script>";
 						exit(); //quit the script
 		 
@@ -120,7 +120,7 @@ exit();
 					   {
 	                    echo "<script>";
 						echo "alert('Please select Posting Date.');";
-						echo "window.location='detail_comp_reject_prd.php?scan_doc=$scan_no&&barcode_ref=$barcode_ref&&plant_code=$plant_code&&model_code=$model_code&&material_type=$material_type&&stamp_ind=$stamp_ind&&material_no=$material_no'";
+						echo "window.location='detail_comp_reject_prd.php?scan_doc=$scan_no&&barcode_ref=".html_esc($barcode_ref)."&&plant_code=".html_esc($plant_code)."&&model_code=".html_esc($model_code)."&&material_type=".html_esc($material_type)."&&stamp_ind=".html_esc($stamp_ind)."&&material_no=".html_esc($material_no)."'";
 						echo "</script>";
 						exit(); //quit the script
 		 

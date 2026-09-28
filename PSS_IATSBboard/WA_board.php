@@ -106,7 +106,7 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <html lang="en">
 <head>
 <meta name="description" content="<?php $data_setup["tajuk_sys"]; ?>">
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <link rel="shortcut icon" href="images/favicon.ico">  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -177,7 +177,7 @@ function convertZero ($value) {
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:solid 1px #141414;">
    <tr>
-    <td width="500">&nbsp;<h1><font color="#0000FF"><?php echo $data_setup["title_desc"]; ?></font></h1></td>
+    <td width="500">&nbsp;<h1><font color="#0000FF"><?php echo html_esc($data_setup["title_desc"]); ?></font></h1></td>
     <td width="200">&nbsp;<span class="style6"><?php echo date("l M d, Y");   ?></span></td>
  
   <td width="200">&nbsp;&nbsp;&nbsp;<span class="style6"> <?php echo date("H:i:s");  ?></span></td>

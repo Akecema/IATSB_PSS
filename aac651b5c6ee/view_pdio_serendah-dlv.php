@@ -73,8 +73,8 @@ $url = "ups_pdio_serendah.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -238,7 +238,7 @@ $message = NULL; // create an empty new variable.
             <tr>
             <th>Shipping Point : <font color="#FF0000">*</font></th>
             <td colspan="2">
-           <input class="form-control" id="ship_point" type="text" placeholder="Enter Shipping Point" name="ship_point" value="<?php if(isset($_POST['ship_point'])){ echo $_POST['ship_point']; }else{ echo "3100 - SERENDAH";   } ?>" readonly />
+           <input class="form-control" id="ship_point" type="text" placeholder="Enter Shipping Point" name="ship_point" value="<?php if(isset($_POST['ship_point'])){ echo html_esc($_POST['ship_point']); }else{ echo "3100 - SERENDAH";   } ?>" readonly />
          <div class="form-control-feedback" ><?php echo $message_shippt; ?></div>
 		     </td>
              </tr>
@@ -255,7 +255,7 @@ $message = NULL; // create an empty new variable.
                    while($row19 = mysqli_fetch_array($result19)) 
 			      {
 				   ?>
-                     <option value="<?php echo $row19["id_cust"]; ?>"> <?php echo $row19["id_cust"]; ?> - <?php echo $row19["cust_desc"]; ?></option>
+                     <option value="<?php echo html_esc($row19["id_cust"]); ?>"> <?php echo html_esc($row19["id_cust"]); ?> - <?php echo html_esc($row19["cust_desc"]); ?></option>
                 
                   <?php
                   }
@@ -265,16 +265,16 @@ $message = NULL; // create an empty new variable.
               </tr>
               <tr>
                 <th>Delivery Date from : <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo $_POST['date1']; }else{ echo $fmt_curr_date; } ?>" />
+                <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php if(isset($_POST['date1'])){ echo html_esc($_POST['date1']); }else{ echo $fmt_curr_date; } ?>" />
                     </td></tr>
                <tr>
                 <th>Delivery Date to :  <font color="#FF0000">*</font></th>
-                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo $_POST['date2']; }else{ echo $fmt_curr_date; } ?>" /></td>
+                <td colspan="3"><input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php if(isset($_POST['date2'])){ echo html_esc($_POST['date2']); }else{ echo $fmt_curr_date; } ?>" /></td>
               </tr>
               <tr>
                 <th>PDIO Number : </th>
                 <th colspan="3">
-           <input class="form-control" id="pdio_no" type="text" placeholder="Enter PDIO Number" name="pdio_no" value="<?php if(isset($_POST['pdio_no'])){ echo $_POST['pdio_no']; } ?>" />    
+           <input class="form-control" id="pdio_no" type="text" placeholder="Enter PDIO Number" name="pdio_no" value="<?php if(isset($_POST['pdio_no'])){ echo html_esc($_POST['pdio_no']); } ?>" />    
         
                </th>
               </tr>

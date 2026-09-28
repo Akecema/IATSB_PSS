@@ -89,8 +89,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -306,7 +306,7 @@ th {
              <tr>
                 <th>PO No. : <font color="#FF0000">*</font></th>
                 <th colspan="2">
-           <input class="form-control" id="purc_ord_no" type="text" placeholder="Enter Purchase Order No." name="purc_ord_no" value="<?php if(isset($_POST['purc_ord_no'])){ echo $_POST['purc_ord_no']; } ?>" />    
+           <input class="form-control" id="purc_ord_no" type="text" placeholder="Enter Purchase Order No." name="purc_ord_no" value="<?php if(isset($_POST['purc_ord_no'])){ echo html_esc($_POST['purc_ord_no']); } ?>" />    
           <div class="form-control-feedback" ><?php echo $message_purc; ?></div> <div class="form-control-feedback" ><?php echo $message_purc2; ?></div>
             <!-- <div id="result"></div>-->
                </th>

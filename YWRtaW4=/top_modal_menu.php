@@ -15,7 +15,7 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
        <?php //----------welcome and date ------------ ?>
-          &nbsp;&nbsp; <font color="#FFFFFF"><br />       <?php echo $Cdate;?> <b class="caret">| </b> &nbsp;&nbsp; Welcome <?php echo $res["user_fullname"]; ?></font>
+          &nbsp;&nbsp; <font color="#FFFFFF"><br />       <?php echo $Cdate;?> <b class="caret">| </b> &nbsp;&nbsp; Welcome <?php echo html_esc($res["user_fullname"]); ?></font>
       <ul class="app-nav">
       <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
        <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -49,17 +49,17 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
                <tr>
                  <td width="26%" height="25">Company Code</td>
                  <td width="3%" height="25">:</td>
-                 <td width="71%" height="25"><?php echo $row_top["vendor_no"]; ?></td>
+                 <td width="71%" height="25"><?php echo html_esc($row_top["vendor_no"]); ?></td>
                </tr>
                <tr>
                  <td height="25">Staff ID </td>
                  <td height="25">:</td>
-                 <td height="25"><b><font color="blue"><?php echo $row_top["staff_ID"]; ?></font></b></td>
+                 <td height="25"><b><font color="blue"><?php echo html_esc($row_top["staff_ID"]); ?></font></b></td>
                </tr>
                  <tr>
                  <td height="25">Name</td>
                  <td height="25">:</td>
-                 <td height="25"><?php echo $row_top["user_fullname"]; ?> </td> 
+                 <td height="25"><?php echo html_esc($row_top["user_fullname"]); ?> </td> 
                </tr>
                <tr>
                  <td height="25">Company's Name</td>
@@ -71,7 +71,7 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
   $result3_a = mysqli_query($dbc,$query3_a);
   $row3_a = mysqli_fetch_array($result3_a);
   
-	    echo $row3_a["comp_name"];
+	    echo html_esc($row3_a["comp_name"]);
 		
 
 	?></td>
@@ -86,7 +86,7 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
   $result2_a = mysqli_query($dbc,$query2_a);
   $row2_a = mysqli_fetch_array($result2_a);
 	    
-  echo $row2_a["dept_name"]; 
+  echo html_esc($row2_a["dept_name"]); 
 	
 	?></td>
                </tr>
@@ -100,29 +100,29 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
   $result2b = mysqli_query($dbc,$query2b);
   $row2b = mysqli_fetch_array($result2b);
    
-  echo $row2b["design"];
+  echo html_esc($row2b["design"]);
 
 	?></td>
                </tr>
                <tr>
                  <td height="25">Telephone No. 1</td>
                  <td height="25">:</td>
-                 <td height="25"><?php echo $row_top["user_telno1"]; ?></td>
+                 <td height="25"><?php echo html_esc($row_top["user_telno1"]); ?></td>
                </tr>
                <tr>
                  <td height="25">Telephone No. 2</td>
                  <td height="25">:</td>
-                 <td height="25"><?php echo $row_top["user_telno2"]; ?></td>
+                 <td height="25"><?php echo html_esc($row_top["user_telno2"]); ?></td>
                </tr>
                <tr>
                  <td height="25">Fax No</td>
                  <td height="25">:</td>
-                 <td height="25"><?php echo $row_top["user_fax"]; ?> </td>
+                 <td height="25"><?php echo html_esc($row_top["user_fax"]); ?> </td>
                </tr>
                <tr>
                  <td height="25">E-mail</td>
                  <td height="25">:</td>
-                 <td height="25"><?php echo $row_top["user_email"]; ?></td>
+                 <td height="25"><?php echo html_esc($row_top["user_email"]); ?></td>
                </tr>
                <tr>
                  <td height="25">Level</td>
@@ -134,7 +134,7 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
   $result4_a = mysqli_query($dbc,$query4_a);
   $row4_a = mysqli_fetch_array($result4_a);
   
-	    echo $row4_a["desc_level"];
+	    echo html_esc($row4_a["desc_level"]);
 	
 	?></td>
                </tr>
@@ -160,7 +160,7 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
                  <td height="25">Date Created</td>
                  <td height="25">:</td>
                  <td height="25"><b><font color="blue">
-                   <?php  echo $row_top["date_created"]; ?>
+                   <?php  echo html_esc($row_top["date_created"]); ?>
                  </font></b></td>
                </tr>
               
@@ -172,7 +172,7 @@ $row_top = mysqli_fetch_array($result_top);   //how many records are there?
             </table> 
           
             <div align="right">
-          <input type="hidden" name="user_no" id="user_no" value="<?php echo $row_top["user_no"]; ?>">
+          <input type="hidden" name="user_no" id="user_no" value="<?php echo html_esc($row_top["user_no"]); ?>">
 		  <button type="button" class="btn btn-primary" data-dismiss="modal">CLOSE</button></div>
                 
                 

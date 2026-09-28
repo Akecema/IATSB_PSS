@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+  <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,7 @@ $message = NULL; // create an empty new variable.
 
 } 
  ?> 
-  <div class="modal fade" id="myNoteEditM<?php echo $row["id_shift"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteEditM<?php echo html_esc($row["id_shift"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
          <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -216,24 +216,24 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
     <tr>
     <td width="191">Shift Code <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="shift_cd" name="shift_cd" readonly value="<?php  echo $row_was["shift_cd"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="shift_cd" name="shift_cd" readonly value="<?php  echo html_esc($row_was["shift_cd"]); ?>" class="form-control"></td>
     </tr>
      <tr>
     <td width="191">Shift Description <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="shift_desc" name="shift_desc" readonly value="<?php  echo $row_was["shift_desc"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="shift_desc" name="shift_desc" readonly value="<?php  echo html_esc($row_was["shift_desc"]); ?>" class="form-control"></td>
     </tr>
    <tr>
     <td width="191">Time Start <font color="#FF0000">*</font></td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="time_start" name="time_start" value="<?php  echo $row_was["time_start"]; ?>" class="form-control" required><div class="invalid-feedback">Please enter time start.</div></td>
+    <td width="971"><input type="text" id="time_start" name="time_start" value="<?php  echo html_esc($row_was["time_start"]); ?>" class="form-control" required><div class="invalid-feedback">Please enter time start.</div></td>
     </tr>
   <tr>
     <td>Time End <font color="#FF0000">*</font></td>
     <td width="28">:</td>
     <td>
     
-    <input type="text" id="time_end" name="time_end" value="<?php echo $row_was["time_end"]; ?>" class="form-control" required /><div class="invalid-feedback">Please enter time end.</div></td>
+    <input type="text" id="time_end" name="time_end" value="<?php echo html_esc($row_was["time_end"]); ?>" class="form-control" required /><div class="invalid-feedback">Please enter time end.</div></td>
     </tr>
     <tr>
     <td><font color="#FF0000"><b>  * Compulsory field</b></font></td>
@@ -247,7 +247,7 @@ $row_was = mysqli_fetch_array($result_was);   //how many records are there?
 
               
               <div class="modal-footer"> 
-             <input type="hidden" id="id_shift" name="id_shift"  class="form-control" value="<?php echo $row["id_shift"];  ?>" >  
+             <input type="hidden" id="id_shift" name="id_shift"  class="form-control" value="<?php echo html_esc($row["id_shift"]);  ?>" >  
              <input name="submit9" type="submit" id="submit9" value="UPDATE" class="btn btn-info" onClick="return confirm('Confirm to update?');" > 
              <button type="button" class="btn btn-success" data-dismiss="modal">CLOSE</button>
              </div>  

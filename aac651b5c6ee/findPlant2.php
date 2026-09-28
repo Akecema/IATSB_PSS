@@ -24,9 +24,9 @@ $result41 =mysqli_query($dbc,$query41);
 			      {
 					  if($_POST['submit'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["plant_code"]; ?>" <?php if($row41["plant_code"]==$_POST["plant_code"]) echo "selected"; ?>> <?php echo $row41["plant_desc"]; ?></option>
+                       <option value="<?php echo html_esc($row41["plant_code"]); ?>" <?php if($row41["plant_code"]==$_POST["plant_code"]) echo "selected"; ?>> <?php echo html_esc($row41["plant_desc"]); ?></option>
                        <?php }else{ ?>
-                       <option value="<?php echo $row41["plant_code"]; ?>" > <?php echo stripslashes($row41["plant_code"]),' - ',stripslashes($row41["plant_desc"]); ?></option>
+                       <option value="<?php echo html_esc($row41["plant_code"]); ?>" > <?php echo stripslashes($row41["plant_code"]),' - ',stripslashes($row41["plant_desc"]); ?></option>
                        <?php } ?>
 	
               <?php    }

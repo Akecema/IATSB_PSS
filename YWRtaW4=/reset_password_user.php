@@ -33,8 +33,8 @@ $url = "add_user.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -292,7 +292,7 @@ $user = $_POST["username1"];
   
                    while($row2_g = mysqli_fetch_array($result2_g)) 
 			      {
-                  echo'<option value="',$row2_g["user_no"],'">',stripslashes($row2_g["staff_ID"]),' - ',stripslashes($row2_g["user_fullname"]),'</option>';
+                  echo'<option value="',html_esc($row2_g["user_no"]),'">',stripslashes($row2_g["staff_ID"]),' - ',stripslashes($row2_g["user_fullname"]),'</option>';
                   }
 				?>
     </select>
@@ -303,7 +303,7 @@ $user = $_POST["username1"];
               <div class="form-group row">
                   <label class="control-label col-md-3">Password : <font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                   <input name="newpass" type="password" class="form-control" id="newpass" size="20" maxlength="20" value="<?php if(isset($_POST['newpass'])) echo $_POST['newpass']; ?>" placeholder="Enter Password"/>
+                   <input name="newpass" type="password" class="form-control" id="newpass" size="20" maxlength="20" value="<?php if(isset($_POST['newpass'])) echo html_esc($_POST['newpass']); ?>" placeholder="Enter Password"/>
                     <div class="form-control-feedback" ><?php echo $message_pass1; ?></div> 
                     <div class="form-control-feedback" ><?php echo $message_pass2; ?></div> 
               </div>
@@ -311,7 +311,7 @@ $user = $_POST["username1"];
               <div class="form-group row">
                   <label class="control-label col-md-3">Confirmed Password :<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-8">
-                    <input name="newpass2" type="password" class="form-control" placeholder="Enter Confirmed Password"  id="newpass2" size="20" maxlength="20" value="<?php if(isset($_POST['newpass2'])) echo $_POST['newpass2']; ?>"/>
+                    <input name="newpass2" type="password" class="form-control" placeholder="Enter Confirmed Password"  id="newpass2" size="20" maxlength="20" value="<?php if(isset($_POST['newpass2'])) echo html_esc($_POST['newpass2']); ?>"/>
                  
                 </div>
               </div>

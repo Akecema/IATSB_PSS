@@ -116,8 +116,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -399,7 +399,7 @@ page-break-before: always ;
     
 		   echo "<script>";
 		   echo "alert('Cancellation DO Number $ref3A Posted.');";
-		   echo "window.location='canC_dlvdo_alldo-dlvProc.php?material_doc_gen=$material_doc_gen&&ship_point=$ship_point&&date1=$dateF&&date2=$dateT'";
+		   echo "window.location='canC_dlvdo_alldo-dlvProc.php?material_doc_gen=".html_esc($material_doc_gen)."&&ship_point=$ship_point&&date1=$dateF&&date2=$dateT'";
 	       echo "</script>"; 
 		   exit(); //quit the script
 		 
@@ -408,7 +408,7 @@ page-break-before: always ;
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteCancelDO<?php echo $row["material_doc_gen"]; ?><?php echo $row["plant_code"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteCancelDO<?php echo html_esc($row["material_doc_gen"]); ?><?php echo html_esc($row["plant_code"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -482,7 +482,7 @@ page-break-before: always ;
 
 <br>
 
-        <div class="content mt-12"><h5>Confirm to Cancel DO <?php echo $row["material_doc_gen"]; ?> ?</h5><br>
+        <div class="content mt-12"><h5>Confirm to Cancel DO <?php echo html_esc($row["material_doc_gen"]); ?> ?</h5><br>
        
 
     <form name="frmSearch" id="frmSearch" method="post" action="" class="needs-validation"  novalidate>
@@ -502,11 +502,11 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
     //echo $row2["id"];
       ?>
      
-      <input name="uid4" type="hidden" id="uid4" value="<?php echo $row2["material_doc_gen"]; ?>">
-      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo $_GET["ship_point"]; ?>">
-      <input name="plant_code" type="hidden" id="plant_code" value="<?php echo $row2["plant_code"] ?>">
-      <input name="date1"  type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2"  type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
+      <input name="uid4" type="hidden" id="uid4" value="<?php echo html_esc($row2["material_doc_gen"]); ?>">
+      <input name="ship_point" type="hidden" id="ship_point" value="<?php echo html_esc($_GET["ship_point"]); ?>">
+      <input name="plant_code" type="hidden" id="plant_code" value="<?php echo html_esc($row2["plant_code"]) ?>">
+      <input name="date1"  type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2"  type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
   
   
       

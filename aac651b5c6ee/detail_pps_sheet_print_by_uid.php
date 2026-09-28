@@ -85,8 +85,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -324,7 +324,7 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
       <tr>
         <th width="47%"><div align="left"><span class="style3">Plant</span></div></th>
         <th width="4%"><span class="style3">:</span></th>
-        <th width="49%"><span class="style3"> <?php echo $db_rs2["plant_code"]; ?></span></th>
+        <th width="49%"><span class="style3"> <?php echo html_esc($db_rs2["plant_code"]); ?></span></th>
         </tr>
       <tr>
         <th><div align="left"><span class="style3">Production Line</span></div></th>
@@ -341,12 +341,12 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
       <tr>
         <th><div align="left"><span class="style3">Month/Year</span></div></th>
         <th width="10"><span class="style3">:</span></th>
-        <th width="205"><span class="style3"> <?php echo $db_rs2["month_plan"]; ?>/ <?php echo $db_rs2["year_plan"]; ?></span></th>
+        <th width="205"><span class="style3"> <?php echo html_esc($db_rs2["month_plan"]); ?>/ <?php echo html_esc($db_rs2["year_plan"]); ?></span></th>
         </tr>
       <tr>
         <th width="135" height="28"><div align="left"><span class="style3"> Date</span></div></th>
         <th height="28"><span class="style3">:</span></th>
-        <th height="28"><span class="style3"><?php echo $db_rs2["K"]; ?></span></th>
+        <th height="28"><span class="style3"><?php echo html_esc($db_rs2["K"]); ?></span></th>
         </tr>
       <tr>
         <th height="28"><div align="left"><span class="style3">Page</span></div></th>
@@ -433,16 +433,16 @@ $rs2 = mysqli_query($dbc,$queryu2);   //run the query.
 		 ?>
        <!-- <tr>-->
           <td width="60" height="28"><?php  echo $no; ?></td>
-          <td width="384"><b><?php  echo $row3["material_no"]; ?></b><br><?php  echo $data_mat_h["material_desc"]; ?>
-            <br>[Std Pack: <?php echo $data_mat_h["std_packaging"].'&nbsp;'.$data_mat_h["BUn"]; ?>]</td>
-          <td width="151" height="28"><div align="center"><?php echo $row3["plan_no"]; ?></div></td>
-          <td width="93" height="28"><?php  echo $row3["T"]; ?></td>
+          <td width="384"><b><?php  echo html_esc($row3["material_no"]); ?></b><br><?php  echo html_esc($data_mat_h["material_desc"]); ?>
+            <br>[Std Pack: <?php echo html_esc($data_mat_h["std_packaging"]).'&nbsp;'.html_esc($data_mat_h["BUn"]); ?>]</td>
+          <td width="151" height="28"><div align="center"><?php echo html_esc($row3["plan_no"]); ?></div></td>
+          <td width="93" height="28"><?php  echo html_esc($row3["T"]); ?></td>
           <td width="100" height="28"><?php  echo $time_new; ?></td>
           <td width="46" height="28"><div align="center"><font color="#FF0000"><?php echo $sta; ?></font></div></td>
-          <td width="46"><div align="center"><?php echo $row3["kanban_no"]; ?></div></td>
+          <td width="46"><div align="center"><?php echo html_esc($row3["kanban_no"]); ?></div></td>
           <td width="69" height="28"><div align="center"><?php  echo intval($row3["qty_plan"]); ?></div></td>
           <td width="55" height="28"><div align="center"><font color="#FF0000">
-            <?php  echo $data_mat_h["BUn"]; ?>   </font></div></td>
+            <?php  echo html_esc($data_mat_h["BUn"]); ?>   </font></div></td>
           <td width="100" height="100"> <div align="left">
        <?php
 	   
@@ -461,7 +461,7 @@ echo $barcodeobj->getBarcodeSVGcode(3.5, 3.5, 'black');
 
 ?>
                   </div></td>
-          <td width="44"><?php  echo $row3["status_pps"]; ?></td>
+          <td width="44"><?php  echo html_esc($row3["status_pps"]); ?></td>
            <td width="3%"></td>
             <td width="3%"></td>
             <td width="3%"></td>
@@ -485,14 +485,14 @@ echo $barcodeobj->getBarcodeSVGcode(3.5, 3.5, 'black');
 <table width="100%" border="1" cellspacing="1" cellpadding="1">
   <tr>
     <td width="34%" height="50"><div align="center">&nbsp;<b>Uploaded by</b><br>
-    <?php echo $data_upld["user_fullname"];    ?>
+    <?php echo html_esc($data_upld["user_fullname"]);    ?>
     </div></td>
    <td width="33%"><div align="center">&nbsp;<b>Approved by</b><br>
-    <?php if($data_plan_apprv["f_name"] != ""){ echo $data_plan_apprv["f_name"]; }else{ echo "<br>";  } ?></div></td>
+    <?php if($data_plan_apprv["f_name"] != ""){ echo html_esc($data_plan_apprv["f_name"]); }else{ echo "<br>";  } ?></div></td>
     <td width="33%"><div align="center">&nbsp;<b>Released by</b><br>
-    <?php if($data_rels["user_fullname"] != "") { echo $data_rels["user_fullname"];   }else{ echo "<br>";  }  ?></div></td>
+    <?php if($data_rels["user_fullname"] != "") { echo html_esc($data_rels["user_fullname"]);   }else{ echo "<br>";  }  ?></div></td>
   </tr>
-</table> <input type="hidden" name="upload_id" value="<?php echo $row["upload_id"]; ?>">
+</table> <input type="hidden" name="upload_id" value="<?php echo html_esc($row["upload_id"]); ?>">
 </div>
 <?php    } // end while loop main   ?>
 

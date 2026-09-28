@@ -100,8 +100,8 @@ $rst_sta27 = mysqli_fetch_array($sta_res27);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -225,7 +225,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_aftran_OK-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_aftran_OK-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -233,7 +233,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_aftran_NG-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_aftran_NG-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -242,7 +242,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_aftran_HWOK-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_aftran_HWOK-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -252,7 +252,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_afpend_Confirm-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_afpend_Confirm-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -261,7 +261,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_afConfirm_Hwork-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_afConfirm_Hwork-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -270,7 +270,7 @@ div.dataTables_wrapper {
 			 {
 				 
 			echo "<script>";
-            echo "window.location='canC_bf_afpend_Confirm_Rwork-prdProc.php?plant_code=$plant_code&&trans_opt=$trans_opt&&date1=$dateF&&date2=$dateT&&work_center=$work_center&&material_no=$material_no'";
+            echo "window.location='canC_bf_afpend_Confirm_Rwork-prdProc.php?plant_code=".html_esc($plant_code)."&&trans_opt=".html_esc($trans_opt)."&&date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&work_center=".html_esc($work_center)."&&material_no=".html_esc($material_no)."'";
             echo "</script>";
             exit(); //quit the script	 
 				 
@@ -315,7 +315,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
              </tr>
              <tr>
@@ -325,7 +325,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
             <th>Plant : </th>
@@ -340,7 +340,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -358,7 +358,7 @@ div.dataTables_wrapper {
 				    { 
 				   
 				   ?>
-                  <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                  <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                   <?php
                   }
 				?> 
@@ -551,18 +551,18 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
                 <tr>
                 <td width="30"><?php echo $no4; ?></td>
                 <td width="80"><?php echo $model_name; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="150"><?php echo $row["plan_no"]; ?></td> 
-                <td width="150"><?php echo $row["bflush_no"]; ?></td> 
-                <td width="100"><?php echo $row["R"]; ?></td> 
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["plan_no"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["bflush_no"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
                 <td width="80"><?php echo $model_name2; ?></td> 
                 <td width="80"><?php echo $shift_ds; ?></td>
-                <td width="80"><?php echo $row["ploc"]; ?></td>
-                <td width="150"><?php echo $row["bflush_no_ref"]; ?></td> 
-                <td width="150"><?php echo $row["R5"]; ?>  </td>  
+                <td width="80"><?php echo html_esc($row["ploc"]); ?></td>
+                <td width="150"><?php echo html_esc($row["bflush_no_ref"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["R5"]); ?>  </td>  
                 <td width="100"><?php echo intval($row["qty_actual"]); ?></td>
                 <td width="100">PENDING</td>
-                <td width="200"><?php echo $row["user_cancel"].' '.$data_u_can["user_fullname"];    ?>  </td>
+                <td width="200"><?php echo html_esc($row["user_cancel"]).' '.html_esc($data_u_can["user_fullname"]);    ?>  </td>
                 </tr>
                  
           <?php 

@@ -89,12 +89,12 @@ if(isset($_POST['e_tcid']))
 		
 		<tr>
         <td width="2%"><?php echo $no; ?></td>
-        <td width="3%"><?php echo  $row2["back_no"]; ?></td>
-        <td width="10%"><?php echo $row2["material_no"]; ?></td>
-        <td width="10%"><?php echo $row_matC["material_desc"]; ?></td>
-        <td width="8%"><font color="#0000CC"><?php echo $row2["plan_no"]; ?></font></td>
+        <td width="3%"><?php echo  html_esc($row2["back_no"]); ?></td>
+        <td width="10%"><?php echo html_esc($row2["material_no"]); ?></td>
+        <td width="10%"><?php echo html_esc($row_matC["material_desc"]); ?></td>
+        <td width="8%"><font color="#0000CC"><?php echo html_esc($row2["plan_no"]); ?></font></td>
         <td width="5%" bgcolor="#E8F6F3">
-        <input type="date" name="date_plan[]" class="input-xlarge datepicker" value="<?php echo $row2["date_plan"]; ?>" <?php if(isset($_POST["date_plan"][($row2["id"])])) { echo $_POST["date_plan"][($row2["id"])]; } ?>> 
+        <input type="date" name="date_plan[]" class="input-xlarge datepicker" value="<?php echo html_esc($row2["date_plan"]); ?>" <?php if(isset($_POST["date_plan"][($row2["id"])])) { echo html_esc($_POST["date_plan"][($row2["id"])]); } ?>> 
         </td>
         <td width="8%"><?php echo $model_nameC; ?></td>
         <td width="8%" bgcolor="#E8F6F3">
@@ -105,10 +105,10 @@ if(isset($_POST['e_tcid']))
         </select>
         </td>
      
-        <td width="5%" bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'qty_plan','<?php echo $row2["id"]; ?>')" onClick="showEdit(this);"><?php echo $row2["qty_plan"]; ?><?php //echo intval($row2["qty_plan"],0); ?></td>
+        <td width="5%" bgcolor="#E8F6F3" contenteditable="true" onBlur="saveToDatabase(this,'qty_plan','<?php echo html_esc($row2["id"]); ?>')" onClick="showEdit(this);"><?php echo html_esc($row2["qty_plan"]); ?><?php //echo intval($row2["qty_plan"],0); ?></td>
       
-       <input name="tid[]" type="hidden" value="<?php echo $row2["id"]; ?> ">   
-       <input name="uid" type="hidden" value="<?php echo $row2["upload_id"]; ?> ">    
+       <input name="tid[]" type="hidden" value="<?php echo html_esc($row2["id"]); ?> ">   
+       <input name="uid" type="hidden" value="<?php echo html_esc($row2["upload_id"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $date1_final; ?> "> 
        <input name="date2" type="hidden" value="<?php echo $date2_final; ?> "> 
        <input name="plan_category" type="hidden" value="<?php echo $plan_category; ?>">  

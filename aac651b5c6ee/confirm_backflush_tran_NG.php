@@ -44,8 +44,8 @@ $url = "confirm_backflush_tran_NG.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,7 +188,7 @@ $result_dbW = mysqli_query($dbc,$query_dbW);
 			 $data_sqlW = mysqli_fetch_array($result_sqlW);
 			 
 			  echo "<script>";
-			  echo "window.location='confirm_backflushProc_NG.php?uid2=$data_sqlW[id_scan]'";
+			  echo "window.location='confirm_backflushProc_NG.php?uid2=".html_esc($data_sqlW['id_scan'])."'";
 			  echo "</script>";
 			  exit(); //quit the script
 	   
@@ -271,7 +271,7 @@ $result_db = mysqli_query($dbc,$query_db);
 			 $data_sql = mysqli_fetch_array($result_sql);
 			 
 			  echo "<script>";
-			  echo "window.location='confirm_backflushProc_NG.php?uid2=$data_sql[id_scan]'";
+			  echo "window.location='confirm_backflushProc_NG.php?uid2=".html_esc($data_sql['id_scan'])."'";
 			  echo "</script>";
 			  exit(); //quit the script
              }
@@ -312,12 +312,12 @@ $result_db = mysqli_query($dbc,$query_db);
                 <div class="form-group row col-md-10">
                   <label class="control-label col-md-3">Kanban QR Code<font color="#FF0000"><b> *</b></font></label>
                     <div class="col-md-10">
-                  <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) echo $_POST['pps_ref']; ?>" class="form-control" /><div class="form-control-feedback" ><?php echo $message_pps; ?></div>
+                  <input name="pps_ref" type="text" id="pps_ref" maxlength="200" value="<?php if(isset($_POST['pps_ref'])) echo html_esc($_POST['pps_ref']); ?>" class="form-control" /><div class="form-control-feedback" ><?php echo $message_pps; ?></div>
                     </div> <div class="col-md-2"><img src="../images/barcode_scan.jpeg" width="40" height="40" /></div>
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Eg: Part Number|Model|Back No.|Part Name|Quantity|Kanban No.</small>     
                     </div>
               <div class="form-group row">
-                  <input name="user_no" type="hidden" value="<?php echo $res["user_no"]; ?>" />
+                  <input name="user_no" type="hidden" value="<?php echo html_esc($res["user_no"]); ?>" />
                   <label class="control-label col-md-3"><font color="#FF0000"><b>* Compulsory field</b></font></label>
                     <div class="col-md-8">
                   &nbsp;

@@ -226,8 +226,8 @@ if(isset($_POST['btn_submit']))
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+<meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -418,9 +418,9 @@ if(isset($_POST['btn_submit']))
 				  ?> 
                   <tr>
                     <td width="5%" align="center">
-                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo $row["id_gr"]; ?>" class="form-check"><?php //echo $row["id_gr"]; ?></td>
-                    <td><?php echo $row["material_no"]; ?></td>
-                    <td><?php echo $row["material_desc"]; ?> &nbsp;&nbsp;<?php if(($tot_gr_qty) > $row_info["po_qty"]) { ?><div class="form-control-feedback" ><?php echo $msg; ?></div><?php } ?></td>
+                    <input type="checkbox" id="checkbox" name="e_tcid[]" value="<?php echo html_esc($row["id_gr"]); ?>" class="form-check"><?php //echo $row["id_gr"]; ?></td>
+                    <td><?php echo html_esc($row["material_no"]); ?></td>
+                    <td><?php echo html_esc($row["material_desc"]); ?> &nbsp;&nbsp;<?php if(($tot_gr_qty) > $row_info["po_qty"]) { ?><div class="form-control-feedback" ><?php echo $msg; ?></div><?php } ?></td>
                   </tr>
                   <?php 
 					  $no4++;

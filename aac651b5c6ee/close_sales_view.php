@@ -61,8 +61,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -81,7 +81,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
   </head>
   <body class="app sidebar-mini">
-  <div class="modal fade" id="myNoteWork<?php echo $row2["id_so"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade" id="myNoteWork<?php echo html_esc($row2["id_so"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -114,35 +114,35 @@ $row_work = mysqli_fetch_array($result_work);   //how many records are there?
    <tr>
     <td width="191">Sales Order Number </td>
     <td width="28">:</td>
-    <td width="971"><input type="text" id="so_no" name="so_no" readonly value="<?php  echo $row_work["so_no"]; ?>" class="form-control"></td>
+    <td width="971"><input type="text" id="so_no" name="so_no" readonly value="<?php  echo html_esc($row_work["so_no"]); ?>" class="form-control"></td>
     </tr>
   <tr>
     <td>Ship to Party </td>
     <td width="28">:</td>
-    <td><input type="text" id="ship_to" name="ship_to" readonly value="<?php echo $row_work["ship_to"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="ship_to" name="ship_to" readonly value="<?php echo html_esc($row_work["ship_to"]); ?>" class="form-control"/></td>
     </tr>
     <tr>
     <td>Ship to Party Description</td>
     <td width="28">:</td>
-    <td><input type="text" id="ship_desc" name="ship_desc" readonly value="<?php echo $row_work["ship_desc"]; ?>" class="form-control"/></td>
+    <td><input type="text" id="ship_desc" name="ship_desc" readonly value="<?php echo html_esc($row_work["ship_desc"]); ?>" class="form-control"/></td>
     </tr>
   <tr>
     <td>Plant Code</td>
     <td>:</td>
-    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo $row_work["plant_code"];  ?>" class="form-control"/>
+    <td><input type="text" id="plant_code" name="plant_code" readonly value="<?php echo html_esc($row_work["plant_code"]);  ?>" class="form-control"/>
      </td>
     </tr>
   <tr>
     <td>Date Closed</td>
     <td>:</td>
-    <td><input type="text" id="date_closed" name="date_closed" readonly value="<?php echo $row_work["CR"];  ?>" class="form-control"/>
+    <td><input type="text" id="date_closed" name="date_closed" readonly value="<?php echo html_esc($row_work["CR"]);  ?>" class="form-control"/>
      </td>
     </tr>
 
     <tr>
     <td>Status Account</td>
     <td>:</td>
-    <td><input type="text" id="status_so" name="status_so" readonly value="<?php echo $row_work["status_so"];  ?>" class="form-control" /></td>
+    <td><input type="text" id="status_so" name="status_so" readonly value="<?php echo html_esc($row_work["status_so"]);  ?>" class="form-control" /></td>
     </tr>
     
    </table>                         

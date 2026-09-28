@@ -32,8 +32,8 @@ $url = "add_user.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -332,9 +332,9 @@ if (isset($message))
 	
 	 if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row3["comp_code"]; ?>" <?php if($row3["comp_code"]==$_POST["company"]) echo "selected"; ?>> <?php echo $row3["comp_name"]; ?></option>
+               <option value="<?php echo html_esc($row3["comp_code"]); ?>" <?php if($row3["comp_code"]==$_POST["company"]) echo "selected"; ?>> <?php echo html_esc($row3["comp_name"]); ?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row3["comp_code"]; ?>" > <?php echo stripslashes($row3["comp_name"]); ?></option>
+               <option value="<?php echo html_esc($row3["comp_code"]); ?>" > <?php echo stripslashes($row3["comp_name"]); ?></option>
                <?php } ?>
                <?php
 							}
@@ -364,9 +364,9 @@ if (isset($message))
 
         if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row2["id_dept"]; ?>" <?php if($row2["id_dept"]==$_POST["dept"]) echo "selected"; ?>> <?php echo $row2["dept_name"]; ?></option>
+               <option value="<?php echo html_esc($row2["id_dept"]); ?>" <?php if($row2["id_dept"]==$_POST["dept"]) echo "selected"; ?>> <?php echo html_esc($row2["dept_name"]); ?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row2["id_dept"]; ?>" > <?php echo stripslashes($row2["dept_name"]); ?></option>
+               <option value="<?php echo html_esc($row2["id_dept"]); ?>" > <?php echo stripslashes($row2["dept_name"]); ?></option>
                <?php } ?>
                <?php
 							}
@@ -394,9 +394,9 @@ if (isset($message))
 
       if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row2b["id_design"]?>" <?php if($row2b["id_design"]==$_POST["design"]) echo "selected"; ?>> <?php echo $row2b["design"]?></option>
+               <option value="<?php echo html_esc($row2b["id_design"])?>" <?php if($row2b["id_design"]==$_POST["design"]) echo "selected"; ?>> <?php echo html_esc($row2b["design"])?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row2b["id_design"]?>" > <?php echo strtoupper($row2b["design"])?></option>
+               <option value="<?php echo html_esc($row2b["id_design"])?>" > <?php echo strtoupper($row2b["design"])?></option>
                <?php } ?>
                <?php
 							}
@@ -451,9 +451,9 @@ if (isset($message))
 	 
 	  if($_POST['submit'] == true){ ?>
                <!--RETAIN VALUE-->
-               <option value="<?php echo $row4["id_level"]; ?>" <?php if($row4["id_level"]==$_POST["level_id"]) echo "selected"; ?>> <?php echo $row4["desc_level"]; ?></option>
+               <option value="<?php echo html_esc($row4["id_level"]); ?>" <?php if($row4["id_level"]==$_POST["level_id"]) echo "selected"; ?>> <?php echo html_esc($row4["desc_level"]); ?></option>
                <?php }else{ ?>
-               <option value="<?php echo $row4["id_level"]; ?>" > <?php echo stripslashes($row4["desc_level"]); ?></option>
+               <option value="<?php echo html_esc($row4["id_level"]); ?>" > <?php echo stripslashes($row4["desc_level"]); ?></option>
                <?php } ?>
                <?php
 							}

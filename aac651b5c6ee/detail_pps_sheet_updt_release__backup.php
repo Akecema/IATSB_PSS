@@ -73,8 +73,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -233,8 +233,8 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 	 { 
 
 		   echo "<script>";
-		   echo "alert('Cancel Filename Document No : $uid');";
-		   echo "window.location='display_pps_month_reprint2.php?date1=$dateF&&date2=$dateT&&plant_code=$plant_code&&work_center=$work_center&&plan_no=$plan_no&&shift_ops=$shift_ops&&name_file=$name_file'";
+		   echo "alert('Cancel Filename Document No : ".html_esc($uid)."');";
+		   echo "window.location='display_pps_month_reprint2.php?date1=".html_esc($dateF)."&&date2=".html_esc($dateT)."&&plant_code=".html_esc($plant_code)."&&work_center=".html_esc($work_center)."&&plan_no=".html_esc($plan_no)."&&shift_ops=".html_esc($shift_ops)."&&name_file=".html_esc($name_file)."'";
 		   //echo "window.location='ftp_bflush_SAP_cancel.php?uid=$uid&&buid=$ref'";
 	       echo "</script>"; 
 		   exit(); //quit the script
@@ -244,7 +244,7 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteRelease<?php echo $row["upload_id"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteRelease<?php echo html_esc($row["upload_id"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -415,22 +415,22 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
       ?>
        <tr>
         <td width="30"><?php echo $no; ?></td>
-        <td width="150"><?php echo $row2["material_no"]; ?></td>
-        <td width="80"><font color="#0000CC"><?php echo $row2["plan_no"]; ?></font></td>
-        <td width="80"><?php echo $row2["R"]; ?></td>
-        <td width="60"><?php echo $row2["plant_code"]; ?></td>
-        <td width="60"><?php echo $row2["work_center"]; ?></td>
+        <td width="150"><?php echo html_esc($row2["material_no"]); ?></td>
+        <td width="80"><font color="#0000CC"><?php echo html_esc($row2["plan_no"]); ?></font></td>
+        <td width="80"><?php echo html_esc($row2["R"]); ?></td>
+        <td width="60"><?php echo html_esc($row2["plant_code"]); ?></td>
+        <td width="60"><?php echo html_esc($row2["work_center"]); ?></td>
         <td width="40"><?php echo $sta; ?></td>
         <td width="90"><font color="#0000CC"><?php echo intval($row2["qty_plan"]); ?></font></td>
        
-       <input name="uid" type="hidden" value="<?php echo $row["upload_id"]; ?> ">    
+       <input name="uid" type="hidden" value="<?php echo html_esc($row["upload_id"]); ?> ">    
        <input name="date1" type="hidden" value="<?php echo $date1_final; ?> "> 
        <input name="date2" type="hidden" value="<?php echo $date2_final; ?> "> 
-       <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">  
-       <input name="work_center" type="hidden" value="<?php echo $work_center; ?>"> 
-       <input name="plan_no" type="hidden" value="<?php echo $plan_no; ?>"> 
-       <input name="shift_ops" type="hidden" value="<?php echo $shift_ops; ?>"> 
-       <input name="name_file" type="hidden" value="<?php echo $name_file; ?>">  
+       <input name="plant_code" type="hidden" value="<?php echo html_esc($plant_code); ?>">  
+       <input name="work_center" type="hidden" value="<?php echo html_esc($work_center); ?>"> 
+       <input name="plan_no" type="hidden" value="<?php echo html_esc($plan_no); ?>"> 
+       <input name="shift_ops" type="hidden" value="<?php echo html_esc($shift_ops); ?>"> 
+       <input name="name_file" type="hidden" value="<?php echo html_esc($name_file); ?>">  
       </tr> 
       <?php 
 		  

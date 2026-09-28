@@ -32,8 +32,8 @@ $url = "display_setup_disposal_aprv.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+   <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -141,7 +141,7 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	
 	 if ($num > 0) {
 	 
-	 echo '<div align="center">There are currently  '. $num_rows[0].' record(s).</div>';
+	 echo '<div align="center">There are currently  '. html_esc($num_rows[0]).' record(s).</div>';
 	 }
 
 ?>
@@ -171,9 +171,9 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	 
       ?> <tr>
             <td width="32"><?php echo $no; ?></td>
-            <td><?php echo $row["user_fullname"]; ?></td>
-            <td width="403"><a href="#"><?php echo $row["acc_cmail"]; ?></a></td>
-            <td width="352" height="28"><?php  echo $dt_fuct_lvl["apprv_name"]; ?></td>
+            <td><?php echo html_esc($row["user_fullname"]); ?></td>
+            <td width="403"><a href="#"><?php echo html_esc($row["acc_cmail"]); ?></a></td>
+            <td width="352" height="28"><?php  echo html_esc($dt_fuct_lvl["apprv_name"]); ?></td>
          </tr>
           <?php 
 		  

@@ -132,8 +132,8 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -272,7 +272,7 @@ div.dataTables_wrapper {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
 		     </td>
              </tr>
              <tr>
@@ -282,7 +282,7 @@ div.dataTables_wrapper {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
               </tr>
               <tr>
             <th>Plant : <font color="#FF0000">*</font></th>
@@ -297,7 +297,7 @@ div.dataTables_wrapper {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-                  <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+                  <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -315,7 +315,7 @@ div.dataTables_wrapper {
 				    { 
 				   
 				   ?>
-                <option value="<?php echo $row5["id_work"]; ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo $row5["id_work"],' - ',stripslashes($row5["wc_desc"]); ?></option>
+                <option value="<?php echo html_esc($row5["id_work"]); ?>" <?php if($row5["id_work"] == $_GET["work_center"]) echo "selected"; ?>> <?php echo html_esc($row5["id_work"]),' - ',stripslashes($row5["wc_desc"]); ?></option>
                 
                 
                 
@@ -332,8 +332,8 @@ div.dataTables_wrapper {
               </tr>
               <tr>
                 <th><input name="Submit25" type="submit" class="btn btn-info" id="button" value="SEARCH" />
-               <!-- <input name="date1" type="hidden" value="<?php echo $_GET['date1']; ?> ">
-                <input name="date2" type="hidden" value="<?php echo $_GET['date2']; ?> ">
+               <!-- <input name="date1" type="hidden" value="<?php echo html_esc($_GET['date1']); ?> ">
+                <input name="date2" type="hidden" value="<?php echo html_esc($_GET['date2']); ?> ">
                 <input name="plant_code" type="hidden" value="<?php echo $plant_code; ?>">
                  <input name="work_center" type="hidden" value="<?php echo $work_center; ?>">
                 <input name="material_no" type="hidden" value="<?php echo $material_no; ?>">-->
@@ -765,7 +765,7 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
         
     	?>
     <form action="detail_bf_disposal-prdProc2.php?date1=<?php echo $dateF; ?>&&date2=<?php echo $dateT; ?>&&plant_code=<?php echo $plant_code; ?>&&work_center=<?php echo $work_center; ?>&&material_no=<?php echo $material_no; ?>" method="post" name="myform" id="myform">    
-               <!-- <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="myform" id="myform">-->
+               <!-- <form action="<?php echo html_esc($_SERVER['PHP_SELF']); ?>" method="post" name="myform" id="myform">-->
                 <table class="table table-hover table-bordered" id="example">
                <thead>
                 <tr>
@@ -843,24 +843,24 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	  
       ?>
                 <tr>
-                <td width="30"><div align="center"><?php echo $no4; ?><br><input type="checkbox" name="id_item[<?php echo $row["id_disposal"]; ?>]" value="<?php echo $row["id_disposal"]; ?>"/>
+                <td width="30"><div align="center"><?php echo $no4; ?><br><input type="checkbox" name="id_item[<?php echo html_esc($row["id_disposal"]); ?>]" value="<?php echo html_esc($row["id_disposal"]); ?>"/>
  </div> </td>
-                <td width="80"><?php echo $row["model_code"]; ?></td>
-                <td width="200"><?php echo $row["material_no"]; ?></td>
-                <td width="150"><?php echo $row["plan_no"]; ?></td> 
-                <td width="150"><?php echo $row["bflush_qqc_no"]; ?></td> 
-                <td width="100"><?php echo $row["R"]; ?></td> 
+                <td width="80"><?php echo html_esc($row["model_code"]); ?></td>
+                <td width="200"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="150"><?php echo html_esc($row["plan_no"]); ?></td> 
+                <td width="150"><?php echo html_esc($row["bflush_qqc_no"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["R"]); ?></td> 
                 <td width="80"><?php echo $model_name2; ?></td> 
-                <td width="80"><?php echo $row["shift_posting"]; ?></td>
+                <td width="80"><?php echo html_esc($row["shift_posting"]); ?></td>
                 <td width="100"><?php echo intval($row["qty_NG"]); ?></td>
-                <td width="100"><?php echo $row_proc["proc_desc"]; ?></td>
-                <td width="100"><?php echo $row_type["type_desc"]; ?></td>
-                <td width="100"><?php echo $row_defect["defect_desc"]; ?></td>
-                <td width="100"><?php echo $row["reason_reject"]; ?></td>
+                <td width="100"><?php echo html_esc($row_proc["proc_desc"]); ?></td>
+                <td width="100"><?php echo html_esc($row_type["type_desc"]); ?></td>
+                <td width="100"><?php echo html_esc($row_defect["defect_desc"]); ?></td>
+                <td width="100"><?php echo html_esc($row["reason_reject"]); ?></td>
                 <td width="150">              
-               <textarea name="remarks[<?php echo $row["id_disposal"]; ?>]" id="textarea" rows="3" cols="20" class="form-control"><?php if (isset($_POST['remarks'][($row["id_disposal"])])) { echo $_POST['remarks'][($row["id_disposal"])]; } ?></textarea>
-               <input name="id_disposal[<?php echo $row["id_disposal"]; ?>]" type="hidden" value="<?php echo $row["id_disposal"]; ?>">
-               <input name="date_dis[<?php echo $row["id_disposal"]; ?>]" type="hidden" value="<?php echo $row["date_posting"]; ?>">
+               <textarea name="remarks[<?php echo html_esc($row["id_disposal"]); ?>]" id="textarea" rows="3" cols="20" class="form-control"><?php if (isset($_POST['remarks'][($row["id_disposal"])])) { echo html_esc($_POST['remarks'][($row["id_disposal"])]); } ?></textarea>
+               <input name="id_disposal[<?php echo html_esc($row["id_disposal"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_disposal"]); ?>">
+               <input name="date_dis[<?php echo html_esc($row["id_disposal"]); ?>]" type="hidden" value="<?php echo html_esc($row["date_posting"]); ?>">
                
                
                 </td>

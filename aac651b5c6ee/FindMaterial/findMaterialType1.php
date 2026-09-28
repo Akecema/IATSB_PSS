@@ -17,7 +17,7 @@ $result9 = mysql_query($query9);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -41,14 +41,14 @@ $result9 = mysql_query($query9);
 </head>
 <body>
    <div id="material_nodiv"> 
-   <select name="material_no" id="material_no" class="span5" onChange="getsloc(<?=$material_type?>,this.value)" >
+   <select name="material_no" id="material_no" class="span5" onChange="getsloc(<?=html_esc($material_type)?>,this.value)" >
    <option value="NULL" placeholder="Select Part No."> -- Select Part No. iii --</option>
 	<?php
     while($row9=mysql_fetch_array($result9)) 
     {
           
     ?>
-    <option value="<?php echo $row9["material_no"]; ?>" > <?php echo $row9["material_no"]; ?> - <?php echo $row9["material_desc"]; ?></option>
+    <option value="<?php echo html_esc($row9["material_no"]); ?>" > <?php echo html_esc($row9["material_no"]); ?> - <?php echo html_esc($row9["material_desc"]); ?></option>
     
     <?php     }
     

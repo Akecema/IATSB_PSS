@@ -93,8 +93,8 @@ $rst_sta22 = mysqli_fetch_array($sta_res22);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -343,7 +343,7 @@ $result_data2A = mysqli_query($dbc,$query_data2A);
 
    }// end submit
 ?>
-  <div class="modal fade printable autoprint" id="myNoteCancel<?php echo $row["doc_tp"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteCancel<?php echo html_esc($row["doc_tp"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -458,12 +458,12 @@ $result_displayA = mysqli_query($dbc,$query_displayA);   //run the query.
       ?>
      
        
-      <input name="uid4" type="hidden" value="<?php echo $row["doc_tp"]; ?> ">    
-      <input name="plant_code"  type="hidden" id="plant_code" value="<?php echo $_GET["plant_code"]; ?>">
-      <input name="sloc_f" type="hidden" id="sloc_f" value="<?php echo $_GET["sloc_f"]; ?>">
-      <input name="sloc_t" type="hidden" id="sloc_t" value="<?php echo $_GET["sloc_t"]; ?>">
-      <input name="date1" type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2" type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
+      <input name="uid4" type="hidden" value="<?php echo html_esc($row["doc_tp"]); ?> ">    
+      <input name="plant_code"  type="hidden" id="plant_code" value="<?php echo html_esc($_GET["plant_code"]); ?>">
+      <input name="sloc_f" type="hidden" id="sloc_f" value="<?php echo html_esc($_GET["sloc_f"]); ?>">
+      <input name="sloc_t" type="hidden" id="sloc_t" value="<?php echo html_esc($_GET["sloc_t"]); ?>">
+      <input name="date1" type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2" type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
       
       <?php 
 		  

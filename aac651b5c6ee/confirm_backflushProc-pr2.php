@@ -104,8 +104,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -390,22 +390,22 @@ input[value="+ Add Item"]{
          <tr>
              <th scope="row"><div align="left">Plant</div></th>
              <td>:</td>
-             <td><?php echo $data_plant["plant_desc"]; ?></td>
+             <td><?php echo html_esc($data_plant["plant_desc"]); ?></td>
             </tr>
            <tr>
              <th scope="row"><div align="left">Back No.</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["back_no"]; ?></td>
+             <td><?php echo html_esc($data_scan["back_no"]); ?></td>
             </tr>
             <tr>
              <th scope="row"><div align="left">Part Number</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_no"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_no"]); ?></td>
              </tr>
             <tr>
              <th scope="row"><div align="left">Part Name</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["material_desc"]; ?></td>
+             <td><?php echo html_esc($data_scan["material_desc"]); ?></td>
              </tr>
               <tr>
              <th scope="row"><div align="left">Backflush Quantity</div></th>
@@ -415,22 +415,22 @@ input[value="+ Add Item"]{
              <tr>
              <th scope="row"><div align="left">Posting Date</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["B"]; ?></td>
+             <td><?php echo html_esc($data_scan["B"]); ?></td>
              </tr>
               <tr>
              <th width="33%"><div align="left">Posting Time</div></th>
              <td width="5%"> :</td>
-             <td width="62%"><?php echo $data_scan["time_posting"]; ?></td>
+             <td width="62%"><?php echo html_esc($data_scan["time_posting"]); ?></td>
              </tr>
               <tr>
              <th width="33%"><div align="left">Planned Order</div></th>
              <td width="5%"> :</td>
-             <td width="62%"><?php echo $data_scan["plan_no"]; ?></td>
+             <td width="62%"><?php echo html_esc($data_scan["plan_no"]); ?></td>
              </tr>
              <tr>
              <th scope="row"><div align="left">Line</div></th>
              <td>:</td>
-             <td><?php echo $data_scan["work_center"]; ?></td>
+             <td><?php echo html_esc($data_scan["work_center"]); ?></td>
              </tr>
            </table></td>
        <td width="48%">

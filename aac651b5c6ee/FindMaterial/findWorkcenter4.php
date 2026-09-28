@@ -17,7 +17,7 @@ $result4 =mysql_query($query4);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $data_setup["title_desc"]; ?></title>
+<title><?php echo html_esc($data_setup["title_desc"]); ?></title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -43,12 +43,12 @@ $result4 =mysql_query($query4);
 
 
 <div id="work_centerdiv">
-  <select name="work_center" id="work_center" class="span5" onChange="getWorkCenter(<?=$factory?>,this.value)">
+  <select name="work_center" id="work_center" class="span5" onChange="getWorkCenter(<?=html_esc($factory)?>,this.value)">
    <option value="NULL" placeholder="Select Work Center"> -- Select Work Center --</option>
 <?php
                 while($row4=mysql_fetch_array($result4)) 
 			      {
-                  echo'<option value="',$row4["id_work"],'">',stripslashes($row4["id_work"]),' - ',stripslashes($row4["wc_desc"]),'</option>';
+                  echo'<option value="',html_esc($row4["id_work"]),'">',stripslashes($row4["id_work"]),' - ',stripslashes($row4["wc_desc"]),'</option>';
                   }
 				  
 				  ?>

@@ -51,7 +51,7 @@ for($i = 0; $i < count($myArray); $i++)
 	$dt_bac_prt_pps = mysqli_fetch_array($result_bac_prt_pps);	 
 
 
-	echo "Work = ".$dt_bac_prt_pps['work_center']."</br>";
+	echo "Work = ".html_esc($dt_bac_prt_pps['work_center'])."</br>";
 	
 	$query_bac_prt_pps2 = "SELECT * FROM prt_sheet_pps_new WHERE id_pps_dtl = '".sql_esc($dt_bac_prt_pps['id'])."' group by work_center ";
 	$result_bac_prt_pps2 = mysqli_query($dbc,$query_bac_prt_pps2);
@@ -72,8 +72,8 @@ for($i = 0; $i < count($myArray); $i++)
     </thead>  
     		
     <tbody>
-        <td><?php  echo $dt_bac_prt_pps2['id_pps_dtl']; ?></td>
-        <td><?php  echo $dt_bac_prt_pps2['work_center']; ?></td>
+        <td><?php  echo html_esc($dt_bac_prt_pps2['id_pps_dtl']); ?></td>
+        <td><?php  echo html_esc($dt_bac_prt_pps2['work_center']); ?></td>
     </tbody>
     </table>-->
     
@@ -127,8 +127,8 @@ while($dt_bac_prt_pps = mysqli_fetch_array($result_bac_prt_pps))
       </thead>
         
        <tbody>
-       <td><?php  echo $row3["id_pps_dtl"]; ?></td>
-       <td><?php  echo $row3["work_center"]; ?></td>
+       <td><?php  echo html_esc($row3["id_pps_dtl"]); ?></td>
+       <td><?php  echo html_esc($row3["work_center"]); ?></td>
        </tbody>-->
 
 <?php

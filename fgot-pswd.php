@@ -11,7 +11,7 @@ include 'inc-url.php';
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>E-leave - <?php echo $objRst_url['comp']; ?></title>
+	<title>E-leave - <?php echo html_esc($objRst_url['comp']); ?></title>
 	<link rel="ICON" href="img/ingress.ico" type="image/ico" /><meta charset="utf-8">
 	<link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">

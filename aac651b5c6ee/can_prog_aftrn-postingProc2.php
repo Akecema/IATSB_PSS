@@ -94,8 +94,8 @@ $rst_sta19 = mysqli_fetch_array($sta_res19);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -251,7 +251,7 @@ th {
               while($row27 = mysqli_fetch_array($result27)) {
         
               ?>
-     <option value="<?php echo $row27["plant_code"]; ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo $row27["plant_desc"]; ?></option>
+     <option value="<?php echo html_esc($row27["plant_code"]); ?>" <?php if($row27["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo stripslashes($row27["plant_code"]); ?> - <?php echo html_esc($row27["plant_desc"]); ?></option>
                   <?php
            }  ?>
                 </select>
@@ -271,7 +271,7 @@ th {
                    while($row_sect = mysqli_fetch_array($result_sect)) 
 			      {
 				 ?>
-                    <option value="<?php echo $row_sect["sloc_code"]; ?>"<?php if($row_sect["sloc_code"] == $_GET["sloc_f"]) echo "selected"; ?>> <?php echo $row_sect["sloc_code"]; ?> - <?php echo $row_sect["sloc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_sect["sloc_code"]); ?>"<?php if($row_sect["sloc_code"] == $_GET["sloc_f"]) echo "selected"; ?>> <?php echo html_esc($row_sect["sloc_code"]); ?> - <?php echo html_esc($row_sect["sloc_desc"]); ?></option>
                      
                   <?php
 				
@@ -296,7 +296,7 @@ th {
                    while($row_sect2 = mysqli_fetch_array($result_sect2)) 
 			      {
 				    ?>
-                    <option value="<?php echo $row_sect2["sloc_code"]; ?>"<?php if($row_sect2["sloc_code"] == $_GET["sloc_t"]) echo "selected"; ?>> <?php echo $row_sect2["sloc_code"]; ?> - <?php echo $row_sect2["sloc_desc"]; ?></option>
+                    <option value="<?php echo html_esc($row_sect2["sloc_code"]); ?>"<?php if($row_sect2["sloc_code"] == $_GET["sloc_t"]) echo "selected"; ?>> <?php echo html_esc($row_sect2["sloc_code"]); ?> - <?php echo html_esc($row_sect2["sloc_desc"]); ?></option>
                      
                   <?php
 				  
@@ -308,13 +308,13 @@ th {
                </tr>
               <tr>
               <th>Posting Date from :  <font color="#FF0000">*</font></th>
-                 <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+                 <td colspan="3"><input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                <div class="form-control-feedback" ><?php echo $message_psdf; ?></div>
               </td>
               </tr>
               <tr>
               <th>Posting Date to:  <font color="#FF0000">*</font></th>
-                 <td colspan="3"><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>">
+                 <td colspan="3"><input class="form-control" id="PSS2Date" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>">
                <div class="form-control-feedback" ><?php echo $message_psdt; ?></div> 
                 </th>
               </tr>
@@ -429,17 +429,17 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 		
       ?>
                 <tr>
-                <td width="30"><?php echo $no4; ?><input name="id_tp[<?php echo $row["id_scan_tp"]; ?>]" type="hidden" value="<?php echo $row["id_scan_tp"]; ?>">
+                <td width="30"><?php echo $no4; ?><input name="id_tp[<?php echo html_esc($row["id_scan_tp"]); ?>]" type="hidden" value="<?php echo html_esc($row["id_scan_tp"]); ?>">
                </td>
-                <td width="200"><?php echo $row["plant_code"]; ?></td>
-                <td width="80"><?php echo $row["sloc_from"]; ?></td>
-                <td width="80"><?php echo $row["sloc_to"]; ?></td> 
-                <td width="80"><?php echo $row["shift_day"]; ?></td> 
-                <td width="100"><?php echo $row["R"]; ?></td>
-                <td width="80"><?php echo $row["doc_tp"]; ?></td>
-                <td width="100"><?php echo $row["ref_doc_tp"]; ?></td>
-                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo $row["R7"];  }else{    } ?></td>
-                <td width="100"> <a href="#myNoteView<?php echo $row["doc_tp"]; ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
+                <td width="200"><?php echo html_esc($row["plant_code"]); ?></td>
+                <td width="80"><?php echo html_esc($row["sloc_from"]); ?></td>
+                <td width="80"><?php echo html_esc($row["sloc_to"]); ?></td> 
+                <td width="80"><?php echo html_esc($row["shift_day"]); ?></td> 
+                <td width="100"><?php echo html_esc($row["R"]); ?></td>
+                <td width="80"><?php echo html_esc($row["doc_tp"]); ?></td>
+                <td width="100"><?php echo html_esc($row["ref_doc_tp"]); ?></td>
+                <td width="100"><?php if($row["date_cancel"] != "0000-00-00 00:00:00") { echo html_esc($row["R7"]);  }else{    } ?></td>
+                <td width="100"> <a href="#myNoteView<?php echo html_esc($row["doc_tp"]); ?>" data-toggle="modal" target="_parent"><i class="fa fa-search" aria-hidden="true"></i>View</a> 
                  
                     <!--------------------------modal------------------------->
           <?php    include "display_tp_tran_proc_wselCan.php";   ?></td>

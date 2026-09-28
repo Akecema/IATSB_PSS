@@ -99,8 +99,8 @@ $rst_sta23 = mysqli_fetch_array($sta_res23);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -217,7 +217,7 @@ page-break-before: always ;
    }
    
 ?>
-  <div class="modal fade printable autoprint" id="myNoteView<?php echo $row["doc_tp"]; ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
+  <div class="modal fade printable autoprint" id="myNoteView<?php echo html_esc($row["doc_tp"]); ?>" tabindex="-100" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">        
       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -254,18 +254,18 @@ page-break-before: always ;
     <td valign="top">&nbsp;<h5><font color="#999999"><b>TRANSFER POSTING</b></font></h5></td>
   </tr>
   <tr>
-    <td><div align="left"><b>Plant :  </b><?php echo $row["plant_code"];   ?></div></td>
+    <td><div align="left"><b>Plant :  </b><?php echo html_esc($row["plant_code"]);   ?></div></td>
     <td>&nbsp;</td> 
-    <td><div align="left"><b>Document No. :  </b><?php echo $row["doc_tp"];   ?></div></td>
+    <td><div align="left"><b>Document No. :  </b><?php echo html_esc($row["doc_tp"]);   ?></div></td>
    <tr> 
-    <td><div align="left"><b>SLoc From :  </b><?php echo $row["sloc_from"];   ?></div></td>
+    <td><div align="left"><b>SLoc From :  </b><?php echo html_esc($row["sloc_from"]);   ?></div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Date :  </b><?php echo $data_bb["T3"];   ?></div></td>
+    <td><div align="left"><b>Date :  </b><?php echo html_esc($data_bb["T3"]);   ?></div></td>
   </tr>
   <tr>
-    <td><div align="left"><b>SLoc To :  </b><?php echo $row["sloc_to"];   ?></div></td>
+    <td><div align="left"><b>SLoc To :  </b><?php echo html_esc($row["sloc_to"]);   ?></div></td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Shift :  </b><?php echo $row["shift_day"];  ?></div></td>
+    <td><div align="left"><b>Shift :  </b><?php echo html_esc($row["shift_day"]);  ?></div></td>
   </tr>
   <?php   
  if($row["status_tp"] == $rst_sta4["status_desc"])
@@ -274,7 +274,7 @@ page-break-before: always ;
    <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td><div align="left"><b>Cancelled By :  </b><?php echo $data_u_can["user_fullname"];  ?></div></td>
+    <td><div align="left"><b>Cancelled By :  </b><?php echo html_esc($data_u_can["user_fullname"]);  ?></div></td>
   </tr><?php   } ?>
   </table>
   <?php
@@ -368,11 +368,11 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
   ?>
   <tr>
     <td><?php echo $no; ?></td>
-    <td><?php echo $row2["material_no"]; ?></td>
-    <td><?php echo $row2["material_desc"]; ?></td>
-    <td><?php echo $row2["model_code"]; ?></td>
+    <td><?php echo html_esc($row2["material_no"]); ?></td>
+    <td><?php echo html_esc($row2["material_desc"]); ?></td>
+    <td><?php echo html_esc($row2["model_code"]); ?></td>
     <td><?php echo intval($row2["qty_tp"]); ?></td>
-    <td><?php echo $row2["uom_tp"]; ?></td>
+    <td><?php echo html_esc($row2["uom_tp"]); ?></td>
   </tr>
   
  <?php 
@@ -389,11 +389,11 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
     
         <div class="modal-footer pull-left">
       <input name="plant_code"  type="hidden" id="plant_code" value="<?php echo $plant_code; ?>">
-      <input name="uid2" type="hidden" id="uid2" value="<?php echo $row["doc_tp"]; ?>">
-      <input name="sloc_f" type="hidden" id="sloc_f" value="<?php echo $_GET["sloc_f"]; ?>">
-      <input name="sloc_t" type="hidden" id="sloc_t" value="<?php echo $_GET["sloc_t"]; ?>">
-      <input name="date1" type="hidden" id="date1" value="<?php echo $_GET["date1"]; ?>">
-      <input name="date2" type="hidden" id="date2" value="<?php echo $_GET["date2"]; ?>">
+      <input name="uid2" type="hidden" id="uid2" value="<?php echo html_esc($row["doc_tp"]); ?>">
+      <input name="sloc_f" type="hidden" id="sloc_f" value="<?php echo html_esc($_GET["sloc_f"]); ?>">
+      <input name="sloc_t" type="hidden" id="sloc_t" value="<?php echo html_esc($_GET["sloc_t"]); ?>">
+      <input name="date1" type="hidden" id="date1" value="<?php echo html_esc($_GET["date1"]); ?>">
+      <input name="date2" type="hidden" id="date2" value="<?php echo html_esc($_GET["date2"]); ?>">
       <input name="prt_btn" type="submit"  class="btn btn-warning btn-sm" value="PRINT"/> 
       
       </div> 

@@ -88,8 +88,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+    <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -225,7 +225,7 @@ th {
 				  {   
 				 
 				   ?> 
-      <option value="<?php echo $rst_autho_plant["plant_code"]; ?>" <?php if($rst_autho_plant["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo $rst_autho_plant["plant_code"]; ?> - <?php echo $rst_autho_plant["plant_desc"]; ?></option>     
+      <option value="<?php echo html_esc($rst_autho_plant["plant_code"]); ?>" <?php if($rst_autho_plant["plant_code"] == $_GET["plant_code"]) echo "selected"; ?>> <?php echo html_esc($rst_autho_plant["plant_code"]); ?> - <?php echo html_esc($rst_autho_plant["plant_desc"]); ?></option>     
                 
                   <?php
                   }
@@ -243,7 +243,7 @@ th {
 				 $mm1 = substr($_GET["date1"],5,2);
 				 $yy1 = substr($_GET["date1"],0,4);
 			?>
-             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo $_GET['date1']; ?>" >
+             <input class="form-control" id="PSSDate" type="text" placeholder="Select Date" name="date1" value="<?php echo html_esc($_GET['date1']); ?>" >
                   
                     </td></tr>
                 <tr>
@@ -253,7 +253,7 @@ th {
 				 $mm2 = substr($_GET["date2"],5,2);
 				 $yy2 = substr($_GET["date2"],0,4);
 			?>
-             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo $_GET['date2']; ?>" ></td>
+             <input class="form-control" id="PSSDate2" type="text" placeholder="Select Date" name="date2" value="<?php echo html_esc($_GET['date2']); ?>" ></td>
              
               </tr>
              
@@ -358,14 +358,14 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	   
 	   
                 <tr>
-                <td width="150"><?php echo $row["so_no"]; ?></td>
-                <td width="250"><?php echo $row["material_no"]; ?></td>
-                <td width="100"><?php echo $row["item_no"]; ?></td>
-                <td width="100"><?php  echo $row["plant_code"]; ?></td>
-                <td width="150"><div align="center"><?php echo $row["sold_no"]; ?></div></td> 
-                <td width="150"><div align="center"><?php echo $row["ship_no"]; ?></div></td>
-                <td> <div align="center"><?php echo $row["user_closed"]; ?>
-                 <td width="100"><?php echo $row["RF"]; ?></td>
+                <td width="150"><?php echo html_esc($row["so_no"]); ?></td>
+                <td width="250"><?php echo html_esc($row["material_no"]); ?></td>
+                <td width="100"><?php echo html_esc($row["item_no"]); ?></td>
+                <td width="100"><?php  echo html_esc($row["plant_code"]); ?></td>
+                <td width="150"><div align="center"><?php echo html_esc($row["sold_no"]); ?></div></td> 
+                <td width="150"><div align="center"><?php echo html_esc($row["ship_no"]); ?></div></td>
+                <td> <div align="center"><?php echo html_esc($row["user_closed"]); ?>
+                 <td width="100"><?php echo html_esc($row["RF"]); ?></td>
             
                 </tr>
                  

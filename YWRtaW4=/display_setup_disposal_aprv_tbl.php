@@ -32,8 +32,8 @@ $url = "display_setup_disposal_aprv_tbl.php";
 <!DOCTYPE html>
 <html lang="en">
   <head>
-   <meta name="description" content="<?php echo $data_setup["tajuk_sys"]; ?>">
-    <title><?php echo $data_setup["title_desc"]; ?></title>
+   <meta name="description" content="<?php echo html_esc($data_setup["tajuk_sys"]); ?>">
+    <title><?php echo html_esc($data_setup["title_desc"]); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,7 +139,7 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	
 	 if ($num > 0) {
 	 
-	 echo '<div align="center">There are currently  '. $num_rows[0].' record(s).</div>';
+	 echo '<div align="center">There are currently  '. html_esc($num_rows[0]).' record(s).</div>';
 	 }
 
 ?>
@@ -170,12 +170,12 @@ $num = mysqli_num_rows($rs);   //how many material are there?
 	 
       ?> <tr>
             <td width="60"><?php echo $no; ?></td>
-            <td width="200"><?php echo $row["apprv_name"]; ?></td>
-            <td width="200"><?php echo $row["apprv_name2"]; ?></td>
-            <td width="100" height="28"><?php  echo $row["status_apprv"]; ?></td>
+            <td width="200"><?php echo html_esc($row["apprv_name"]); ?></td>
+            <td width="200"><?php echo html_esc($row["apprv_name2"]); ?></td>
+            <td width="100" height="28"><?php  echo html_esc($row["status_apprv"]); ?></td>
             <td width="100">
                 <div align="center">
-                 <a href="#myNoteEditM<?php echo $row["id_apprv"]; ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
+                 <a href="#myNoteEditM<?php echo html_esc($row["id_apprv"]); ?>" data-toggle="modal" class="btn btn-warning square-btn-adjust"  target="_parent"><img src="../images/edit.gif" width="16" height="16" alt="Edit">&nbsp;Edit</a>
                  
                     <!--------------------------modal------------------------->
           <?php   include "table_aprv-disposal_edit.php";   ?>

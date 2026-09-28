@@ -28,11 +28,11 @@ $result41 =mysqli_query($dbc,$query41);
     {
 		 if($_POST['Submit22'] == true){ ?>
                        <!--RETAIN VALUE-->
-                       <option value="<?php echo $row41["vendor_code"]; ?>" <?php if($row41["vendor_code"]== $vendor_id) echo "selected"; ?>> <?php echo stripslashes($row41["vendor_code"]),' - ',stripslashes($row41["vendor_name"]); ?></option>
+                       <option value="<?php echo html_esc($row41["vendor_code"]); ?>" <?php if($row41["vendor_code"]== $vendor_id) echo "selected"; ?>> <?php echo stripslashes($row41["vendor_code"]),' - ',stripslashes($row41["vendor_name"]); ?></option>
                        <?php } //else{ ?>
 	
         
-      <option value="<?php echo $row41["vendor_code"]; ?>" > <?php  echo $row41["vendor_code"]; ?> - <?php echo $row41["vendor_name"]; ?></option>
+      <option value="<?php echo html_esc($row41["vendor_code"]); ?>" > <?php  echo html_esc($row41["vendor_code"]); ?> - <?php echo html_esc($row41["vendor_name"]); ?></option>
     
     <?php    // }
     

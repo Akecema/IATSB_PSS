@@ -19,7 +19,7 @@ include '../include/config.php';
 	 {
 			 
 			 echo "<script>";
-			 echo "window.location='crt_do_perd2-dlvP2MSB.php?scan_gen=$scan_gen&&so_no=$so_no'";
+			 echo "window.location='crt_do_perd2-dlvP2MSB.php?scan_gen=".html_esc($scan_gen)."&&so_no=".html_esc($so_no)."'";
 		     echo "</script>"; 
 		     exit(); //quit the script
 		 
