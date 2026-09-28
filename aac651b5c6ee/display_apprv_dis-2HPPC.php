@@ -45,8 +45,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
      include 'apprv_func_list.php';
@@ -327,14 +327,14 @@ input[value="+ Add Item"]{
 	
 	//----------update approval level 1 disposal_detail_prd_all------------
 	
-	$query_LevelAa = "UPDATE disposal_detail_prd_all SET status_approved = '".sql_esc($rst_sta3["status_desc"])."', approved_by = '".sql_esc($username)."', date_approved = NOW(), remark_approved = '".sql_esc($remark_approved1)."', status_disposal = '".sql_esc($rst_sta29["status_desc"])."' WHERE doc_dis = '".sql_esc($uid2)."' AND status_disposal = '".sql_esc($rst_sta10["status_desc"])."'";
-	$result_LevelAa = mysqli_query($dbc,$query_LevelAa);
+	$query_LevelAa = new PreparedSql("UPDATE disposal_detail_prd_all SET status_approved = ?, approved_by = ?, date_approved = NOW(), remark_approved = ?, status_disposal = ? WHERE doc_dis = ? AND status_disposal = ?", [$rst_sta3["status_desc"], $username, $remark_approved1, $rst_sta29["status_desc"], $uid2, $rst_sta10["status_desc"]]);
+	$result_LevelAa = db_query($dbc, $query_LevelAa);
 	
 
 	 //-------update status sc_gra_disposal_ppcrec  --------------------
    
-   $query_update_scan2 = "UPDATE sc_gra_disposal_ppcrec SET status_dis = '".sql_esc($rst_sta29["status_desc"])."' WHERE id_scan_dis = '".sql_esc($data_info5A["id_scan_dis"])."'";
-   $rst_update_scan2 = mysqli_query($dbc,$query_update_scan2);
+   $query_update_scan2 = new PreparedSql("UPDATE sc_gra_disposal_ppcrec SET status_dis = ? WHERE id_scan_dis = ?", [$rst_sta29["status_desc"], $data_info5A["id_scan_dis"]]);
+   $rst_update_scan2 = db_query($dbc, $query_update_scan2);
    
 	  }
 	  
@@ -464,14 +464,14 @@ input[value="+ Add Item"]{
 	
 	//----------update approval level 1 disposal_detail_prd_all------------
 	
-	$query_LevelAAa = "UPDATE disposal_detail_prd_all SET status_approved = '".sql_esc($rst_sta5["status_desc"])."', approved_by = '".sql_esc($username)."', date_approved = NOW(), remark_approved = '".sql_esc($remark_approved1)."', status_disposal = '".sql_esc($rst_sta5["status_desc"])."' WHERE doc_dis = '".sql_esc($uid2)."' AND status_disposal = '".sql_esc($rst_sta10["status_desc"])."'";
-	$result_LevelAAa = mysqli_query($dbc,$query_LevelAAa);
+	$query_LevelAAa = new PreparedSql("UPDATE disposal_detail_prd_all SET status_approved = ?, approved_by = ?, date_approved = NOW(), remark_approved = ?, status_disposal = ? WHERE doc_dis = ? AND status_disposal = ?", [$rst_sta5["status_desc"], $username, $remark_approved1, $rst_sta5["status_desc"], $uid2, $rst_sta10["status_desc"]]);
+	$result_LevelAAa = db_query($dbc, $query_LevelAAa);
    
    
    //-------update status sc_gra_disposal_ppcrec  --------------------
    
-   $query_update_scan25 = "UPDATE sc_gra_disposal_ppcrec SET status_dis = '".sql_esc($rst_sta5["status_desc"])."' WHERE id_scan_dis = '".sql_esc($data_info5AA["id_scan_dis"])."'";
-   $rst_update_scan25 = mysqli_query($dbc,$query_update_scan25);
+   $query_update_scan25 = new PreparedSql("UPDATE sc_gra_disposal_ppcrec SET status_dis = ? WHERE id_scan_dis = ?", [$rst_sta5["status_desc"], $data_info5AA["id_scan_dis"]]);
+   $rst_update_scan25 = db_query($dbc, $query_update_scan25);
    
 	  }
    
@@ -523,20 +523,20 @@ input[value="+ Add Item"]{
 	 
 	 //---get user prepared by---
 	 
-	 $query_prepare = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["user_generate_dis"])."'";
-	 $result_prepare = mysqli_query($dbc,$query_prepare);
+	 $query_prepare = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["user_generate_dis"]]);
+	 $result_prepare = db_query($dbc, $query_prepare);
 	 $data_prepare = mysqli_fetch_array($result_prepare);
 	 
 	  //---get user approved by---
 	 
-	 $query_appr = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved1"])."'";
-	 $result_appr = mysqli_query($dbc,$query_appr);
+	 $query_appr = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved1"]]);
+	 $result_appr = db_query($dbc, $query_appr);
 	 $data_appr = mysqli_fetch_array($result_appr);
 	 
 	  //---get user approved2 by---
 	 
-	 $query_appr2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_bb["hod_approved2"])."'";
-	 $result_appr2 = mysqli_query($dbc,$query_appr2);
+	 $query_appr2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_bb["hod_approved2"]]);
+	 $result_appr2 = db_query($dbc, $query_appr2);
 	 $data_appr2 = mysqli_fetch_array($result_appr2);
 	 
 	 //---get shift-----
@@ -615,20 +615,20 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
    //-----get process ----
 	   
-	   $query_proc = "SELECT * FROM proc_reject_detail_ppc WHERE id_proc = '".sql_esc($row2["proc_reject"])."'";
-	   $rst_proc = mysqli_query($dbc,$query_proc);
+	   $query_proc = new PreparedSql("SELECT * FROM proc_reject_detail_ppc WHERE id_proc = ?", [$row2["proc_reject"]]);
+	   $rst_proc = db_query($dbc, $query_proc);
        $data_proc = mysqli_fetch_array($rst_proc);
 	   
   //----get type of reject -----
   
-       $query_type = "SELECT * FROM type_reject_detail_ppc WHERE id_type = '".sql_esc($row2["type_reject"])."'";
-	   $rst_type = mysqli_query($dbc,$query_type);
+       $query_type = new PreparedSql("SELECT * FROM type_reject_detail_ppc WHERE id_type = ?", [$row2["type_reject"]]);
+	   $rst_type = db_query($dbc, $query_type);
        $data_type = mysqli_fetch_array($rst_type);
   
   
   //----get defect/ reason of reject ------
-       $query_reason = "SELECT * FROM type_defect_detail_ppc WHERE id_defect = '".sql_esc($row2["type_defect"])."'";
-	   $rst_reason = mysqli_query($dbc,$query_reason);
+       $query_reason = new PreparedSql("SELECT * FROM type_defect_detail_ppc WHERE id_defect = ?", [$row2["type_defect"]]);
+	   $rst_reason = db_query($dbc, $query_reason);
        $data_reason = mysqli_fetch_array($rst_reason);
   
   	   

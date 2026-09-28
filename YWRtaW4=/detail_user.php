@@ -1,7 +1,7 @@
 <?php
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "index_admin.php"; 
@@ -15,8 +15,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 include 'apprv_func_list.php';
@@ -139,7 +139,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
     <td><?php		
    //Retrieve and display the available types
   $query2 = "SELECT * from department WHERE id_dept = '".sql_esc($row[6])."'";
-  $result2 = mysqli_query($dbc,$query2);
+  $result2 = db_query($dbc, $query2);
    $row2 = mysqli_fetch_array($result2);
 	    
 		
@@ -209,8 +209,8 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 	 
 	    //--------------------------
 	
-	            $query_search2 = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($row["staff_ID"])."'";
-              $result_search2 = mysqli_query($dbc,$query_search2);   //run the query.
+	            $query_search2 = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$row["staff_ID"]]);
+              $result_search2 = db_query($dbc, $query_search2);   //run the query.
               $num_search2 = mysqli_num_rows($result_search2);   //how many suppliers are there?
 			        $row_ath_all = mysqli_fetch_array($result_search2);   
 	

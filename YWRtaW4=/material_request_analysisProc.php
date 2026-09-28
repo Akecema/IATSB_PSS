@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
     $url = "material_request_analysis.php"; 
@@ -240,7 +240,7 @@ th {
                 <option value="NULL" placeholder="Select Factory"> -- Select Factory --</option>
                 <?php
 	               $query3 = "SELECT * FROM factory_detail GROUP BY factory_desc2 ORDER BY id_fac ASC";
-                   $result3 = mysqli_query($dbc,$query3);
+                   $result3 = db_query($dbc, $query3);
   
                    while($row3=mysqli_fetch_array($result3)) 
 			      {
@@ -508,12 +508,12 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
     $rs_again = mysqli_query($dbc,$query_again);   //run the query.
     $row = mysqli_fetch_array($rs_again);
 	
-	$query_u = "SELECT * FROM user_detail WHERE user_no = '".sql_esc($row["user_create"])."'";
-	$result_u = mysqli_query($dbc,$query_u);   //run the query.
+	$query_u = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$row["user_create"]]);
+	$result_u = db_query($dbc, $query_u);   //run the query.
 	$data_u = mysqli_fetch_array($result_u);   //how many records are there?    
 
- 	$query3 = "SELECT * FROM factory_detail WHERE id_fac = '".sql_esc($row_scan["factory"])."'";
-    $result3 = mysqli_query($dbc,$query3);
+ 	$query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$row_scan["factory"]]);
+    $result3 = db_query($dbc, $query3);
 	$row3 = mysqli_fetch_array($result3);
 	
 	$query4_p = "SELECT * from mat_master_header as LD, mat_master_detail as SD WHERE SD.id_hdr = LD.id_hdr and SD.id_dtl = '".sql_esc($row2["id_dtl"])."'";

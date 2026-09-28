@@ -52,8 +52,8 @@
    
    // ---------update cancel Disposal and revert to original table--------------------------
 	 
-	$query_cancelGR1 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref21)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	$result_cancelGR1 = mysqli_query($dbc,$query_cancelGR1);
+	$query_cancelGR1 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref21, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+	$result_cancelGR1 = db_query($dbc, $query_cancelGR1);
 	
 	 
 	  
@@ -138,11 +138,11 @@ $result_ins_dis1 = mysqli_query($dbc,$query_ins_dis1);
    
    // ---------update cancel Disposal and revert to original table--------------------------
 	 
-	$query_cancelGR2 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref22)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	$result_cancelGR2 = mysqli_query($dbc,$query_cancelGR2);	 
+	$query_cancelGR2 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref22, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+	$result_cancelGR2 = db_query($dbc, $query_cancelGR2);	 
 	  
-	   $query_infoB2 = "SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid4)."' AND id = '".sql_esc($data_info5["id"])."' AND status_disposal = '".sql_esc($rst_sta4["status_desc"])."'";
-	   $result_infoB2 = mysqli_query($dbc,$query_infoB2);
+	   $query_infoB2 = new PreparedSql("SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = ? AND id = ? AND status_disposal = ?", [$uid4, $data_info5["id"], $rst_sta4["status_desc"]]);
+	   $result_infoB2 = db_query($dbc, $query_infoB2);
 	   $row_infoB2 = mysqli_fetch_array($result_infoB2);
 	  
 	 // echo $row_infoB["id_disposal"];		 
@@ -151,8 +151,8 @@ $result_ins_dis1 = mysqli_query($dbc,$query_ins_dis1);
 $result_ins_dis2 = mysqli_query($dbc,$query_ins_dis2);
  
 		  
-	$query_cancelDis2 = "UPDATE disposal_detail_prd_pending_confirm SET doc_dis = '', doc_disposal_no = '', status_disposal = '".sql_esc($rst_sta32["status_desc"])."', user_update = '".sql_esc($username)."', date_update = NOW() WHERE doc_dis = '".sql_esc($uid4)."'";
-	$result_cancelDis2 = mysqli_query($dbc,$query_cancelDis2); 
+	$query_cancelDis2 = new PreparedSql("UPDATE disposal_detail_prd_pending_confirm SET doc_dis = '', doc_disposal_no = '', status_disposal = ?, user_update = ?, date_update = NOW() WHERE doc_dis = ?", [$rst_sta32["status_desc"], $username, $uid4]);
+	$result_cancelDis2 = db_query($dbc, $query_cancelDis2); 
 	
 	
 		//update count_max----------------------------------------
@@ -215,11 +215,11 @@ $result_ins_dis2 = mysqli_query($dbc,$query_ins_dis2);
    
    // ---------update cancel Disposal and revert to original table--------------------------
 	 
-	$query_cancelGR3 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref23)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	$result_cancelGR3 = mysqli_query($dbc,$query_cancelGR3);	 
+	$query_cancelGR3 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref23, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+	$result_cancelGR3 = db_query($dbc, $query_cancelGR3);	 
 	  
-	   $query_infoB3 = "SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid4)."' AND id = '".sql_esc($data_info5["id"])."' AND status_disposal = '".sql_esc($rst_sta4["status_desc"])."'";
-	   $result_infoB3 = mysqli_query($dbc,$query_infoB3);
+	   $query_infoB3 = new PreparedSql("SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = ? AND id = ? AND status_disposal = ?", [$uid4, $data_info5["id"], $rst_sta4["status_desc"]]);
+	   $result_infoB3 = db_query($dbc, $query_infoB3);
 	   $row_infoB3 = mysqli_fetch_array($result_infoB3);
 	  
 	 // echo $row_infoB["id_disposal"];		
@@ -228,8 +228,8 @@ $result_ins_dis3 = mysqli_query($dbc,$query_ins_dis3);
 		  
 		  
 		
-    $query_cancelDis3 = "UPDATE disposal_detail_prd_pending_confirm_hwork SET doc_dis = '', doc_disposal_no = '', status_disposal = '".sql_esc($rst_sta32["status_desc"])."', user_update = '".sql_esc($username)."', date_update = NOW() WHERE doc_dis = '".sql_esc($uid4)."'";
-	$result_cancelDis3 = mysqli_query($dbc,$query_cancelDis3); 
+    $query_cancelDis3 = new PreparedSql("UPDATE disposal_detail_prd_pending_confirm_hwork SET doc_dis = '', doc_disposal_no = '', status_disposal = ?, user_update = ?, date_update = NOW() WHERE doc_dis = ?", [$rst_sta32["status_desc"], $username, $uid4]);
+	$result_cancelDis3 = db_query($dbc, $query_cancelDis3); 
 	
 	  if($_POST["plant_code"] == '2300')
 		{
@@ -293,11 +293,11 @@ $result_ins_dis3 = mysqli_query($dbc,$query_ins_dis3);
    
    // ---------update cancel Disposal and revert to original table--------------------------
 	 
-	$query_cancelGR4 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref24)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	$result_cancelGR4 = mysqli_query($dbc,$query_cancelGR4);	 
+	$query_cancelGR4 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref24, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+	$result_cancelGR4 = db_query($dbc, $query_cancelGR4);	 
 	  
-	   $query_infoB4 = "SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid4)."' AND id = '".sql_esc($data_info5["id"])."' AND status_disposal = '".sql_esc($rst_sta4["status_desc"])."'";
-	   $result_infoB4 = mysqli_query($dbc,$query_infoB4);
+	   $query_infoB4 = new PreparedSql("SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = ? AND id = ? AND status_disposal = ?", [$uid4, $data_info5["id"], $rst_sta4["status_desc"]]);
+	   $result_infoB4 = db_query($dbc, $query_infoB4);
 	   $row_infoB4 = mysqli_fetch_array($result_infoB4);
 	  
 	 // echo $row_infoB["id_disposal"];	
@@ -306,8 +306,8 @@ $result_ins_dis3 = mysqli_query($dbc,$query_ins_dis3);
 $result_ins_dis4 = mysqli_query($dbc,$query_ins_dis4);
 	 		  
 		  
-    $query_cancelDis4 = "UPDATE disposal_detail_prd_pending_confirm_rework SET doc_dis = '', doc_disposal_no = '', status_disposal = '".sql_esc($rst_sta32["status_desc"])."', user_update = '".sql_esc($username)."', date_update = NOW() WHERE doc_dis = '".sql_esc($uid4)."'";
-	$result_cancelDis4 = mysqli_query($dbc,$query_cancelDis4); 
+    $query_cancelDis4 = new PreparedSql("UPDATE disposal_detail_prd_pending_confirm_rework SET doc_dis = '', doc_disposal_no = '', status_disposal = ?, user_update = ?, date_update = NOW() WHERE doc_dis = ?", [$rst_sta32["status_desc"], $username, $uid4]);
+	$result_cancelDis4 = db_query($dbc, $query_cancelDis4); 
 	
 	//update count_max----------------------------------------
 	 
@@ -380,13 +380,13 @@ $result_ins_dis4 = mysqli_query($dbc,$query_ins_dis4);
 				
 				 // ---------update cancel Disposal and revert to original table--------------------------
 	 
-	 $query_cancelGR5 = "UPDATE disposal_detail_prd_all SET disposal_no_ref = '".sql_esc($ref25)."', status_disposal = '".sql_esc($rst_sta4["status_desc"])."', user_cancel = '".sql_esc($username)."', date_cancel = NOW() WHERE doc_dis = '".sql_esc($uid4)."' AND status_disposal = '".sql_esc($rst_sta15["status_desc"])."'";
-	 $result_cancelGR5 = mysqli_query($dbc,$query_cancelGR5);
+	 $query_cancelGR5 = new PreparedSql("UPDATE disposal_detail_prd_all SET disposal_no_ref = ?, status_disposal = ?, user_cancel = ?, date_cancel = NOW() WHERE doc_dis = ? AND status_disposal = ?", [$ref25, $rst_sta4["status_desc"], $username, $uid4, $rst_sta15["status_desc"]]);
+	 $result_cancelGR5 = db_query($dbc, $query_cancelGR5);
 	
 	 
 	  
-	   $query_infoB5 = "SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = '".sql_esc($uid4)."' AND id = '".sql_esc($data_info5["id"])."' AND status_disposal = '".sql_esc($rst_sta4["status_desc"])."'";
-	   $result_infoB5 = mysqli_query($dbc,$query_infoB5);
+	   $query_infoB5 = new PreparedSql("SELECT *, DATE_FORMAT(date_cancel,'%d%m%Y') AS JD FROM disposal_detail_prd_all WHERE doc_dis = ? AND id = ? AND status_disposal = ?", [$uid4, $data_info5["id"], $rst_sta4["status_desc"]]);
+	   $result_infoB5 = db_query($dbc, $query_infoB5);
 	   $row_infoB5 = mysqli_fetch_array($result_infoB5);
 				
 	  

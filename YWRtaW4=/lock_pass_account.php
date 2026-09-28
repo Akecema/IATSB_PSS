@@ -49,8 +49,8 @@ if (empty($_POST["status_failed"]) || ($_POST["status_failed"] == ""))
  if($status_failed)
 {  
 
-		  	  $query_search = "SELECT * FROM user_detail WHERE user_no = '".sql_esc($user_no)."'";
-              $result_search = mysqli_query($dbc,$query_search);   //run the query.
+		  	  $query_search = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$user_no]);
+              $result_search = db_query($dbc, $query_search);   //run the query.
               $num_search = mysqli_num_rows($result_search);   //how many suppliers are there?
 			  $row_search = mysqli_fetch_array($result_search);
 			  

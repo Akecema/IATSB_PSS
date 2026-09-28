@@ -22,16 +22,16 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "detail_do_doc-dlv.php";
 	
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 //----------------------------------------------------
     
@@ -396,8 +396,8 @@ $num_rowsBF = mysqli_num_rows($rsBF);   //how many material are there?
 	   }
 	   
 	   
-	   $query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_mat = mysqli_query($dbc,$query_mat);
+	   $query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_mat = db_query($dbc, $query_mat);
        $row_mat = mysqli_fetch_array($result_mat);
 	   
 	   

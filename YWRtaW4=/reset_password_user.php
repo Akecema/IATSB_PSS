@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -165,8 +165,8 @@ $user = $_POST["username1"];
 				 $newpass = password_hash($_POST['newpass'], PASSWORD_DEFAULT);
 				 // $pass = md5($password);
 				 
-				  $query_g = "SELECT * FROM user_detail WHERE user_no = '".sql_esc($user)."'";
-				  $result_g = mysqli_query($dbc,$query_g);
+				  $query_g = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$user]);
+				  $result_g = db_query($dbc, $query_g);
 				  $num = mysqli_num_rows($result_g);
 				  
 				  if($num == 1 ) {
@@ -180,7 +180,7 @@ $user = $_POST["username1"];
 					//Make the query
 			
 		          $query2 = "UPDATE user_detail set password = '".sql_esc($newpass)."' where user_no ='".sql_esc($row_g["user_no"])."'";
-				  $result2 = mysqli_query($dbc,$query2);
+				  $result2 = db_query($dbc, $query2);
 				  
 				  $query12 = "UPDATE login_detail SET password = '".sql_esc($newpass)."', user_update = '".sql_esc($row_g["username"])."', date_update = NOW() WHERE username = '".sql_esc($row_g["username"])."'";
 				  $result12 = mysqli_query($dbc,$query12);

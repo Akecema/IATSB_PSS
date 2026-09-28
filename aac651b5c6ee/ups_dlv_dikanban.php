@@ -33,14 +33,14 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 //----------------------------------------------------	
 	
@@ -533,8 +533,8 @@ for($i=0;$i<= 1;$i++) // Loop to get all sheets in a file.
 	
 			   
 			   //-----get material detail ------
-			$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."' AND status_BOM = 'Y'";
-			$result_mat_info = mysqli_query($dbc,$query_mat_info);
+			$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$material_no]);
+			$result_mat_info = db_query($dbc, $query_mat_info);
 			$data_mat_info = mysqli_fetch_array($result_mat_info);
 			   
 			 //-----get date plan-------

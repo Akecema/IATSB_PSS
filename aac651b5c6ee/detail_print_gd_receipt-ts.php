@@ -17,8 +17,8 @@ exit();
 
 $url = "detail_print_gd_receipt-ts.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 	
 $today = getdate();
@@ -305,8 +305,8 @@ while($row = mysqli_fetch_array($result_pps))
   $i = $rowcount;
 	
 	//----------display table_material_itsb
-	$query_info3 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	$result_info3 = mysqli_query($dbc,$query_info3);
+	$query_info3 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	$result_info3 = db_query($dbc, $query_info3);
 	$row_info3 = mysqli_fetch_array($result_info3);
 
 
@@ -315,8 +315,8 @@ while($row = mysqli_fetch_array($result_pps))
 	$data_GR = mysqli_fetch_array($hasil_GR);
 	
 	//----detail vendor ----------
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row["vendor_id"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend);
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$row["vendor_id"]]);
+	 $result_vend = db_query($dbc, $query_vend);
 	 $row_vend = mysqli_fetch_array($result_vend);
 	
 	
@@ -368,8 +368,8 @@ $i = 1;
 	while ($data = mysqli_fetch_array($hasil))
 	{
 	
-		$query_sloc = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data["material_no"])."'";
-		$result_sloc = mysqli_query($dbc,$query_sloc);
+		$query_sloc = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data["material_no"]]);
+		$result_sloc = db_query($dbc, $query_sloc);
 		$data_sloc = mysqli_fetch_array($result_sloc);
 	
 	$total_slip_no = ($row["slip_no"].' of '.$row["total_slip"]);

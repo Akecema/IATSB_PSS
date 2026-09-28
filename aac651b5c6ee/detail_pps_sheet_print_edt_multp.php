@@ -66,8 +66,8 @@ if(isset($_POST['e_tcid']))
         
           //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row2["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row2["work_center"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")
@@ -80,8 +80,8 @@ if(isset($_POST['e_tcid']))
 	
 	//----table material info ----------
 	
-		$query_matC = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row2["material_no"])."' AND status_BOM = 'Y'";
-	    $result_matC = mysqli_query($dbc,$query_matC);
+		$query_matC = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row2["material_no"]]);
+	    $result_matC = db_query($dbc, $query_matC);
         $row_matC = mysqli_fetch_array($result_matC); 
 	 	
         

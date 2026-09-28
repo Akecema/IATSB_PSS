@@ -16,8 +16,8 @@ header('Location: ../index.php');
 exit();
 }
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	include 'apprv_func_list.php';  
 	
@@ -401,8 +401,8 @@ div.dataTables_wrapper {
                 <div id="work_centerdiv"><select name="work_center" id="work_center" class="form-control">
                   <option value="NULL" placeholder="Select Line"> -- Select Line --</option>
                   <?php
-	               $query5 = "SELECT * FROM work_center_detail WHERE plant_code = '".sql_esc($_GET["plant_code"])."' ORDER BY id_work ASC";
-                   $result5 = mysqli_query($dbc,$query5);
+	               $query5 = new PreparedSql("SELECT * FROM work_center_detail WHERE plant_code = ? ORDER BY id_work ASC", [$_GET["plant_code"]]);
+                   $result5 = db_query($dbc, $query5);
   
                    while($row5=mysqli_fetch_array($result5)) 
 				    { 

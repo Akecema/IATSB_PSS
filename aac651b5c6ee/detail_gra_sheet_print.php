@@ -218,8 +218,8 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
  
   //-------get address vendor-----
  
- $query_vendor = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($db_rs["vendor_no"])."'";
- $result_vendor = mysqli_query($dbc,$query_vendor);
+ $query_vendor = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$db_rs["vendor_no"]]);
+ $result_vendor = db_query($dbc, $query_vendor);
  $data_vendor = mysqli_fetch_array($result_vendor); 
 	
  ?>
@@ -345,20 +345,20 @@ $rs = mysqli_query($dbc,$queryu);   //run the query.
  
       //-------get issued detail----
 	  
-	  $query_issue = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_generate_gra"])."'";
-	  $result_issue = mysqli_query($dbc,$query_issue);
+	  $query_issue = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_generate_gra"]]);
+	  $result_issue = db_query($dbc, $query_issue);
 	  $data_issue = mysqli_fetch_array($result_issue);	
 	  
 	   //-------get return detail----
 	  
-	  $query_return = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["return_by"])."'";
-	  $result_return = mysqli_query($dbc,$query_return);
+	  $query_return = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["return_by"]]);
+	  $result_return = db_query($dbc, $query_return);
 	  $data_return = mysqli_fetch_array($result_return);	
 	  
 	  //---------get material header---------
 	   
-	    $query_mat_h = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row['material_no'])."'";
-		$result_mat_h = mysqli_query($dbc,$query_mat_h);
+	    $query_mat_h = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row['material_no']]);
+		$result_mat_h = db_query($dbc, $query_mat_h);
 		$data_mat_h = mysqli_fetch_array($result_mat_h);	
 		
 			

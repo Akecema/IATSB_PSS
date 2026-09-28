@@ -27,8 +27,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 $url = "material_master_list.php"; 
@@ -264,8 +264,8 @@ for($i=0;$i<= 1;$i++) // Loop to get all sheets in a file.
 	  
 	  //---check duplicate material 	
 				
-	$query_Ms = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($material_no)."' AND status_BOM = 'Y'";
-	$result_Ms = mysqli_query($dbc,$query_Ms)or die(mysqli_error($dbc));
+	$query_Ms = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ? AND status_BOM = 'Y'", [$material_no]);
+	$result_Ms = db_query($dbc, $query_Ms)or die(mysqli_error($dbc));
 	$res_Ms = mysqli_fetch_array($result_Ms);
 	
 	

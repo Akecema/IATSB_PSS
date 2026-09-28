@@ -11,8 +11,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------	
 
 
-$query4 = "SELECT * FROM work_center_detail WHERE plant_code = '".sql_esc($plant_code)."' AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC";
-$result4 =mysqli_query($dbc,$query4);
+$query4 = new PreparedSql("SELECT * FROM work_center_detail WHERE plant_code = ? AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC", [$plant_code]);
+$result4 =db_query($dbc, $query4);
 
 ?>
 

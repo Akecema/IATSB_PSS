@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "mat_detail_table.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -105,13 +105,13 @@ $row_con = mysqli_fetch_array($result_con);   //how many records are there?
   
   
         //---material type info -------
-	   $query_vmat_type = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($row_con["mat_type"])."'";
-	   $result_vmat_type = mysqli_query($dbc,$query_vmat_type) or die (mysqli_error($dbc));
+	   $query_vmat_type = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$row_con["mat_type"]]);
+	   $result_vmat_type = db_query($dbc, $query_vmat_type) or die (mysqli_error($dbc));
        $res_vmat_type = mysqli_fetch_array($result_vmat_type);   
 	   
 	    //---model code info -------
-	   $query_model_cd = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($row_con["model_code"])."'";
-	   $result_model_cd = mysqli_query($dbc,$query_model_cd) or die (mysqli_error($dbc));
+	   $query_model_cd = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$row_con["model_code"]]);
+	   $result_model_cd = db_query($dbc, $query_model_cd) or die (mysqli_error($dbc));
        $res_model_cd = mysqli_fetch_array($result_model_cd);   
 	   
 	   //----category mat category_detail

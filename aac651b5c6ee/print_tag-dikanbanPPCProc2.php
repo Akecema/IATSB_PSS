@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
     $url = "print_tag-dikanban_ppc.php";
@@ -246,16 +246,16 @@ th {
                   <?php
 				  
 	    	//------------- select get login vendor --------------
-		$query_ath_vend2 = "SELECT * FROM function_ath_vendordetail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-		$result_ath_vend2 = mysqli_query($dbc,$query_ath_vend2);
+		$query_ath_vend2 = new PreparedSql("SELECT * FROM function_ath_vendordetail WHERE staff_ID = ?", [$res["staff_ID"]]);
+		$result_ath_vend2 = db_query($dbc, $query_ath_vend2);
 	
           
               while($data_ath_vend2 = mysqli_fetch_array($result_ath_vend2)) {
 				  
 				  
 				  //----vendor detail ------
-				   $query27A = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_ath_vend2["vendor_id"])."' AND status_acc = 'Y'";
-                   $result27A = mysqli_query($dbc,$query27A);
+				   $query27A = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$data_ath_vend2["vendor_id"]]);
+                   $result27A = db_query($dbc, $query27A);
                    $row27A = mysqli_fetch_array($result27A);			  
 
         
@@ -398,8 +398,8 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	   
 	 
                  //----vendor detail ------
-				   $query_vcode = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row["vc_code"])."' AND status_acc = 'Y'";
-                   $result_vcode = mysqli_query($dbc,$query_vcode);
+				   $query_vcode = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$row["vc_code"]]);
+                   $result_vcode = db_query($dbc, $query_vcode);
                    $row_vcode = mysqli_fetch_array($result_vcode);	
 
      

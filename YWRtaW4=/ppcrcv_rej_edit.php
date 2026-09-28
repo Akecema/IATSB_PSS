@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "display_ppcrcv_reject.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -150,8 +150,8 @@ if (empty($_POST['status_proc']) || ($_POST['status_proc'] == "NULL"))
 {
    	
 	
-		$query_search = "SELECT * FROM proc_reject_detail_ppc WHERE id_proc = '".sql_esc($row2["id_proc"])."'";
-		$result_search = mysqli_query($dbc,$query_search);   //run the query.
+		$query_search = new PreparedSql("SELECT * FROM proc_reject_detail_ppc WHERE id_proc = ?", [$row2["id_proc"]]);
+		$result_search = db_query($dbc, $query_search);   //run the query.
 		$num_search = mysqli_num_rows($result_search);   //how many suppliers are there?
 		
 		if($num_search == 1) {
@@ -201,8 +201,8 @@ if (empty($_POST['status_proc']) || ($_POST['status_proc'] == "NULL"))
        </div>
       <?php
 
-$query_was = "SELECT * FROM proc_reject_detail_ppc WHERE id_proc = '".sql_esc($row2["id_proc"])."'";
-$result_was = mysqli_query($dbc,$query_was);   //run the query.
+$query_was = new PreparedSql("SELECT * FROM proc_reject_detail_ppc WHERE id_proc = ?", [$row2["id_proc"]]);
+$result_was = db_query($dbc, $query_was);   //run the query.
 $row_was = mysqli_fetch_array($result_was);   //how many records are there?
      
    ?>

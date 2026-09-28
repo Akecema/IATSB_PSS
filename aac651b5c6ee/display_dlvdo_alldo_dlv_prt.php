@@ -3,8 +3,8 @@ session_start();
 $username = $_SESSION['username'];
 include '../include/config.php';
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "prt_dlvdo_alldo-dlvProc.php"; 
@@ -30,8 +30,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -234,8 +234,8 @@ if(isset($_POST["printDO_btn"]))
 		$dtcrt = $row_by_groupF["T5"];
       //-------get issued detail----
 	  
-	  $query_issueF = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_by_groupF["user_post"])."'";
-	  $result_issueF = mysqli_query($dbc,$query_issueF);
+	  $query_issueF = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_by_groupF["user_post"]]);
+	  $result_issueF = db_query($dbc, $query_issueF);
 	  $data_issueF = mysqli_fetch_array($result_issueF);	
 	  
 	  $ffff = $data_issueF["user_fullname"];
@@ -326,8 +326,8 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
    {
 
    
-	   $query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row2["material_no"])."'";
-	   $result_mat = mysqli_query($dbc,$query_mat);
+	   $query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row2["material_no"]]);
+	   $result_mat = db_query($dbc, $query_mat);
        $row_mat = mysqli_fetch_array($result_mat);
 	   
 	   

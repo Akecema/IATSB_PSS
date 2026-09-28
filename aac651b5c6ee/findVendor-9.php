@@ -20,8 +20,8 @@ if($row41 > 0)
 {
 //-------check vendor detail ----------
 
-$query42 = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row41["vendor_id"])."'";
-$result42 = mysqli_query($dbc,$query42);
+$query42 = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$row41["vendor_id"]]);
+$result42 = db_query($dbc, $query42);
 $row42 = mysqli_fetch_array($result42);
 
 

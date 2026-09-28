@@ -34,14 +34,14 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 //----------------------------------------------------	
 	
@@ -172,8 +172,8 @@ $message = NULL; // create an empty new variable.
 			 
           //check file name duplicate-----
  
-            $query_chk_attach4 = "SELECT * FROM ftp_pps WHERE file_name = '".sql_esc($_FILES["upload"]["name"])."'";
-            $result_chk_attach4 = mysqli_query($dbc,$query_chk_attach4);   //run the query.
+            $query_chk_attach4 = new PreparedSql("SELECT * FROM ftp_pps WHERE file_name = ?", [$_FILES["upload"]["name"]]);
+            $result_chk_attach4 = db_query($dbc, $query_chk_attach4);   //run the query.
             $data_chk_attach4 = mysqli_fetch_array($result_chk_attach4);   //how many records are there?   
 			 
 			 if($data_chk_attach4 >= 1 )
@@ -338,13 +338,13 @@ for($i=0;$i<= 1;$i++) // Loop to get all sheets in a file.
 			$upload_id = $uid;
 			$plant_code = $_POST["plant_code"];
 			
-			$query_inform = "SELECT * FROM ftp_pps WHERE upload_id = '".sql_esc($uid)."'";
-			$result_inform = mysqli_query($dbc,$query_inform);
+			$query_inform = new PreparedSql("SELECT * FROM ftp_pps WHERE upload_id = ?", [$uid]);
+			$result_inform = db_query($dbc, $query_inform);
 			$data_inform = mysqli_fetch_array($result_inform);
 			
 			//-----get material detail ------
-			$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."' AND status_BOM = 'Y'";
-			$result_mat_info = mysqli_query($dbc,$query_mat_info);
+			$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$material_no]);
+			$result_mat_info = db_query($dbc, $query_mat_info);
 			$data_mat_info = mysqli_fetch_array($result_mat_info);
 		
 			
@@ -360,14 +360,14 @@ for($i=0;$i<= 1;$i++) // Loop to get all sheets in a file.
 				$result_del_ftp = mysqli_query($dbc,$query_del_ftp); 
 				
 			  //-------------------------------delete table pps_detail-------------------------------------
-				$query_del2_ftp = "DELETE FROM pps_detail WHERE upload_id = '".sql_esc($uid)."'";
-				$result_del2_ftp =  mysqli_query($dbc,$query_del2_ftp);
+				$query_del2_ftp = new PreparedSql("DELETE FROM pps_detail WHERE upload_id = ?", [$uid]);
+				$result_del2_ftp =  db_query($dbc, $query_del2_ftp);
 		  
 			  //------------------------end delete upload table ftp_pps---------------------------------	
 				
 				//-------------------------------delete table pps_upload-------------------------------------
-				$query_del3_ftp = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($uid)."'";
-				$result_del3_ftp =  mysqli_query($dbc,$query_del3_ftp);
+				$query_del3_ftp = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$uid]);
+				$result_del3_ftp =  db_query($dbc, $query_del3_ftp);
 		  
 			  //------------------------end delete upload table pps-upload---------------------------------		
 		
@@ -447,21 +447,21 @@ $html.="</table>";
 			$tahun_plan = substr($row_db_pps["month_plan"],6,4);		
 			
 			 //---- check factory from work center -------// 
-			$query_convert = "SELECT * FROM work_center_detail as SR WHERE SR.id_work = '".sql_esc($row_db_pps["work_center"])."'";
-			$result_convert = mysqli_query($dbc,$query_convert); 
+			$query_convert = new PreparedSql("SELECT * FROM work_center_detail as SR WHERE SR.id_work = ?", [$row_db_pps["work_center"]]);
+			$result_convert = db_query($dbc, $query_convert); 
 			$row_convert = mysqli_fetch_array($result_convert);
 			
 			
 			 //----- check material existing in table material ------//
 			 
-			 $query_chk_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row_db_pps["material_no"])."' AND status_BOM = 'Y'";
-			 $result_chk_mat = mysqli_query($dbc,$query_chk_mat); 
+			 $query_chk_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row_db_pps["material_no"]]);
+			 $result_chk_mat = db_query($dbc, $query_chk_mat); 
 			 $row_chk_mat = mysqli_fetch_array($result_chk_mat);
 			 
 			  //----check material type -----
 			
-			 $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($row_chk_mat["mat_type"])."'";
-             $result_mtype = mysqli_query($dbc,$query_mtype) or die (mysqli_error());
+			 $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$row_chk_mat["mat_type"]]);
+             $result_mtype = db_query($dbc, $query_mtype) or die (mysqli_error());
              $d_mtype = mysqli_fetch_array($result_mtype);
 			 
 			 
@@ -503,8 +503,8 @@ $html.="</table>";
 			
 					//------user detail info --------
 					
-					$query_dtl = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($row_mail["staff_ID"])."'";
-					$result_dtl = mysqli_query($dbc,$query_dtl);
+					$query_dtl = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$row_mail["staff_ID"]]);
+					$result_dtl = db_query($dbc, $query_dtl);
 					$row_dtl = mysqli_fetch_array($result_dtl);
 					
 					 $Uname = $row_dtl['user_fullname'];
@@ -565,14 +565,14 @@ $html.="</table>";
 		  //------------------------end delete upload table ftp_pps---------------------------------	
 		  
 		   //-------------------------------delete table pps_detail-------------------------------------
-		    $query_hsekeeping3 = "DELETE FROM pps_detail WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping3 =  mysqli_query($dbc,$query_hsekeeping3);
+		    $query_hsekeeping3 = new PreparedSql("DELETE FROM pps_detail WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping3 =  db_query($dbc, $query_hsekeeping3);
 	  
 		  //------------------------end delete upload table ftp_pps---------------------------------	
 			
 			//-------------------------------delete table pps_upload-------------------------------------
-		    $query_hsekeeping = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping =  mysqli_query($dbc,$query_hsekeeping);
+		    $query_hsekeeping = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping =  db_query($dbc, $query_hsekeeping);
 	  
 		  //------------------------end delete upload table pps-upload---------------------------------	
 		  
@@ -614,8 +614,8 @@ $html.="</table>";
 		
 			
 			//-------------------------------delete table pps_upload-------------------------------------
-		    $query_hsekeeping_f = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping_f =  mysqli_query($dbc,$query_hsekeeping_f);
+		    $query_hsekeeping_f = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping_f =  db_query($dbc, $query_hsekeeping_f);
 	  
 		  //------------------------end delete upload table pps-upload---------------------------------	   
 		   
@@ -625,14 +625,14 @@ $html.="</table>";
 		    //------------ delete from ftp_pps ---------------------  
 						 
 			 //-------------------------------delete table pps_detail-------------------------------------
-		    $query_hsekeeping3F = "DELETE FROM pps_detail WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeeping3F =  mysqli_query($dbc,$query_hsekeeping3F);
+		    $query_hsekeeping3F = new PreparedSql("DELETE FROM pps_detail WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeeping3F =  db_query($dbc, $query_hsekeeping3F);
 	  
 		  //------------------------end delete upload table ftp_pps---------------------------------	
 			
 			//-------------------------------delete table pps_upload-------------------------------------
-		    $query_hsekeepingF = "DELETE FROM pps_upload WHERE upload_id = '".sql_esc($upload_id)."'";
-			$result_hsekeepingF =  mysqli_query($dbc,$query_hsekeepingF);
+		    $query_hsekeepingF = new PreparedSql("DELETE FROM pps_upload WHERE upload_id = ?", [$upload_id]);
+			$result_hsekeepingF =  db_query($dbc, $query_hsekeepingF);
 			   
 				
 			echo "<script>";

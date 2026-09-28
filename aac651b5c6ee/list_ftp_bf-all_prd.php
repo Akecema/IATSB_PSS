@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "list_ftp_bf-all_prd.php";
@@ -289,8 +289,8 @@ if(is_dir($dir)){
 			 
 		//---check material type in table material--------
 		
-	$query_mat_type = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row_rs["material_no"])."' AND status_BOM = 'Y'";
-	$rs_mat_type = mysqli_query($dbc,$query_mat_type);   //run the query.
+	$query_mat_type = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row_rs["material_no"]]);
+	$rs_mat_type = db_query($dbc, $query_mat_type);   //run the query.
 	$row_mat_type = mysqli_fetch_array($rs_mat_type);   //how many material are there?		
 	
 	    //---check time post & date post in table po_detail_trans_gr	
@@ -354,8 +354,8 @@ if(is_dir($dir)){
 			 
 		//---check material type in table material--------
 		
-	$query_mat_typeB = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row_rsB["material_no"])."' AND status_BOM = 'Y'";
-	$rs_mat_typeB = mysqli_query($dbc,$query_mat_typeB);   //run the query.
+	$query_mat_typeB = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row_rsB["material_no"]]);
+	$rs_mat_typeB = db_query($dbc, $query_mat_typeB);   //run the query.
 	$row_mat_typeB = mysqli_fetch_array($rs_mat_typeB);   //how many material are there?		
 	
 	    //---check time post & date post in table po_detail_trans_gr	

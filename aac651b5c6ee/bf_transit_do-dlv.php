@@ -32,8 +32,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "bf_transit_do-dlv.php"; 
@@ -325,8 +325,8 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8, $part9, $pa
 // negative limit (since PHP 5.1)
 //print_r(explode('|', $str, -1));
 
-  $query_q2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2 = mysqli_query($dbc,$query_q2) or die (mysqli_error());
+  $query_q2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1]);
+  $result_q2 = db_query($dbc, $query_q2) or die (mysqli_error());
   $ans3 = mysqli_fetch_array($result_q2);
   
   
@@ -532,25 +532,25 @@ $message = NULL; // create an empty new variable.
       
 	  
 	  
-		  $query_q22 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-		  $result_q22 = mysqli_query($dbc,$query_q22) or die (mysqli_error());
+		  $query_q22 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+		  $result_q22 = db_query($dbc, $query_q22) or die (mysqli_error());
 		  $ans22 = mysqli_fetch_array($result_q22);
 		  
 		   //----check material type -----
 			
-			 $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans22["mat_type"])."'";
-             $result_mtype = mysqli_query($dbc,$query_mtype) or die (mysqli_error());
+			 $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans22["mat_type"]]);
+             $result_mtype = db_query($dbc, $query_mtype) or die (mysqli_error());
              $d_mtype = mysqli_fetch_array($result_mtype);
 		  
 		  //-----get cost center base on work center ------
-		  $query_cct2 = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($ans22["prod_line"])."'";
-		  $result_cct2 = mysqli_query($dbc,$query_cct2) or die (mysqli_error());
+		  $query_cct2 = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$ans22["prod_line"]]);
+		  $result_cct2 = db_query($dbc, $query_cct2) or die (mysqli_error());
 		  $data_cct2 = mysqli_fetch_array($result_cct2);
 		  
 		  
 		  //-------model ---------
-		  $query_mod = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans22["model_code"])."'";
-          $result_mod =mysqli_query($dbc,$query_mod);
+		  $query_mod = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$ans22["model_code"]]);
+          $result_mod =db_query($dbc, $query_mod);
 		  $data_mod = mysqli_fetch_array($result_mod);
 	
 	 //-----------shift---------
@@ -598,8 +598,8 @@ while($row = mysqli_fetch_array($result_tag))
 	  
 	  //----detail standard packaging [ambil dari table mat_master_header]
 	  
-	   $query_pack = "SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_pack = mysqli_query($dbc,$query_pack);
+	   $query_pack = new PreparedSql("SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_pack = db_query($dbc, $query_pack);
 	   $data_pack = mysqli_fetch_array($result_pack);
 		
 		
@@ -714,13 +714,13 @@ $query_tag3 = "INSERT INTO print_tag_bf_transit(id_tag,tag_no,id_tran,bflush_no,
    {
 	     $qty_nw = (intval($data_rcv_ftp['qty_actual']));
 	   
-	     $query_mate = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_rcv_ftp["material_no"])."'";
-		 $result_mate = mysqli_query($dbc,$query_mate) or die (mysqli_error());
+	     $query_mate = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_rcv_ftp["material_no"]]);
+		 $result_mate = db_query($dbc, $query_mate) or die (mysqli_error());
 		 $data_mate = mysqli_fetch_array($result_mate);
 		  
 		  //-------recipient ----------
-		 $query_prep = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_rcv_ftp["user_posting"])."'";
-		 $result_prep = mysqli_query($dbc,$query_prep) or die (mysqli_error());
+		 $query_prep = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_rcv_ftp["user_posting"]]);
+		 $result_prep = db_query($dbc, $query_prep) or die (mysqli_error());
 		 $data_prep = mysqli_fetch_array($result_prep);
 		  
  

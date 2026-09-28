@@ -244,8 +244,8 @@ $count = $_POST['start'] + 1;
 	   
 	    //-----user canccellation-----------
 		 
-		 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_cancel"])."'"; 
-		 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+		 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_cancel"]]); 
+		 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
 		 $data_u_can = mysqli_fetch_array($rs_u_can);
 	   
 	    //---- get disposal detail ------

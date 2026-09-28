@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "mat_detail_table.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -208,8 +208,8 @@ if (empty($_POST['status_BOM']) || ($_POST['status_BOM'] == "NULL"))
 
 //----vendor detail ----
 
-$query_ven_dtl = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($vendor_id)."' AND status_acc = 'Y'";
-$result_ven_dtl = mysqli_query($dbc,$query_ven_dtl);
+$query_ven_dtl = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$vendor_id]);
+$result_ven_dtl = db_query($dbc, $query_ven_dtl);
 $row_ven_dtl = mysqli_fetch_array($result_ven_dtl);
 
 //--- model detail ---

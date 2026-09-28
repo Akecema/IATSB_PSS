@@ -29,8 +29,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 
 $url = "ppc_receiv-gd-rect.php"; 
@@ -164,8 +164,8 @@ if(isset($_POST['btn_submit']))
 		
 		//----check material -----
 		
-		$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row_po_list["material_no"])."'";
-		$result_mat_info = mysqli_query($dbc,$query_mat_info);
+		$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row_po_list["material_no"]]);
+		$result_mat_info = db_query($dbc, $query_mat_info);
 		$row_mat_info = mysqli_fetch_array($result_mat_info);
 
 

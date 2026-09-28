@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "canC_gi_tran-recProc.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -237,14 +237,14 @@ page-break-before: always ;
      $data_bb = mysqli_fetch_array($rs_bb);	 
 	 
 	 //---work center----
-	 $query_line = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_bb["work_center"])."'";
-	 $rs_line = mysqli_query($dbc,$query_line);   //run the query.
+	 $query_line = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_bb["work_center"]]);
+	 $rs_line = db_query($dbc, $query_line);   //run the query.
      $data_line = mysqli_fetch_array($rs_line);	 
 	 
 	   //-----user canccellation-----------
 	 
-	 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_cancel"])."'"; 
-	 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+	 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_cancel"]]); 
+	 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
      $data_u_can = mysqli_fetch_array($rs_u_can);
 	 
 	 

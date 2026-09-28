@@ -204,8 +204,8 @@ $result_sql2 = mysqli_query($dbc,$query_sql2);   //run the query.
 	 
 	//------vendor detail --------
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_sql3["vendor_no"])."'";
-	 $rs_vend = mysqli_query($dbc,$query_vend);   //run the query.
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_sql3["vendor_no"]]);
+	 $rs_vend = db_query($dbc, $query_vend);   //run the query.
      $data_vend = mysqli_fetch_array($rs_vend);
 	 
 	 

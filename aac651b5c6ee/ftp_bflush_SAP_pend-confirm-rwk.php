@@ -79,8 +79,8 @@ file_put_contents($file,$data);
 	  
 	  
 	  //-----UOM detail----
-	   $query_unit = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_collect["material_no"])."'";
-	   $result_unit = mysqli_query($dbc,$query_unit);
+	   $query_unit = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_collect["material_no"]]);
+	   $result_unit = db_query($dbc, $query_unit);
 	   $data_unit = mysqli_fetch_array($result_unit);
 	  
 

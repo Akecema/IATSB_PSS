@@ -61,3 +61,54 @@ if (!function_exists('html_esc')) {
         return htmlspecialchars((string)$v, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 }
+
+// A query template with ? placeholders and its values. db_query() runs it as a real prepared
+// statement; used as a plain string (concatenation, echo) it renders with escaped, quoted values.
+if (!class_exists('PreparedSql')) {
+    class PreparedSql implements Stringable
+    {
+        public function __construct(public string $sql, public array $params)
+        {
+        }
+
+        public function __toString(): string
+        {
+            $i = 0;
+            return preg_replace_callback('/\?/', function () use (&$i): string {
+                return "'" . sql_esc($this->params[$i++] ?? '') . "'";
+            }, $this->sql);
+        }
+    }
+
+    // Drop-in for mysqli_query($dbc, $sql): SELECT gives a mysqli_result, writes give true,
+    // failures give false. Falls back to the escaped string form if preparing fails.
+    function db_query(mysqli $dbc, $sql)
+    {
+        if (!($sql instanceof PreparedSql)) {
+            return mysqli_query($dbc, $sql);
+        }
+        // Keep the last write statement open: closing it resets mysqli_affected_rows($dbc), which
+        // legacy pages read right after the query. Release the previous one before the next runs.
+        static $lastWrite = null;
+        $lastWrite = null;
+        $stmt = $dbc->prepare($sql->sql);
+        if (!$stmt) {
+            return mysqli_query($dbc, (string)$sql);
+        }
+        if ($sql->params) {
+            $vals = array_map('strval', array_values($sql->params));
+            $stmt->bind_param(str_repeat('s', count($vals)), ...$vals);
+        }
+        if (!$stmt->execute()) {
+            $stmt->close();
+            return mysqli_query($dbc, (string)$sql);
+        }
+        $res = $stmt->get_result();
+        if ($res === false) {
+            $lastWrite = $stmt;
+            return true;
+        }
+        $stmt->close();
+        return $res;
+    }
+}

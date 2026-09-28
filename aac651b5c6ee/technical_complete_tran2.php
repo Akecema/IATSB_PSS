@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "technical_complete_tran.php";
@@ -570,8 +570,8 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 	 
 	  //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row_final["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row_final["work_center"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")

@@ -36,8 +36,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 $url = "ups_pps_month-assy.php"; 
@@ -358,8 +358,8 @@ echo "<br>"; */
 	
 
 	//-----get material detail ------
-			$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($str_part1)."' AND status_BOM = 'Y'";
-			$result_mat_info = mysqli_query($dbc,$query_mat_info);
+			$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$str_part1]);
+			$result_mat_info = db_query($dbc, $query_mat_info);
 			$data_mat_info = mysqli_fetch_array($result_mat_info);
 	
 	
@@ -445,8 +445,8 @@ exit();
 			  
 			
 			
-		   $query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_chk_attach7["material_no"])."' AND status_BOM = 'Y'";
-	       $rs_mat  = mysqli_query($dbc,$query_mat);
+		   $query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$data_chk_attach7["material_no"]]);
+	       $rs_mat  = db_query($dbc, $query_mat);
 	       $data_mat  = mysqli_fetch_array($rs_mat);
 			 
 			  if(($data_chk_attach7["material_no"]) != ($data_mat["material_no"]))
@@ -638,21 +638,21 @@ exit();
 		 $row_infoA = mysqli_fetch_array($result_dtl_chk2A); 
 		 
 		 //-------------get material detail ----------
-		  $query_mate = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row_infoA["material_no"])."'";
-		  $result_mate = mysqli_query($dbc,$query_mate);
+		  $query_mate = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row_infoA["material_no"]]);
+		  $result_mate = db_query($dbc, $query_mate);
 		  $data_mate = mysqli_fetch_array($result_mate);
 		  
 		  //---------detail material_type_tbl (material_type) ----
 		 
-		  $query_mtypeA = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($data_mate["mat_type"])."'";
-		  $result_mtypeA = mysqli_query($dbc,$query_mtypeA) or die (mysqli_error());
+		  $query_mtypeA = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$data_mate["mat_type"]]);
+		  $result_mtypeA = db_query($dbc, $query_mtypeA) or die (mysqli_error());
 		  $d_mtypeA = mysqli_fetch_array($result_mtypeA);
 		  
 		  
 		  //---------detail model_detail_tbl(model_code) ---
 		  
-		  $query_mcodeA = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($data_mate["model_code"])."'";
-		  $result_mcodeA = mysqli_query($dbc,$query_mcodeA) or die (mysqli_error());
+		  $query_mcodeA = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$data_mate["model_code"]]);
+		  $result_mcodeA = db_query($dbc, $query_mcodeA) or die (mysqli_error());
 		  $d_mcodeA = mysqli_fetch_array($result_mcodeA);
 		 
 		    $query_db_pps = "SELECT * FROM sc_kanban_assy WHERE id = '".sql_esc($stringB[$i])."'";

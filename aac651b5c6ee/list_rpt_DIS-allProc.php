@@ -23,15 +23,15 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	include 'apprv_func_list.php';  
 	
 //--------function user --------------------------
-$query_fuct = "SELECT * FROM  function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$rs_fuct = mysqli_query($dbc,$query_fuct);   //run the query.
+$query_fuct = new PreparedSql("SELECT * FROM  function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$rs_fuct = db_query($dbc, $query_fuct);   //run the query.
 $num_fuct = mysqli_num_rows($rs_fuct);   //how many material are there?
 $data_fuct = mysqli_fetch_array($rs_fuct);
 //----------------------------------------------------
@@ -533,18 +533,18 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	
 	 //-----user canccellation-----------
 		 
-		 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($row["user_cancel"])."'"; 
-		 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+		 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row["user_cancel"]]); 
+		 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
 		 $data_u_can = mysqli_fetch_array($rs_u_can);
 	
 	 //---type of reject
- $query_type = "SELECT * FROM type_reject_detail_prd WHERE id_type = '".sql_esc($row["type_reject"])."' AND status_type = 'Y' ORDER BY id_type ASC";
- $result_type = mysqli_query($dbc,$query_type);
+ $query_type = new PreparedSql("SELECT * FROM type_reject_detail_prd WHERE id_type = ? AND status_type = 'Y' ORDER BY id_type ASC", [$row["type_reject"]]);
+ $result_type = db_query($dbc, $query_type);
  $row_type = mysqli_fetch_array($result_type); 
  
   //---defect
- $query_defect = "SELECT * FROM type_defect_detail_prd WHERE id_defect = '".sql_esc($row["type_defect"])."' AND status_defect = 'Y' ORDER BY id_defect ASC";
- $result_defect = mysqli_query($dbc,$query_defect);
+ $query_defect = new PreparedSql("SELECT * FROM type_defect_detail_prd WHERE id_defect = ? AND status_defect = 'Y' ORDER BY id_defect ASC", [$row["type_defect"]]);
+ $result_defect = db_query($dbc, $query_defect);
  $row_defect = mysqli_fetch_array($result_defect);   
  
  

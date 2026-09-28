@@ -21,8 +21,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
     $url = "consumable_request_analysis.php"; 
@@ -238,7 +238,7 @@ th {
                 <option value="NULL" placeholder="Select Factory"> -- Select Factory --</option>
                 <?php
 	               $query3 = "SELECT * FROM factory_detail GROUP BY factory_desc2 ORDER BY id_fac ASC";
-                   $result3 = mysqli_query($dbc,$query3);
+                   $result3 = db_query($dbc, $query3);
   
                    while($row3=mysqli_fetch_array($result3)) 
 			      {
@@ -477,12 +477,12 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
        while($row_cons = mysqli_fetch_array($rs))
        {
 		   
-	$query_u = "SELECT * FROM user_detail WHERE user_no = '".sql_esc($row_cons["user_create"])."'";
-	$result_u = mysqli_query($dbc,$query_u);   //run the query.
+	$query_u = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$row_cons["user_create"]]);
+	$result_u = db_query($dbc, $query_u);   //run the query.
 	$data_u = mysqli_fetch_array($result_u);   //how many records are there?    
 
- 	$query3 = "SELECT * FROM factory_detail WHERE id_fac = '".sql_esc($row_cons["factory"])."'";
-    $result3 = mysqli_query($dbc,$query3);
+ 	$query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$row_cons["factory"]]);
+    $result3 = db_query($dbc, $query3);
 	$row3 = mysqli_fetch_array($result3);
 	
 	$query5 = "SELECT * FROM post_consumable_detail_header WHERE mrin_no = '".sql_esc($row_cons["temp_mrin"])."' AND material_no = '".sql_esc($row_cons["material_no"])."' AND mvt_type = 201";

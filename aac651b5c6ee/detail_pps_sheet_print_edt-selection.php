@@ -11,8 +11,8 @@ set_time_limit(0);
 
 
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_pps_month_reprint.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -308,8 +308,8 @@ page-break-before: always ;
 		 
 	 ///---------------select info pss-detail-----------------
 	 
-	 $qty_upd_inf = "SELECT * FROM pps_detail WHERE id = '".sql_esc($tid[$i])."'";
-	 $rst_qty_upd_inf = mysqli_query($dbc,$qty_upd_inf);  
+	 $qty_upd_inf = new PreparedSql("SELECT * FROM pps_detail WHERE id = ?", [$tid[$i]]);
+	 $rst_qty_upd_inf = db_query($dbc, $qty_upd_inf);  
 	 $rowac = mysqli_fetch_array($rst_qty_upd_inf);
 		  
 	 
@@ -396,8 +396,8 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 	 
 	   //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row2["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row2["work_center"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")
@@ -410,8 +410,8 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 	
 	//----table material info ----------
 	
-		$query_matb = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row2["material_no"])."' AND status_BOM = 'Y'";
-	    $result_matb = mysqli_query($dbc,$query_matb);
+		$query_matb = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row2["material_no"]]);
+	    $result_matb = db_query($dbc, $query_matb);
         $row_matb = mysqli_fetch_array($result_matb); 
 	 	
 	

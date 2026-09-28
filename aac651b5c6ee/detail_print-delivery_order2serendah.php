@@ -24,8 +24,8 @@ exit();
 
 $url = "create_dlv_bypdio_serendahProc2.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
 $res = mysqli_fetch_array($result2);
 	
 	
@@ -684,8 +684,8 @@ while($row = mysqli_fetch_array($result_pps))
      </tr>
      <?php
 	//----------display material header
-	$query_info3 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	$result_info3 = mysqli_query($dbc,$query_info3);
+	$query_info3 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	$result_info3 = db_query($dbc, $query_info3);
 	$row_info3 = mysqli_fetch_array($result_info3);
 	
 	$query_pdio_grp = "SELECT *,DATE_FORMAT(posting_date,'%d-%m-%Y') as T, DATE_FORMAT(dlv_date,'%d-%m-%Y') as T7 FROM prt_do_perodua_tag WHERE pdio_no = '".sql_esc($row["pdio_no"])."' AND scan_gen = '".sql_esc($row["scan_gen"])."'";

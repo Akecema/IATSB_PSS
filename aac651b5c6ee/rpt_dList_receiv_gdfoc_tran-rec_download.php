@@ -278,8 +278,8 @@ echo '</table>';
 	 
 	 //----get vendor detail -----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_sql3["vendor_id"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend); 
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_sql3["vendor_id"]]);
+	 $result_vend = db_query($dbc, $query_vend); 
 	 $data_vend = mysqli_fetch_array($result_vend);
 	 
 	 	 

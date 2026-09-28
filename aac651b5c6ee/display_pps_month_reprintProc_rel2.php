@@ -22,8 +22,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "display_pps_month_reprint.php";
@@ -257,8 +257,8 @@ th {
                 <th><div id="work_centerdiv"><select name="work_center" id="work_center" class="form-control" onChange="getMaterial(this.value)" >
                   <option value="NULL" placeholder="Select Line"> -- Select Line --</option>
                  <?php
-	               $query5 = "SELECT * FROM work_center_detail WHERE plant_code = '".sql_esc($_GET["plant_code"])."' AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC";
-                   $result5 = mysqli_query($dbc,$query5);
+	               $query5 = new PreparedSql("SELECT * FROM work_center_detail WHERE plant_code = ? AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC", [$_GET["plant_code"]]);
+                   $result5 = db_query($dbc, $query5);
   
                    while($row5=mysqli_fetch_array($result5)) 
 				    { 
@@ -326,12 +326,12 @@ th {
 			
 			 //convert 
 			
-			$query_convert = "SELECT * FROM work_center_detail as SR WHERE SR.id_work = '".sql_esc($_GET["work_center"])."'";
-			$result_convert = mysqli_query($dbc,$query_convert); 
+			$query_convert = new PreparedSql("SELECT * FROM work_center_detail as SR WHERE SR.id_work = ?", [$_GET["work_center"]]);
+			$result_convert = db_query($dbc, $query_convert); 
 			$row_convert = mysqli_fetch_array($result_convert);
 			
-			$query_convert2 = "SELECT * FROM ftp_pps WHERE file_name = '".sql_esc($_GET["name_file"])."'";
-			$result_convert2 = mysqli_query($dbc,$query_convert2); 
+			$query_convert2 = new PreparedSql("SELECT * FROM ftp_pps WHERE file_name = ?", [$_GET["name_file"]]);
+			$result_convert2 = db_query($dbc, $query_convert2); 
 			$row_convert2 = mysqli_fetch_array($result_convert2);
 			
 			//-------Count all results------------------------//
@@ -470,8 +470,8 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
   
   	 //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row["work_center"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")

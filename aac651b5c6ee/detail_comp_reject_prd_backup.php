@@ -31,8 +31,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "detail_comp_reject_prd.php"; 
@@ -466,15 +466,15 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   
   //---------detail material_type_tbl (material_type) ----
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($material_type)."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype) or die (mysqli_error());
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$material_type]);
+  $result_mtype = db_query($dbc, $query_mtype) or die (mysqli_error());
   $d_mtype = mysqli_fetch_array($result_mtype);
   
   
   //---------detail model_detail_tbl(model_code) ---
   
-  $query_mcode = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($model_code)."'";
-  $result_mcode = mysqli_query($dbc,$query_mcode) or die (mysqli_error());
+  $query_mcode = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$model_code]);
+  $result_mcode = db_query($dbc, $query_mcode) or die (mysqli_error());
   $d_mcode = mysqli_fetch_array($result_mcode);
   
 				   
@@ -484,8 +484,8 @@ if($_POST["barcode_ref"] != "")
 //insert to scan_tp_store
 //----add for record [status = 'Y' will be generate trans posting running no]
 
-  $query_q2A = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A) or die (mysqli_error());
+  $query_q2A = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$part1]);
+  $result_q2A = db_query($dbc, $query_q2A) or die (mysqli_error());
   $ans3A = mysqli_fetch_array($result_q2A);
 
   $query_q2 = "SELECT * FROM mat_master_detail WHERE material = '".sql_esc($part1)."'";
@@ -506,8 +506,8 @@ $result_db = mysqli_query($dbc,$query_db) or die (mysqli_error());
 //----add for record [status = 'Y' will be generate trans posting running no]
 
  
-  $query_q22A = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q22A = mysqli_query($dbc,$query_q22A) or die (mysqli_error());
+  $query_q22A = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$material_no]);
+  $result_q22A = db_query($dbc, $query_q22A) or die (mysqli_error());
   $ans22A = mysqli_fetch_array($result_q22A);
 
  
@@ -730,8 +730,8 @@ if(isset($_POST['e_tcid']))
 			     $date1_final = ($yyF.'-'.$mmF.'-'.$ddF);
 		
 		 //----get cost center ----
-		  $query_wctr = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($string6[$i])."'";
-		  $result_wctr = mysqli_query($dbc,$query_wctr);
+		  $query_wctr = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$string6[$i]]);
+		  $result_wctr = db_query($dbc, $query_wctr);
 		  $row_wctr = mysqli_fetch_array($result_wctr);		 
 				 
 				  //add post dropdown

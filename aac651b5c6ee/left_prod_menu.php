@@ -1,8 +1,8 @@
 <?php    //--------menu function ------------------------------
 include 'apprv_func_list.php';
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 //----------------------------------------------------
     

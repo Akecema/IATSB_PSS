@@ -16,8 +16,8 @@ exit();
 
 $url = "detail_print_tag_bfOK_ind.php";
 
-$query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-$result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+$query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+$result2 = db_query($dbc, $query2) or die (mysqli_error());
 $res = mysqli_fetch_array($result2);
 	
 $today = getdate();
@@ -226,29 +226,29 @@ $buid = base64_decode($_GET["buid"]);
 
 //--------- pps detail ------------
 
-$query_pps = "SELECT *, DATE_FORMAT(posting_date,'%d%m%Y') AS R FROM print_tag_bf_ok WHERE bflush_no = '".sql_esc($buid)."'";
-$result_pps = mysqli_query($dbc,$query_pps);
+$query_pps = new PreparedSql("SELECT *, DATE_FORMAT(posting_date,'%d%m%Y') AS R FROM print_tag_bf_ok WHERE bflush_no = ?", [$buid]);
+$result_pps = db_query($dbc, $query_pps);
 
 while($row = mysqli_fetch_array($result_pps))
 
 {
 
 	//----------display material header
-	$query_info3 = "SELECT * FROM mat_master_header WHERE material_no = '".sql_esc($row["material_no"])."'";
-	$result_info3 = mysqli_query($dbc,$query_info3);
+	$query_info3 = new PreparedSql("SELECT * FROM mat_master_header WHERE material_no = ?", [$row["material_no"]]);
+	$result_info3 = db_query($dbc, $query_info3);
 	$row_info3 = mysqli_fetch_array($result_info3);
 
 //---------cust information -----------------
 
-			$query_mat_info = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."' AND status_BOM = 'Y'";
-			$result_mat_info = mysqli_query($dbc,$query_mat_info);
+			$query_mat_info = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ? AND status_BOM = 'Y'", [$row["material_no"]]);
+			$result_mat_info = db_query($dbc, $query_mat_info);
 			$data_mat_info = mysqli_fetch_array($result_mat_info);
 	
 	
 	 //----info customer ------------------------
   			
-			$query_cust_info = "SELECT * FROM cust_detail WHERE id_cust = '".sql_esc($data_mat_info["cust_code"])."'";
-			$result_cust_info = mysqli_query($dbc,$query_cust_info);
+			$query_cust_info = new PreparedSql("SELECT * FROM cust_detail WHERE id_cust = ?", [$data_mat_info["cust_code"]]);
+			$result_cust_info = db_query($dbc, $query_cust_info);
 			$data_cust_info = mysqli_fetch_array($result_cust_info);
 
 ?>
@@ -267,8 +267,8 @@ while($row = mysqli_fetch_array($result_pps))
       <td colspan="2" rowspan="3">&nbsp;
        <?php
 
-	$query = "SELECT *,DATE_FORMAT(posting_date,'%d%m%Y') as Q2 FROM print_tag_bf_ok WHERE bflush_no = '".sql_esc($buid)."' AND id_tag = '".sql_esc($row["id_tag"])."' AND status_bf = '".sql_esc($rst_sta["status_desc"])."'";
-	$hasil = mysqli_query($dbc,$query);
+	$query = new PreparedSql("SELECT *,DATE_FORMAT(posting_date,'%d%m%Y') as Q2 FROM print_tag_bf_ok WHERE bflush_no = ? AND id_tag = ? AND status_bf = ?", [$buid, $row["id_tag"], $rst_sta["status_desc"]]);
+	$hasil = db_query($dbc, $query);
 	
 	// setting banyaknya kolom
 	$kolom = 2;
@@ -281,8 +281,8 @@ while($row = mysqli_fetch_array($result_pps))
 	while ($data = mysqli_fetch_array($hasil))
 	{
 	
-		$query_sloc = "SELECT * FROM mat_master_detail WHERE material = '".sql_esc($data["material_no"])."' OR bill_component = '".sql_esc($data["material_no"])."'";
-		$result_sloc = mysqli_query($dbc,$query_sloc);
+		$query_sloc = new PreparedSql("SELECT * FROM mat_master_detail WHERE material = ? OR bill_component = ?", [$data["material_no"], $data["material_no"]]);
+		$result_sloc = db_query($dbc, $query_sloc);
 		$data_sloc = mysqli_fetch_array($result_sloc);
 	
 	$total_slip_no = ($row["slip_no"].' of '.$row["total_slip"]);

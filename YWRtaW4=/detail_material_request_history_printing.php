@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "report_PPC.php"; 
@@ -16,8 +16,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -198,8 +198,8 @@ page-break-before: always ;
 	$result_2 = mysqli_query($dbc,$query_2);   //run the query.
 	$data_2 = mysqli_fetch_array($result_2);
 
-    $query3 = "SELECT * FROM factory_detail WHERE id_fac = '".sql_esc($data_2["factory"])."'";
-    $result3 = mysqli_query($dbc,$query3);
+    $query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$data_2["factory"]]);
+    $result3 = db_query($dbc, $query3);
 	$row3 = mysqli_fetch_array($result3);
 	
 	$query_k = "SELECT * from user_detail WHERE user_no = '".sql_esc($data_2["user_create"])."'";

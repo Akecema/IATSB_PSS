@@ -6,8 +6,8 @@ include '../include/config.php';
 
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "detail_list_bf_disposal-prd.php"; 
@@ -23,8 +23,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -384,8 +384,8 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 	
 	//----get process of reject -----
   
-     $query_proc = "SELECT * FROM proc_reject_detail_prdeng WHERE id_proc = '".sql_esc($row2["proc_reject"])."'";
-	 $rst_proc = mysqli_query($dbc,$query_proc);
+     $query_proc = new PreparedSql("SELECT * FROM proc_reject_detail_prdeng WHERE id_proc = ?", [$row2["proc_reject"]]);
+	 $rst_proc = db_query($dbc, $query_proc);
      $row_proc = mysqli_fetch_array($rst_proc);
 	
 	 //---type of reject
@@ -400,8 +400,8 @@ $result_display = mysqli_query($dbc,$query_display);   //run the query.
 
 	  //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row2["model_code"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row2["model_code"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")

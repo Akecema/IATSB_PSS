@@ -276,8 +276,8 @@ echo '</table>';
 	 
 	   //-----user canccellation-----------
 		 
-		 $query_u_can = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_sql3["user_cancel"])."'"; 
-		 $rs_u_can = mysqli_query($dbc,$query_u_can);   //run the query.
+		 $query_u_can = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_sql3["user_cancel"]]); 
+		 $rs_u_can = db_query($dbc, $query_u_can);   //run the query.
 		 $data_u_can = mysqli_fetch_array($rs_u_can);
 		 
        //-----get data GR detail -------

@@ -31,8 +31,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
     $url = "detail_GR_GI-receive.php"; 
@@ -378,18 +378,18 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   if($_POST["barcode_ref"] != "")
 { 			
 				   
-  $query_q2 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($part1)."'";
-  $result_q2 = mysqli_query($dbc,$query_q2) or die (mysqli_error());
+  $query_q2 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$part1]);
+  $result_q2 = db_query($dbc, $query_q2) or die (mysqli_error());
   $ans3 = mysqli_fetch_array($result_q2);
   
   //-----get cost center base on work center ------
-  $query_cct = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($ans3["prod_line"])."'";
-  $result_cct = mysqli_query($dbc,$query_cct) or die (mysqli_error());
+  $query_cct = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$ans3["prod_line"]]);
+  $result_cct = db_query($dbc, $query_cct) or die (mysqli_error());
   $data_cct = mysqli_fetch_array($result_cct);
   
   //------get model code detail -------
-  $query_modelA = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3["model_code"])."'";
-  $result_modelA = mysqli_query($dbc,$query_modelA) or die (mysqli_error());
+  $query_modelA = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$ans3["model_code"]]);
+  $result_modelA = db_query($dbc, $query_modelA) or die (mysqli_error());
   $data_modelA = mysqli_fetch_array($result_modelA);
   
   
@@ -416,14 +416,14 @@ list($part1, $part2, $part3, $part4, $part5, $part6, $part7, $part8) = (explode(
   
 }
   
-  $query_q22 = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q22 = mysqli_query($dbc,$query_q22) or die (mysqli_error());
+  $query_q22 = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q22 = db_query($dbc, $query_q22) or die (mysqli_error());
   $ans22 = mysqli_fetch_array($result_q22);
 
  
   //------get model code detail -------
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans22["model_code"])."'";
-  $result_model = mysqli_query($dbc,$query_model) or die (mysqli_error());
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$ans22["model_code"]]);
+  $result_model = db_query($dbc, $query_model) or die (mysqli_error());
   $data_model = mysqli_fetch_array($result_model);
 				   
 
@@ -544,8 +544,8 @@ exit();
 	   
 	   
 	    //-----get cost center base on work center ------
-		  $query_cct2 = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($work_center)."'";
-		  $result_cct2 = mysqli_query($dbc,$query_cct2) or die (mysqli_error());
+		  $query_cct2 = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$work_center]);
+		  $result_cct2 = db_query($dbc, $query_cct2) or die (mysqli_error());
 		  $data_cct2 = mysqli_fetch_array($result_cct2);
 		  
 	  
@@ -681,8 +681,8 @@ exit();
    
    {
         //-----prepared by------
-		 $query_prep = "SELECT * FROM user_detail WHERE username = '".sql_esc($data_rcv_ftp["user_generate_gis"])."'";
-		 $result_prep = mysqli_query($dbc,$query_prep) or die (mysqli_error());
+		 $query_prep = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$data_rcv_ftp["user_generate_gis"]]);
+		 $result_prep = db_query($dbc, $query_prep) or die (mysqli_error());
 		 $data_prep = mysqli_fetch_array($result_prep);
 		 
 		 //----quantity-----

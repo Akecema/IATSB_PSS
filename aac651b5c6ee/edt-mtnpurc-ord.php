@@ -29,14 +29,14 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 //----------------------------------------------------	
 	
@@ -178,8 +178,8 @@ require 'PHPMailer/src/Exception.php';
 	 
 	 //-----get cvendor  ----
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vendor_no"])."'";
-	 $result_vend = mysqli_query($dbc,$query_vend) or die (mysqli_error());
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vendor_no"]]);
+	 $result_vend = db_query($dbc, $query_vend) or die (mysqli_error());
 	 $data_vend = mysqli_fetch_array($result_vend);
 
    
@@ -500,16 +500,16 @@ exit();
                   <?php
 				  
 	    	//------------- select get login vendor --------------
-		$query_ath_vend2 = "SELECT * FROM function_ath_vendordetail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-		$result_ath_vend2 = mysqli_query($dbc,$query_ath_vend2);
+		$query_ath_vend2 = new PreparedSql("SELECT * FROM function_ath_vendordetail WHERE staff_ID = ?", [$res["staff_ID"]]);
+		$result_ath_vend2 = db_query($dbc, $query_ath_vend2);
 	
           
               while($data_ath_vend2 = mysqli_fetch_array($result_ath_vend2)) {
 				  
 				  
 				  //----vendor detail ------
-				   $query27A = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_ath_vend2["vendor_id"])."' AND status_acc = 'Y'";
-                   $result27A = mysqli_query($dbc,$query27A);
+				   $query27A = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ? AND status_acc = 'Y'", [$data_ath_vend2["vendor_id"]]);
+                   $result27A = db_query($dbc, $query27A);
                    $row27A = mysqli_fetch_array($result27A);			  
 
         

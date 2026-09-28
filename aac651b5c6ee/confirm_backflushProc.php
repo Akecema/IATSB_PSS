@@ -43,8 +43,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2);
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2);
     $res = mysqli_fetch_array($result2);
 	
     $url = "confirm_backflush_tran.php"; 
@@ -447,20 +447,20 @@ $message = NULL; // create an empty new variable.
 	   $data_pps = mysqli_fetch_array($result_pps); 
 
 	   	
-  $query_q2A = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A);
+  $query_q2A = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q2A = db_query($dbc, $query_q2A);
   $ans3A = mysqli_fetch_array($result_q2A);
   
   //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3A["model_code"])."' AND material_type = '".sql_esc($ans3A["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3A["model_code"], $ans3A["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3A["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3A["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
 	
 	  
@@ -584,8 +584,8 @@ while($row = mysqli_fetch_array($result_tag))
 	  
 	  //----detail standard packaging [ambil dari table mat_master_header]
 	  
-	   $query_pack = "SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_pack = mysqli_query($dbc,$query_pack);
+	   $query_pack = new PreparedSql("SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_pack = db_query($dbc, $query_pack);
 	   $data_pack = mysqli_fetch_array($result_pack);
 		
 		
@@ -783,20 +783,20 @@ while($row = mysqli_fetch_array($result_tag))
 		
 	   
 	   	
-  $query_q2A = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A);
+  $query_q2A = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q2A = db_query($dbc, $query_q2A);
   $ans3A = mysqli_fetch_array($result_q2A);
   
   //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3A["model_code"])."' AND material_type = '".sql_esc($ans3A["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3A["model_code"], $ans3A["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3A["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3A["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
 	 
 	   
@@ -914,8 +914,8 @@ while($row = mysqli_fetch_array($result_tag))
 	  
 	  //----detail standard packaging [ambil dari table mat_master_header]
 	  
-	   $query_pack = "SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = '".sql_esc($row["material_no"])."'";
-	   $result_pack = mysqli_query($dbc,$query_pack);
+	   $query_pack = new PreparedSql("SELECT std_packaging, type_package, BUn FROM table_material_itsb WHERE material_no = ?", [$row["material_no"]]);
+	   $result_pack = db_query($dbc, $query_pack);
 	   $data_pack = mysqli_fetch_array($result_pack);
 	   
 	             if(($data_pack["std_packaging"] == "") || ($data_pack["std_packaging"] == "0"))
@@ -1099,8 +1099,8 @@ if (isset($message))
 		 
 		 //------------plant code detail -------------
 		 
-		 $query_plant = "SELECT * FROM plant_detail WHERE plant_code = '".sql_esc($data_scan["plant_cd"])."'";
-		 $result_plant = mysqli_query($dbc,$query_plant);
+		 $query_plant = new PreparedSql("SELECT * FROM plant_detail WHERE plant_code = ?", [$data_scan["plant_cd"]]);
+		 $result_plant = db_query($dbc, $query_plant);
 	     $data_plant = mysqli_fetch_array($result_plant);
 		  
 		

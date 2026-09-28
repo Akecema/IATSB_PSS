@@ -24,8 +24,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 $data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 include 'apprv_func_list.php';
@@ -34,8 +34,8 @@ include 'apprv_func_list.php';
 
 
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	
@@ -195,8 +195,8 @@ if (empty($_POST['user_id']))
   
   }else{
 	  
-	  $query_chk_profile = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($_POST["user_id"])."'";
-	  $result_chk_profile = mysqli_query($dbc,$query_chk_profile);  
+	  $query_chk_profile = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$_POST["user_id"]]);
+	  $result_chk_profile = db_query($dbc, $query_chk_profile);  
 	  $rst_chk_profile  = mysqli_fetch_array($result_chk_profile); 
 	  
 	  
@@ -989,7 +989,7 @@ if (isset($message))
   
   //Retrieve and display the available types
   $query2 = 'SELECT * FROM department';
-  $result2 = mysqli_query($dbc,$query2);
+  $result2 = db_query($dbc, $query2);
   
       while($row2 = mysqli_fetch_array($result2)) {
 

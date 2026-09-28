@@ -1,6 +1,6 @@
 <?php
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error($dbc));
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
     $res = mysqli_fetch_array($result2);
 	
 	$url = "vendor_account_table.php"; 
@@ -14,8 +14,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -251,8 +251,8 @@ if (empty($_POST["status_subcont"]) || ($_POST["status_subcont"] == ""))
  {  
  
  
- 	     	  $query_search = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($vendor_code)."'";
-              $result_search = mysqli_query($dbc,$query_search);   //run the query.
+ 	     	  $query_search = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$vendor_code]);
+              $result_search = db_query($dbc, $query_search);   //run the query.
               $num_search = mysqli_num_rows($result_search);   //how many suppliers are there?
 			  
 			  if($num_search == 1) {
@@ -308,8 +308,8 @@ if (isset($message))
        </div>
       <?php
 
-$query_ven = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($row2["vendor_code"])."'";
-$result_ven = mysqli_query($dbc,$query_ven);   //run the query.
+$query_ven = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$row2["vendor_code"]]);
+$result_ven = db_query($dbc, $query_ven);   //run the query.
 $row_ven = mysqli_fetch_array($result_ven);   //how many records are there?
      
    ?>

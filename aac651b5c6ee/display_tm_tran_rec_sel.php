@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "canC_tm_tran-recProc.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -290,8 +290,8 @@ page-break-before: always ;
 	  $filen_rcv = "TM".$ref4; 
 		   
 		   //-----prepared by------
-		 $query_prepw = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_infoBr["user_cancel"])."'";
-		 $result_prepw = mysqli_query($dbc,$query_prepw);
+		 $query_prepw = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_infoBr["user_cancel"]]);
+		 $result_prepw = db_query($dbc, $query_prepw);
 		 $data_prepw = mysqli_fetch_array($result_prepw);
 		 
 	
@@ -366,8 +366,8 @@ $data_rcv .= $row_infoBr["plant_code"].";".$row_infoBr["ref_doc_tm"].";".$row_in
      $data_bb = mysqli_fetch_array($rs_bb);	 
 	 
 	 //---work center----
-	 $query_line = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_bb["work_center"])."'";
-	 $rs_line = mysqli_query($dbc,$query_line);   //run the query.
+	 $query_line = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_bb["work_center"]]);
+	 $rs_line = db_query($dbc, $query_line);   //run the query.
      $data_line = mysqli_fetch_array($rs_line);	 
 	 
 	 ?>

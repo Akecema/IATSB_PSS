@@ -315,8 +315,8 @@ echo '</table>';
 	   
 	      //----model ---
   
- $query_Mod = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row3["model_code"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row3["model_code"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["wc_desc2"] == "")
@@ -330,8 +330,8 @@ echo '</table>';
 	  
 	   //----line ---
   
- $query_Mod2 = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row3["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod2 = mysqli_query($dbc,$query_Mod2);
+ $query_Mod2 = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row3["work_center"]]);
+ $result_Mod2 = db_query($dbc, $query_Mod2);
  $row_Mod2 = mysqli_fetch_array($result_Mod2);  
  
   if($row_Mod2["wc_desc2"] == "")

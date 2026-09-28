@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	$url = "can_tp_subcontProc2.php"; 
@@ -28,8 +28,8 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 //--------menu function ------------------------------
 
-$query_function = "SELECT * FROM function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$result_function = mysqli_query($dbc,$query_function);   //run the query.
+$query_function = new PreparedSql("SELECT * FROM function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$result_function = db_query($dbc, $query_function);   //run the query.
 //$data_function = mysqli_fetch_array($result_function);   //how many records are there?  
 
 //----------------------------------------------------
@@ -297,8 +297,8 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 
 
   //-----prepared by------
-		 $query_prepV = "SELECT * FROM user_detail WHERE username = '".sql_esc($row_infoA["user_generate_tp"])."'";
-		 $result_prepV = mysqli_query($dbc,$query_prepV) or die (mysqli_error());
+		 $query_prepV = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$row_infoA["user_generate_tp"]]);
+		 $result_prepV = db_query($dbc, $query_prepV) or die (mysqli_error());
 		 $data_prepV = mysqli_fetch_array($result_prepV);
 		 
 		 //----quantity-----
@@ -381,8 +381,8 @@ $result_data2 = mysqli_query($dbc,$query_data2);
 	 
 	 //------vendor detail --------
 	 
-	 $query_vend = "SELECT * FROM vendor_detail WHERE vendor_code = '".sql_esc($data_bb["vendor_no"])."'";
-	 $rs_vend = mysqli_query($dbc,$query_vend);   //run the query.
+	 $query_vend = new PreparedSql("SELECT * FROM vendor_detail WHERE vendor_code = ?", [$data_bb["vendor_no"]]);
+	 $rs_vend = db_query($dbc, $query_vend);   //run the query.
      $data_vend = mysqli_fetch_array($rs_vend);
 	 
 	 //----- shift day ----------

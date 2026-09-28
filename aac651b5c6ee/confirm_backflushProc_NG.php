@@ -41,8 +41,8 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2);
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2);
     $res = mysqli_fetch_array($result2);
 	
     $url = "confirm_backflush_tran_NG.php"; 
@@ -462,20 +462,20 @@ $message = NULL; // create an empty new variable.
 	   $data_pps = mysqli_fetch_array($result_pps); 
 	 
 	   	   	   	
-  $query_q2A = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A);
+  $query_q2A = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+  $result_q2A = db_query($dbc, $query_q2A);
   $ans3A = mysqli_fetch_array($result_q2A);
   
   //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3A["model_code"])."' AND material_type = '".sql_esc($ans3A["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3A["model_code"], $ans3A["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3A["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3A["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
 	 
 	    if($data_pps["plan_no"]  > 0)
@@ -539,8 +539,8 @@ $message = NULL; // create an empty new variable.
 
 		
 		//----------- find cost center --------------
-		$query_cs_cent = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_scan["work_center"])."'";
-		$result_cs_cent = mysqli_query($dbc,$query_cs_cent); 
+		$query_cs_cent = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_scan["work_center"]]);
+		$result_cs_cent = db_query($dbc, $query_cs_cent); 
 		$row_cs_cent = mysqli_fetch_array($result_cs_cent);
 		
 		
@@ -674,20 +674,20 @@ $result_ins_dis = mysqli_query($dbc,$query_ins_dis);
 	   
 	   
 	   	   	
-  $query_q2A = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($data_scan["material_no"])."'";
-  $result_q2A = mysqli_query($dbc,$query_q2A);
+  $query_q2A = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$data_scan["material_no"]]);
+  $result_q2A = db_query($dbc, $query_q2A);
   $ans3A = mysqli_fetch_array($result_q2A);
   
   //-------model-----------------
   
-  $query_model = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($ans3A["model_code"])."' AND material_type = '".sql_esc($ans3A["mat_type"])."'";
-  $result_model = mysqli_query($dbc,$query_model);
+  $query_model = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ? AND material_type = ?", [$ans3A["model_code"], $ans3A["mat_type"]]);
+  $result_model = db_query($dbc, $query_model);
   $data_model = mysqli_fetch_array($result_model);
   
   //-----material type material_type_tbl ---------
   
-  $query_mtype = "SELECT * FROM material_type_tbl WHERE id = '".sql_esc($ans3A["mat_type"])."'";
-  $result_mtype = mysqli_query($dbc,$query_mtype);
+  $query_mtype = new PreparedSql("SELECT * FROM material_type_tbl WHERE id = ?", [$ans3A["mat_type"]]);
+  $result_mtype = db_query($dbc, $query_mtype);
   $data_mtype = mysqli_fetch_array($result_mtype);
 	 
 	
@@ -752,8 +752,8 @@ $result_ins_dis = mysqli_query($dbc,$query_ins_dis);
 
 		
 		//----------- find cost center --------------
-		$query_cs_cent = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($data_scan["work_center"])."'";
-		$result_cs_cent = mysqli_query($dbc,$query_cs_cent); 
+		$query_cs_cent = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$data_scan["work_center"]]);
+		$result_cs_cent = db_query($dbc, $query_cs_cent); 
 		$row_cs_cent = mysqli_fetch_array($result_cs_cent);
 
 	  
@@ -891,8 +891,8 @@ if (isset($message))
 		 
 		  //------------plant code detail -------------
 		 
-		 $query_plant = "SELECT * FROM plant_detail WHERE plant_code = '".sql_esc($data_scan["plant_cd"])."'";
-		 $result_plant = mysqli_query($dbc,$query_plant);
+		 $query_plant = new PreparedSql("SELECT * FROM plant_detail WHERE plant_code = ?", [$data_scan["plant_cd"]]);
+		 $result_plant = db_query($dbc, $query_plant);
 	     $data_plant = mysqli_fetch_array($result_plant);
 		  
 		  ?>

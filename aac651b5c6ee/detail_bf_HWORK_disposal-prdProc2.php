@@ -33,13 +33,13 @@ $num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
 $data_setup = mysqli_fetch_array($rs_setup);
 //----------------------------------------------------
 
-    $query2 = "SELECT * FROM user_detail WHERE username = '".sql_esc($username)."'";
-    $result2 = mysqli_query($dbc,$query2) or die (mysqli_error());
+    $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
+    $result2 = db_query($dbc, $query2) or die (mysqli_error());
     $res = mysqli_fetch_array($result2);
 	
 	//--------function user --------------------------
-$query_fuct = "SELECT * FROM  function_acc_detail WHERE staff_ID = '".sql_esc($res["staff_ID"])."'";
-$rs_fuct = mysqli_query($dbc,$query_fuct);   //run the query.
+$query_fuct = new PreparedSql("SELECT * FROM  function_acc_detail WHERE staff_ID = ?", [$res["staff_ID"]]);
+$rs_fuct = db_query($dbc, $query_fuct);   //run the query.
 $num_fuct = mysqli_num_rows($rs_fuct);   //how many material are there?
 $data_fuct = mysqli_fetch_array($rs_fuct);
 //----------------------------------------------------	
@@ -303,8 +303,8 @@ div.dataTables_wrapper {
                 <th><div id="work_centerdiv"><select name="work_center" id="work_center" class="form-control" onChange="getMaterial(this.value)">
                   <option value="NULL" placeholder="Select Line"> -- Select Line --</option>
                   <?php
-	               $query5 = "SELECT * FROM work_center_detail WHERE plant_code = '".sql_esc($_GET["plant_code"])."' AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC";
-                   $result5 = mysqli_query($dbc,$query5);
+	               $query5 = new PreparedSql("SELECT * FROM work_center_detail WHERE plant_code = ? AND dept_acc = 'PRODUCTION' AND status_wc = 'Y' ORDER BY id_work ASC", [$_GET["plant_code"]]);
+                   $result5 = db_query($dbc, $query5);
   
                    while($row5=mysqli_fetch_array($result5)) 
 				    { 
@@ -726,25 +726,25 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
    {
  //----get process of reject -----
   
- $query_proc = "SELECT * FROM proc_reject_detail_prd WHERE id_proc = '".sql_esc($row["proc_reject"])."'";
- $rst_proc = mysqli_query($dbc,$query_proc);
+ $query_proc = new PreparedSql("SELECT * FROM proc_reject_detail_prd WHERE id_proc = ?", [$row["proc_reject"]]);
+ $rst_proc = db_query($dbc, $query_proc);
  $row_proc = mysqli_fetch_array($rst_proc);	
 	
  //---type of reject
- $query_type = "SELECT * FROM type_reject_detail_prd WHERE id_type = '".sql_esc($row["type_reject"])."' AND status_type = 'Y' ORDER BY id_type ASC";
- $result_type = mysqli_query($dbc,$query_type);
+ $query_type = new PreparedSql("SELECT * FROM type_reject_detail_prd WHERE id_type = ? AND status_type = 'Y' ORDER BY id_type ASC", [$row["type_reject"]]);
+ $result_type = db_query($dbc, $query_type);
  $row_type = mysqli_fetch_array($result_type); 
  
   //---defect
- $query_defect = "SELECT * FROM type_defect_detail_prd WHERE id_defect = '".sql_esc($row["type_defect"])."' AND status_defect = 'Y' ORDER BY id_defect ASC";
- $result_defect = mysqli_query($dbc,$query_defect);
+ $query_defect = new PreparedSql("SELECT * FROM type_defect_detail_prd WHERE id_defect = ? AND status_defect = 'Y' ORDER BY id_defect ASC", [$row["type_defect"]]);
+ $result_defect = db_query($dbc, $query_defect);
  $row_defect = mysqli_fetch_array($result_defect);     
 	 
   
     //----model ---
   
- $query_Mod = "SELECT * FROM model_detail_tbl WHERE model_code = '".sql_esc($row["model_code"])."' AND plant_code = '".sql_esc($row["plant_cd"])."' AND status_model = 'Y' ORDER BY id_model ASC";
- $result_Mod = mysqli_query($dbc,$query_Mod);
+ $query_Mod = new PreparedSql("SELECT * FROM model_detail_tbl WHERE model_code = ? AND plant_code = ? AND status_model = 'Y' ORDER BY id_model ASC", [$row["model_code"], $row["plant_cd"]]);
+ $result_Mod = db_query($dbc, $query_Mod);
  $row_Mod = mysqli_fetch_array($result_Mod);  
  
   if($row_Mod["model_desc"] == "")
@@ -758,8 +758,8 @@ $num_rowsGR = mysqli_num_rows($rsGR);   //how many material are there?
 	  
 	   //----line ---
   
- $query_Mod2 = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($row["work_center"])."' AND status_wc = 'Y' ORDER BY id ASC";
- $result_Mod2 = mysqli_query($dbc,$query_Mod2);
+ $query_Mod2 = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ? AND status_wc = 'Y' ORDER BY id ASC", [$row["work_center"]]);
+ $result_Mod2 = db_query($dbc, $query_Mod2);
  $row_Mod2 = mysqli_fetch_array($result_Mod2);  
  
   if($row_Mod2["wc_desc2"] == "")

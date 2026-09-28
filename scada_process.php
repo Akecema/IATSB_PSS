@@ -219,8 +219,8 @@ while (true) {
             // $qty_NG . '-' . $uom . '-' . $sloc . '-' . $section . '-' . $proc_reject . '-' . $typeofreject . '-' . $defect . '-' . $reason_reject . '-' . $user . '<br/>';
 
             //find material detail
-            $query_mat = "SELECT * FROM table_material_itsb WHERE material_no = '".sql_esc($material_no)."'";
-            $result_mat = mysqli_query($dbc,$query_mat);
+            $query_mat = new PreparedSql("SELECT * FROM table_material_itsb WHERE material_no = ?", [$material_no]);
+            $result_mat = db_query($dbc, $query_mat);
             $data_mat = mysqli_fetch_array($result_mat);
             if($data_mat['mat_type'] == '1'){
                 $material_type = 'Z101';
@@ -262,8 +262,8 @@ while (true) {
             $material_name = $data_mat['material_desc'];
             $section = $data_mat['prod_line'];
 
-            $query_usr = "SELECT * FROM user_detail WHERE staff_ID = '".sql_esc($user)."'";
-            $result_usr = mysqli_query($dbc,$query_usr);
+            $query_usr = new PreparedSql("SELECT * FROM user_detail WHERE staff_ID = ?", [$user]);
+            $result_usr = db_query($dbc, $query_usr);
             $data_usr = mysqli_fetch_array($result_usr);
             if($data_usr['department'] == '37' || $data_usr['department'] == '62'){
                 $status_disposal = 'Pending Approve ASSY';
@@ -272,8 +272,8 @@ while (true) {
                 $status_disposal = 'Pending Approve STM';
             }
 
-            $query_md = "SELECT * FROM model_detail_tbl WHERE id_model = '".sql_esc($data_mat['model_code'])."'";
-            $result_md = mysqli_query($dbc,$query_md);
+            $query_md = new PreparedSql("SELECT * FROM model_detail_tbl WHERE id_model = ?", [$data_mat['model_code']]);
+            $result_md = db_query($dbc, $query_md);
             $data_md = mysqli_fetch_array($result_md);
             $model = $data_md['model_code'];
 
@@ -288,8 +288,8 @@ while (true) {
             $typeofreject = $data_trdesc['id_type'];
 
             //----------- find cost center --------------
-            $query_cs_cent = "SELECT * FROM work_center_detail WHERE id_work = '".sql_esc($section)."'";
-            $result_cs_cent = mysqli_query($dbc,$query_cs_cent); 
+            $query_cs_cent = new PreparedSql("SELECT * FROM work_center_detail WHERE id_work = ?", [$section]);
+            $result_cs_cent = db_query($dbc, $query_cs_cent); 
             $row_cs_cent = mysqli_fetch_array($result_cs_cent);
 
             $qty_plan = 0.000;
