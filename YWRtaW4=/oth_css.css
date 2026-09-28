@@ -1,0 +1,19 @@
+.compulsStar {
+    color : #FF0000;
+}
+
+.component_hdr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #9F000F;
+}
+
+table.compt {
+    text-align: center;
+}
+
+table.stats th {    
+    background-color: #9F000F;
+}

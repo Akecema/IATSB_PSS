@@ -1,0 +1,31 @@
+# Local secrets and tooling
+.env
+scan.php
+
+# Runtime data written by the app (uploads, exports, generated files) - not source
+BOM_detail_update/
+BOM_detail_upload/
+BOM_update/
+BOM_upload/
+MAT_update/
+MAT_upload/
+MFO_upload/
+PO_update/
+PO_web/
+SA_upload/
+set_upload/
+FromPortal*/
+PO_PDF*/
+photos/
+aac651b5c6ee/upload_dikanban/
+aac651b5c6ee/upload_dikanban_upd/
+aac651b5c6ee/upload_pps/
+aac651b5c6ee/upload_pps_update/
+aac651b5c6ee/PDIO_upld/
+*.pdf
+*.xls
+*.xlsx
+*.csv
+*.log
+*.7z
+*.zip

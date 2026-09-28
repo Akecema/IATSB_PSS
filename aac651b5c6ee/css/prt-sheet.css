@@ -1,0 +1,130 @@
+
+.prt-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left:92%;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  width: 100px;
+  
+  margin-right: -10px;
+}
+.titleHdr {
+	text-align:left;
+	font-size:12px;
+	font-weight:bold;
+	margin: auto;
+	border:none;
+	padding: 2px;
+}
+
+.sheetName {
+	text-align:center;
+	font-size:17px;
+	font-weight:bold;
+	margin: auto;
+	padding: 2px;
+}
+
+
+<!--main-->
+/*table.tblMain 
+{
+	border: 3px solid #000000;	
+}*/
+<!--/n main-->
+
+
+<!--header-->
+table.tblHeader {
+	padding : 5px;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+	/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	text-align: left;
+}
+
+table.tblHeader thead tr td{
+    padding-left: 10px;
+	font-size: 13px;
+	font-weight: bold;	
+}
+<!--/n header-->
+
+
+<!--record-->
+table.tblRecord {
+    padding-left: 14px;
+	border: 1px solid #B7B7B7;
+    padding: 10px;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+	/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	text-align: left;
+}
+
+table.tblRecord thead th{
+	padding-left: 14px;
+	border: 1px solid #B7B7B7;
+	font-size: 13px;
+	font-weight: bold;	
+}
+
+table.tblRecord tbody td{
+	padding-left: 14px;
+	border: 1px solid #B7B7B7;
+	font-size: 13px;
+	line-height: 30px;	
+}
+<!--/n record-->
+
+<!--record Release-->
+table.tblRecordRls {
+    padding-left: 14px;
+	border: 1px solid #B7B7B7;
+    padding: 10px;
+    font-size: 13px;
+    margin: 4px 2px;
+    cursor: pointer;
+	/*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	text-align: left;
+}
+
+table.tblRecordRls thead th{
+	padding-left: 14px;
+	border: 1px solid #B7B7B7;
+	font-size: 13px;
+	font-weight: bold;	
+}
+
+table.tblRecordRls tbody td{
+	padding-left: 14px;
+	border: 1px solid #B7B7B7;
+	font-size: 13px;
+	padding: 10px 10px;
+}
+
+table.tblRecordRls tbody td.clcenter{
+	text-align:center;
+	padding: 10px 10px 12px 0;
+}
+
+/*qr code box*/
+/*.divQrBox {
+	width: 120px;
+	min-height: 70px;
+	max-height: 70px;
+	float: left;
+	margin: 3px;
+	padding: 10px;
+	border: 1px solid blue;
+}*/
+<!--/n record-->
+
+
+
+
