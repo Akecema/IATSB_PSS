@@ -39,6 +39,10 @@ jobs:
         with:
           name: php-app
           path: .
+          # Default excludes dotfiles - .user.ini (auto_prepend_file = include/guard.php, the
+          # app's whole security layer: CSRF, session gate, upload validation) would silently
+          # never reach the deployed site without this.
+          include-hidden-files: true
 
   deploy:
     runs-on: ubuntu-latest
