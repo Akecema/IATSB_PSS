@@ -61,11 +61,14 @@ $data_function = mysqli_fetch_array($result_function);   //how many records are 
 	}
 	</script>
     <script language="javascript">
+document.addEventListener('DOMContentLoaded', function () {
 	$('.datepicker').pickadate({
 weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 showMonthsShort: true
 })
-	</script>
+	
+});
+</script>
 <style>
 th {
   cursor: pointer;

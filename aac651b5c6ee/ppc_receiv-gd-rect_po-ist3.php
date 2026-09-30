@@ -203,11 +203,14 @@ $purc_ord_no = $_GET["purc_ord_no"];
 	</style>   
 
     <script language="javascript">
+document.addEventListener('DOMContentLoaded', function () {
 	$('.datepicker').pickadate({
 	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 	showMonthsShort: true
 	})
-		</script>
+		
+});
+</script>
 		<script language="javascript">
 		  $(document).ready(function() {
 				$('#example').DataTable( {
