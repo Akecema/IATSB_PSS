@@ -204,7 +204,7 @@ th {
 		
 
 /*$root = $_SERVER['DOCUMENT_ROOT'];
-$path = "../../PSS_IATSB/FromPortal/BF_NG/"; 
+$path = "../../FromPortal/BF_NG/"; 
 
 // Open the folder
  $dir_handle = @opendir($root . $path) or die("Unable to open $path");

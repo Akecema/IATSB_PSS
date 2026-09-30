@@ -63,7 +63,7 @@ $rst_sta16 = mysqli_fetch_array($sta_res16);
 
 // SCADA PATH
 
-$scada_path = 'E:/Apache24/htdocs/PSS_IATSB/FromPortal2/DP/SCADA';
+$scada_path = 'E:/Apache24/htdocs/FromPortal2/DP/SCADA';
 
 $archive_path = $scada_path . '/Archive';
 
