@@ -17,13 +17,13 @@ exit();
 //--------setup website page --------------------------
 $query_setup = "SELECT * FROM sys_setup_maintain WHERE status_system = 'AC'";
 $rs_setup = mysqli_query($dbc,$query_setup);   //run the query.
-$num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
-$data_setup = mysqli_fetch_array($rs_setup);
+$num_setup = $rs_setup ? mysqli_num_rows($rs_setup) : 0;   //how many material are there?
+$data_setup = $rs_setup ? mysqli_fetch_array($rs_setup) : null;
 //----------------------------------------------------
 
     $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
     $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
-    $res = mysqli_fetch_array($result2);
+    $res = $result2 ? mysqli_fetch_array($result2) : null;
 	
     $url = "report_PPC_consumable.php"; 
 
@@ -45,53 +45,53 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 $sta = "SELECT * from request_status WHERE status_id = '1'";
 $sta_res = mysqli_query($dbc,$sta);
-$rst_sta = mysqli_fetch_array($sta_res);
+$rst_sta = $sta_res ? mysqli_fetch_array($sta_res) : null;
 
 //CR status (Released)
 $sta2 = "SELECT * from request_status WHERE status_id = '2'";
 $sta_res2 = mysqli_query($dbc,$sta2);
-$rst_sta2 = mysqli_fetch_array($sta_res2);
+$rst_sta2 = $sta_res2 ? mysqli_fetch_array($sta_res2) : null;
 
 
 //CR status (Approved)
 $sta3 = "SELECT * from request_status WHERE status_id = '3'";
 $sta_res3 = mysqli_query($dbc,$sta3);
-$rst_sta3 = mysqli_fetch_array($sta_res3);
+$rst_sta3 = $sta_res3 ? mysqli_fetch_array($sta_res3) : null;
 
 //CR status (In Progress)
 $sta7 = "SELECT * from request_status WHERE status_id = '7'";
 $sta_res7 = mysqli_query($dbc,$sta7);
-$rst_sta7 = mysqli_fetch_array($sta_res7);
+$rst_sta7 = $sta_res7 ? mysqli_fetch_array($sta_res7) : null;
 
 //CR status (Pending)
 $sta8 = "SELECT * from request_status WHERE status_id = '8'";
 $sta_res8 = mysqli_query($dbc,$sta8);
-$rst_sta8 = mysqli_fetch_array($sta_res8);
+$rst_sta8 = $sta_res8 ? mysqli_fetch_array($sta_res8) : null;
 
 //CR status (Closed)
 $sta13 = "SELECT * from request_status WHERE status_id = '13'";
 $sta_res13 = mysqli_query($dbc,$sta13);
-$rst_sta13 = mysqli_fetch_array($sta_res13);
+$rst_sta13 = $sta_res13 ? mysqli_fetch_array($sta_res13) : null;
 
 //CR status (Completed)
 $sta14 = "SELECT * from request_status WHERE status_id = '14'";
 $sta_res14 = mysqli_query($dbc,$sta14);
-$rst_sta14 = mysqli_fetch_array($sta_res14);
+$rst_sta14 = $sta_res14 ? mysqli_fetch_array($sta_res14) : null;
 
 //CR status (Deleted)
 $sta16 = "SELECT * from request_status WHERE status_id = '16'";
 $sta_res16 = mysqli_query($dbc,$sta16);
-$rst_sta16 = mysqli_fetch_array($sta_res16);
+$rst_sta16 = $sta_res16 ? mysqli_fetch_array($sta_res16) : null;
 
 //CR status (Cancel)
 $sta21 = "SELECT * from request_status WHERE status_id = '21'";
 $sta_res21 = mysqli_query($dbc,$sta21);
-$rst_sta21 = mysqli_fetch_array($sta_res21);
+$rst_sta21 = $sta_res21 ? mysqli_fetch_array($sta_res21) : null;
 
 //CR status (Close)
 $sta22 = "SELECT * from request_status WHERE status_id = '22'";
 $sta_res22 = mysqli_query($dbc,$sta22);
-$rst_sta22 = mysqli_fetch_array($sta_res22);
+$rst_sta22 = $sta_res22 ? mysqli_fetch_array($sta_res22) : null;
  
 	?>
 <!DOCTYPE html>
@@ -230,7 +230,7 @@ th {
 	               $query3 = "SELECT * FROM factory_detail GROUP BY factory_desc2 ORDER BY id_fac ASC";
                    $result3 = db_query($dbc, $query3);
   
-                   while($row3=mysqli_fetch_array($result3)) 
+                   while ($result3 && ($row3 = mysqli_fetch_array($result3))) 
 			      {
 				  
 				  
@@ -286,7 +286,7 @@ th {
 			$query_convert = "SELECT * FROM factory_detail WHERE factory_desc = '".sql_esc($_GET["factory"])."'";
 			$result_convert = mysqli_query($dbc,$query_convert); 
 			
-			while ($row_convert = mysqli_fetch_array($result_convert))
+			while ($result_convert && ($row_convert = mysqli_fetch_array($result_convert)))
 			{
 			
 			//echo $row_convert["id_fac"];
@@ -333,7 +333,7 @@ th {
 								 
    $query8 = "SELECT * FROM consumable_request WHERE status_request = 'Y' AND status != '".sql_esc($rst_sta21["status_desc"])."'  AND (temp_mrin LIKE '%".sql_esc($strKeyword)."%')" .$where_sql." GROUP BY temp_mrin";
    $result8 = mysqli_query($dbc,$query8);
-   $num_rows = mysqli_num_rows($result8);
+   $num_rows = $result8 ? mysqli_num_rows($result8) : 0;
    
    /*$pages = new Paginator;
    $pages->items_total = $num_rows;
@@ -366,7 +366,7 @@ th {
   
 $query = "SELECT * FROM consumable_request WHERE status_request = 'Y' AND status != '".sql_esc($rst_sta21["status_desc"])."' AND (temp_mrin LIKE '%".sql_esc($strKeyword)."%') ".$where_sql." GROUP BY temp_mrin";
 $rs = mysqli_query($dbc,$query);
-$num_rows = mysqli_num_rows($rs);   //how many material are there?
+$num_rows = $rs ? mysqli_num_rows($rs) : 0;   //how many material are there?
 		
 	//$row_start = (($page - 1)* $per_page);
 	
@@ -425,20 +425,20 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
 
 	 <?php
 
-       while($row_cons = mysqli_fetch_array($rs))
+       while ($rs && ($row_cons = mysqli_fetch_array($rs)))
        {
 		   
 	$query_again = "SELECT * FROM consumable_request WHERE status_request = 'Y' and id_scan = '".sql_esc($row_cons["id_scan"])."' ORDER BY id_req_con ASC";
     $rs_again = mysqli_query($dbc,$query_again);   //run the query.
-    $row_again = mysqli_fetch_array($rs_again);
+    $row_again = $rs_again ? mysqli_fetch_array($rs_again) : null;
 	
 	$query_u = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$row_again["user_create"]]);
 	$result_u = db_query($dbc, $query_u);   //run the query.
-	$data_u = mysqli_fetch_array($result_u);   //how many records are there?    
+	$data_u = $result_u ? mysqli_fetch_array($result_u) : null;   //how many records are there?    
 
  	$query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$row_again["factory"]]);
     $result3 = db_query($dbc, $query3);
-	$row3 = mysqli_fetch_array($result3);
+	$row3 = $result3 ? mysqli_fetch_array($result3) : null;
 	
 
 //-------------------------------------------------------Transfer Posting [Traffic Light] --------------------------
