@@ -63,15 +63,7 @@ $data_function = mysqli_fetch_array($result_function);   //how many records are 
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-showMonthsShort: true
-})
-	
-});
-</script>
+    
 <style>
 th {
   cursor: pointer;
@@ -341,7 +333,7 @@ $message = NULL; // create an empty new variable.
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
     
   </body>

@@ -140,15 +140,7 @@ $rst_sta29 = mysqli_fetch_array($sta_res29);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-showMonthsShort: true
-})
-	
-});
-</script>
+    
 <style>
 th {
   cursor: pointer;
@@ -395,7 +387,7 @@ th {
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
   
   </body>

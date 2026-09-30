@@ -57,12 +57,7 @@ $data_setup = mysqli_fetch_array($rs_setup);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-	</script>
+    
 
 <style type="text/css" media="print"> 
 .breakAfter{ 

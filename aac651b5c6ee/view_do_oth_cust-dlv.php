@@ -76,12 +76,7 @@ $rst_sta2 = mysqli_fetch_array($sta_res2);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-	</script>
+    
   </head>
   
   <body class="app sidebar-mini">
@@ -310,7 +305,7 @@ $message = NULL; // create an empty new variable.
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
   
   
