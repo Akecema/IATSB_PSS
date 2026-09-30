@@ -284,15 +284,7 @@ if(isset($_POST['btn_submit']))
 	}
 	</style>   
 
-    <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-		
-});
-</script>
+    
 		<script language="javascript">
 		  $(document).ready(function() {
 				$('#example').DataTable( {
@@ -505,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function () {
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
     
     <!--checkbox-->

@@ -605,7 +605,7 @@ if (isset($message))
       	todayHighlight: true
       });
       
-      $('#demoSelect').select2();
+      
     </script>
 </body>
 </html>

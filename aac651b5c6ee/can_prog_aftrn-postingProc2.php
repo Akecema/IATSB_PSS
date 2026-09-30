@@ -120,12 +120,7 @@ $rst_sta19 = mysqli_fetch_array($sta_res19);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-showMonthsShort: true
-})
-	</script>
+    
 <style>
 th {
   cursor: pointer;
@@ -519,7 +514,7 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
   
   </body>

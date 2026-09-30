@@ -81,12 +81,7 @@ $url = "upload_pps_month-assy.php";
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-	</script>
+    
   </head>
   
   <body class="app sidebar-mini">
@@ -858,7 +853,7 @@ if (isset($message))
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
  <script>
 $('.btn_release').on('click',function(){

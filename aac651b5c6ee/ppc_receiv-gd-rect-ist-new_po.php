@@ -135,15 +135,7 @@ $row_vend = mysqli_fetch_array($result_vend);
    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>-->
     
-      <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-		
-});
-</script>
+      
 		
      <script language="javascript">
 	function logout()
@@ -397,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function () {
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
     <script language="javascript">
 		  $(document).ready(function() {

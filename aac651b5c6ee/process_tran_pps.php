@@ -53,12 +53,7 @@ $rst_sta4 = mysqli_fetch_array($sta_res4);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-	</script>
+    
   </head>
 <body>
 <!-- refresh page every 5 second auto.... -->

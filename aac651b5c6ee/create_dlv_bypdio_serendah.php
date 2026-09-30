@@ -266,12 +266,7 @@ $rst_sta37 = mysqli_fetch_array($sta_res37);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-	</script>
+    
    <style>
 input[value="+ Add Item"]{
   display:none;
@@ -1009,7 +1004,7 @@ if(isset($_POST['submitCTA']))
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
 
   

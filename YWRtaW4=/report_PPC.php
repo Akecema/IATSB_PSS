@@ -52,15 +52,7 @@ $data_setup = mysqli_fetch_array($rs_setup);
 		location.href = "../logout.php";	
 	}
 	</script>
-    <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-showMonthsShort: true
-})
-	
-});
-</script>
+    
 <style>
 th {
   cursor: pointer;
@@ -282,7 +274,7 @@ th {
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
     <script language="javascript" type="text/javascript">
 

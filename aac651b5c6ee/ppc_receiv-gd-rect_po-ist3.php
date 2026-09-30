@@ -202,15 +202,7 @@ $purc_ord_no = $_GET["purc_ord_no"];
 	}
 	</style>   
 
-    <script language="javascript">
-document.addEventListener('DOMContentLoaded', function () {
-	$('.datepicker').pickadate({
-	weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-	showMonthsShort: true
-	})
-		
-});
-</script>
+    
 		<script language="javascript">
 		  $(document).ready(function() {
 				$('#example').DataTable( {
@@ -500,7 +492,7 @@ $query_tag3 = "INSERT INTO po_detail_trans_gr(id,id_scan,id_DI,id_gen,scan_doc,d
       	todayHighlight: true
       });
 	  
-      $('#demoSelect').select2();
+      
     </script>
     
     <!--checkbox-->
