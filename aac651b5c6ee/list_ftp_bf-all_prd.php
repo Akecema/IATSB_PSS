@@ -203,32 +203,20 @@ th {
 		//date_default_timezone_set('Asia/Kuala Lumpur');
 		
 
+// Docroot IS the app root on Azure (no PSS_IATSB subfolder under it), unlike the old local
+// dev layout this originally targeted.
 $root = $_SERVER['DOCUMENT_ROOT'];
-$path = "/PSS_IATSB/FromPortal/BF_OK/"; 
+$path = "/FromPortal/BF_OK/";
 
 // Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
-
-$dir = "$root/PSS_IATSB/FromPortal/BF_OK/";
-
-$folder = $root.'/PSS_IATSB/FromPortal/BF_OK/';
-$filetype = '*.*';    
-$files = glob($folder.$filetype);    
-$total = count($files);     
-
-
-/*$root = $_SERVER['DOCUMENT_ROOT'];
-$path = "/FromPortal/BF_OK/"; 
-
-// Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
+$dir_handle = @opendir($root . $path) or die("Unable to open $path");
 
 $dir = "$root/FromPortal/BF_OK/";
 
-$folder = '/FromPortal/BF_OK/';
-$filetype = '*.*';    
-$files = glob($folder.$filetype);    
-$total = count($files);   */
+$folder = $root.'/FromPortal/BF_OK/';
+$filetype = '*.*';
+$files = glob($folder.$filetype);
+$total = count($files);
 
 // Open a directory, and read its contents
 if(is_dir($dir)){

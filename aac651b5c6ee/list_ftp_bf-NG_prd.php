@@ -203,14 +203,14 @@ th {
 		//date_default_timezone_set('Asia/Kuala Lumpur');
 
 $root = $_SERVER['DOCUMENT_ROOT'];
-$path = "/PSS_IATSB/FromPortal/BF_NG/"; 
+$path = "/FromPortal/BF_NG/"; 
 
 // Open the folder
  $dir_handle = @opendir($root . $path) or die("Unable to open $path");
 
-$dir = "$root/PSS_IATSB/FromPortal/BF_NG/";
+$dir = "$root/FromPortal/BF_NG/";
 
-$folder = $root.'/PSS_IATSB/FromPortal/BF_NG/';
+$folder = $root.'/FromPortal/BF_NG/';
 $filetype = '*.*';    
 $files = glob($folder.$filetype);    
 $total = count($files);  

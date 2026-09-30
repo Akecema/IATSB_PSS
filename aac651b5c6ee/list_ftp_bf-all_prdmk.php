@@ -204,14 +204,14 @@ th {
 		
 
 /*$root = $_SERVER['DOCUMENT_ROOT'];
-$path = "../../PSS_IATSB/FromPortal/BF_OK/"; 
+$path = "../../FromPortal/BF_OK/"; 
 
 // Open the folder
  $dir_handle = @opendir($root . $path) or die("Unable to open $path");
 
 $dir = "$root/FromPortal/BF_OK/";
 
-$folder = '../../PSS_IATSB/FromPortal/BF_OK/';
+$folder = '../../FromPortal/BF_OK/';
 $filetype = '*.*';    
 $files = glob($folder.$filetype);    
 $total = count($files);  */   
