@@ -195,11 +195,14 @@ $rst_sta34 = mysqli_fetch_array($sta_res34);
 	}
 	</script>
     <script language="javascript">
+document.addEventListener('DOMContentLoaded', function () {
 	$('.datepicker').pickadate({
 weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 showMonthsShort: true
 })
-	</script>
+	
+});
+</script>
 <style>
 th {
   cursor: pointer;

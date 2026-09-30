@@ -60,7 +60,8 @@ $url = "add_cust_dtl_account.php";
     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <!--  <script src="https://www.w3schools.com/lib/w3.js"></script>-->
 	
-	<SCRIPT LANGUAGE="JavaScript">
+	<script LANGUAGE="JavaScript">
+document.addEventListener('DOMContentLoaded', function () {
 	function logout()
 	{
 	  if (confirm('Are you sure you want to logout?'))
@@ -70,7 +71,9 @@ $url = "add_cust_dtl_account.php";
 		$("#myNoteEdit").draggable({
     	handle: ".modal-header"
 		}); 
-	</script>
+	
+});
+</script>
  <style>
 th {
   cursor: pointer;
