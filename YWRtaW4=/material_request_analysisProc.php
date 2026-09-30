@@ -17,13 +17,13 @@ exit();
 //--------setup website page --------------------------
 $query_setup = "SELECT * FROM sys_setup_maintain WHERE status_system = 'AC'";
 $rs_setup = mysqli_query($dbc,$query_setup);   //run the query.
-$num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
-$data_setup = mysqli_fetch_array($rs_setup);
+$num_setup = $rs_setup ? mysqli_num_rows($rs_setup) : 0;   //how many material are there?
+$data_setup = $rs_setup ? mysqli_fetch_array($rs_setup) : null;
 //----------------------------------------------------
 
     $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
     $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
-    $res = mysqli_fetch_array($result2);
+    $res = $result2 ? mysqli_fetch_array($result2) : null;
 	
     $url = "material_request_analysis.php"; 
 
@@ -45,53 +45,53 @@ $data_setup = mysqli_fetch_array($rs_setup);
 
 $sta = "SELECT * from request_status WHERE status_id = '1'";
 $sta_res = mysqli_query($dbc,$sta);
-$rst_sta = mysqli_fetch_array($sta_res);
+$rst_sta = $sta_res ? mysqli_fetch_array($sta_res) : null;
 
 //CR status (Released)
 $sta2 = "SELECT * from request_status WHERE status_id = '2'";
 $sta_res2 = mysqli_query($dbc,$sta2);
-$rst_sta2 = mysqli_fetch_array($sta_res2);
+$rst_sta2 = $sta_res2 ? mysqli_fetch_array($sta_res2) : null;
 
 
 //CR status (Approved)
 $sta3 = "SELECT * from request_status WHERE status_id = '3'";
 $sta_res3 = mysqli_query($dbc,$sta3);
-$rst_sta3 = mysqli_fetch_array($sta_res3);
+$rst_sta3 = $sta_res3 ? mysqli_fetch_array($sta_res3) : null;
 
 //CR status (In Progress)
 $sta7 = "SELECT * from request_status WHERE status_id = '7'";
 $sta_res7 = mysqli_query($dbc,$sta7);
-$rst_sta7 = mysqli_fetch_array($sta_res7);
+$rst_sta7 = $sta_res7 ? mysqli_fetch_array($sta_res7) : null;
 
 //CR status (Pending)
 $sta8 = "SELECT * from request_status WHERE status_id = '8'";
 $sta_res8 = mysqli_query($dbc,$sta8);
-$rst_sta8 = mysqli_fetch_array($sta_res8);
+$rst_sta8 = $sta_res8 ? mysqli_fetch_array($sta_res8) : null;
 
 //CR status (Closed)
 $sta13 = "SELECT * from request_status WHERE status_id = '13'";
 $sta_res13 = mysqli_query($dbc,$sta13);
-$rst_sta13 = mysqli_fetch_array($sta_res13);
+$rst_sta13 = $sta_res13 ? mysqli_fetch_array($sta_res13) : null;
 
 //CR status (Completed)
 $sta14 = "SELECT * from request_status WHERE status_id = '14'";
 $sta_res14 = mysqli_query($dbc,$sta14);
-$rst_sta14 = mysqli_fetch_array($sta_res14);
+$rst_sta14 = $sta_res14 ? mysqli_fetch_array($sta_res14) : null;
 
 //CR status (Deleted)
 $sta16 = "SELECT * from request_status WHERE status_id = '16'";
 $sta_res16 = mysqli_query($dbc,$sta16);
-$rst_sta16 = mysqli_fetch_array($sta_res16);
+$rst_sta16 = $sta_res16 ? mysqli_fetch_array($sta_res16) : null;
 
 //CR status (Cancel)
 $sta21 = "SELECT * from request_status WHERE status_id = '21'";
 $sta_res21 = mysqli_query($dbc,$sta21);
-$rst_sta21 = mysqli_fetch_array($sta_res21);
+$rst_sta21 = $sta_res21 ? mysqli_fetch_array($sta_res21) : null;
 
 //CR status (Close)
 $sta22 = "SELECT * from request_status WHERE status_id = '22'";
 $sta_res22 = mysqli_query($dbc,$sta22);
-$rst_sta22 = mysqli_fetch_array($sta_res22);
+$rst_sta22 = $sta_res22 ? mysqli_fetch_array($sta_res22) : null;
  
 	?>
 <!DOCTYPE html>
@@ -237,7 +237,7 @@ th {
 	               $query3 = "SELECT * FROM factory_detail GROUP BY factory_desc2 ORDER BY id_fac ASC";
                    $result3 = db_query($dbc, $query3);
   
-                   while($row3=mysqli_fetch_array($result3)) 
+                   while ($result3 && ($row3 = mysqli_fetch_array($result3))) 
 			      {
 				  
 				  
@@ -256,7 +256,7 @@ th {
 	               $query5 = "SELECT * FROM work_center_detail WHERE id_factory = '".sql_esc($_GET["factory"])."' ORDER BY id_work ASC";
                    $result5 = mysqli_query($dbc,$query5);
   
-                   while($row5=mysqli_fetch_array($result5)) 
+                   while ($result5 && ($row5 = mysqli_fetch_array($result5))) 
 				    { 
 				   
 				   ?>
@@ -275,7 +275,7 @@ th {
 	               $query9 = "SELECT * FROM mat_master_detail WHERE bom_status = 'Y' GROUP BY bill_component ORDER BY bill_component ASC";
                    $result9 = mysqli_query($dbc,$query9);
   
-                   while($row9=mysqli_fetch_array($result9)) 
+                   while ($result9 && ($row9 = mysqli_fetch_array($result9))) 
 			      {
 				   ?>
                   <option value="<?php echo html_esc($row9["bill_component"]); ?>" <?php if($row9["bill_component"] == $_GET["material_no"]) echo "selected"; ?>> <?php echo html_esc($row9["bill_component"]); ?></option>
@@ -337,7 +337,7 @@ th {
 			$query_convert = "SELECT * FROM `mat_master_header` as MH WHERE MH.material_no = '".sql_esc($_GET["material_no"])."'";
 			$result_convert = mysqli_query($dbc,$query_convert); 
 			
-			while ($row_convert = mysqli_fetch_array($result_convert))
+			while ($result_convert && ($row_convert = mysqli_fetch_array($result_convert)))
 			{
 			
 			//echo $row_convert["id_fac"];
@@ -393,7 +393,7 @@ th {
 	
    $query8 = "SELECT *,DATE_FORMAT(MR.date_mrin,'%d-%m-%Y') AS R, DATE_FORMAT(MR.date_posting,'%d-%m-%Y') AS R2 FROM material_request AS MR, scan_detail AS SD WHERE MR.id_scan = SD.id_scan AND MR.status_request = 'Y' AND MR.status != '".sql_esc($rst_sta21["status_desc"])."' AND (MR.temp_mrin LIKE '%".sql_esc($strKeyword)."%')" .$where_sql. "GROUP BY MR.temp_mrin";
    $result8 = mysqli_query($dbc,$query8);
-   $num_rows = mysqli_num_rows($result8);
+   $num_rows = $result8 ? mysqli_num_rows($result8) : 0;
 			
   
     //define how many result per pages
@@ -422,7 +422,7 @@ th {
   
 $query = "SELECT *,DATE_FORMAT(MR.date_mrin,'%d-%m-%Y') AS R, DATE_FORMAT(MR.date_posting,'%d-%m-%Y') AS R2 FROM material_request AS MR, scan_detail AS SD WHERE MR.id_scan = SD.id_scan AND MR.status_request = 'Y' AND MR.status != '".sql_esc($rst_sta21["status_desc"])."' AND (MR.temp_mrin LIKE '%".sql_esc($strKeyword)."%')" .$where_sql. " GROUP BY MR.temp_mrin";
 $rs = mysqli_query($dbc,$query);
-$num_rows = mysqli_num_rows($rs);   //how many material are there?
+$num_rows = $rs ? mysqli_num_rows($rs) : 0;   //how many material are there?
 		
 	//$row_start = (($page - 1)* $per_page);
 	
@@ -491,37 +491,37 @@ $num_rows = mysqli_num_rows($rs);   //how many material are there?
    $bq = 0;
    $rq = 0;
    
-   while ($row2 = mysqli_fetch_array($rs))
+   while ($rs && ($row2 = mysqli_fetch_array($rs)))
    {
 		
    
    	$query_scan = "SELECT * FROM scan_detail WHERE id_scan = '".sql_esc($row2["id_scan"])."'";
    	$result_scan = mysqli_query($dbc,$query_scan);
-   	$row_scan = mysqli_fetch_array($result_scan);
+   	$row_scan = $result_scan ? mysqli_fetch_array($result_scan) : null;
 	
 	$query_again = "SELECT * FROM material_request WHERE status_request = 'Y' and id_scan = '".sql_esc($row2["id_scan"])."' ORDER BY id_req ASC";
     $rs_again = mysqli_query($dbc,$query_again);   //run the query.
-    $row = mysqli_fetch_array($rs_again);
+    $row = $rs_again ? mysqli_fetch_array($rs_again) : null;
 	
 	$query_u = new PreparedSql("SELECT * FROM user_detail WHERE user_no = ?", [$row["user_create"]]);
 	$result_u = db_query($dbc, $query_u);   //run the query.
-	$data_u = mysqli_fetch_array($result_u);   //how many records are there?    
+	$data_u = $result_u ? mysqli_fetch_array($result_u) : null;   //how many records are there?    
 
  	$query3 = new PreparedSql("SELECT * FROM factory_detail WHERE id_fac = ?", [$row_scan["factory"]]);
     $result3 = db_query($dbc, $query3);
-	$row3 = mysqli_fetch_array($result3);
+	$row3 = $result3 ? mysqli_fetch_array($result3) : null;
 	
 	$query4_p = "SELECT * from mat_master_header as LD, mat_master_detail as SD WHERE SD.id_hdr = LD.id_hdr and SD.id_dtl = '".sql_esc($row2["id_dtl"])."'";
   	$result4_p = mysqli_query($dbc,$query4_p);
- 	$row4_p = mysqli_fetch_array($result4_p); 
+ 	$row4_p = $result4_p ? mysqli_fetch_array($result4_p) : null; 
  
     $query5 = "SELECT * FROM post_detail_header WHERE mrin_no = '".sql_esc($row2["temp_mrin"])."' AND material_no = '".sql_esc($row2["bom_component"])."' AND mvt_type = 311 AND prod_order = '".sql_esc($row_scan["prod_order"])."'";
     $result5 = mysqli_query($dbc,$query5);
-	$row5 = mysqli_fetch_array($result5);
+	$row5 = $result5 ? mysqli_fetch_array($result5) : null;
 	
 	$query6 = "SELECT * FROM post_detail_header AS PD, material_request AS MR WHERE PD.mrin_no = MR.temp_mrin AND PD.material_no = MR.bom_component AND PD.mrin_no = '".sql_esc($row2["temp_mrin"])."' AND PD.material_no = '".sql_esc($row2["bom_component"])."' AND PD.mvt_type = 311";
     $result6 = mysqli_query($dbc,$query6);
-	$row6 = mysqli_fetch_array($result6);
+	$row6 = $result6 ? mysqli_fetch_array($result6) : null;
 
 //-------------------------------------------------------Transfer Posting [Traffic Light] --------------------------
 // table post_detail_header --- checking traffic licht

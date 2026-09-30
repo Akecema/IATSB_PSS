@@ -17,13 +17,13 @@ exit();
 //--------setup website page --------------------------
 $query_setup = "SELECT * FROM sys_setup_maintain WHERE status_system = 'AC'";
 $rs_setup = mysqli_query($dbc,$query_setup);   //run the query.
-$num_setup = mysqli_num_rows($rs_setup);   //how many material are there?
-$data_setup = mysqli_fetch_array($rs_setup);
+$num_setup = $rs_setup ? mysqli_num_rows($rs_setup) : 0;   //how many material are there?
+$data_setup = $rs_setup ? mysqli_fetch_array($rs_setup) : null;
 //----------------------------------------------------
 
     $query2 = new PreparedSql("SELECT * FROM user_detail WHERE username = ?", [$username]);
     $result2 = db_query($dbc, $query2) or die (mysqli_error($dbc));
-    $res = mysqli_fetch_array($result2);
+    $res = $result2 ? mysqli_fetch_array($result2) : null;
 
    $url = "add_tbl_storage_QC.php"; 
    
@@ -175,7 +175,7 @@ th {
 	
 	$query = "SELECT * FROM storage2_tbl WHERE qc_sloc_code != '' AND (qc_sloc_code LIKE '%".sql_esc($strKeyword)."%' OR qc_sloc_desc LIKE '%".sql_esc($strKeyword)."%')";
     $rs = mysqli_query($dbc,$query);   //run the query.
-	$num_rows = mysqli_num_rows($rs);   //how many material are there?
+	$num_rows = $rs ? mysqli_num_rows($rs) : 0;   //how many material are there?
 		
 	//$row_start = (($page - 1)* $per_page);
 	
@@ -225,7 +225,7 @@ th {
                   <tbody>
      <?php
    
-   while($row2 = mysqli_fetch_array($rs))
+   while ($rs && ($row2 = mysqli_fetch_array($rs)))
    {
       ?> <tr class="item">
             <td>&nbsp;<?php  echo html_esc($row2["qc_sloc_code"]); ?></td>
