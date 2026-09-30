@@ -22,10 +22,28 @@ date_default_timezone_set('Asia/Kuala_Lumpur');
 // Legacy pages check mysqli return values; PHP 8.1+ would throw instead.
 mysqli_report(MYSQLI_REPORT_OFF);
 
-$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-if (!$dbc) {
+// Azure Database for MySQL requires TLS and rejects a plain connection outright; the local
+// Docker DB (host "db", or "localhost") does not speak TLS at all, so only negotiate SSL for a
+// real remote host. DigiCertGlobalRootG2.crt.pem is Azure's CA - same cert used across this
+// migration's sibling apps (i-proc, icharm, ...).
+$dbc = mysqli_init();
+if (!in_array(DB_HOST, ['localhost', 'db', '127.0.0.1'], true)) {
+    mysqli_ssl_set($dbc, null, null, __DIR__ . '/DigiCertGlobalRootG2.crt.pem', null, null);
+    $connected = mysqli_real_connect($dbc, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, 3306, null, MYSQLI_CLIENT_SSL);
+} else {
+    $connected = mysqli_real_connect($dbc, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+}
+if (!$connected) {
     die('Connection Error.');
 }
+
+// This schema predates strict SQL mode (NOT NULL columns with no default, zero dates, implicit
+// type coercion) - the local dev DB (MariaDB) tolerates that by default, but MySQL 8+ (Azure
+// Database for MySQL) enforces strict mode unless told otherwise, breaking writes throughout the
+// app (e.g. "Field 'vendor_no' doesn't have a default value"). Documented, scoped compromise for
+// this pre-existing schema, not a default for new work - see PO_approve's po_pdf.sql for the same
+// pattern in the reference app.
+mysqli_query($dbc, "SET sql_mode = ''");
 
 // Legacy pages build SQL by concatenation; these wrap every interpolated value.
 // sql_esc(): value inside a quoted SQL literal. sql_num(): unquoted numeric value
