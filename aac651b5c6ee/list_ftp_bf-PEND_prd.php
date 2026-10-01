@@ -206,7 +206,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 $path = "/FromPortal/BF_PENDING/"; 
 
 // Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
+ // Missing folder is a normal case (FTP delivery not yet landed/configured for this env);
+// is_dir($dir) check below already handles it by showing an empty list.
+@opendir($root . $path);
 
 $dir = "$root/FromPortal/BF_PENDING/";
 
@@ -221,7 +223,9 @@ $total = count($files);
 $path = "/FromPortal/BF_PENDING/"; 
 
 // Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
+ // Missing folder is a normal case (FTP delivery not yet landed/configured for this env);
+// is_dir($dir) check below already handles it by showing an empty list.
+@opendir($root . $path);
 
 $dir = "$root/FromPortal/BF_PENDING/";
 
