@@ -223,7 +223,6 @@ $total = count($files);
 // Open a directory, and read its contents
 if(is_dir($dir)){
   if($dh = opendir($dir)){
-  $total2 = count($dh);  
 
   
    echo "<br>";
