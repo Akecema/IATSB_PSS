@@ -208,7 +208,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 $path = "../../FromPortal2/GR_11/"; 
 
 // Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
+ // Missing folder is a normal case (FTP delivery not yet landed/configured for this env);
+// is_dir($dir) check below already handles it by showing an empty list.
+@opendir($root . $path);
 
 $dir = "$root/FromPortal2/GR/";
 
@@ -221,7 +223,9 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 $path = "/FromPortal2/GR/"; 
 
 // Open the folder
- $dir_handle = @opendir($root . $path) or die("Unable to open $path");
+ // Missing folder is a normal case (FTP delivery not yet landed/configured for this env);
+// is_dir($dir) check below already handles it by showing an empty list.
+@opendir($root . $path);
 
 $dir = "$root/FromPortal2/GR/";
 
